@@ -1,0 +1,14 @@
+*~
+*.pyc
+bin
+develop-eggs
+fake-eggs
+parts
+var
+.installed.cfg
+downloads/
+*.egg-info/
+wingidepath.txt
+*.mo
+eggs
+respaldos/*.tar.gz
