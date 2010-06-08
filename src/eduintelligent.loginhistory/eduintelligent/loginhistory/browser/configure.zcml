@@ -1,0 +1,44 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="eduintelligent.loginhistory">
+
+    <browser:page
+            for="Products.CMFCore.interfaces.ISiteRoot"
+            name="loginhistory"
+            permission="cmf.ModifyPortalContent"
+            class=".loginhistory.LoginHistoryView"
+            />        
+
+    <browser:page
+            for="*"
+            name="history_by_group"
+            permission="cmf.ModifyPortalContent"
+            class=".lh_group.LHGroupView"
+            />        
+            
+    <browser:page
+            for="*"
+            name="history_by_user"
+            permission="cmf.ModifyPortalContent"
+            class=".lh_group.LHUserView"
+            template="history_by_user.pt"
+            />        
+
+    <!-- <browser:pages 
+         for="*"
+         permission="cmf.ModifyPortalContent"
+         class=".lh_group.LHGroupView"  >
+
+      <browser:page name="history_by_group"
+            template="history_by_group.pt" 
+            />
+
+      <browser:page name="history_by_user"
+            template="history_by_user.pt"
+            />
+
+    </browser:pages> -->
+
+        
+</configure>

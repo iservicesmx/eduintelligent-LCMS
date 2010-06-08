@@ -1,0 +1,9 @@
+Changelog for eduintelligent.loginhistory
+
+    (name of developer listed in brackets)
+
+eduintelligent.loginhistory - 1.1 Unreleased
+
+    - Initial package structure.
+      [zopeskel]
+

@@ -1,0 +1,143 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2010-01-04 01:41+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: eduintelligent.loginhistory\n"
+
+#: ./browser/history_by_group.pt:41
+msgid "Accumulated"
+msgstr ""
+
+#: ./browser/loginhistory.pt:26
+msgid "History General Visits"
+msgstr ""
+
+#: ./browser/history_by_group.pt:46
+msgid "Individual"
+msgstr ""
+
+#: ./browser/history_by_group.pt:66
+msgid "Login History for "${folder}""
+msgstr ""
+
+#. Default: "Login History for \"${folder}\""
+#: ./browser/lh_allconnections.pt:42
+msgid "heading_login_history"
+msgstr ""
+
+#. Default: "Historial de Conexiones - <span>${DYNAMIC_CONTENT}</span>"
+#: ./browser/history_by_user.pt:42
+msgid "heading_login_history_for"
+msgstr ""
+
+#. Default: "Browser"
+#: ./browser/history_by_user.pt:108
+msgid "label_browser_lh"
+msgstr ""
+
+#. Default: "End Access"
+#: ./browser/history_by_group.pt:143
+#: ./browser/history_by_user.pt:105
+#: ./browser/lh_allconnections.pt:117
+msgid "label_enddate_lh"
+msgstr ""
+
+#. Default: "Export"
+#: ./browser/history_by_group.pt:119
+#: ./browser/lh_allconnections.pt:95
+msgid "label_export_lh"
+msgstr ""
+
+#. Default: "Filter"
+#: ./browser/history_by_group.pt:112
+#: ./browser/history_by_user.pt:86
+#: ./browser/lh_allconnections.pt:88
+msgid "label_filter_lh"
+msgstr ""
+
+#. Default: "Group"
+#: ./browser/loginhistory.pt:38
+msgid "label_group_lh"
+msgstr ""
+
+#. Default: "IP"
+#: ./browser/history_by_user.pt:107
+msgid "label_ip_lh"
+msgstr ""
+
+#. Default: "Name"
+#: ./browser/history_by_group.pt:139
+#: ./browser/lh_allconnections.pt:115
+#: ./browser/loginhistory.pt:33
+msgid "label_name_lh"
+msgstr ""
+
+#. Default: "Place"
+#: ./browser/history_by_group.pt:141
+#: ./browser/loginhistory.pt:35
+msgid "label_place_lh"
+msgstr ""
+
+#. Default: "Position"
+#: ./browser/history_by_group.pt:140
+#: ./browser/loginhistory.pt:34
+msgid "label_position_lh"
+msgstr ""
+
+#. Default: "Range Date"
+#: ./browser/history_by_group.pt:80
+#: ./browser/history_by_user.pt:54
+#: ./browser/lh_allconnections.pt:56
+msgid "label_range_date_lh"
+msgstr ""
+
+#. Default: "Start Access"
+#: ./browser/history_by_group.pt:142
+#: ./browser/history_by_user.pt:104
+#: ./browser/lh_allconnections.pt:116
+msgid "label_startdate_lh"
+msgstr ""
+
+#. Default: "Total Connect"
+#: ./browser/history_by_group.pt:145
+msgid "label_total_connect"
+msgstr ""
+
+#. Default: "Total"
+#: ./browser/history_by_group.pt:144
+#: ./browser/history_by_user.pt:106
+#: ./browser/lh_allconnections.pt:118
+msgid "label_total_lh"
+msgstr ""
+
+#. Default: "Total Count"
+#: ./browser/lh_allconnections.pt:119
+msgid "label_totalcount_lh"
+msgstr ""
+
+#. Default: "User"
+#: ./browser/history_by_group.pt:138
+#: ./browser/lh_allconnections.pt:114
+#: ./browser/loginhistory.pt:32
+msgid "label_user_lh"
+msgstr ""
+
+#. Default: "Up to Training Center"
+#: ./browser/history_by_group.pt:69
+#: ./browser/lh_allconnections.pt:45
+msgid "link_up_to_tc"
+msgstr ""
+

@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="eduintelligent.loginhistory">
+
+<body>
+
+<metal:main fill-slot="content">
+    <tal:main-macro metal:define-macro="main" 
+                    tal:define="Batch python:modules['Products.CMFPlone'].Batch;
+                                b_size python:20;
+                                b_start python:0;
+                                b_start request/b_start | b_start;
+                                batch_base_url string:${context/absolute_url}/@@loginhistory;
+                                results view/getLoginAll;
+                                batch python:Batch(results, b_size, int(b_start), orphan=1);">
+
+    <div metal:use-macro="here/global_statusmessage/macros/portal_message">
+            Portal status message
+    </div>
+
+
+     <h1 i18n:translate="" >History General Visits</h1>
+
+    <div metal:use-macro="here/batch_macros/macros/navigation" />
+     <table id="sortable" class="listing">
+       <thead>
+       <tr>
+         <th i18n:translate="label_user_lh">User</th>
+         <th i18n:translate="label_name_lh">Name</th>
+         <th i18n:translate="label_position_lh">Position</th>
+         <th i18n:translate="label_place_lh">Place</th>         
+         <th i18n:translate="label_startdate_lh" class="nosort">Start Access</th>
+         <th i18n:translate="label_enddate_lh" class="nosort">End Access</th>
+         <th i18n:translate="label_group_lh">Group</th>
+       </tr>
+       </thead>
+       <tbody>
+       <metal:block tal:repeat="log batch">
+       <tr tal:define="oddrow repeat/log/odd;
+                      member  python: view.getMemerObj(log.username);"
+           tal:attributes="class python:oddrow and 'odd' or 'even'">
+         <td>
+          <a href="#" tal:define="user_id python:log.username" tal:attributes="href string:${here_url}/history_by_user?username=${user_id};"> <span tal:replace="user_id"> User</span></a>
+         </td>
+         <td tal:content="member/getFullname">Nombre</td>
+         <td tal:content="member/getPositionName">Position</td>
+         <td tal:content="member/getPlace"></td>
+         <td tal:content="python: log.startdate.strftime('%d/%m/%Y - %H:%M')">Total</td>
+         <td tal:content="structure python: log.success and log.enddate.strftime('%d/%m/%Y - %H:%M') or '--'">kj</td> 
+         <td>
+             <a href="#" tal:define="group_id python:log.usergroup" tal:attributes="href string:${here_url}/history_by_group?group=${group_id};"><span tal:replace="group_id"> Group </span></a>
+         </td>
+       </tr>
+       </metal:block>
+       </tbody>
+
+
+     </table>
+      <div metal:use-macro="here/batch_macros/macros/navigation" />
+
+
+    </tal:main-macro>
+
+</metal:main>
+
+</body>
+</html>
