@@ -1,0 +1,67 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="eduintelligent.courses">
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main">
+
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+        <h1 class="documentFirstHeading" tal:content="context/title" />
+
+        <div class="documentDescription" tal:content="structure context/description" />
+
+        <div tal:replace="structure provider:plone.abovecontentbody" />
+
+        <table cellspacing="0" cellpadding="0" class="listing" style="width:90%;" >
+            <thead>
+                <tr>
+                    <th i18n:translate="label_course">
+                        Course
+                    </th>
+                    <th i18n:translate="label_description">
+                        Description
+                    </th>
+                    <th i18n:translate="label_category">
+                        Category
+                    </th>
+                    <th class="nosort" i18n:translate="label_go">
+                        Link
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tal:block repeat="course view/courses">
+                <tr tal:define="oddrow repeat/course/odd;"
+                    tal:attributes="class python:oddrow and 'odd' or 'even'">
+                    <td tal:content="course/title">
+                        Course
+                    </td>
+                    <td tal:content="course/description">
+                        Description
+                    </td>
+                    <td tal:content="course/category">
+                        Course
+                    </td>
+                    <td>
+                        <a tal:attributes="href course/url">
+                            <img src="++resource++course.gif"/>
+                        </a>
+                    </td>
+                </tr>
+                </tal:block>
+            </tbody>
+        </table>
+    
+        <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>
+

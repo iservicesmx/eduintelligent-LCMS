@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="eduintelligent.courses">
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main">
+
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+        <h1 class="documentFirstHeading" tal:content="context/title" />
+
+        <div class="documentDescription" tal:content="structure context/description" />
+        
+        <div tal:replace="structure provider:plone.abovecontentbody" />
+        
+        <dl>
+            <tal:block repeat="content view/full_contents">
+                <dt>
+                    <!-- <img src="" tal:attributes="sructure content/getIcon"> -->
+                    <a tal:attributes="href content/url"
+                       tal:content="content/title" 
+                       tal:omit-tag="not:content/view"/>
+                </dt>
+                <dd tal:content="content/description" />
+            </tal:block>
+        </dl>
+
+        
+        <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>
+

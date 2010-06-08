@@ -1,0 +1,37 @@
+<dl class="portlet portletPromotions"
+    i18n:domain="eduintelligent.courses">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        Mis Cursos
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <tal:items tal:repeat="course view/courses">
+        <dd class="portletItem"
+            tal:define="oddrow repeat/course/odd;"
+            tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
+            <a href=""
+               tal:attributes="href course/url;
+                               title course/description;
+                               alt course/description;">
+                <tal:title content="course/title">
+                    Title
+                </tal:title>
+                <!-- <span class="portletItemDetails"
+                      tal:content="course/description"
+                      >Course summary</span> -->
+            </a>
+        </dd>
+    </tal:items>
+
+    <dd class="portletFooter">
+        <span class="portletBottomLeft"></span>
+        <a href=""
+           tal:attributes="href view/all_courses;
+                           title string:Ver Todos Los Cursos;">Ver Todos</a>
+        
+        <span class="portletBottomRight"></span>
+    </dd>
+
+</dl>

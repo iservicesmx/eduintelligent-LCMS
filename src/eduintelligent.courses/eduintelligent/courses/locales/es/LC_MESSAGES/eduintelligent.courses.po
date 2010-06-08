@@ -1,0 +1,367 @@
+# Traductores
+# Juan Ramón López Beristain <ramon@ro75.com.mx> , 2007
+msgid ""
+msgstr ""
+"Project-Id-Version: Plonecourses 1.0\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"PO-Revision-Date: 2009-01-05 00:00+0600\n"
+"Last-Translator: Noe Misael Nieto Arroyo\n"
+"Language-Team: iServices\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: es\n"
+"Language-Name: Spanish\n"
+"Preferred-Encodings: latin1 utf-8\n"
+"Domain: eduintelligent.courses\n"
+"X-Poedit-Language: Spanish\n"
+
+#: ./interfaces.py:58
+msgid "A HTML tag to render to show the banner image"
+msgstr ""
+
+#: ./profiles/default/types/CourseContent.xml
+#: ./profiles/default/types/Resources.xml
+msgid "A description of a content"
+msgstr "Descripción del contenido"
+
+#: ./profiles/default/types/Course.xml
+msgid "A description of a course"
+msgstr "Descripción del curso"
+
+#: ./profiles/default/types/Lessons.xml
+msgid "A description of a groups of lessons"
+msgstr "Descripción de un grupo de lecciones"
+
+#: ./profiles/default/types/ExamContent.xml
+msgid "A exam content"
+msgstr "Contenido del examen"
+
+#: ./profiles/default/types/Course_Folder.xml
+msgid "A folder which can contain courses."
+msgstr "Una carpeta que contiene cursos."
+
+#: ./interfaces.py:41
+msgid "A objetives of the course"
+msgstr "Objetivos del curso"
+
+#: ./profiles/default/types/PollContent.xml
+msgid "A poll content"
+msgstr "Contenido de tipo Encuesta"
+
+#: ./profiles/default/types/QuizContent.xml
+msgid "A quiz content"
+msgstr "Contenido de tipo Quiz"
+
+#: ./interfaces.py:19
+msgid "A short summary of this folder"
+msgstr "Un breve resumen de esta carpeta"
+
+#: ./portlets/mycourses.py:139
+msgid "Add Course portlet"
+msgstr "Añadir Portlet de Cursos"
+
+#: ./content/coursefolder.py:19
+#: ./interfaces.py:21
+msgid "Categories"
+msgstr "Categorías"
+
+#: ./content/course.py:81
+#: ./interfaces.py:50
+msgid "Category"
+msgstr "Categoría"
+
+#: ./portlets/coursebox.pt:103
+msgid "Chat"
+msgstr ""
+
+#: ./profiles/default/types/Course.xml
+msgid "Course"
+msgstr "Curso"
+
+#: ./portlets/coursebox.py:39
+msgid "Course Box"
+msgstr "Herramientas del Curso"
+
+#: ./interfaces.py:37
+msgid "Course Code"
+msgstr "Código Curso"
+
+#: ./profiles/default/types/Course_Folder.xml
+msgid "Course Folder"
+msgstr "Carpeta de Cursos"
+
+#: ./content/course.py:39
+msgid "Course code"
+msgstr "Codigo Curso"
+
+#: ./content/course.py:124
+msgid "Course expiration period"
+msgstr "Periodo de vigencia del Curso"
+
+#: ./content/course.py:59
+msgid "Course image"
+msgstr "Imágen del Curso"
+
+#: ./interfaces.py:31
+msgid "Course title"
+msgstr "Titulo del curso"
+
+#: ./profiles/default/types/CourseContent.xml
+msgid "CourseContent"
+msgstr ""
+
+#: ./interfaces.py:45
+msgid "Date when course first appears on the website"
+msgstr "El curso estará disponible a partir de esta fecha."
+
+#: ./interfaces.py:48
+msgid "Date when course last appears on the website"
+msgstr "A partir de esta fecha el curso caduca"
+
+#: ./content/course.py:125
+msgid "Defines the number of days the course stays open."
+msgstr "Define el número de días en que el curso se encuentra disponible."
+
+#: ./interfaces.py:18
+msgid "Description"
+msgstr "Descripción"
+
+#: ./portlets/mycourses.py:153
+msgid "Edit Courses portlet"
+msgstr "Editar el portlet de Cursos"
+
+#: ./content/course.py:103
+msgid "End Date"
+msgstr "Fecha de caducidad"
+
+#: ./profiles/default/types/ExamContent.xml
+msgid "ExamContent"
+msgstr ""
+
+#: ./portlets/coursebox.pt:97
+msgid "Forum"
+msgstr "Foro de discusión"
+
+#: ./portlets/coursebox.pt:111
+msgid "Glossary"
+msgstr "Glosario"
+
+#: ./portlets/mycourses.py:39
+msgid "If enabled, courses to show will be picked randomly."
+msgstr "Si se activa esta casilla, se mostrarán los cursos de manera aleatoria"
+
+#: ./portlets/coursebox.pt:71
+#: ./profiles/default/types/Lessons.xml
+msgid "Lessons"
+msgstr "Lecciones"
+
+#: ./browser/role.py:218
+msgid "Logged-in users"
+msgstr "Usuarios registrados"
+
+#: ./portlets/mycourses.py:34
+msgid "Maximum number of courses to be shown"
+msgstr "Número máximo de cursos a mostrar"
+
+#: ./portlets/mycourses.py:55
+msgid "My Courses"
+msgstr "Mis cursos"
+
+#: ./portlets/mycourses.py:33
+msgid "Number of courses to display"
+msgstr "Número de cursos a mostrar"
+
+#: ./content/course.py:70
+#: ./interfaces.py:40
+msgid "Objetives"
+msgstr "Objetivos"
+
+#: ./content/coursefolder.py:20
+msgid "One category on each line. Used for grouping courses. <br /> CAUTION: ONCE YOU ADD A NEW CATEGORY, YOU DON'T MODIFY OR DELETE THIS, ONLY YOU CAN ADD NEW CATEGORY"
+msgstr "Una categoría en cada línea. Se utiliza para agrupar cursos. PRECAUCIÓN: una vez que se añada una nueva categoría, no modificar o eliminar esta, sólo puede añadir nueva categoría"
+
+#: ./interfaces.py:35
+msgid "Plain-text blurb about the course"
+msgstr "Descripción larga acerca del curso (En texto llano)"
+
+#: ./profiles/default/types/PollContent.xml
+msgid "PollContent"
+msgstr ""
+
+#: ./portlets/coursebox.pt:91
+msgid "Polls"
+msgstr "Encuestas"
+
+#: ./profiles/default/types/QuizContent.xml
+msgid "QuizContent"
+msgstr ""
+
+#: ./portlets/coursebox.pt:85
+msgid "Quizzes"
+msgstr ""
+
+#: ./portlets/mycourses.py:38
+msgid "Randomize courses"
+msgstr "Aleatorizar los cursos"
+
+#: ./profiles/default/types/Resources.xml
+msgid "Resources"
+msgstr "Recursos"
+
+#: ./content/course.py:82
+msgid "Select the category"
+msgstr "Seleccione la catagoría"
+
+#: ./content/course.py:91
+msgid "Start Date"
+msgstr "Fecha Inicio"
+
+#: ./portlets/coursebox.pt:79
+msgid "Tests"
+msgstr "Exámenes"
+
+#: ./interfaces.py:22
+msgid "The categories to clasify a course"
+msgstr "Las categorías permiten clasificar un curso"
+
+#: ./portlets/mycourses.py:140
+msgid "This portlet displays my courses."
+msgstr "Este portlet muestra la lista de mis cursos"
+
+#: ./interfaces.py:38
+msgid "This should match the course code used by the booking system"
+msgstr "Código utilizado por el sistema"
+
+#: ./content/course.py:40
+msgid "This should match the course code used in the booking system."
+msgstr "clave"
+
+#: ./interfaces.py:15
+msgid "Title"
+msgstr "Título"
+
+#: ./interfaces.py:44
+msgid "Visible from"
+msgstr "Visible desde"
+
+#: ./interfaces.py:47
+msgid "Visible until"
+msgstr "Visible hasta"
+
+#: ./content/course.py:71
+msgid "Write the course objetives, (is different to course's description)"
+msgstr "Escriba el Objetivo del curso (este es diferente a la descripción del curso)"
+
+#. Default: "Biblio"
+#: ./portlets/coursebox.pt:132
+msgid "biblio"
+msgstr "Bibliografía"
+
+#. Default: "Chat"
+#: ./portlets/coursebox.pt:108
+msgid "chat"
+msgstr "Chat"
+
+#. Default: "Course's Tools"
+#: ./portlets/coursebox.pt:66
+msgid "courses_tool"
+msgstr "Herramientas del Curso"
+
+#. Default: "Faq"
+#: ./portlets/coursebox.pt:120
+msgid "faq"
+msgstr "P.U.F"
+
+#. Default: "Files"
+#: ./portlets/coursebox.pt:126
+msgid "files"
+msgstr "Archivos"
+
+#. Default: "Forum"
+#: ./portlets/coursebox.pt:100
+msgid "forum"
+msgstr "Foro"
+
+#. Default: "Glossary"
+#: ./portlets/coursebox.pt:114
+msgid "glossary"
+msgstr "Glosario"
+
+#. Default: "Category"
+#: ./browser/templates/course.pt:36
+#: ./browser/templates/coursefolder.pt:29
+msgid "label_category"
+msgstr "Categoría"
+
+#. Default: "Course"
+#: ./browser/templates/coursefolder.pt:23
+msgid "label_course"
+msgstr "Curso"
+
+#. Default: "Course code"
+#: ./browser/templates/course.pt:32
+msgid "label_course_code"
+msgstr "Código del curso"
+
+#. Default: "End Date"
+#: ./browser/templates/course.pt:46
+msgid "label_date_end"
+msgstr "Fecha de caducidad"
+
+#. Default: "Start Date"
+#: ./browser/templates/course.pt:40
+msgid "label_date_start"
+msgstr "Fecha de Inicio"
+
+#. Default: "Description"
+#: ./browser/templates/coursefolder.pt:26
+msgid "label_description"
+msgstr "Descripción"
+
+#. Default: "Enrolled"
+#: ./browser/templates/course.pt:52
+msgid "label_enrolled"
+msgstr "Inscrito"
+
+#. Default: "Link"
+#: ./browser/templates/coursefolder.pt:32
+msgid "label_go"
+msgstr "Liga"
+
+#. Default: "Instructor"
+#: ./browser/templates/course.pt:21
+msgid "label_instructor"
+msgstr "Instructor"
+
+#. Default: "Lessons"
+#: ./portlets/coursebox.pt:76
+msgid "lessons"
+msgstr "Lecciones"
+
+#. Default: "Polls"
+#: ./portlets/coursebox.pt:94
+msgid "polls"
+msgstr "Encuestas"
+
+#. Default: "Quizzes"
+#: ./portlets/coursebox.pt:88
+msgid "quizzes"
+msgstr "Quizz"
+
+#. Default: "Exams"
+#: ./portlets/coursebox.pt:82
+msgid "tests"
+msgstr "Exámenes"
+
+#. Default: "Instructor"
+#: ./localroles.py:12
+msgid "title_administrator"
+msgstr "Instructor"
+
+#. Default: "Student"
+#: ./localroles.py:24
+msgid "title_student"
+msgstr "Estudiante"
+

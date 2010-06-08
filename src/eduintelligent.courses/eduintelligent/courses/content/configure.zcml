@@ -1,0 +1,71 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="eduintelligent.courses">	
+ 
+    
+    <class class=".coursefolder.CourseFolder">
+        <require
+            permission="zope2.View"
+            interface="..interfaces.ICourseFolder"
+            />
+        <require
+            permission="cmf.ModifyPortalContent"
+            set_schema="..interfaces.ICourseFolder"
+            />
+    </class>
+    
+    
+    <!-- Courses: -->
+    
+    <class class=".course.Course">
+        <require
+            permission="zope2.View"
+            interface="..interfaces.ICourse"
+            />
+        <require
+            permission="cmf.ModifyPortalContent"
+            set_schema="..interfaces.ICourse"
+            />
+    </class>
+    
+    <adapter factory=".course.BannerProvider" />
+    
+    <subscriber handler=".course.add_course_portlet" />
+
+    <class class=".lessons.Lessons">
+        <require
+            permission="zope2.View"
+            interface="..interfaces.ILessons"
+            />
+        <require
+            permission="cmf.ModifyPortalContent"
+            set_schema="..interfaces.ILessons"
+            />
+    </class>
+
+    <class class=".coursecontent.CourseContent">
+        <require
+            permission="zope2.View"
+            interface="..interfaces.ICourseContent"
+            />
+        <require
+            permission="cmf.ModifyPortalContent"
+            set_schema="..interfaces.ICourseContent"
+            />
+    </class>
+    
+    <class class=".resources.Resources">
+        <require
+            permission="zope2.View"
+            interface="..interfaces.IResources"
+            />
+        <require
+            permission="cmf.ModifyPortalContent"
+            set_schema="..interfaces.IResources"
+            />
+    </class>
+
+
+
+</configure> 

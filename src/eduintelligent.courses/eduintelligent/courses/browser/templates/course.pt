@@ -1,0 +1,70 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"      
+      lang="en"
+      i18n:domain="eduintelligent.courses">
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main">
+        
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+        <h1 class="documentFirstHeading" tal:content="context/title" />
+
+        <div class="documentDescription" tal:content="structure context/description" />
+    
+    <div style="display:block; float: right;">
+        <table class="vertical listing">
+              <tr>
+                <th i18n:translate="label_instructor">Instructor</th>
+                <td>
+                    <tal:block tal:repeat="inst view/instructor">
+                        <span tal:replace="inst" />
+                    </tal:block>
+                </td>
+                <td rowspan="6"  tal:condition="context/getImage"> 
+                    <img tal:replace="structure view/banner_tag" />
+                </td>
+              </tr>
+              <tr>
+                <th i18n:translate="label_course_code">Course code</th>
+                <td tal:content="context/course_code">MXSP01</td>
+              </tr>
+              <tr>
+                <th i18n:translate="label_category">Category</th>
+                <td tal:content="context/category">General Category</td>
+              </tr>              
+              <tr>
+                <th i18n:translate="label_date_start">Start Date</th>
+                <td tal:content="structure python:context.toLocalizedTime(context.start(),long_format=0)">
+                    2007/11/21
+                </td>
+              </tr>
+              <tr>
+                <th i18n:translate="label_date_end">End Date</th>
+                <td tal:content="structure python:context.toLocalizedTime(context.end(),long_format=0)">
+                    2007/12/05
+                </td>
+              </tr>
+              <tr>
+                <th i18n:translate="label_enrolled">Enrolled</th>
+                <td tal:content="view/count_students">
+                    43
+                </td>
+              </tr> 
+        </table>
+        </div>
+        <div tal:replace="structure provider:plone.abovecontentbody" />
+        
+        <div tal:content="structure context/objetives" />
+        
+        <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>
+

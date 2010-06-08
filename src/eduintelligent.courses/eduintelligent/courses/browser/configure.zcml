@@ -1,0 +1,99 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="eduintelligent.courses">
+
+    <include package="plone.app.contentmenu" />
+      
+    <browser:resource
+        name="course.gif"
+        image="icons/course.gif"
+        />
+        
+    <browser:page
+        for="..interfaces.ICourseFolder"
+        name="view"
+        class=".coursefolder.CourseFolderView"
+        permission="zope2.View"
+        />
+        
+    <browser:menuItem
+        for="..interfaces.ICourseFolder"
+        menu="plone_displayviews"
+        title="Courses folder view"
+        action="@@view"
+        description="Default representation of a courses folder"
+        />
+                
+    <browser:page
+        for="..interfaces.ICourse"
+        name="view"
+        class=".course.CourseView"
+        permission="zope2.View"
+        />
+        
+    <browser:menuItem
+        for="..interfaces.ICourse"
+        menu="plone_displayviews"
+        title="Course view"
+        action="@@view"
+        description="Default representation of a course"
+        />
+
+    <browser:page
+        name="role"
+        for="..interfaces.ICourse"
+        class=".role.RoleView"
+        permission="cmf.ModifyPortalContent"
+        />
+    <browser:page
+        name="attendeduserlist"
+        for="..interfaces.ICourse"
+        class=".course.CourseAtenddedUserListView"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="..interfaces.ICourse"
+        class=".role.KSSSharingView"
+        name="updateSharingInfo"
+        attribute="updateSharingInfo"
+        permission="cmf.ModifyPortalContent"
+      />
+
+    <browser:page
+      for="..interfaces.ILessons"
+      name="view"
+      class=".lessons.LessonsView"
+      permission="zope2.View"
+      />
+
+    <browser:page
+      for="..interfaces.ICourseContent"
+      name="exams_view"
+      class=".coursecontent.ExamsView"
+      permission="zope2.View"
+    />
+    
+    <browser:page
+      for="..interfaces.ICourseContent"
+      name="quizzes_view"
+      class=".coursecontent.QuizzesView"
+      permission="zope2.View"
+    />
+    
+    <browser:page
+      for="..interfaces.ICourseContent"
+      name="polls_view"
+      class=".coursecontent.PollsView"
+      permission="zope2.View"
+    />
+
+    <browser:page
+      for="..interfaces.IResources"
+      name="view"
+      class=".coursecontent.ResourcesView"
+      permission="zope2.View"
+    />
+
+</configure>

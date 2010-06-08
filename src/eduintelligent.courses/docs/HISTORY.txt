@@ -1,0 +1,9 @@
+Changelog for eduintelligent.courses
+
+    (name of developer listed in brackets)
+
+eduintelligent.courses - 1.0 Unreleased
+
+    - Initial package structure.
+      [zopeskel]
+

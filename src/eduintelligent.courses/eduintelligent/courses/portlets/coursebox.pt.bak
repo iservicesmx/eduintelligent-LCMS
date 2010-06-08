@@ -1,0 +1,131 @@
+<tal:block i18n:domain="eduintelligent.courses">
+    
+<script type="text/javascript">
+function initDashBoard() {    
+    if (document.getElementById) {
+        dashtab = document.getElementById('dashboardTab');
+        helpwidget = document.getElementById('dashboardContents');
+        dashtab.onclick = function() {
+          if (helpwidget.className == 'closed') {
+            helpwidget.className = 'open'
+          } else {
+            helpwidget.className = 'closed'
+          };
+          return false;
+        }
+        /*helpwidget.style.visibility = 'visible';*/
+      }
+    }
+function open_window(nick, channel, title)
+    {
+        window.open('http://proyectos.iservices.com.mx/chat/flashchat.php?&lang=sf&username=' + nick + '&channel=' + channel +'&title=' + title, 'chat', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=580');
+    }    
+</script>
+
+<style type="text/css">
+  #dashboardTab.dashboardButton {
+    position: fixed;
+    bottom: 0;
+    width: 20%;
+    right: 40%;
+    background: #dcecf9;
+    text-align: center;
+    font-weight: bold;
+    border: solid 1px #2a8bb8;
+    border-bottom: 0;
+    z-index: 99;
+    cursor: pointer;
+  }
+    
+  #dashboardContents {
+    position: fixed;
+    left: 25%;
+    bottom: 0;
+    width: 50%;
+    height: 40%;
+    margin: auto;
+    background: #FFFFFF;
+    text-align: center;
+    border: solid 1px #2a8bb8;
+    border-bottom: 0;
+    overflow: auto;
+    text-align: left;
+    z-index: 98;
+  }
+
+  #dashboardContents.closed {
+  height:0%;  
+  }
+  
+  #dashboardContents.open {
+    height: 40%;
+  }
+  
+  
+</style>
+<span id="dashboardTab" class="dashboardButton"><h4 i18n:translate="courses_tool">Course's Tools</h4></span>
+<div id="dashboardContents" class="closed">
+
+    <br />
+    <div align="center" class="main-menu">
+       <a class="main-item" href= "lessons" title="Lessons" tal:attributes="href string:${view/courseURL}/lessons">
+        <img class="main-item-icon" src="lessons48.gif" title="Lessons" alt="Lessons" />
+        <span i18n:translate="lessons">Lessons</span>
+       </a>
+
+       <a class="main-item" href= "tests" title="Tests" tal:attributes="href string:${view/courseURL}/tests">
+        <img class="main-item-icon" src="test48.gif" title="Tests" alt="Tests" />
+        <span i18n:translate="tests">Tests</span>
+       </a>
+
+       <a class="main-item" href= "quizzes" title="Quizzes" tal:attributes="href string:${view/courseURL}/quizzes">
+        <img class="main-item-icon" src="quiz48.gif" title="Curses" alt="Curses" />
+        <span i18n:translate="quizzes">Quizzes</span>
+       </a>
+
+       <a class="main-item" href= "polls" title="Polls" tal:attributes="href string:${view/courseURL}/polls">
+        <img class="main-item-icon" src="poll48.gif" title="Polls" alt="Polls" />
+        <span i18n:translate="polls">Polls</span>
+       </a>
+
+       <a class="main-item" href= "forum" title="Forum" tal:attributes="href string:${view/courseURL}/forum">
+        <img class="main-item-icon" src="forum48.gif" title="Forum" alt="Forum" />
+        <span i18n:translate="forum">Forum</span>
+       </a>
+
+       <a class="main-item" href= "chat" title="Chat" tal:attributes="href string:${view/courseURL};
+           onClick string:open_window('${view/getUserName}', 'default', 'curso');;return false;;" >
+        <img class="main-item-icon" src="chat48.gif" title="Chat" alt="Chat" />
+        <span i18n:translate="chat">Chat</span>
+       </a>
+
+       <a class="main-item" href= "glossary" title="Glossary" tal:attributes="href string:${view/courseURL}/glossary">
+        <img class="main-item-icon" src="glossary48.gif" title="Glossary" alt="Glossary" />
+        <span i18n:translate="glossary">Glossary</span>
+       </a>
+
+       <a class="main-item" href= "faq" title="Faq" tal:attributes="href string:${view/courseURL}/faq">
+        <img class="main-item-icon" src="faq48.gif" title="Faq" alt="Faq" />
+        <span i18n:translate="faq">Faq</span>
+       </a>
+
+       <a class="main-item" href= "files" title="Files" tal:attributes="href string:${view/courseURL}/files">
+        <img class="main-item-icon" src="files48.gif" title="Files" alt="Files" />
+        <span i18n:translate="files">Files</span>
+       </a>
+
+       <a class="main-item" href= "biblio" title="Bibliography" tal:attributes="href string:${view/courseURL}/bibliography">
+        <img class="main-item-icon" src="biblio48.gif" title="Bibliography" alt="Bibliography" />
+        <span i18n:translate="biblio">Bibliography</span>
+       </a>
+
+
+    </div>
+
+</div>
+<script type="text/javascript">
+initDashBoard()
+</script>
+<span style="position: relative;bottom: 0;z-index: 97;">Otro Texto</span>
+
+</tal:block>

@@ -1,0 +1,216 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="educourses_workflow"
+             title="eduCourses Workflow [eduIntelligent]"
+             state_variable="review_state"
+             initial_state="draft">
+ <permission>Add portal content</permission>
+ <permission>Access contents information</permission>
+ <permission>Modify portal content</permission>
+ <permission>View</permission>
+ <permission>List folder contents</permission>
+ <state state_id="draft" title="draft">
+  <exit-transition transition_id="to_pending"/>
+  <exit-transition transition_id="publish"/>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Administrator</permission-role>
+   <permission-role>Instructor</permission-role>
+  </permission-map>
+  <permission-map name="Add portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Administrator</permission-role>
+   <permission-role>Instructor</permission-role>
+  </permission-map>
+  <permission-map name="List folder contents"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Administrator</permission-role>
+   <permission-role>Instructor</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Administrator</permission-role>
+   <permission-role>Instructor</permission-role>
+  </permission-map>
+  <permission-map name="PloneHelpCenter: Add Documentation"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Administrator</permission-role>
+   <permission-role>Instructor</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Administrator</permission-role>
+   <permission-role>Instructor</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="pending" title="pending">
+  <exit-transition transition_id="to_draft"/>
+  <exit-transition transition_id="publish"/>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Administrator</permission-role>
+   <permission-role>Instructor</permission-role>
+  </permission-map>
+  <permission-map name="Add portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Administrator</permission-role>
+   <permission-role>Instructor</permission-role>
+  </permission-map>
+  <permission-map name="List folder contents"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Administrator</permission-role>
+   <permission-role>Instructor</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Administrator</permission-role>
+   <permission-role>Instructor</permission-role>
+  </permission-map>
+  <permission-map name="PloneHelpCenter: Add Documentation"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Administrator</permission-role>
+   <permission-role>Instructor</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Administrator</permission-role>
+   <permission-role>Instructor</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="published" title="published">
+  <exit-transition transition_id="to_draft"/>
+  <exit-transition transition_id="to_pending"/>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Administrator</permission-role>
+   <permission-role>Instructor</permission-role>
+   <permission-role>Student</permission-role>
+  </permission-map>
+  <permission-map name="Add portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Administrator</permission-role>
+   <permission-role>Instructor</permission-role>
+  </permission-map>
+  <permission-map name="List folder contents"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Administrator</permission-role>
+   <permission-role>Instructor</permission-role>
+   <permission-role>Student</permission-role>   
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Administrator</permission-role>
+   <permission-role>Instructor</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Administrator</permission-role>
+   <permission-role>Instructor</permission-role>
+   <permission-role>Student</permission-role>
+  </permission-map>
+ </state>
+ <transition transition_id="to_draft" title="draft"
+             new_state="draft" trigger="USER"
+             before_script="" after_script="">
+  <action url="%(content_url)s/content_publish_form"
+          category="workflow">draft</action>
+  <guard>
+   <guard-role>Manager</guard-role>
+   <guard-role>Administrator</guard-role>
+   <guard-role>Instructor</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="to_pending"
+             title="pending"
+             new_state="pending" trigger="USER"
+             before_script="" after_script="">
+  <action url="%(content_url)s/content_publish_form"
+          category="workflow">pending</action>
+  <guard>
+   <guard-role>Manager</guard-role>
+   <guard-role>Administrator</guard-role>
+   <guard-role>Instructor</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="publish"
+              title="published"
+              new_state="published" trigger="USER"
+              before_script="" after_script="">
+   <action url="%(content_url)s/content_publish_form"
+           category="workflow">published</action>
+   <guard>
+    <guard-role>Manager</guard-role>
+   </guard>
+  </transition> 
+  <worklist worklist_id="reviewer_queue" title="">
+  <description>Reviewer tasks</description>
+  <action url="%(portal_url)s/search?review_state=pending"
+          category="global">Pending (%(count)d)</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+  <match name="review_state" values="pending"/>
+ </worklist>
+ <variable variable_id="action" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>The last transition</description>
+  <default>
+   
+   <expression>transition/getId|nothing</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="actor" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>The ID of the user who performed the last transition</description>
+  <default>
+   
+   <expression>user/getId</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="comments" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>Comments about the last transition</description>
+  <default>
+   
+   <expression>python:state_change.kwargs.get('comment', '')</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="review_history" for_catalog="False"
+           for_status="False" update_always="False">
+  <description>Provides access to workflow history</description>
+  <default>
+   
+   <expression>state_change/getHistory</expression>
+  </default>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </variable>
+ <variable variable_id="time" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>Time of the last transition</description>
+  <default>
+   
+   <expression>state_change/getDateTime</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+</dc-workflow>

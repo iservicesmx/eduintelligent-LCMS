@@ -1,0 +1,102 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="eduintelligent.evaluation">
+<head>
+</head>
+
+<body>
+<div metal:fill-slot="main"
+    tal:define="results view/attendedusers;">
+    
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading" tal:content="context/title" />
+
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+
+    <form tal:attributes="action string:${context/absolute_url}/${view/__name__}"
+          name="viewForm"
+          id="viewForm"
+          method="post" >
+
+    
+    <table class="listing">
+      <thead>
+      <tr>
+         <th style="width:3%;" class="nosort">
+                      <input class="noborder"
+                             type="checkbox"
+                             checked="checked"
+                             src="select_all_icon.gif"
+                             name="selectButton"
+                             title="Select all items"
+                             onClick="toggleSelect(this, 'entries:list', true);"
+                             tal:attributes="src string:$portal_url/select_all_icon.gif"/>        
+         </th>
+          
+        <th i18n:translate="">No</th>
+        <th i18n:translate="">UserId</th>
+        <th i18n:translate="">Nombre</th>
+        <th i18n:translate="">Apellido</th>
+        <th i18n:translate="">Estado</th>
+        <th >Instituci&oacute;n</th>
+        <th i18n:translate="">Inicio </th>
+        <!-- 
+        <th i18n:translate="">Name</th>
+        <th i18n:translate="">End</th>
+        <th i18n:translate="">Days</th> 
+        -->
+      </tr>
+      </thead>
+      <tbody>
+          
+      <tal:block repeat="user results">
+       <tr tal:define="oddrow repeat/user/odd"
+           tal:attributes="class python:oddrow and 'odd' or 'even'">
+           <td style="text-align:center;">
+             <input type="checkbox" class="noborder"
+                    name="entries:list"
+                    tal:attributes="id python: 'id_'+user[0];
+                                    value python:user[0]" />
+           </td>
+           
+           <td tal:content="repeat/user/number"></td>
+           <td tal:content="python:user[0]">erik</td> 
+           <td tal:content="python:user[1]">Erik</td> 
+           <td tal:content="python:user[2]">Rivera</td> 
+           <td tal:content="python:user[3]">Estado</td>
+           <td > 
+                <span tal:repeat="dv python:user[4]" 
+                            tal:replace="structure string:${dv} <br/>"/>
+           </td> 
+           <td tal:content="python:user[5]">10/10/2008</td>
+           
+           <!-- <td tal:content="user/name"></td>
+           <td tal:content="user/end"></td>
+           <td tal:content="user/time"></td> -->
+           
+       </tr>
+      </tal:block>      
+
+        </tbody>
+      </table>
+      <br />
+            <input
+                id="btn_delete"
+                name="form.button.Delete"
+                type="submit"
+                class="context allowMultiSubmit"
+                value="Delete"
+                i18n:attributes="value"
+                />
+
+      </form>
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+</div>
+</body>
+</html>

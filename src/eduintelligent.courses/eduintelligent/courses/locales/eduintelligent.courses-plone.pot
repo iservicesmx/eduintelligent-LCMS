@@ -1,0 +1,237 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2010-01-05 06:38+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone\n"
+
+#: ./content/course.py:60
+msgid ""
+msgstr ""
+
+#: ./interfaces.py:58
+msgid "A HTML tag to render to show the banner image"
+msgstr ""
+
+#: ./interfaces.py:41
+msgid "A objetives of the course"
+msgstr ""
+
+#: ./interfaces.py:19
+msgid "A short summary of this folder"
+msgstr ""
+
+#: ./portlets/mycourses.py:139
+msgid "Add Course portlet"
+msgstr ""
+
+#: ./content/coursefolder.py:19
+#: ./interfaces.py:21
+msgid "Categories"
+msgstr ""
+
+#: ./content/course.py:81
+#: ./interfaces.py:50
+msgid "Category"
+msgstr ""
+
+#: ./portlets/coursebox.py:39
+msgid "Course Box"
+msgstr ""
+
+#: ./interfaces.py:37
+msgid "Course Code"
+msgstr ""
+
+#: ./content/course.py:39
+msgid "Course code"
+msgstr ""
+
+#: ./content/course.py:124
+msgid "Course expiration period"
+msgstr ""
+
+#: ./content/course.py:59
+msgid "Course image"
+msgstr ""
+
+#: ./interfaces.py:31
+msgid "Course title"
+msgstr ""
+
+#: ./interfaces.py:45
+msgid "Date when course first appears on the website"
+msgstr ""
+
+#: ./interfaces.py:48
+msgid "Date when course last appears on the website"
+msgstr ""
+
+#: ./content/course.py:125
+msgid "Defines the number of days the course stays open."
+msgstr ""
+
+#: ./interfaces.py:18
+msgid "Description"
+msgstr ""
+
+#: ./portlets/mycourses.py:153
+msgid "Edit Courses portlet"
+msgstr ""
+
+#: ./content/course.py:103
+msgid "End Date"
+msgstr ""
+
+#: ./portlets/mycourses.py:39
+msgid "If enabled, courses to show will be picked randomly."
+msgstr ""
+
+#: ./browser/templates/role.pt:19
+msgid "Info"
+msgstr ""
+
+#: ./browser/role.py:218
+msgid "Logged-in users"
+msgstr ""
+
+#: ./portlets/mycourses.py:34
+msgid "Maximum number of courses to be shown"
+msgstr ""
+
+#: ./portlets/mycourses.py:55
+msgid "My Courses"
+msgstr ""
+
+#: ./portlets/mycourses.py:33
+msgid "Number of courses to display"
+msgstr ""
+
+#: ./content/course.py:70
+#: ./interfaces.py:40
+msgid "Objetives"
+msgstr ""
+
+#: ./content/coursefolder.py:20
+msgid "One category on each line. Used for grouping courses. <br /> CAUTION: ONCE YOU ADD A NEW CATEGORY, YOU DON'T MODIFY OR DELETE THIS, ONLY YOU CAN ADD NEW CATEGORY"
+msgstr ""
+
+#: ./interfaces.py:35
+msgid "Plain-text blurb about the course"
+msgstr ""
+
+#: ./portlets/mycourses.py:38
+msgid "Randomize courses"
+msgstr ""
+
+#: ./browser/templates/role.pt:43
+msgid "Search for user or group"
+msgstr ""
+
+#: ./content/course.py:82
+msgid "Select the category"
+msgstr ""
+
+#: ./content/course.py:91
+msgid "Start Date"
+msgstr ""
+
+#: ./interfaces.py:22
+msgid "The categories to clasify a course"
+msgstr ""
+
+#: ./portlets/mycourses.py:140
+msgid "This portlet displays my courses."
+msgstr ""
+
+#: ./interfaces.py:38
+msgid "This should match the course code used by the booking system"
+msgstr ""
+
+#: ./content/course.py:40
+msgid "This should match the course code used in the booking system."
+msgstr ""
+
+#: ./interfaces.py:15
+msgid "Title"
+msgstr ""
+
+#: ./interfaces.py:44
+msgid "Visible from"
+msgstr ""
+
+#: ./interfaces.py:47
+msgid "Visible until"
+msgstr ""
+
+#: ./content/course.py:71
+msgid "Write the course objetives, (is different to course's description)"
+msgstr ""
+
+#. Default: "Search"
+#: ./browser/templates/role.pt:52
+msgid "box_search"
+msgstr ""
+
+#. Default: "You can control who can view and edit your item using the list below."
+#: ./browser/templates/role.pt:32
+msgid "description_sharing_control"
+msgstr ""
+
+#. Default: "Sharing for \"${folder}\""
+#: ./browser/templates/role.pt:15
+msgid "heading_currently_assigned_shares"
+msgstr ""
+
+#. Default: "go here"
+#: ./browser/templates/role.pt:25
+msgid "help_sharing_go_here"
+msgstr ""
+
+#. Default: "You are adjusting the sharing privileges for a default view in a container. To adjust them for the entire container, ${go_here}."
+#: ./browser/templates/role.pt:25
+msgid "help_sharing_page_default_page"
+msgstr ""
+
+#. Default: "Cancel"
+#: ./browser/templates/role.pt:146
+msgid "label_cancel"
+msgstr ""
+
+#. Default: "User/Group"
+#: ./browser/templates/role.pt:71
+msgid "label_name"
+msgstr ""
+
+#. Default: "Save"
+#: ./browser/templates/role.pt:145
+msgid "label_save"
+msgstr ""
+
+#. Default: "Current sharing permissions"
+#: ./browser/templates/role.pt:61
+msgid "summary_assigned_roles"
+msgstr ""
+
+#. Default: "Instructor"
+#: ./localroles.py:12
+msgid "title_administrator"
+msgstr ""
+
+#. Default: "Student"
+#: ./localroles.py:24
+msgid "title_student"
+msgstr ""
+

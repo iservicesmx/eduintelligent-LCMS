@@ -1,0 +1,54 @@
+<br />
+<div align="center" class="main-menu">
+   <a class="main-item" href= "lessons" title="Lessons" >
+    <img class="main-item-icon" src="faq48.gif" title="Lessons" alt="Lessons" />
+    <span i18n:translate="lessons">Lessons</span>
+   </a>
+       
+   <a class="main-item" href= "tests" title="Tests">
+    <img class="main-item-icon" src="test48.gif" title="Tests" alt="Tests" />
+    <span i18n:translate="tests">Tests</span>
+   </a>
+
+   <a class="main-item" href= "quizzes" title="Quizzes">
+    <img class="main-item-icon" src="quiz48.gif" title="Curses" alt="Curses" />
+    <span i18n:translate="quizzes">Quizzes</span>
+   </a>
+   
+   <a class="main-item" href= "polls" title="Polls">
+    <img class="main-item-icon" src="poll48.gif" title="Polls" alt="Polls" />
+    <span i18n:translate="polls">Polls</span>
+   </a>
+   
+   <a class="main-item" href= "forum" title="Forum">
+    <img class="main-item-icon" src="forum48.gif" title="Forum" alt="Forum" />
+    <span i18n:translate="forum">Forum</span>
+   </a>
+
+   <a class="main-item" href= "chat" title="Chat">
+    <img class="main-item-icon" src="faq48.gif" title="Chat" alt="Chat" />
+    <span i18n:translate="chat">Chat</span>
+   </a>
+
+   <a class="main-item" href= "glossary" title="Glossary">
+    <img class="main-item-icon" src="glossary48.gif" title="Glossary" alt="Glossary" />
+    <span i18n:translate="glossary">Glossary</span>
+   </a>
+
+   <a class="main-item" href= "faq" title="Faq">
+    <img class="main-item-icon" src="faq48.gif" title="Faq" alt="Faq" />
+    <span i18n:translate="faq">Faq</span>
+   </a>
+
+   <a class="main-item" href= "files" title="Files">
+    <img class="main-item-icon" src="files48.gif" title="Files" alt="Files" />
+    <span i18n:translate="files">Files</span>
+   </a>
+
+   <a class="main-item" href= "biblio" title="Bibliography">
+    <img class="main-item-icon" src="biblio48.gif" title="Bibliography" alt="Bibliography" />
+    <span i18n:translate="biblio">Bibliography</span>
+   </a>
+
+
+</div>

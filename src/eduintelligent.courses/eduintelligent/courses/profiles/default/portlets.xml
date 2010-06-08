@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!-- This file is used to register new types of portlets. It can also
+     be used to register completely new column types. See CMFPlone's version
+     of this file for more information.
+  -->
+<portlets>
+    <portlet 
+       addview="courses.CourseBox"
+       title="Course Box"
+       description="A portlet which can show the course's tools."
+       for="plone.app.portlets.interfaces.IColumn"
+       />
+
+    <portlet 
+      addview="courses.MyCourses"
+      title="My Courses"
+      description="A portlet which can show my courses."
+      />
+
+
+       <portlet 
+         addview="portlets.Recent"
+         title="Recent items"
+         description="A portlet which can render a listing of recently changed items."
+         for="plone.app.portlets.interfaces.IColumn"
+         />
+
+       <portlet 
+         addview="portlets.Review"
+         title="Review list"
+         description="A portlet which can render a listing on the review queue."
+         for="plone.app.portlets.interfaces.IColumn"
+         />
+
+       <portlet 
+         addview="portlets.rss"
+         title="RSS Feed"
+         description="A portlet which can receive and render an RSS feed."
+         for="plone.app.portlets.interfaces.IColumn"
+         />
+     <portlet 
+       addview="portlets.Classic"
+       title="Classic portlet"
+       description="A portlet which can render a classic template-based portlet"
+       for="plone.app.portlets.interfaces.IColumn"
+       />
+             
+</portlets>
