@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plonearticle">
+
+  <body>
+    <div metal:fill-slot="main"
+         tal:define="view context/@@pa_model0_view;
+                     base_macros nocall:here/pa_model_macros/macros;">
+      <metal:block use-macro="base_macros/header" />
+      <metal:block use-macro="base_macros/description" />
+
+      <style>
+      .centerBlock {
+      width:400px;
+      position:relative;
+      top:0;
+      left:50%;
+      margin-left:-220px;
+      }
+
+      .photosPreview {
+      text-align: center !important;
+      padding: 10px !important;
+      /*width:400px;*/
+      background: #FFFFFF url('photos_back.gif') bottom right no-repeat !important;
+      border-left:1px solid #EAEAEA !important;
+      border-top:1px solid #EAEAEA !important;
+      border-right:none !important;
+      border-bottom:none !important;
+      }
+      </style>
+      
+      <div metal:define-macro="text-field-view"
+           id="parent-fieldname-text" class="stx"
+           tal:define="text text|view/getPages|nothing;
+                       Batch python:modules['Products.CMFPlone'].Batch;
+                       b_size python:1;
+                       b_start python:0;
+                       b_start request/b_start | b_start;
+                       batch python:Batch(text, b_size, int(b_start), orphan=1);"
+           tal:condition="text"
+           tal:attributes="class python:test(here.Format() in ('text/structured',
+                                             'text/x-rst', ), 'stx', 'plain')">
+           <div metal:define-slot="inside" tal:replace="structure python:view.transform(list(batch)[0])">The body</div>
+           
+           <div metal:use-macro="here/batch_macros/macros/navigation" />
+      </div>
+
+
+
+      <div class="visualClear" />
+
+      <metal:block use-macro="base_macros/footer" />
+    </div>
+  </body>
+</html>

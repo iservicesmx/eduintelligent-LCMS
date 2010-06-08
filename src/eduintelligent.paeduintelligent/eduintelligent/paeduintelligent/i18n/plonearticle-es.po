@@ -1,0 +1,247 @@
+# RO75
+# CECADELATAM
+msgid ""
+msgstr ""
+"Project-Id-Version: PloneArticle v4\n"
+"POT-Creation-Date: 2006-08-25 13:49+0000\n"
+"PO-Revision-Date: 2006-11-17 19:20+0100\n"
+"Last-Translator: Juan Ramón  <ramon@ro75.com.mx>\n"
+"Language-Team: ro75\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Language-Code: es\n"
+"Language-Name: Español\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plonearticle\n"
+"X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
+
+
+msgid "PloneArticleMultiPage"
+msgstr "Documento Multipáginas"
+
+msgid "Multipage article"
+msgstr "Documento Multipáginas"
+
+msgid "description_edit_multipage"
+msgstr "Documento Multipáginas"
+
+msgid "description_edit_plonearticle"
+msgstr "Un documento rico en contenido con archivos, imágenes y enlaces."
+
+msgid "PloneArticle"
+msgstr "Un documento rico en contenido con archivos, imágenes y enlaces."
+
+msgid "Article"
+msgstr "Documento"
+
+msgid "A rich document containing files, images, links"
+msgstr "Un documento rico en contenido con archivos, imágenes y enlaces."
+
+msgid "label_files"
+msgstr "Archivos"
+
+msgid "label_images"
+msgstr "Imágenes"
+
+msgid "label_links"
+msgstr "Enlaces"
+
+msgid "label_upload_files"
+msgstr "Agregar Archivos"
+
+msgid "label_browse_server_files"
+msgstr "Navegar archivos en el sitio"
+
+msgid "label_upload_images"
+msgstr "Agregar Imágenes"
+
+msgid "label_browse_server_images"
+msgstr "Navegar por el sitio de las imágenes"
+
+msgid "label_upload_links"
+msgstr "Agregar Enlaces"
+
+msgid "label_browse_server_links"
+msgstr "Navegar por los enlaces de nuestro sitio"
+
+msgid "label_album_view"
+msgstr "Vista álbum de fotos"
+
+msgid "label_file_listing_view"
+msgstr "Vista de lista"
+
+msgid "label_this_folder"
+msgstr "Este expediente"
+
+msgid "label_all_site"
+msgstr "Todo el sitio"
+
+msgid "label_element_upload_success"
+msgstr "Elemento transmite al servidor con éxito."
+
+msgid "description_select_default_view"
+msgstr "Seleccione modelo que será la vista predeterminada."
+
+msgid "max_file_size_exceeded_error"
+msgstr "Usted ha descargado un archivo demasiado grande. El tamaño máximo Permitidos es de ${max_size} de bytes."
+
+msgid "image_dimension_identification_error"
+msgstr "Tamaño de la imagen desconocida."
+
+msgid "label_images_referenceable"
+msgstr "Images referenciables"
+
+msgid "label_no_files_inside"
+msgstr "Aún no hay un archivo en el presente artículo."
+
+msgid "label_no_images_inside"
+msgstr "Aún no hay una imagen en el presente artículo."
+
+msgid "label_no_links_inside"
+msgstr "Aún no hay un vínculo en el presente artículo."
+
+msgid "help_images_referenceable"
+msgstr "Seleccione el tipo de imágenes que se pueden indicar en la Tipo de contenido ${content_type}."
+
+msgid "label_images_maxSize"
+msgstr "Tamaño de las imágenes"
+
+msgid "help_images_maxSize"
+msgstr "El tamaño máximo (en bytes) del archivo de la imagen puede ser mostrado"
+
+msgid "label_attachments_referenceable"
+msgstr "Archivos Adjuntos Referenciables"
+
+msgid "help_attachments_referenceable"
+msgstr "Seleccionar los tipos de archivos adjuntos que pueden ser referenciados en el tipo de contenido ${content_type}."
+
+msgid "label_attachment_maxSize"
+msgstr "Introduzca el tamaño de los adjuntos"
+
+msgid "help_attachment_maxSize"
+msgstr "El tamaño máximo (en bytes) de la caja puede ser cambiada más grande"
+
+msgid "preview"
+msgstr "Previa"
+
+msgid "label_attachment_allowPreview"
+msgstr "Habilitar Vistas previas ?"
+
+msgid "help_attachment_allowPreview"
+msgstr "Elija esta opción si desea utilizar el sistema de Vista Previa."
+
+msgid "label_link_referenceable"
+msgstr "Enlaces referenciables"
+
+msgid "help_link_referenceable"
+msgstr "Seleccione el tipo de vínculos que el tipo contenido ${content_type}."
+
+msgid "label_article_preferences"
+msgstr "Configuración de EduArticle"
+
+msgid "label_models"
+msgstr "Modelos"
+
+msgid "label_model_default_view"
+msgstr "Modelo Default"
+
+msgid "label_model_enabled_view"
+msgstr "Modelos disponibles"
+
+msgid "label_add"
+msgstr "Agregar"
+
+msgid "legend_files"
+msgstr "Archivos"
+
+msgid "legend_images"
+msgstr "Imágenes"
+
+msgid "legend_links"
+msgstr "Enlaces"
+
+msgid "label_view_toc_first"
+msgstr "Ver la tabla de contenidos en la primera página"
+
+msgid "label_display_toc_dropdown"
+msgstr "Ver la tabla de contenidos"
+
+msgid "description_display_toc_dropdown"
+msgstr "Habilita la funcionalidad de mostrar la tabla de contenidos en la lista desplegable"
+
+msgid "label_upload_link_legend"
+msgstr "Añadir un nuevo enlace a su artículo. El título y la descripción son opcionales."
+
+msgid "label_enter_valid_url"
+msgstr "Por favor, introduzca una dirección URL (dirección) válido."
+
+msgid "label_upload_in_progress"
+msgstr "Transmisión, por favor espere ..."
+
+msgid "Close"
+msgstr "Cerrar"
+
+msgid "close"
+msgstr "Cerrar"
+
+msgid "label_select_file_from_localfs"
+msgstr "Seleccione un archivo en su computadora."
+
+msgid "label_upload_image_legend"
+msgstr "Agregar una nueva imagen. El El título y descripción son opcionales."
+
+msgid "label_upload_file_legend"
+msgstr "Agregar un nuevo archivo. El título y descripción es opcional"
+
+msgid "label_size"
+msgstr "Tamaño"
+
+msgid "kB"
+msgstr "kb"
+
+msgid "label_attachment_referenceable"
+msgstr "Archivos Adjutos referenciables."
+
+msgid "help_attachment_referenceable"
+msgstr "Seleccionar los tipos de archivos adjuntos que pueden ser referenciados"
+
+msgid "error_default_model_invalid"
+msgstr "La plantilla predeterminada debe ser parte de los modelos seleccionables"
+
+msgid "message_attachment_field_installation"
+msgstr "Instalar AttachmentField para permitir nuevas características tales como Indexación de archivos, y la vista previa."
+
+msgid "dt_models_management"
+msgstr "Modelo de gestión"
+
+msgid "dd_models_management"
+msgstr "Puede definir aquí los modelos que pueden ser seleccionadas para"
+
+msgid "dt_images_management"
+msgstr "Gestión de la imagen"
+
+msgid "dd_images_management"
+msgstr "Este panel le permite definir el contenido que los usuarios puedan elegir al hacer referencia a una imagen ya existente en el Sitio. También puede elegir el tamaño máximo de las imágenes transmitidas."
+
+msgid "dt_attachments_management"
+msgstr "Gestionar archivos adjuntos"
+
+msgid "dd_attachments_management"
+msgstr "Al igual que con el anterior grupo, puede elegir el tipo de contenido de los archivos adjuntos que pueden ser referenciados por un artículo."
+
+msgid "dt_links_management"
+msgstr "Gestión de los vínculos"
+
+msgid "dd_links_management"
+msgstr "Este panel le permite definir qué tipo de contenido pueden seleccionar los usuarios cuando la referencia se encuentre en el sitio. "
+
+msgid "help_multi_implementers"
+msgstr "Usted puede ajustar las opciones para cada tipo de contenido base de EduArticle."
+
+msgid "help_plonearticle_conf"
+msgstr "Estos grupos le permiten configurar EduArticle según sus necesidades."
+
+msgid "label_table_of_contents"
+msgstr "Tabla de contenidos"
