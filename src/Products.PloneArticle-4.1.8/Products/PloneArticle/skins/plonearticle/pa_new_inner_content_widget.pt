@@ -1,0 +1,44 @@
+<metal:block use-macro="here/global_defines/macros/defines" />
+<metal:block tal:define="lang language;
+                         charset site_properties/default_charset|string:utf-8;
+                         dummy python:request.RESPONSE.setHeader('Content-Type', 'text/html;;charset=%s' % charset);
+                         dummy python:request.RESPONSE.setHeader('Content-Language', lang);
+                         dummy python:request.RESPONSE.setHeader('Expires', 'Sat, 1 Jan 2000 00:00:00 GMT')" />
+                         
+<tal:window define="fieldName options/field_name;
+                    field nocall:options/field;
+                    widget nocall:options/widget;
+                    widget_index options/widget_index;
+                    widget_id python: widget.makeWidgetId(fieldName, widget_index);
+                    default_macro nocall:here/pa_baseinnercontentwidget/macros;
+                    widget_macro python:path('here/%s/macros|nothing' % widget.macro) or default_macro;
+                    proxy nocall:options/inner_content;
+                    errors python:{};">  
+
+  <div id="proxy-action-border-top"></div>
+  <div id="proxy-action-corner-left"></div>
+  <div id="proxy-action-menu">
+    <a class="closeWindow"
+       i18n:translate=""
+       href="javascript: void(0);"
+       onclick="TB_remove(); return false;">
+    </a>
+  </div>          
+  <div id="proxy-action-tab">
+    <div id="proxy-action-tab-menu">         
+      <span tal:content="python:here.utranslate('label_upload_%s' % fieldName, default='Upload %s' % fieldName, domain='plonearticle')"
+            i18n:translate="">
+        Upload images
+      </span>                            
+    </div>     
+  </div>    
+                                             
+  <div class="innerContentWidget" 
+       tal:attributes="id widget_id">
+    <metal:block metal:use-macro="widget_macro/new_inner_content" />
+    <input type="hidden"
+           tal:attributes="name string:${fieldName}_innercontent_position:list;
+                           value python:'%06d' % widget_index" />  
+  </div>
+
+</tal:window>

@@ -1,0 +1,670 @@
+Metadata-Version: 1.0
+Name: Products.PloneArticle
+Version: 4.1.8
+Summary: A Plone document including images, attachments and links, with a free choice of layout.
+Home-page: http://plone.org/products/plonearticle
+Author: Ingeniweb
+Author-email: support@ingeniweb.com
+License: GPL
+Description: ############
+        PloneArticle
+        ############
+        
+        The Ingeniweb team proudly presents the fourth generation of their
+        star product.
+        
+        About
+        #####
+        
+        A Plone document including images, attachments and links, with a
+        free choice of layout.
+        
+        Requirements
+        ############
+        
+        Plone 3.0 and more
+        
+        Recommanded add-ons
+        ###################
+        
+        AttachmentField
+        ===============
+        
+        Have your embedded office files indexed with the magic of
+        AttachmentField.
+        
+        http://plone.org/products/attachmentfield
+        
+        FCKeditor
+        =========
+        
+        FCKeditor for Plone is a WYSIWYG editor you may prefer to Kupu. It
+        comes with nice PloneArticle dedicated features: an images and files
+        browser that finds the PloneArticle embedded images and files, images
+        and files uploading directly in the PloneArticle.
+        
+        http://plone.org/products/fckeditor
+        
+        Install
+        #######
+        
+        In your instance :
+        
+        * using buildout :
+        
+        - just add Products.PloneArticle in your instance eggs list of your buildout.cfg
+        
+        * using easy_install, at prompt :
+        
+        - easy_install Products.PloneArticle
+        
+        * in a "classical" zope instance
+        
+        - unflate the archive Products.PloneArticle.xxxx.zip
+        
+        - Copy only the directory named "PloneArticle" inside the unpacked "Products.PloneArticle" directory
+        Paste it to your zope instance Products dir.
+        
+        In your Plone site :
+        
+        * Use the quickinstaller on your Plone site(s)
+        
+        * Go to the PloneArticle preferences configlet and tweak it in
+        conformance with your site policy.
+        
+        
+        Configure
+        #########
+        
+        General
+        =======
+        
+        PloneArticle comes with a configuration panel to tweak most harmless
+        features (available models, file/image/link types). You can limit the
+        size (in bytes) for uploaded images and files.
+        
+        CMFEditions support
+        ===================
+        
+        Open as site Manager http://_your_site_/versioning_config_form in your
+        browser (yes, there's no link from control panel portet in Plone
+        3.0.3!), and activate versioning for PloneArticle. Optionally select
+        desired policies.
+        
+        Be aware that versioning is open to bloat your ZODB as long as
+        CMFEditons uses it as repository back-end.
+        
+        
+        Wicked support
+        ==============
+        
+        PloneArticle is by default wicked aware. As usual, you just need to
+        type `((some word))` to have it behave like a wiki word. If you don't
+        want this behaviour, you just need to edit `implements.zcml` and
+        remove or comment the XML elements with `wicked` namespace.
+        
+        Sorry for this complex stuff but there's no easy way to do this
+        TTW or through a config file.
+        
+        
+        License
+        #######
+        
+        Copyright (c) 2007 Ingeniweb SAS
+        
+        This software is subject to the provisions of the GNU General Public
+        License, Version 2.0 (GPL).  A copy of the GPL should accompany this
+        distribution.  THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL
+        EXPRESS OR IMPLIED WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT
+        LIMITED TO, THE IMPLIED WARRANTIES OF TITLE, MERCHANTABILITY,
+        AGAINST INFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE
+        
+        More details in the ``LICENSE`` file included in this package.
+        
+        Further documentation
+        #####################
+        
+        Please search and read from the ``doc`` directory. You'll find all you
+        need if you want to subclass the PloneArticle or add your personal
+        views.
+        
+        Testing
+        #######
+        
+        Please read ``tests/README.txt' for unit tests and
+        ``ftests/README.txt`` for functional tests.
+        
+        Credits
+        #######
+        
+        * Engineering by `the Ingeniweb team <http://www.ingeniweb.com>`_
+        
+        * Slovenian translation by Matjaz Jeran (matematik) <matjaz.jeran@amis.net>
+        
+        * Brasilian Portugese translation by Erico Andrei <erico@simplesconsultoria.com.br>
+        
+        * German translation by Andreas Kaiser <kaiser@xo7.de>
+        
+        * Russian translation by Roman Susi <roman.susi@hexagonit.fi>
+        
+        SVN repository
+        ##############
+        
+        https://svn.plone.org/svn/collective/Products.PloneArticle
+        
+        Download
+        ########
+        
+        You may find newer versions of PloneArticle at
+        http://plone.org/products/plonearticle
+        
+        Support
+        #######
+        
+        Before asking for support, please make sure that your problem is not
+        described in the documentation that ships with PloneArticle (this file
+        and the ones from the ``doc`` directory).
+        
+        * `Mail to Ingeniweb support <mailto:support@ingeniweb.com>`_ in english or french.
+        
+        * `Report bugs in english only
+        <http://sourceforge.net/tracker/?atid=541550&group_id=74634>`_ if it
+        has not already been reported.
+        
+        `Donations are welcome for new features <http://sourceforge.net/project/project_donations.php?group_id=74634>`_
+        
+        ####################
+        PloneArticle Changes
+        ####################
+        
+        4.1.8
+        #####
+        
+        * Fixed too restrictive security issue : anonymous users couldn't see embedded
+        images/files. See issue #35
+        [glenfant]
+        
+        4.1.7
+        #####
+        
+        * Show only attachments and images available to the user such an
+        anonymous user is not rejected when viewing a public article that
+        references a private file.
+        http://plone.org/products/plonearticle/issues/34
+        [glenfant]
+        
+        4.1.6
+        #####
+        
+        * Fixed packaging error (only .py files in the egg)
+        [glenfant]
+        
+        * Added mising (empty) migration paths.
+        
+        * Doc errors found and fixed.
+        
+        4.1.5
+        #####
+        
+        * Fix pa_browser url : url is no more depending on base href
+        [macadames] 2009-06-05
+        
+        * Fix ajax images player launched to soon sometimes
+        $document.ready replaced by $window.load
+        [macadames] 2009-09-04
+        
+        * Fix jQuery syntax (tag[@attribute=value] replaced by tag[attribute=value])
+        (perhaps a new version of jquery.js used in Plone 3.3 ?)
+        [macadames] 2009-09-04
+        
+        4.1.4
+        #####
+        
+        * Identical release (egg generation failed)
+        [glenfant]
+        
+        4.1.3
+        #####
+        
+        * IE6 fix for the javascript image viewer
+        
+        * Fix migration path for all 4.1 releases
+        [encolpe] 2009-02-26
+        
+        4.1.2
+        #####
+        
+        * Added russian translation, thanks to Roman Susi.
+        [glenfant] 2009-01-30
+        
+        * Activate collapsible sections after reloading model view in ajax
+        [macadames] 2009-02-04
+        
+        Take care : 4.1.1 egg was containing an old file : kssregistry.xml
+        A bug with collective.releaser ?
+        
+        4.1.1
+        #####
+        
+        * Kss inline edit for proxies (images, files, links)
+        replaced by jQuery methods
+        This resolve getSiteManager error with iw.fss in kss server views (strange bug)
+        [macadames] 2009-01-22
+        
+        * When editing proxies fields and closing ajax window very fast, the page was
+        not fresh because processForm was not finished.
+        To close edit window  just call Proxy.SaveForm(closEditWindow=true)
+        [macadames] 2009-01-24
+        
+        * css corrections and improvements for models
+        [macadames] 2009-01-24
+        
+        * css improvements + small jq effects on light boxes added
+        [macadames] 2009-01-24
+        
+        * relaunch Lightboxes after ajax replace Model View (small bug fix)
+        [macadames] 2009-01-24
+        
+        * some css IE fixes :
+        kss-spinner is invisible under IE6
+        some minor MSIE layout bugfixes (browser, kss-menu hover, proxies edit layout ...)
+        [macadames] 2009-01-24
+        
+        * move all proxies inline edit javascript from pa_model.js
+        to pa_baseinnercontentwidget.js
+        [macadames] 2009-01-24
+        
+        * fix bug in browser with meta_type and Folder
+        in Plone3.1 folder.portal_type != folder.meta_type
+        [macadames] 2009-01-24
+        
+        * Added getLinkIcon method in links proxies
+        used in models macros et editwidget macros
+        [macadames] 2009-01-24
+        
+        * Fix javascript error in edit proxies widget (javascript)
+        Bad tag insertion (the title was not hidden when clicking on toggleFullDisplay)
+        [macadames] 2009-01-24
+        
+        * css class "image" was used in two css
+        some styles were transformed
+        class "image" replaced by "proxy_image" in proxies edit widgets
+        [macadames] 2009-01-24
+        
+        * many css bugfixes in edit proxies widget
+        hmm ... these terrible templates and css must be entirely refactored
+        [macadames] 2009-01-24
+        
+        * pa_player buf fix :
+        when clicking on a image_thumb  buttons were not refreshed
+        [macadames] 2009-01-25
+        
+        
+        
+        4.1.0-final
+        ###########
+        
+        * Kss menus are always shown under Plone3.0
+        (when iline_edit_enable property is not available in site_propertis)
+        [macadames] 2008-11-05
+        
+        * Added migration upgradePath for RC2
+        [macadames] 2008-11-05
+        
+        4.1.0 RC2
+        #########
+        
+        * Fix error in setuphandlers.py (setupKupu) and Extensions/Install.py (uninstall method) :
+        Sometimes inexistant portal_types are stored as resources in kuputool
+        [macadames] 2008-10-23
+        
+        * Change kss inline edit behavior for images/links/files :
+        Kss menus are no more contextual, and always displayed at article's top
+        [macadames] 2008-10-24
+        
+        * Kss menus are not shown when inline_editing is disabled
+        [macadames] 2008-10-25
+        
+        4.1.0 RC1
+        #########
+        
+        * Make tests running without errors also under MSWindows.
+        Text from Attached files seems to be indexed in lowercase under Windows, so we test only indexation in lowercase.
+        [macadames] 2008-09-05
+        
+        * Fixed not closed tag bug on models which would avoid displaying attachements, links and footer
+        [el_gringo] 2008-08-21, [macadames] 2008-09-05
+        
+        * Improve browser's css to make folder selection possible for links when using standard view mode (list view).
+        [macadames] 2008-08-21
+        
+        * removed PloneArticle and InnerContentContainer from site_properties for
+        folderish contents
+        [b_mathieu] 2008-08-19
+        
+        * Fix a float bug for IE6/IE7 in edit widgets
+        [macadames] 2008-07-25
+        
+        * Create a case where the attachment id is the same that the object id.
+        [encolpe] 2008-06-23
+        
+        * Fix aquisition bug if an attachment have the same id that your attachment id.
+        In general case the usage of hasattr is prohibited for local lookup. Use shasattr instead.
+        [encolpe] 2008-06-23
+        
+        * try to fix migration path
+        [encolpe] 2008-06-18
+        
+        4.1.0 beta 3
+        ############
+        
+        * Added specific add permission for multi-page content type
+        
+        * PloneArticle is now packaged as a python egg
+        
+        * Fix edit form javascript errors under plone >= 3.1  with MSIE
+        (just changed the test on typeof "$" by typeof "jq" to know
+        the plone javascript implementation, but if someone put a var called
+        jq somewhere in a plone < 3.1 ... it will be broken)
+        [macadames] 2008-05-21
+        
+        * Decorator that prevents running setuphandlers functions on other
+        profiles.
+        [glenfant] 2008-04-28
+        
+        * Avoid an Runtime Error when there is circular reference between
+        article. (see tests.test_innercontentproxy.test_searcheableText)
+        [yboussard] 2008-04-25
+        
+        4.1.0 beta 2
+        ############
+        
+        * Copying/pasting an article preserves referenced files/images/links,
+        using the new 'keepReferencesOnCopy' kw arg on ReferenceFields. Note
+        this requires AT 1.5.9 +. This has no effect in older AT versions
+        (read Plone 3.0.6 and older)
+        [glenfant] 2008-04-22
+        
+        * pa_model_macros.pt defined "file proxy/getFile | nothing" but didnt checked
+        file for None later on in every case. Fixed that using a condition for the
+        whole block.
+        [yenzenz] Jens Klein 2008-03-18
+        
+        * pa_browser.js fixed Browser.window call in Browser.size() caused by some
+        more API incompatibilities.
+        [rnix] 2008-02-28
+        
+        * Version back to '4.1.0-beta1 CVS/SVN (UNRELEASED)' (our versioning
+        policy)
+        [glenfant]
+        
+        * Fixed model 1 view uglyness: Images background displayed to
+        anonymous (or user who can't change the article) even if there's no
+        image.
+        [glenfant] 2008-02-27
+        
+        * increased version number to '4.1.0-beta2 CVS/SVN (UNRELEASED)' to avoid
+        confusion
+        [rnix] 2008-02-21
+        
+        * altered jquery with newer version 1.2.2 and first bugfixes in the pa_*.js
+        files fitting new jquery API. disabled the pa_jquery.js in
+        profiles/default/jsregistry.xml by default, since jquery gets de-facto
+        standard in future, no need to load the own version any longer. this is why
+        an uncompressen version is copied in there. also done documentation for this
+        in README
+        [rnix] 2008-02-21
+        
+        * changed test_getIndexableValue in test_innercontentfield.py, line 451,
+        expected_value did not fit file_values, assertEquals failed.
+        Test ran on ubuntu, python2.4, there might be platform dependent
+        implementations of the .split() function, maybe think about a more robust
+        test implementation here. same in test_article.py, test_SearchableText,
+        line 155.
+        [rnix] 2008-02-21
+        
+        * We show the size of the referenced files too. Note: the
+        pa_models_macros is really ugly and unefficient and should be
+        rewritten using a view.
+        [glenfant]
+        
+        * Initial max file and image sizes are taken from ATCT config if
+        set. But these sizes may be tweaked independantly afterwards as
+        usual.
+        [glenfant]
+        
+        * Fixed an infinite redirection when viewing a multipage PA with no
+        TOC on default page and Plone navigation menu showig only the
+        current level. Play the "Types tool" step of PloneArticle profile in
+        the GenericSetup tool to install the fix.
+        [glenfant]
+        
+        * Fixed javascript errors in plone3.1 :
+        Close the ticket : http://plone.org/products/plonearticle/issues/9
+        
+        - Changed condition for pa_jquery.js display in portal_javascripts
+        (displayed only if plone version < 3.1)
+        - Fixed errors with plone3.1 jquery (use jQuery var in place of $)
+        - Fixed formtabs javascript errors with plone3.1
+        (2 differents patches for plone3.0.x or for plone3.1.x)
+        
+        [macadames]
+        
+        * The default model display a more discreet ajax viewer by default
+        (smaller + bg & border colors changed)
+        You can always change the css values through browser/modelconfig.py
+        [macadames]
+        
+        
+        4.1.0 beta 1
+        ############
+        
+        * Modified the image browser to display the arrows only when there is a
+        previous/next image to display
+        [macadames]
+        
+        * Propertiestool.xml changed such that we add values in properties
+        rather than replacing existing ones (e.g. removing standard "types
+        not searched").
+        [glenfant]
+        
+        * Use plone.i18n url normalize to rename content from filenames. (see
+        BaseObject.generateNewId)
+        [bmathieu]
+        
+        * For a very weird reaseon, the tool couldn't acquire the REQUEST when
+        an image thumbnail is published. We must provide it explicitely from
+        the "pa_thumb" traversal.
+        [glenfant]
+        
+        * Fix renameFromFileName bug when file name contains space (setId
+        method) and when file name contains non ascii character
+        [yboussard][bmathieu]
+        
+        * Made view templates compliant with CMFEditions preview and
+        SimpleAlias
+        [glenfant]
+        
+        * Install CMFEditions modifier in setup handler.
+        [glenfant]
+        
+        * New model used by default : Images viewer [macadames]
+        
+        * Added migration steps to V5
+        [glenfant]
+        
+        * More fixes to unit tests
+        [glenfant]
+        
+        * Edit Files/ Images / Links widget fixed (loaded through kss plugin)
+        [macadames]
+        
+        * Hack formTabs threshold to avoid uggly fieldset choice in select list
+        [macadames]
+        
+        * Fixed permissions problems with multiarticles in private state.
+        Reverted to the old (and dirty) redirection method from PloneArticle 3 because dynamicViews from CMFCore
+        are always run via the __before_publishing_traverse__ hook and so under the 'Anonymous User'. (zegor)
+        
+        * Compatibility with GenericSetup content Import/Export (zegor)
+        
+        * Wicked compatibility
+        
+        * Reordered the schematas into something more rational (glenfant)
+        
+        * Changed configlet templates into something more rational/compact
+        (glenfant)
+        
+        * Adaptated the config panel (glenfant)
+        
+        * batch in plonearticle explorer
+        
+        * Adapted view templates to use KSS and plone 3 rules (zegor)
+        
+        * Removed local_roles action (global in Plone 3.0) (zegor)
+        
+        * Removed metadata action (by default in Plone 3.0) (zegor)
+        
+        * Install via GenericSetup (zegor)
+        
+        * Fixed download of images and files (zegor)
+        
+        * Fixed MultiPageDefaultPage view (do not use plone_utils tool to get context) (zegor)
+        
+        * Fixed model templates (added nocall in condition to prevent images rendering in models 6 7 8 and 10) (zegor)
+        
+        * Removed Plone 2.1 compatibility (zegor)
+        
+        * Removed multiarticle pager. Uses now standard previous-next plone 3 navigation (zegor)
+        
+        * Works with ARFilePreview
+        
+        * Added a new preview icon
+        
+        4.0.0
+        #####
+        
+        * Fixed unit tests
+        
+        4.0.0-rc6
+        #########
+        
+        * Hide "Templates" tab on new (temporary) objects (glenfant).
+        
+        4.0.0-rc5
+        #########
+        
+        * fix acquisition & import bugs
+        
+        - field baseinnercontent : fix in BaseInnerContentField.set that corrects a
+        bug produced by an unwanted acquisition
+        - Import LinguaPlone in article mixin to make sure PloneArticle is fully
+        compliant with LinguaPlone
+        
+        4.0.0-rc4
+        #########
+        
+        * fix templates bugs when referenced files are deleted
+        
+        - model macro template uses Description for files & links
+        - fix in model macro : file size was wrong when proxy was using a referenceField
+        (temporary the file size is not shown in that case)
+        
+        * IE7 adjustements
+        
+        - pa_browser css fix for ie7 compliance
+        
+        - pa_browser css : small improvements (loading icon, correction on select box)
+        
+        * Some AttachemntFields modifications
+        
+        - attachmentField download url is generated in model macro for attached Files
+        when attachmentField is used by proxy
+        
+        4.0.0-rc3
+        #########
+        
+        * Add tutorial / examples
+        
+        - Added examples/mypamodel : a tutorial Products for custom PloneArticle models.
+        
+        * Fix a content type linked bug
+        
+        4.0.0-rc2
+        #########
+        
+        * Fix reindexation bug after migration from Plone 2.0.5 and Zope 2.7
+        
+        * Add brazilian and slovenian translation
+        
+        * Fix some docs
+        
+        4.0.0-rc1
+        #########
+        
+        * Save all changes in plonearticle while manipulating files, images and links.
+        Save button of edit form is only used to save modifications of title or
+        description
+        
+        4.0.0-beta6
+        ###########
+        
+        * When updating value of inner content field don't reorder content. All new
+        values will be append to existing ones
+        
+        * Migrate old plonearticle models
+        
+        * All css and js helpers added in widget
+        
+        * plonearticle_edit.pt removed
+        
+        4.0.0-beta5
+        ###########
+        
+        * "Error: Image dimensions unknown" when uploading an image whose dimensions
+        can't be decided.
+        
+        * getImageDimensions now guarantees to return integer values for width and height
+        
+        4.0.0-beta4
+        ###########
+        
+        * Added a status bar in the browser to display content loading status
+        
+        * Folders in the browser are now addable if they are referencable
+        
+        * Search on browser stay on the same folder if no results found
+        
+        * Improved skin on browser and innerContentWidget
+        
+        * Content proxies renamed after creation. File and images are renamed
+        according to attached file name
+        
+        * Articles now have an internal revision number, helpful for further migrations
+        
+        * Added 'migration' tab in ZMI to plonearticle_tool
+        
+        4.0.0beta3
+        ##########
+        
+        * Fixed referenceable links
+        
+        * Updated jquery to 1.0.2
+        
+        * Fixed referenceable links
+        
+        4.0.0beta2
+        ##########
+        
+        * InnerContentField are indexable (searchable=True)
+        
+        4.0.0beta1
+        ##########
+        
+        * Full refactoring. Everything Archetypes.
+        
+Keywords: plone
+Platform: UNKNOWN
+Classifier: Framework :: Plone
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules

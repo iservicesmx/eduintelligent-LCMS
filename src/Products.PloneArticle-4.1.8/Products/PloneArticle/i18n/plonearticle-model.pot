@@ -1,0 +1,90 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PloneArticle v4\n"
+"POT-Creation-Date: 2006-08-25 13:49+0000\n"
+"PO-Revision-Date: 2006-08-25 16:10+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: latin1 utf-8\n"
+"Domain: plonearticle-model\n"
+
+msgid "untitled_model"
+msgstr ""
+
+msgid "no_description_available"
+msgstr ""
+
+msgid "model1_title"
+msgstr ""
+
+msgid "model1_description"
+msgstr ""
+
+msgid "model2_title"
+msgstr ""
+
+msgid "model2_description"
+msgstr ""
+
+msgid "model3_title"
+msgstr ""
+
+msgid "model3_description"
+msgstr ""
+
+msgid "model4_title"
+msgstr ""
+
+msgid "model4_description"
+msgstr ""
+
+msgid "model5_title"
+msgstr ""
+
+msgid "model5_description"
+msgstr ""
+
+msgid "model6_title"
+msgstr ""
+
+msgid "model6_description"
+msgstr ""
+
+msgid "model7_title"
+msgstr ""
+
+msgid "model7_description"
+msgstr ""
+
+msgid "model8_title"
+msgstr ""
+
+msgid "model8_description"
+msgstr ""
+
+msgid "model9_title"
+msgstr ""
+
+msgid "model9_description"
+msgstr ""
+
+msgid "model10_title"
+msgstr ""
+
+msgid "model10_description"
+msgstr ""
+
+msgid "model11_title"
+msgstr ""
+
+msgid "model11_description"
+msgstr ""

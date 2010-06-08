@@ -1,0 +1,18 @@
+
+  
+  <tal:block tal:define="file_field python:here.getField('attachedFile');
+                         implements_preview python:hasattr(file_field, 'getPreview')">
+    <div id="preview-container">
+      
+      <tal:block tal:condition="implements_preview">
+        <h1 tal:content="here/title_or_id">The Title</h1>
+        <div tal:replace="structure python:file_field.getPreview(here).replace('div','p')" />
+      </tal:block>
+      <tal:block tal:condition="not:implements_preview">
+        <div i18n:translate="description_no_preview">No preview available</div>
+      </tal:block>
+
+    </div>
+
+  </tal:block>
+

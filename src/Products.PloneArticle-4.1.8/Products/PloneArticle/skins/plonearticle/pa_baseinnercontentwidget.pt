@@ -1,0 +1,162 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="plonearticle">
+
+  <head><title></title></head>
+
+  <body>
+
+    <!-- BaseInnerContent Widget -->
+    <metal:define define-macro="view">
+      <tal:block tal:define="objs python:accessor();">
+        <ul>
+          <li tal:repeat="obj objs">
+            <a
+                tal:attributes="href string:${obj/absolute_url}"
+                tal:content="python:obj.Title()"
+                />
+          </li>
+        </ul>
+      </tal:block>
+    </metal:define>
+
+    <metal:new_inner_content define-macro="new_inner_content">
+      <metal:inner_content define-macro="inner_content">
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <div class="action">
+                  <img alt="Delete row"
+                       tal:attributes="src string:${portal_url}/delete_icon.gif;
+                                       onclick string:Proxy.remove('${widget_id}');" />
+                </div>
+                <div class="action">
+                  <img alt="Up"
+                       tal:attributes="src string:${portal_url}/arrowUp.gif;
+                                       onclick string:Proxy.move('${widget_id}', -1);" />
+                </div>
+                <div class="action">
+                  <img alt="Down"
+                       tal:attributes="src string:${portal_url}/arrowDown.gif;
+                                       onclick string:Proxy.move('${widget_id}', 1);" />
+                </div>
+              </td>
+              <td>
+                <div>
+                  <tal:fields repeat="inner_content_field python:proxy.Schema().editableFields(proxy)">
+                    <tal:editable tal:condition="python:inner_content_field.mode != 'r'">
+                      <metal:fieldMacro use-macro="python:widget.innerContentWidget(fieldName, widget_index, proxy, inner_content_field, mode='edit')"/>
+                    </tal:editable>
+                  </tal:fields>
+                </div>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </metal:inner_content>
+    </metal:new_inner_content>
+
+    <metal:define define-macro="edit">
+      <div class="innerContentEditWidget"
+           tal:attributes="id string:editWidget_$fieldName">
+        <metal:use use-macro="field_macro | here/widgets/field/macros/edit">
+          <metal:fill fill-slot="widget_body">
+            <tal:block tal:define="objs python:accessor();
+                                   widget_container_id string:${fieldName}-innercontent;
+                                   widget_index_id string:${fieldName}-innercontent-index;
+                                   inner_content_macros inner_content_macros | here/pa_baseinnercontentwidget/macros;">
+  
+              <div id="articleActions"
+                   tal:define="type type |string:content;
+                               typeView typeView |string:content;">
+  
+                <a name="action"></a>
+                <input type="hidden" id="pa_unload_protection_flag" 
+                                     name="pa_unload_protection_flag" 
+                                     tal:attributes="id string:pa_unload_protection_flag_${type}"
+                                     value="0" />              
+                <input type="hidden" class="article_url" name="article_url" 
+                       tal:attributes="value string:${here_url}" />                
+                <input type="hidden" class="browser_url" name="browser_url" 
+                       tal:attributes="value string:${portal_url}" />             
+                <input type="hidden" class="proxy_type" name="proxy_type" 
+                       tal:attributes="value string:${type}" />    
+                <input type="hidden" class="pFieldname" name="pFieldname" 
+                       tal:attributes="value string:${fieldName}" />
+                <input type="hidden" class="pa_browser_reference_script" name="pa_browser_reference_script" 
+                       tal:attributes="value string:pa_inner${type}_reference" />
+                <a id="saveKss"
+                   href=""
+                   class="closeWindow">
+                   &nbsp;
+                </a>   
+                <ul id="plone-article-menu">
+                  <li id="plone-article-upload-menu">
+                    <a class="thickbox" href=""
+                       id="plone-article-upload-link"
+                       tal:attributes="href string:${here_url}/pa_create_inner_content_widget?height=400&width=400&field_name=${fieldName};">
+                      <span tal:replace="python:here.utranslate('label_upload_%s' % fieldName, default='Upload %s' % fieldName, domain='plonearticle')">
+                        Add content
+                      </span>
+                    </a>
+                  </li>
+                  <li id="plone-article-browser-menu">
+                    <a href="" id="plone-article-browse-link"
+                       tal:attributes="href string:${here_url}/${template_id}?fieldset=${fieldset};
+                                       onclick string:Browser.open(Browser.url, '','','','');; return false;">
+                      <span
+                          tal:replace="python:here.utranslate('label_browse_server_%s' % fieldName, default='Browse server %s' % fieldName, domain='plonearticle')">
+                        Browse server files
+                      </span>
+                    </a>
+                  </li>              
+                </ul>
+  
+              </div>
+  
+              <div class="innerContentWidgetContainer" id="proxyContainer"
+                   tal:attributes="id string:proxyContainer_$type">
+                 <div class="innerContentWidget closed emptyContainer"
+                      tal:attributes="style python:test(objs, 'display: none', '');">
+                   <span>&nbsp</span>
+                   <span tal:content="python:here.utranslate('label_no_%s_inside' % fieldName, default='No %s inside this article.' % fieldName, domain='plonearticle')">No images inside this article.</span>
+                 </div>
+                <tal:block repeat="proxy objs"
+                          condition="objs">
+                  <div class="innerContentWidget closed"
+                       tal:define="widget_index repeat/proxy/index;
+                                   widget_id python:widget.makeWidgetId(fieldName, widget_index);
+                                   parity python: test(repeat['proxy'].index%2, 'odd', 'even');
+                                   closed string:closedContent"
+                       tal:attributes="id widget_id;
+                                       class string:innerContentWidget ${closed} ${parity}">
+                    <metal:block use-macro="inner_content_macros/inner_content" />
+                    <input type="hidden"
+                           tal:attributes="name string:${fieldName}_innercontent_position:list;
+                                           value python:'%06d' % widget_index" />
+                  </div>
+                </tal:block>
+              </div>
+  
+              <input type="hidden"
+                     name="nb_proxy"
+                     tal:attributes="id widget_index_id;
+                                     value python:len(objs)" />
+  
+            </tal:block>
+          </metal:fill>
+        </metal:use>
+      </div>
+    </metal:define>
+
+    <metal:define define-macro="search">
+      <metal:use use-macro="here/widgets/file/macros/edit" />
+    </metal:define>
+    
+  </body>
+
+</html>

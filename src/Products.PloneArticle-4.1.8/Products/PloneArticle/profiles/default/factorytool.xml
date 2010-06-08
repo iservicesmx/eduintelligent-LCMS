@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object name="portal_factory" meta_type="Plone Factory Tool">
+ <factorytypes>
+  <type portal_type="LinkInnerContentProxy"/>
+  <type portal_type="FileInnerContentProxy"/>
+  <type portal_type="PloneArticle"/>
+  <type portal_type="ImageInnerContentProxy"/>
+ </factorytypes>
+</object>

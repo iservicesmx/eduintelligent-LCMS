@@ -1,0 +1,41 @@
+<div tal:define="dummy python:request.RESPONSE.setHeader('Content-Type', 'text/plain;; charset=%s' % here.plone_utils.getSiteEncoding());
+                 fieldName fieldName|request/fieldName|string:;
+                 search_criterias search_criterias|python: {};
+                 dummy python: search_criterias.update(request.form.get(fieldName + '_search_criterias', {}));
+                 field field | python: fieldName and here.getField(fieldName);
+                 widget python: field.widget;
+                 edit_accessor python:field and field.getEditAccessor(here);
+                 value python: edit_accessor and edit_accessor();"
+     tal:condition="python: search_criterias and fieldName"
+     tal:omit-tag=""
+     >
+  <ul metal:define-macro="search_results"
+      tal:condition="python: search_criterias and fieldName"
+      tal:omit-tag="">
+    <tal:search define="auto_reference python: field.getAutoReference(here);                      
+                        referenced_uids value;
+                        excluded_uids python: field.getExcludedUIDs(here);
+                        visited_uids python: widget.getVisitedUIDs(excluded_uids, referenced_uids);
+                        results python: field.searchContents(here, search_criterias);
+                        newitem_icon_url string:${here/portal_url}/newsitem_icon.gif;"
+                repeat="brain results">
+      <li tal:define="object brain/getObject;
+                      uid object/UID;">
+        <input type="hidden" name="smartlist_uids_found:list" value=""
+               tal:attributes="name string:${fieldName}_uids_found:list;
+                               value uid;" />
+        <input type="checkbox"
+               class="noborder"
+               name="smartlist_ref_uids:list" 
+               tal:attributes="name string:${fieldName}_ref_uids:list;
+                               value uid;
+                               checked python: (uid in referenced_uids) or (auto_reference and uid not in visited_uids);"
+               />
+        <img tal:condition="python: not visited_uids.has_key(uid)"
+             tal:attributes="src newitem_icon_url;" />
+        <span tal:replace="string: ${brain/Title}">Titre de l'objet</span>
+        
+      </li>
+    </tal:search>
+  </ul>
+</div>

@@ -1,0 +1,16 @@
+[default]
+title = Edit
+
+[security]
+View=0:Manager
+
+[validators]
+validators = validate_base
+validators..form_add =
+validators..cancel =
+
+[actions]
+action.success = traverse_to:string:content_edit
+action.success..form_add = traverse_to:string:add_reference
+action.success..cancel = redirect_to:string:plone_control_panel
+action.failure = traverse_to_action:string:edit

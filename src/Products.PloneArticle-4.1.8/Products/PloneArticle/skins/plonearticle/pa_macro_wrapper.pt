@@ -1,0 +1,19 @@
+<tal:block xmlns:tal="http://xml.zope.org/namespaces/tal"
+           xmlns:metal="http://xml.zope.org/namespaces/metal"
+           i18n:domain="plone">
+
+  <tal:defines define="pamacro request/pamacro">
+
+    <metal:block use-macro="here/global_defines/macros/defines"/>  
+    <!-- ajax http headers -->
+    <metal:block tal:define="charset site_properties/default_charset|string:utf-8;
+                             dummy python:request.RESPONSE.setHeader('Content-Type', 'text/html;;charset=%s' % charset)" />
+    <metal:block tal:define="dummy python:request.RESPONSE.setHeader('Expires', 'Sat, 1 Jan 2000 00:00:00 GMT')" />
+    <metal:block tal:define="dummy python:request.RESPONSE.setHeader('Last-Modified', 'Sat, 1 Jan 2000 00:00:00 GMT')" />
+    <metal:block tal:define="dummy python:request.RESPONSE.setHeader('Cache-control', 'max-age=0,s-maxage=0,must-revalidate')" />      
+    
+    <metal:model use-macro="python:path(pamacro)" />
+    
+    
+  </tal:defines>
+</tal:block>

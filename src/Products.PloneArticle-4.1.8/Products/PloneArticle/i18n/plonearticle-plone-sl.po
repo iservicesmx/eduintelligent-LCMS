@@ -1,0 +1,123 @@
+# translation of plonearticle-plone-sl.po to slovenščina
+# Matjaž Jeran (matematik) <matjaz.jeran@amis.net>, 2007.
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+msgid ""
+msgstr ""
+"Project-Id-Version: plonearticle-plone-sl\n"
+"POT-Creation-Date: 2006-08-25 13:49+0000\n"
+"PO-Revision-Date: 2007-02-24 09:30+0100\n"
+"Last-Translator: Matjaž Jeran (matematik) <matjaz.jeran@amis.net>\n"
+"Language-Team: slovenščina <sl@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: sl\n"
+"Language-Name: Slovenian\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: plone\n"
+"X-Generator: KBabel 1.11.4\n"
+
+msgid "description_edit_plonearticle"
+msgstr "Dokument lahko obogatimo s prilogami, slikami in povezavami"
+
+msgid "description_edit_multipage"
+msgstr "Vsebini lahko priložimo več strani člankov"
+
+msgid "models"
+msgstr "modeli"
+
+msgid "files"
+msgstr "priložene datoteke"
+
+msgid "images"
+msgstr "slike"
+
+msgid "links"
+msgstr "povezave"
+
+msgid "default"
+msgstr "privzeto"
+
+msgid "Files"
+msgstr "Datoteke"
+
+msgid "Images"
+msgstr "Slike"
+
+msgid "Links"
+msgstr "Povezave"
+
+msgid "PloneArticle preferences"
+msgstr "Nastavitve PloneArticle"
+
+msgid "Templates"
+msgstr "Šablone"
+
+#. Default: "File Content Inner Proxy"
+#: portal type title of type with description Proxy implementing IFileContent. It means this proxy has a getFile     method.        getFile returns attached file by default if existing otherwise returns    the referenced content.
+msgid "File Content Inner Proxy"
+msgstr "Posrednik vsebine datotek notranjosti"
+
+#. Default: "Image Content Inner Proxy"
+#: portal type title of type with description Proxy implementing IImageContent. It means this proxy has a getImage     method.        getImage returns attached image by default if existing otherwise returns    the referenced content.
+msgid "Image Content Inner Proxy"
+msgstr "Posrednik vsebin slik notranjosti"
+
+#. Default: "Inner Content Container"
+#: portal type title of type with description This folder is a container of inner content objects
+msgid "Inner Content Container"
+msgstr "Vsebnik notranjih vsebin"
+
+#. Default: "Link Content Inner Proxy"
+#: portal type title of type with description Proxy implementing IATLink. It means this proxy has a remoteUrl    method.        remoteUrl returns attached link by default if existing otherwise returns    the referenced content.
+msgid "Link Content Inner Proxy"
+msgstr "Posrednik vsebin povezav notranjosti"
+
+#. Default: "Lock (Currently not locked)"
+#: action_icon id lock.gif - category plone
+#: type action defined on File
+msgid "Lock (Currently not locked)"
+msgstr "Zakleni (Trenutno nezaklenjeno)"
+
+#. Default: "Multipage article"
+#: portal type title of type with description
+msgid "Multipage article"
+msgstr "Večstranski članek"
+
+#. Default: "Plone Article Tool"
+#: portal type title of type with description Tool for PloneArticle
+msgid "Plone Article Tool"
+msgstr "Orodje za PloneArticle"
+
+#. Default: "Proxy implementing IATLink. It means this proxy has a remoteUrl    method.        remoteUrl returns attached link by default if existing otherwise returns    the referenced content."
+#: portal type description of type with title Link Content Inner Proxy
+msgid "Proxy implementing IATLink. It means this proxy has a remoteUrl    method.        remoteUrl returns attached link by default if existing otherwise returns    the referenced content."
+msgstr "Posredniški strežnik s povezavo IATLink. Ta posrednik uporablja metodo oddaljenega naslova. Povezava vrne privzeti naslov, če obstaja sicer pa vsebino sklicevane povezave."
+
+#. Default: "Proxy implementing IFileContent. It means this proxy has a getFile     method.        getFile returns attached file by default if existing otherwise returns    the referenced content."
+#: portal type description of type with title File Content Inner Proxy
+msgid "Proxy implementing IFileContent. It means this proxy has a getFile     method.        getFile returns attached file by default if existing otherwise returns    the referenced content."
+msgstr "Posredniški strežnik z metodo IFileContent. Če datoteka obstaja, vrne privzeto datoteko, sicer pa datoteko na katero se sklicuje."
+
+#. Default: "Proxy implementing IImageContent. It means this proxy has a getImage     method.        getImage returns attached image by default if existing otherwise returns    the referenced content."
+#: portal type description of type with title Image Content Inner Proxy
+msgid "Proxy implementing IImageContent. It means this proxy has a getImage     method.        getImage returns attached image by default if existing otherwise returns    the referenced content."
+msgstr "Posredniški strežnik za metodo IImageContent. Strežnik vrne privzeto sliko, če obstaja, sicer pa sliko iz sklicevanega naslova."
+
+#. Default: "This folder is a container of inner content objects"
+#: portal type description of type with title Inner Content Container
+msgid "This folder is a container of inner content objects"
+msgstr "Ta mapa vsebuje predmete notranjih vsebin"
+
+#. Default: "Tool for PloneArticle"
+#: portal type description of type with title Plone Article Tool
+msgid "Tool for PloneArticle"
+msgstr "Orodje za PloneArticle"
+
+#. Default: "Unlock (Currently locked)"
+#: action_icon id unlock.gif - category plone
+#: type action defined on File
+msgid "Unlock (Currently locked)"
+msgstr "Odkleni (Trenutno zaklenjeno)"
+

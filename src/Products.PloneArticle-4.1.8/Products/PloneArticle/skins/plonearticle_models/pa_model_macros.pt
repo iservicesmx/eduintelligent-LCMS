@@ -1,0 +1,489 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="plonearticle">
+
+  <body>
+
+    <metal:block define-macro="header"
+                 tal:define="plone_view plone_view|nothing;
+                             parent_folder plone_view/getCurrentFolder | python:test(here.is_folderish(), here, here.aq_inner.getParentNode());
+                             multipage parent_folder/@@multipage_view;
+                             is_multipage multipage/isMultipage;
+                             kssClassesView context/@@kss_field_decorator_view;
+                             getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;">
+
+      <tal:block define="global mimetypes  nocall:portal/mimetypes_registry;" />
+
+      <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+      <tal:multipage condition="is_multipage">
+
+        <h1 tal:content="parent_folder/title_or_id">Multipage Title</h1>
+
+        <tal:multipage_byline tal:define="here nocall:parent_folder;">
+          <div metal:use-macro="parent_folder/document_byline/macros/byline">
+            Get the byline - contains details about author and modification date.
+          </div>
+        </tal:multipage_byline>
+
+        <div class="topNavigation"
+             tal:define="toc_menu_items python:multipage.getTOCItems(here);"
+             tal:condition="python:toc_menu_items">
+          <select onChange="if (this.options[this.selectedIndex].value != '#') window.location=eval('this.options[this.selectedIndex].value');">
+            <option tal:condition="parent_folder/getViewTOC"
+                    tal:attributes="value string:${parent_folder/absolute_url}?force_toc:int=1;"
+                    i18n:translate="label_table_of_contents">
+              Table of contents
+            </option>
+
+            <tal:pages_options repeat="item toc_menu_items">
+              <option tal:attributes="value item/url;
+                                      selected item/selected;"
+                      tal:content="item/title">
+                Article page title
+              </option>
+
+            </tal:pages_options>
+          </select>
+        </div>
+
+        <div class="documentDescription"
+             tal:content="parent_folder/Description">
+          description
+        </div>
+
+        <h4 metal:use-macro="here/kss_generic_macros/macros/generic_title_view">Title or id</h4>
+
+      </tal:multipage>
+      <tal:h1 condition="not:is_multipage">
+        <h1 metal:use-macro="here/kss_generic_macros/macros/generic_title_view">Title or id</h1>
+      </tal:h1>
+
+      <div tal:replace="structure provider:plone.belowcontenttitle" />
+      
+      <input type="hidden"
+             name="absolute_url"
+             id ="absolute_url"
+             tal:attributes="value here/absolute_url" />
+             
+      <input type="hidden"
+             name="portal_url"
+             id ="portal_url"
+             tal:attributes="value portal_url" />             
+      
+      <metal:block use-macro="here/pa_model_macros/macros/kss-menu" />
+      
+    </metal:block>
+
+    <metal:block define-macro="description"
+                 tal:define="kssClassesView context/@@kss_field_decorator_view;
+                             getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;">
+      <p metal:use-macro="here/kss_generic_macros/macros/generic_description_view">Description</p>
+    </metal:block>
+
+    <metal:block define-macro="body"
+                 tal:define="kssClassesView context/@@kss_field_decorator_view;
+                             getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;">
+
+      <div tal:replace="structure provider:plone.abovecontentbody" />
+
+      <div metal:define-macro="text-field-view"
+           id="parent-fieldname-text" class="stx"
+           tal:define="kss_class python:getKssClasses('text',
+                       templateId='pa_model_macros', macro='text-field-view');
+                       text text|here/getText|nothing"
+           tal:condition="text"
+           tal:attributes="class python:test(here.Format() in ('text/structured',
+                           'text/x-rst', ), 'stx' + kss_class, 'plain' + kss_class)">
+        <div metal:define-slot="inside" tal:replace="structure text">The body</div>
+      </div>
+
+
+    </metal:block>
+    
+    <metal:block define-macro="kss-menu">  
+          <ul tal:condition="python:checkPermission('Modify portal content', here)"
+              id="kss-menu">
+            <tal:block repeat="fieldName python:['images', 'files', 'links']">
+                <li tal:attributes="id string:parent-fieldname-$fieldName"
+                    class="jqInlineEditable">            
+                    <a class="kss-menu-text"
+                       href="#"
+                       tal:content="python:here.utranslate('label_manage_%s' % fieldName, default='Manage %s' % fieldName, domain='plonearticle')">
+                      Manage content
+                    </a>
+                    <input type="hidden"
+                           class="jq-fieldname"
+                           tal:attributes="value fieldName" />     
+                    <input type="hidden"
+                           class="jq-edit-template"
+                           tal:attributes="value python:'pa_%sinnercontentwidget' %fieldName.rstrip('s')" />                      
+                </li>              
+            </tal:block>    
+          </ul>
+          <div class="visualClear">
+            <!-- clear left block only -->
+          </div>
+    </metal:block>
+
+    <metal:block define-macro="images">
+      <div class="photosContainer rightBlock"
+           tal:define="proxies python:here.getImages(filtered=True);
+                       fieldName string:images"
+           tal:condition="python: proxies"
+           class="photosContainer rightBlock">
+        <tal:block condition="proxies">
+          <tal:block repeat="proxy proxies">
+            <metal:macro use-macro="here/pa_model_macros/macros/image" />
+          </tal:block>
+        </tal:block>
+      </div>
+    </metal:block>
+
+    <metal:block define-macro="images_icons">
+      <fieldset class="leftPlaced"
+                tal:define="proxies python:here.getImages(filtered=True);
+                            fieldName string:images"
+                class="leftPlaced"
+                tal:condition="proxies">
+        <legend i18n:translate="legend_images">Images</legend>
+        <tal:block tal:repeat="proxy proxies">
+          <metal:block use-macro="here/pa_model_macros/macros/image_icon" />
+        </tal:block>
+      </fieldset>
+    </metal:block>
+
+    <metal:block define-macro="files">
+      <fieldset tal:define="proxies python:here.getFiles(filtered=True);
+                            fieldName string:files"
+                class="leftPlaced"
+                tal:condition="proxies">
+        <legend i18n:translate="legend_files">Files</legend>
+        <tal:block tal:repeat="proxy proxies">
+          <metal:block use-macro="here/pa_model_macros/macros/file" />
+        </tal:block>
+      </fieldset>
+    </metal:block>
+
+    <metal:block define-macro="links">
+      <fieldset tal:define="proxies here/getLinks;
+                            fieldName string:links"
+                class="leftPlaced"
+                tal:condition="proxies">
+        <legend i18n:translate="legend_links">Links</legend>
+        <tal:block tal:repeat="proxy proxies">
+          <metal:block use-macro="here/pa_model_macros/macros/link" />
+        </tal:block>
+      </fieldset>
+    </metal:block>
+
+    <metal:block define-macro="file">
+      <tal:block tal:define="file proxy/getFile | nothing;"
+                 tal:condition="file">
+        <div class="file block"
+             tal:define="content_type file/getContentType | proxy/getContentType | nothing;
+                         mimetypeLen python:content_type and len(mimetypes.lookup(content_type)) or 0;
+                         mimetype python:mimetypeLen and mimetypes.lookup(content_type)[0] or None;
+                         icon mimetype/icon_path | string:mime.png;
+                         file_url python:view.getFileUrl(proxy);
+                         file_title proxy/title_or_id;
+                         file_name proxy/getId;
+                         size proxy/size | python:None;
+                         file_description proxy/Description | python:'';
+                         is_search request/searchterm|nothing;
+                         attachField python:proxy.getField('attachedFile');
+                         isAttach python:attachField.get_size(proxy)&gt;0;
+                         fileField  python:isAttach  and attachField or None;
+                         has_preview python:hasattr(fileField,'isPreviewAvailable');
+                         file_size python:isAttach and here.getObjSize(proxy, size=size) or '';
+                         file_size python:not isAttach and here.getObjSize(proxy, size=proxy.getReferencedContent().get_size()) or file_size;
+                         s_t python:(is_search and has_preview and fileField.getIndexableValue(proxy)) or '';
+                         has_search python:is_search and has_preview and modules['string'].find(s_t, request.searchterm) >= 0;
+                         klass python:test(has_search, 'highlightedSearchTerm', '')">
+          <a tal:attributes="href string:${file_url};
+                             title file_description">
+            <img tal:attributes="src string:${portal_url}/${icon}" />
+          </a>
+          <a href=""
+             tal:attributes="href string:${file_url};
+                             title file_description">
+            <span tal:attributes="class klass"
+                  tal:content="file_title" />
+          </a>
+          &nbsp;
+          <span class="discreet" tal:content="file_size">100 KB</span>
+          <tal:block tal:condition="python:here.getTypeInfo().previewAllowed">
+            &nbsp;
+            <a href=""
+               class="thickbox"
+               style="text-decoration: none"
+               tal:attributes="href string:${proxy/absolute_url}/pa_preview?searchterm=${request/searchterm|nothing}&amp;width=400&amp;height=400;"
+               tal:condition="python:has_preview and fileField.isPreviewAvailable(proxy)">
+              <img
+                 i18n:attributes="alt preview; title preview;"
+                 tal:attributes="src string:${portal_url}/preview_icon.png"
+                 alt="Preview"
+                 title="Preview"
+                 >
+            </a>
+          </tal:block>
+          <div class="proxy-description"
+               tal:condition="file_description">
+            <span class="discreet"
+                  tal:content="file_description">Description</span>
+          </div>
+ 
+        </div>
+      </tal:block>  
+    </metal:block>
+
+    <metal:block define-macro="link">
+      <div class="link block"
+           tal:define="url python:proxy.getRemoteUrl();
+                       link_description proxy/Description | python:'';
+                       link_icon string:$portal_url/${proxy/getLinkIcon};
+                       title python: proxy.Title() or url;">
+
+        <a tal:attributes="href url;
+                           title link_description"
+           class="link-plain">
+          <img tal:attributes="src link_icon;
+                               alt link_description" />    
+        </a>
+        <a tal:attributes="href url;
+                           title link_description"
+           class="link-plain">                      
+          <span tal:content="title" />
+        </a>
+        <div class="proxy-description"
+             tal:condition="link_description">
+          <span class="discreet"
+                tal:content="link_description">Description</span>
+        </div>
+      </div>
+    </metal:block>
+
+    <metal:block define-macro="image">
+      <div class="image block"
+           tal:define="image_url python:view.getImageUrl(proxy)">
+        <a class="thickbox"
+           target="_blank"
+           tal:attributes="title proxy/title_or_id;
+                           href string:$image_url?isImage=1;">
+          <img tal:replace="structure python:view.getImageTag(proxy)" />
+        </a>
+        <a class="thickbox photoTitle"
+           target="_blank"
+           tal:attributes="title proxy/title_or_id;
+                           href string:$image_url?isImage=1;">
+          <span tal:content="proxy/Title" />&nbsp;
+        </a>
+      </div>
+    </metal:block>
+
+    <metal:block define-macro="image_icon">
+      <div class="file block"
+           tal:define="image_url python:view.getImageUrl(proxy);
+                       size proxy/size | python:None;
+                       image_description proxy/Description | python:'';
+                       attachField python:proxy.getField('attachedImage');
+                       isAttach python:attachField.get_size(proxy)&gt;0;
+                       image_size python:isAttach and here.getObjSize(proxy, size=size) or '';
+                       image_size python:not isAttach and here.getObjSize(proxy, size=proxy.getReferencedContent().get_size()) or image_size;">
+        <a class="thickbox imageIconBlock"
+           target="_blank"
+           tal:attributes="title proxy/title_or_id;
+                           href string:$image_url?isImage=1;">
+          <img tal:replace="structure python:view.getImageTile(proxy)" />
+        </a>
+        <a class="thickbox"
+           target="_blank"
+           tal:attributes="title proxy/title_or_id;
+                           href string:$image_url?isImage=1;">
+          <span tal:content="proxy/title_or_id" />
+        </a>
+        &nbsp;
+        <span class="discreet" tal:content="image_size">100 KB</span>
+        <div class="proxy-description"
+             tal:condition="image_description">
+          <span class="discreet"
+                tal:content="image_description">Description</span>
+        </div>        
+      </div>
+    </metal:block>
+
+    <metal:block define-macro="bigImage">
+      <div class="image block"
+           tal:define="image_url python:view.getImageUrl(proxy)">
+        <a class="thickbox"
+           target="_blank"
+           tal:attributes="title proxy/title_or_id;
+                           href string:$image_url?isImage=1">
+          <img tal:replace="structure python:view.getBigImageTag(proxy)" />
+        </a>
+        <a class="thickbox photoBigTitle"
+           target="_blank"
+           tal:attributes="title proxy/title_or_id;
+                           href string:$image_url?isImage=1;">
+          <span tal:replace="proxy/Title" />&nbsp;
+        </a>
+      </div>
+    </metal:block>
+
+    <metal:block define-macro="square">
+      <div style="width: 250px; height:250px; overflow: hidden"
+           tal:define="image_url python:view.getImageUrl(proxy)">
+        <a class="thickbox"
+           target="_blank"
+           tal:attributes="title proxy/title_or_id;
+                           href string:$image_url?isImage=1">
+          <img tal:replace="structure python:view.getImage4Crop(proxy)" />
+        </a>
+      </div>
+    </metal:block>
+
+    <metal:block define-macro="small_square"
+                 tal:define="image_url python:view.getImageUrl(proxy)">
+      <div style="width: 50px; height:50px; overflow: hidden">
+        <a class="thickbox"
+           target="_blank"
+           tal:attributes="title proxy/title_or_id;
+                           href string:$image_url?isImage=1">
+          <img tal:replace="structure python:view.getSmallImage4Crop(proxy)" />
+        </a>
+      </div>
+      <div style="margin-top:-50px">
+        <a class="thickbox"
+           target="_blank"
+           tal:attributes="title proxy/title_or_id;
+                           href string:$image_url?isImage=1">
+          <img tal:attributes="src string:$portal_url/square_crop.gif" />
+        </a>
+      </div>
+    </metal:block>
+
+
+    <metal:block define-macro="iplayer">
+      <tal:block define="images view/getPlayerImages;
+                         pStyle view/getPlayerStyle"
+                 tal:condition="images">
+        <div id="imagesPlayer"
+             tal:define="image1 view/getPlayerFirstImage"
+             tal:attributes="style pStyle/globalstyles;
+                             class pStyle/globalclass">
+          <tal:comments replace="nothing">
+            vars to improve style through javascript
+          </tal:comments>
+          <input type="hidden"
+                 id="maxwidthvalue"
+                 tal:attributes="value pStyle/maxwidth" />
+          <input type="hidden"
+                 id="maxheightvalue"
+                 tal:attributes="value pStyle/maxheight" />
+          <input type="hidden"
+                 id="thumbmaxwidthvalue"
+                 tal:attributes="value pStyle/thumbmaxwidth" />
+          <input type="hidden"
+                 id="thumbmaxheightvalue"
+                 tal:attributes="value pStyle/thumbmaxheight" />
+          <div id="previewWrapper"
+               tal:attributes="style string:width:${pStyle/maxwidth}px ;;">
+            <div id="previewInnerWrapper"
+                 class="pa-img-box"
+                 tal:attributes="style string:width:${pStyle/maxwidth}px !important;;
+                                 height:${pStyle/maxheight}px !important;;">
+              <!-- do not remove spans see css for comment -->
+              <span></span>
+              <img id="previewImg"
+                   tal:attributes="src image1/preview_url;
+                                   alt image1/title" />
+            </div>
+          </div>
+          <div id="legendWrapper">
+            <a id="paplayerImageZoom"
+               tal:attributes="href image1/image_url;
+                               title string:${image1/title} (zoom)">
+              &nbsp;
+            </a>
+            <div id="imgTitle"
+                 tal:content="image1/title">Image 1 Title</div>
+            <div id="imgDescription"
+                 tal:content="image1/description">Image 1 Description</div>
+          </div>
+          <div id="thumbsWrapper"
+               tal:attributes="style string:height:${pStyle/thumbmaxheight}px ;;">
+            <div id="playerControls">
+              <a class="playerButtons"
+                 id="firstImage"
+                 href="javascript:void(0);">
+              </a>
+              <a class="playerButtons"
+                 id="previousImage"
+                 href="javascript:void(0);">
+              </a>
+              <div id="thumbs">
+                <div id="thumbsInnerWrapper">
+                  <a tal:repeat="i images"
+                     tal:attributes="href i/preview_url;
+                                     title i/title"
+                     class="paplayerImages">
+                    <div class="pa-img-box"
+                         tal:attributes="style string:width:${pStyle/thumbmaxwidth}px !important;;
+                                         height:${pStyle/thumbmaxheight}px !important;;">
+                      <!-- do not remove span block used for h&v image centering on IE6 -->
+                      <span></span>
+                      <img tal:attributes="src i/thumb_url;
+                                           title i/title" />
+                      <input type="hidden"
+                             class="imgtitlevalue"
+                             tal:attributes="value i/title" />
+                      <input type="hidden"
+                             class="imgdescvalue"
+                             tal:attributes="value i/description" />
+                      <input type="hidden"
+                             class="imgurlvalue"
+                             tal:attributes="value i/image_url" />
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <a class="playerButtons"
+                 id="nextImage"
+                 href="javascript:void(0);">
+              </a>
+              <a class="playerButtons"
+                 id="lastImage"
+                 href="javascript:void(0);">
+              </a>
+            </div>
+          </div>
+          <div id="thumbLegend">
+            <span tal:content="nothing">Thumb legend</span>
+          </div>
+
+        </div>
+      </tal:block>
+    </metal:block>
+
+
+    <metal:block define-macro="footer"
+                 tal:define="plone_view plone_view|nothing;
+                             parent_folder plone_view/getCurrentFolder | python:test(here.is_folderish(), here, here.aq_inner.getParentNode());
+                             multipage parent_folder/@@multipage_view;
+                             is_multipage multipage/isMultipage;">
+
+      <div metal:use-macro="here/document_relateditems/macros/relatedItems">
+        Show related items if they exist
+      </div>
+
+      <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </metal:block>
+
+
+  </body>
+</html>

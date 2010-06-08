@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<object name="portal_skins">
+ <object name="plonearticle" meta_type="Filesystem Directory View"
+    directory="Products.PloneArticle:skins/plonearticle"/>
+ <object name="plonearticle_images" meta_type="Filesystem Directory View"
+    directory="Products.PloneArticle:skins/plonearticle_images"/>
+ <object name="plonearticle_models" meta_type="Filesystem Directory View"
+    directory="Products.PloneArticle:skins/plonearticle_models"/>
+  <skin-path name="*">
+    <layer name="plonearticle_models" insert-after="custom"/>
+    <layer name="plonearticle_images" insert-after="plonearticle_models"/>
+    <layer name="plonearticle" insert-after="plonearticle_images"/>
+  </skin-path>
+</object>

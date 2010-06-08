@@ -1,0 +1,432 @@
+/* <dtml-with base_properties> (do not remove this :)
+<dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
+
+
+.file,
+.link {
+/*  width: 180px; */
+  overflow-x:visible;
+  margin-top:0.5em;
+}
+
+.image a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.image span {
+  font-size: 80%;
+  color: black;
+  font-weight: normal;
+}
+
+.leftPlaced {
+  display: block;
+  width: 80%;
+  margin: 1em auto;
+}
+
+.leftPlaced .block {
+  float: left;
+  margin-right: 10px;
+  width: 300px;
+  height: 3.7em;
+  overflow: hidden;
+}
+
+.rightPlaced .block {
+  float: right;
+  margin-left: 1em;
+}
+
+
+.topNavigation {
+  float: right;
+}
+
+.bottomNavigation {
+  text-align: center;
+}
+
+.imageIconBlock {
+  display:block;
+  float:left;
+  margin-top: 2px;
+  width:20px;
+}
+
+
+/* */
+
+.photosContainer {
+text-align: center !important;
+padding: 10px !important;
+width:130px;
+background: #FFFFFF url('&dtml-portal_url;/photos_back.gif') bottom right no-repeat !important;
+border-left:1px solid #EAEAEA !important;
+border-top:1px solid #EAEAEA !important;
+border-right:none !important;
+border-bottom:none !important;
+}
+
+.imagesContainer  {
+text-align: center !important;
+padding: 10px ;
+width:130px;
+}
+
+.rightBlock {
+float:right;
+margin-left: 10px;
+}
+
+.leftBlock {
+float:left;
+margin-right: 10px;
+}
+
+.singleImage {
+height: 175px;
+width: 143px;
+padding: 20px 6px 0px 9px;
+text-align: center;
+background-image: url('&dtml-portal_url;/photo_back.png');
+background-repeat: no-repeat;
+}
+
+.photoTitle {
+color: &dtml-discreetColor;;
+display: block;
+font-size: &dtml-fontSmallSize;;
+margin-bottom:6px;
+}
+
+.photoBigTitle {
+color: &dtml-discreetColor;;
+display: block;
+font-size: 110%;
+margin-top:8px;
+margin-bottom:15px;
+}
+
+.singleImage .photoTitle {
+font-size: &dtml-fontSmallSize; !important;
+margin:0 !important;
+padding-top:4px;
+padding-left: 5px;
+overflow: hidden;
+width:130px;
+height:20px;
+}
+
+/* centered block for 2 small images in width*/
+.imagesCenterBlock1 {
+padding:10px;
+width: 330px;
+margin: 0 auto;
+}
+
+/* centered block for big images */
+.imagesCenterBlock2 {
+padding:10px;
+width: 550px;
+margin: 0 auto;
+}
+
+/* centered block for 3 small images in width */
+.imagesCenterBlock3 {
+padding:10px;
+width: 480px;
+margin: 0 auto;
+}
+
+/* fix IE float bugs on MSWORD plonearticle previews */
+
+#preview-container {
+background-color: white;
+background-image: none;
+height:auto;
+}
+
+#preview-container p,
+#preview-container h1,
+#preview-container ul,
+#preview-container li {
+position:static;
+height:auto;
+}
+
+#preview-container td {
+height: 1%;
+}
+
+.proxy-description {
+  white-space: normal !important;
+  padding-left: 20px;
+  line-height: normal;
+}
+
+.link a {
+  padding-left: 20px !important;
+}
+
+
+
+
+/* =============== */
+/* model 11 styles */
+/* =============== */
+
+
+
+/* horizontal & centering images inside floating blocks
+   to work in MSIE insert in html a "<span></span>" sequence before centered image */
+
+.pa-img-box {
+    /* overload width/height with associated blocks - see below */
+    width: 200px;
+    height: 150px;
+    text-align: center;
+    overflow: hidden;
+    display: table-cell;
+    vertical-align: middle;
+    white-space:nowrap;
+}
+
+.pa-img-box img {
+    margin: 0;
+    margin-left:-2px;
+}
+
+.pa-img-box * {
+    vertical-align: middle;
+}
+
+/* all IE mac hack */
+
+/*\*//*/
+.pa-img-box {
+    display: block;
+}
+.pa-img-box span {
+    display: inline-block;
+    height: 100%;
+    width: 1px;
+}
+/**/
+
+/* IE6 hack */
+
+*html .pa-img-box span {
+    display: inline-block !important; 
+    height:100%;
+}
+
+*html .pa-img-box img {
+    margin-top:-1px;
+    margin-left:0 !important;
+}
+
+/* IE7 hack */
+
+*:first-child+html .pa-img-box span {
+    display: inline-block !important; 
+    height:100%;
+}
+
+*:first-child+html .pa-img-box img {
+    margin-top:-1px;
+    margin-left:0 !important;
+}
+
+#imagesPlayer {
+  /* float & width defined in template */
+  /* width:auto; */
+  /* float:left; */
+  margin:1em auto;   
+  border:1px solid #8B8D88;
+}
+
+#previewWrapper {
+    /* width is define in template */
+    width:auto;
+    margin:0 auto;
+    padding: 1em 0;
+}
+
+.verticalPlayer  #previewWrapper {
+    /* width is define in template */
+    width:auto;
+    margin: auto 0;
+}
+
+#previewImg {
+    cursor: pointer!important;
+}
+
+#legendWrapper {
+    padding:0.5em;
+    border-top: 1px solid #8B8D88;
+    height: 2em;
+    overflow:hidden;
+}
+
+#paplayerImageZoom {
+   display:block;
+   width: 20px;
+   height:20px;
+   float:right;
+   background: white url(&dtml-portal_url;/preview_icon.png) center center no-repeat !important;   
+   text-decoration: none !important;
+   border: 1px solid black;
+}
+
+#imgTitle {
+   font-weight: bold;
+}
+
+#imgDescription {
+   font-size: 90%;
+   color: #8B8D88;
+}
+
+#thumbsWrapper {
+    border-top:1px solid #8B8D88;
+    padding:0.5em;
+    font-size:85%;
+    text-transform:uppercase;
+    font-weight:bold;
+}
+
+#playerControls {
+    margin: 0 auto;
+}
+
+.playerButtons {
+    text-decoration:none !important;
+    border:1px solid #8B8D88;
+    width: 12px;
+    margin: 0;
+    padding: 0;
+    display:block;
+    float:left;
+    height:36px;
+    margin-top:15px;
+}  
+
+.verticalPlayer  .playerButtons {
+    height: 12px;
+    margin-top: 0;
+    margin-left:15px;
+    float:none;
+    width:36px;
+    margin-top:0;
+}  
+
+#previousImage {    
+    background: #FFF url(&dtml-portal_url;/results-prev-h.gif) top left no-repeat;
+    margin-left: 3px;
+}   
+
+#nextImage {    
+    background: #FFF url(&dtml-portal_url;/results-next-h.gif) top left no-repeat;
+    margin-right: 3px;
+} 
+
+#firstImage {    
+    background: #FFF url(&dtml-portal_url;/results-first-h.gif) top left no-repeat;
+    margin-left: 3px;
+}   
+
+#lastImage {    
+    background: #FFF url(&dtml-portal_url;/results-last-h.gif) top left no-repeat;
+}
+
+.verticalPlayer #previousImage {    
+    background: #FFF url(&dtml-portal_url;/results-prev-v.gif) top left no-repeat;
+    margin-left: 3px;
+}   
+
+.verticalPlayer #nextImage {    
+    background: #FFF url(&dtml-portal_url;/results-next-v.gif) top left no-repeat;
+    margin-right: 3px;
+} 
+
+.verticalPlayer #firstImage {    
+    background: #FFF url(&dtml-portal_url;/results-first-v.gif) top left no-repeat;
+    margin-left: 3px;
+}   
+
+.verticalPlayer #lastImage {    
+    background: #FFF url(&dtml-portal_url;/results-last-v.gif) top left no-repeat;
+}
+
+#thumbs {
+    /* redefined in pa_model.js */
+    width:286px;
+    height:66px;
+    overflow:hidden;
+    float:left;
+    margin: 0 4px;
+}
+
+/* IE hacks */
+*html #thumbs { 
+    position:relative;
+}
+
+*:first-child+html #thumbs { 
+    position:relative;
+}
+
+#thumbs a.selected,
+#thumbs a:hover {
+    border: 1px solid black !important;
+    background-color: white !important;
+}
+
+
+#thumbsInnerWrapper {
+    /* must be as long as possible to contain all floating thumbs
+       redefined in pa_model.js*/
+    width: 10000px;
+    height:auto;
+    /* fix -1px jquery animate bug */
+    margin-left:1px;
+}
+
+.verticalPlayer #thumbsInnerWrapper {
+    /* must be as long as possible to contain all floating thumbs
+       redefined in pa_model.js*/
+    height: 10000px;
+    width:auto;
+    /* fix -1px jquery animate bug */
+    margin-top:1px;
+}
+
+#thumbs .paplayerImages {
+    text-decoration:none !important;
+    display:block;
+    float:left;
+    overflow:hidden;
+    border:1px solid #8B8D88;
+    margin-right:3px;
+    text-align:center;
+}
+
+#thumbs .paplayerImages img {
+    cursor: pointer;
+    margin-left:-2px;
+}
+
+#thumbLegend {
+    height: 1.5em;
+    overflow: hidden;
+    padding: 0.5em;
+    font-size:85%;
+    color: #8B8D88;
+    border-top: 1px solid #8B8D88;
+}
+
+/* </dtml-with> */

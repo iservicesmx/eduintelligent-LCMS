@@ -1,0 +1,23 @@
+/* <dtml-call expr="RESPONSE.setHeader('pragma','no-cache')"> */
+
+
+
+/* 
+Load PloneArticle Edit Widget
+
+*/
+
+div.innerContentEditWidget:load {
+    action-client: plone-initPloneArticleEditWidget;
+}
+
+a#saveKss:click {
+    evt-click-preventdefault: True;
+    action-server: replaceModelContent;
+    replaceModelContent-modelname: nodeAttr("href");
+}
+
+div#pamaincontent:load {
+    action-client: plone-initPloneArticleView;
+}
+

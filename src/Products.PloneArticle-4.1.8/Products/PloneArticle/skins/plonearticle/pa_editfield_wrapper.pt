@@ -1,0 +1,31 @@
+<tal:block xmlns:tal="http://xml.zope.org/namespaces/tal"
+           xmlns:metal="http://xml.zope.org/namespaces/metal"
+           i18n:domain="plone">
+
+  <tal:defines define="mode string:edit;
+                       fieldName request/fieldName;
+                       field python:here.getField(fieldName);
+                       widget nocall:field/widget;
+                       errors python:{};
+                       accessor python:field.getAccessor(here);
+                       template_id request/paedittemplate;
+                       containingMacro python:path('here/%s/macros/edit' %template_id);
+                       widgetMacro python: field.widget('edit', context);
+                       ">
+
+    <metal:block use-macro="here/global_defines/macros/defines"/>  
+    <!-- ajax http headers -->
+    <metal:block tal:define="charset site_properties/default_charset|string:utf-8;
+                             dummy python:request.RESPONSE.setHeader('Content-Type', 'text/html;;charset=%s' % charset)" />
+    <metal:block tal:define="dummy python:request.RESPONSE.setHeader('Expires', 'Sat, 1 Jan 2000 00:00:00 GMT')" />
+    <metal:block tal:define="dummy python:request.RESPONSE.setHeader('Last-Modified', 'Sat, 1 Jan 2000 00:00:00 GMT')" />
+    <metal:block tal:define="dummy python:request.RESPONSE.setHeader('Cache-control', 'max-age=0,s-maxage=0,must-revalidate')" />      
+    
+    <metal:containingMacro use-macro="containingMacro"><metal:insideSlot fill-slot="inside">
+          <metal:editWidget use-macro="widgetMacro" />
+    </metal:insideSlot></metal:containingMacro>
+    
+    
+  </tal:defines>
+</tal:block>
+ 

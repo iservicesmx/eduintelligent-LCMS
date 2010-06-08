@@ -1,0 +1,121 @@
+# German translation
+# Andreas Kaiser <kaiser@xo7.de>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: PloneArticle v4\n"
+"POT-Creation-Date: 2006-08-25 13:49+0000\n"
+"PO-Revision-Date: 2007-03-15 17:23+0200\n"
+"Last-Translator: Andreas Kaiser <kaiser@xo7.de>\n"
+"Language-Team: GERMAN <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: de\n"
+"Language-Name: German\n"
+"Preferred-Encodings: latin1 utf-8\n"
+"Domain: plone\n"
+"X-Is-Fallback-For: de-de de-at de-ch\n"
+
+msgid "description_edit_plonearticle"
+msgstr "Ein Dokument, das Bilder, Dateianhänge und Links enthalten kann."
+
+msgid "description_edit_multipage"
+msgstr "Ein mehrseiter Artikel mit optionalem Inhaltsverzeichnis."
+
+msgid "models"
+msgstr "Vorlagen"
+
+msgid "files"
+msgstr "Dateianhänge"
+
+msgid "images"
+msgstr "Bilder"
+
+msgid "links"
+msgstr "Links"
+
+msgid "default"
+msgstr "Standard"
+
+msgid "Files"
+msgstr "Dateianhänge"
+
+msgid "Images"
+msgstr "Bilder"
+
+msgid "Links"
+msgstr "Links"
+
+msgid "PloneArticle preferences"
+msgstr "PloneArticle Einstellungen"
+
+msgid  "Templates"
+msgstr "Vorlagen"
+
+#. Default: "File Content Inner Proxy"
+#: portal type title of type with description Proxy implementing IFileContent. It means this proxy has a getFile     method.        getFile returns attached file by default if existing otherwise returns    the referenced content.
+msgid "File Content Inner Proxy"
+msgstr ""
+
+#. Default: "Image Content Inner Proxy"
+#: portal type title of type with description Proxy implementing IImageContent. It means this proxy has a getImage     method.        getImage returns attached image by default if existing otherwise returns    the referenced content.
+msgid "Image Content Inner Proxy"
+msgstr ""
+
+#. Default: "Inner Content Container"
+#: portal type title of type with description This folder is a container of inner content objects
+msgid "Inner Content Container"
+msgstr ""
+
+#. Default: "Link Content Inner Proxy"
+#: portal type title of type with description Proxy implementing IATLink. It means this proxy has a remoteUrl    method.        remoteUrl returns attached link by default if existing otherwise returns    the referenced content.
+msgid "Link Content Inner Proxy"
+msgstr ""
+
+#. Default: "Lock (Currently not locked)"
+#: action_icon id lock.gif - category plone
+#: type action defined on File
+msgid "Lock (Currently not locked)"
+msgstr "Sperren (derzeit nicht gesperrt)"
+
+#. Default: "Multipage article"
+#: portal type title of type with description
+msgid "Multipage article"
+msgstr "Mehrseitiger Artikel"
+
+#. Default: "Plone Article Tool"
+#: portal type title of type with description Tool for PloneArticle
+msgid "Plone Article Tool"
+msgstr ""
+
+#. Default: "Proxy implementing IATLink. It means this proxy has a remoteUrl    method.        remoteUrl returns attached link by default if existing otherwise returns    the referenced content."
+#: portal type description of type with title Link Content Inner Proxy
+msgid "Proxy implementing IATLink. It means this proxy has a remoteUrl    method.        remoteUrl returns attached link by default if existing otherwise returns    the referenced content."
+msgstr ""
+
+#. Default: "Proxy implementing IFileContent. It means this proxy has a getFile     method.        getFile returns attached file by default if existing otherwise returns    the referenced content."
+#: portal type description of type with title File Content Inner Proxy
+msgid "Proxy implementing IFileContent. It means this proxy has a getFile     method.        getFile returns attached file by default if existing otherwise returns    the referenced content."
+msgstr ""
+
+#. Default: "Proxy implementing IImageContent. It means this proxy has a getImage     method.        getImage returns attached image by default if existing otherwise returns    the referenced content."
+#: portal type description of type with title Image Content Inner Proxy
+msgid "Proxy implementing IImageContent. It means this proxy has a getImage     method.        getImage returns attached image by default if existing otherwise returns    the referenced content."
+msgstr ""
+
+#. Default: "This folder is a container of inner content objects"
+#: portal type description of type with title Inner Content Container
+msgid "This folder is a container of inner content objects"
+msgstr ""
+
+#. Default: "Tool for PloneArticle"
+#: portal type description of type with title Plone Article Tool
+msgid "Tool for PloneArticle"
+msgstr ""
+
+#. Default: "Unlock (Currently locked)"
+#: action_icon id unlock.gif - category plone
+#: type action defined on File
+msgid "Unlock (Currently locked)"
+msgstr "Entsperren (derzeit gesperrt)"

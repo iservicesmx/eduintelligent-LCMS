@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plonearticle">
+
+  <body>
+    <div metal:fill-slot="main" id="pacontent">
+       <div metal:define-macro="main" id="pamaincontent"
+            tal:define="view context/@@pa_model8_view;
+                        base_macros nocall:here/pa_model_macros/macros;">
+          <!-- used for kss do not remove -->
+          <input type="hidden" id="model-id" value="pa_model8" />
+
+          <metal:block use-macro="base_macros/header" />
+
+
+
+            <fieldset style="clear: left; float:left; margin: 0 15px 0 0 !important; width:200px;"
+                      tal:define="proxies python:here.getFiles(filtered=True)"
+                      tal:condition="proxies">
+              <legend i18n:translate="legend_files">Files</legend>
+              <tal:block tal:repeat="proxy proxies">
+                <metal:macro use-macro="base_macros/file" />
+              </tal:block>
+            </fieldset>
+            
+            <fieldset style="clear: left; float:left; margin: 10px 15px 10px 0 !important; width:200px;"
+                      tal:define="proxies here/getLinks"
+                      tal:condition="proxies">
+              <legend i18n:translate="legend_files">Links</legend>
+              <div class="link"
+                   tal:repeat="proxy proxies">
+                <metal:macro use-macro="base_macros/link" />
+              </div>
+            </fieldset>            
+            
+          <metal:block use-macro="base_macros/description" />            
+
+          <metal:block use-macro="base_macros/body" />
+
+          <div class="visualClear"><!-- --></div>
+
+          <div class="imagesCenterBlock2 photosContainer"
+               tal:define="proxy view/getFirstImage;"
+               tal:condition="nocall:proxy">
+              <metal:macro use-macro="base_macros/bigImage" />
+          </div>
+
+          <div class="visualClear"><!-- --></div>
+          <div tal:define="proxies view/getOtherImages;"
+               class="imagesCenterBlock3"
+               tal:condition="proxies">
+            <div style="float:left"
+                 tal:repeat="proxy proxies">
+                <div class="singleImage">
+                   <metal:macro use-macro="base_macros/image" />
+                </div>
+            </div>
+          </div>
+          <div class="visualClear"><!-- --></div>
+
+          <div class="visualClear"><!-- --></div>
+
+          <metal:block use-macro="base_macros/footer" />
+        </div>
+    </div>
+  </body>
+</html>

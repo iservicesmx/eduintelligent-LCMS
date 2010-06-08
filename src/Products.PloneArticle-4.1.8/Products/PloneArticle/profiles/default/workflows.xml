@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<object name="portal_workflow" meta_type="Plone Workflow Tool">
+
+  <bindings>
+
+    <type type_id="FileInnerContentProxy" />
+    <type type_id="ImageInnerContentProxy"/>
+    <type type_id="InnerContentContainer"/>
+    <type type_id="LinkInnerContentProxy"/>
+    <type type_id="PloneArticleTool"/>
+
+  </bindings>
+</object>

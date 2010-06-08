@@ -1,0 +1,49 @@
+Name: Insert an image inside an article with Kupu
+
+Abstract:
+  The user edit an article on the website and adds an image already on the
+  server.
+
+Preconditions:
+  - the user has the right to edit an article
+  - the user has some images on the server (s)he can use
+
+Trigger: The user wants to add an image in the text flow of the article.
+
+Main Course:
+ 1. in a Plone directory, the user choose the article he wants to modify to
+    display it
+ 2. the system show this article and adds the content management interface
+ 3. the user clicks* on the "modify" tab of this interface
+ 4. the system shows the article edit interface
+ 5. the user browses the article in the editor and locates the place (s)he wants
+    to place his/her image
+ 6. the user clicks* on the "insert image" icon
+ 7. the system shows him/her an internal browsing interface
+ 8. the user selects his/her article
+ 9. the user selects "images"
+10. the user selects one of the images of the article
+11. the user validates his/her selection by clicking* "ok"
+12. the system shows the image included in the text flow in the editor
+13. the user submits the form by clicking on "save"
+14. the system displays the modified article with a banner showing that
+    modifications have been saved
+
+* or any other appropriate method to generate this action.
+
+Alternatives courses:
+To add an image which is not in the article:
+ 8. the user selects an image of the site
+ 9. go to step 11 of the main course
+
+To add an image which is in an unknow part of the site
+ 8. the user enters the image's name (s)he's looking for in the search box
+ 9. the system displays the result list in the browsing panel
+10. th user selects one of the search result
+11. go to the step 11 of the main course
+
+Comments:
+  None
+
+Metadata:
+$Id$

@@ -1,0 +1,145 @@
+<tal:ajax_encoding define="dummy python:request.RESPONSE.setHeader('Content-Type', 'text/plain;; charset=%s' % here.plone_utils.getSiteEncoding());">
+<form id="" metal:define-macro="form"
+     tal:define="fieldName fieldName|request/fieldName|string:;
+                 field field | python: fieldName and here.getField(fieldName) or None;"
+     tal:condition="python: field"
+     tal:attributes="id string:${fieldName}-form-popup;"
+     i18n:domain="plone">
+
+  <table class="smartlistContainer" width="100%"
+         tal:define="Iterator Iterator | python:modules['Products.CMFPlone'].IndexIterator;
+                     tabindex tabindex | python: Iterator(pos=32000, mainSlot=False);
+                     normalizeString normalizeString | nocall:here/plone_utils/normalizeString;
+                     here_url here_url | here/absolute_url;
+                     search_criterias_name string:${fieldName}_search_criterias;
+                     search_criterias python: request.get(search_criterias_name, field.getSearchCriterias(here));
+                     widget python: field.widget;
+                     edit_accessor python:field and field.getEditAccessor(here);
+                     value python: edit_accessor and edit_accessor();">
+    <tr>
+      <td id="" class="smartlistSearchPanel" width="50%"
+          tal:define="addedCriterias python:widget.getAddedCriterias(search_criterias);"
+          tal:attributes="id string:${fieldName}-search-panel;">
+
+        <h2 i18n:translate="label_search">Search</h2>
+        
+        <div id="smartlist-search-form"
+             tal:attributes="id string:${fieldName}-search-form;">
+          <div class="field">
+            <label for="SearchableText">Text</label>
+            <input type="text"
+                   id="SearchableText"
+                   name="smartlist_search_criterias.SearchableText:record"
+                   size="30"
+                   tal:attributes="tabindex tabindex/next;
+                                   value search_criterias/SearchableText|nothing;
+                                   name string:${fieldName}_search_criterias.SearchableText:record"
+                   />
+          </div>
+
+          <div class="field">
+            <label for="portal_type">Types</label>
+
+            <div style="float:left; margin-right: 2em; width: 29%"
+                 tal:define="typeLists python:widget.getSearchablePortalTypes(field, here);
+                             selectedTypes python:widget.getSelectedTypes(search_criterias);"
+                 tal:repeat="sublist typeLists">
+              <ul>
+                <li tal:repeat="ptypeInfo sublist">
+                  <input class="noborder"
+                         type="checkbox"
+                         name="search_criterias_portal_type:list"
+                         tal:attributes="tabindex tabindex/next;
+                                         name string:${fieldName}_search_criterias.portal_type:record:list;
+                                         value ptypeInfo/getId;
+                                         id python:normalizeString(ptypeInfo.getId());
+                                         checked python:test(ptypeInfo.getId() in selectedTypes,'checked','');" />
+                  <label for=""
+                         i18n:translate=""
+                         tal:attributes="for python:normalizeString(ptypeInfo.getId())"
+                         tal:content="ptypeInfo/Title"
+                         />
+                </li>
+              </ul>
+            </div>                
+          </div>
+
+          <div class="visualClear"><!-- --></div>
+
+          <tal:sup_criteria tal:repeat="criteria addedCriterias"><tal:def define="selected_values python: search_criterias[criteria];">
+            <metal:added_criteria use-macro="here/smartListAddCriteria/macros/widget" />
+          </tal:def></tal:sup_criteria>
+
+        </div>
+
+        <div class="field">
+          <select tal:define="addableCriterias python:widget.getAddableCriterias(field, here, search_criterias);"
+                  tal:attributes="id string:${fieldName}-add-criterias;
+                                  onChange string:javascript:smartlist_addCriteria(this.options[this.selectedIndex], '${here_url}', '${fieldName}');">
+            <option></option>
+            <tal:loop tal:repeat="criteria addableCriterias">
+              <option tal:content="criteria"
+                      tal:attributes="value criteria;
+                                      disabled python: criteria in addedCriterias;">Catalog index</option>
+            </tal:loop>
+          </select>
+        </div>
+
+
+        <div class="formControls">
+          <input type="button" class="searchButton"
+                 tabindex=""
+                 value="Search"
+                 onClick=""
+                 tal:define="obj_path python: '/'.join(here.getPhysicalPath());"
+                 tal:attributes="tabindex tabindex/next;
+                                 onClick string:javascript:smartlist_search('${here_url}', '${obj_path}', '${fieldName}', '${field/getName}');"
+                 i18n:attributes="value label_search;"
+                 />
+        </div>
+        
+      </td>
+
+      <td id="" class="smartlistResultsPanel" width="50%">
+        <h2 i18n:translate="heading_search_results">Search results</h2>
+
+        <div class="smartlistSearchResults">
+          <input type="checkbox" name="smartlist_select_all" class="noborder"
+                 onClick="javascript:toggleSelect(this, 'portal_type:list', true);"
+                 tal:attributes="name string:${fieldName}_select_all;
+                                 id string:${fieldName}_select_all;
+                                 onClick string:javascript:toggleSelect(this, '${fieldName}_ref_uids:list', true);" />
+
+          <label for="smartlist_select_all"
+                 tal:attributes="for string:${fieldName}_select_all;"
+                 i18n:translate="label_toggle">Select All/None</label>
+
+          <ul tal:attributes="id string:${fieldName}-search-results-list;">
+            <metal:search_results use-macro="here/smartListSearch/macros/search_results" />
+          </ul>
+        </div>
+
+
+        <input type="checkbox" name="smartlist_auto_reference:bool" value="#"
+               onClick="javascript:toggleSelect(this, 'smartlist_ref_uids:list', true);"
+               tal:attributes="tabindex tabindex/next;
+                               name string:${fieldName}_auto_reference:bool;
+                               checked python: field.getAutoReference(here);" />
+        <label for="" tal:attributes="for string:${fieldName}_auto_reference;">Associate automatically</label>
+
+        <div class="formControls">
+
+          <input type="button" name="form.button.associate" class="context" value="Associate" onClick="#"
+                 i18n:attributes="value label_associate;"
+                 tal:attributes="onClick string:javascript:smartList.popupSetFormValues(this.form, '${fieldName}');"/>
+
+          <input type="button" name="form.button.cancel" class="standalone" value="Cancel"
+                 onClick="javascript:TB_remove();"
+                 i18n:attributes="value label_cancel;" />
+        </div>
+
+      </td>
+    </tr>
+  </table>
+</form>
+</tal:ajax_encoding>

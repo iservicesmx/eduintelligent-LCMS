@@ -1,0 +1,81 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PloneArticle v4\n"
+"POT-Creation-Date: 2006-08-25 13:49+0000\n"
+"PO-Revision-Date: 2007-02-22 16:10+0200\n"
+"Last-Translator: Érico Andrei <erico@simplesconsultoria.com.br>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: pt-BR\n"
+"Language-Name: Portugês do Brasil\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plonearticle-model\n"
+
+msgid "untitled_model"
+msgstr "modelo sem nome"
+
+msgid "no_description_available"
+msgstr "nenhuma descrição disponível"
+
+msgid "model1_title"
+msgstr "Documentação"
+
+msgid "model1_description"
+msgstr "Imagens são exibidas à direita, enquanto anexos são exibidos no rodapé da página. Este layout se adeqüa perfeitamente para documentações."
+
+msgid "model2_title"
+msgstr "Formato Jornal"
+
+msgid "model2_description"
+msgstr "A primeira imagem é exibida junto ao ccabeçalho. As outras imagens são exibidas à direita, enquanto os anexos são exibidos no rodapé da página. Este layout pode ser utilizado para artigos criados por usuários finais."
+
+msgid "model3_title"
+msgstr "Pequenas imagens"
+
+msgid "model3_description"
+msgstr "Imagens reduzidas são exibidas após o corpo do artigo."
+
+msgid "model4_title"
+msgstr "Grandes imagens"
+
+msgid "model4_description"
+msgstr "Imagens são exibidas após o corpo do artigo."
+
+msgid "model5_title"
+msgstr "Imagens pequenas, separadas por texto"
+
+msgid "model5_description"
+msgstr "As duas primeiras imagens, em vero areduzida, são exibidas logo após a descrição do artigo. Todas as outras imagens utilizadas são exibidas ao final do corpo, alinhadas duas a duas."
+
+msgid "model6_title"
+msgstr "Imagens grandes, separadas por texto"
+
+msgid "model6_description"
+msgstr "A primeira imagem é exibida logo após a descrição do artigo. Todas as outras imagens utilizadas são exibidas ao final do corpo."
+
+msgid "model7_title"
+msgstr "Uma imagem grande e imagens menores"
+
+msgid "model7_description"
+msgstr "Uma imagem é exibida logo após a descrição do artigo. Todas as outras imagens são exibidas, em versões reduzidas, ao final do artigo."
+
+msgid "model8_title"
+msgstr "Uma imagem grande, imagens menores e anexos laterais"
+
+msgid "model8_description"
+msgstr "Uma imagem é exibida logo após a descrição do artigo. Todas as outras imagens são exibidas, em versões reduzidas, ao final do artigo. Os anexos são exibidos à esquerda do artigo."
+
+msgid "model9_title"
+msgstr "Imagens, ícones, arquivos e links no rodapé do artigo"
+
+msgid "model9_description"
+msgstr "Todas as imagens, anexos, ícones e links são exibidos no rodapé do artigo."
+
+msgid "model10_title"
+msgstr "Imagens recortadas"
+
+msgid "model10_description"
+msgstr "As quatro primeiras imagens são exibidas à esquerda do artigo e cortadas em um quadrado de 50x50 pixels. A primeira imagem é recortada na dimensão de 250x250 pixels. Todas as outras imagens são exibidas ao final do artigo como ícones."

@@ -1,0 +1,10 @@
+[default]
+title = Models management
+
+[security]
+View=0:Manager
+
+[validators]
+
+[actions]
+action.success = traverse_to:string:pa_manage_attachments_options

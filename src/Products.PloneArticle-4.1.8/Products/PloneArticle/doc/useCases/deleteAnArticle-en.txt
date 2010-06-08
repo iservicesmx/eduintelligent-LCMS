@@ -1,0 +1,29 @@
+Name: Delete an article
+
+Abstract: The user delete an article on the site. This one is no more visible by
+  others visitors.
+
+Preconditions:
+  - the user has the right to delete an article
+  - an article is on the site
+
+Trigers: the user wants to delete an already existing article
+
+Main course:
+ 1. in a Plone site, the user navigate the article to delete
+ 2. the system displays this article with the content administration interface
+ 3. the user choose the "delete" option of the "actions" menu
+ 4. the system ask for a conformation
+ 5. the user validate this confirmation request
+ 6. the system displays the element that was containing the article (the parent
+    directory for example)
+
+Alternative course:
+ When the user cancels the operation:
+ 5. go to step 2, or stop the course.
+
+Comments :
+ None
+
+Metadata:
+$Id$

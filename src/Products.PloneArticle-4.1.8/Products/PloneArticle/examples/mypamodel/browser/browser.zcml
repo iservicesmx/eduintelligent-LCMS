@@ -1,0 +1,30 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:five="http://namespaces.zope.org/five"
+           xmlns:browser="http://namespaces.zope.org/browser">
+
+  <!--
+      The model zcml declaration is built under these rules:
+
+      <browser:page
+      for="Products.PloneArticle.interface.IPloneArticle"
+      name= <- view available from templates with tal:define="view here/@@name"
+      class= <- dotted path to your BrowserView class
+      permission="zope.Public"
+      allowed_interface= <- dotted name to interfaces that expose allowed APIs to
+                            templates. Must include the standard PloneArticle view
+                            interface as below.
+      allowed_interface="Products.PloneArticle.browser.interface.IPloneArticleModelView
+                        .interface.IMyPloneArticleView"
+                        />
+    -->
+
+  <browser:page
+     for="Products.PloneArticle.interface.IPloneArticle"
+     name="my_pa_model_view"
+     class=".browser.article.PAViewWithAuthor"
+     permission="zope.Public"
+     allowed_interface="Products.PloneArticle.browser.interface.IPloneArticleModelView
+                        .browser.interface.IPAViewWithAuthor"
+     />
+
+</configure>

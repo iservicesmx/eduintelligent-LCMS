@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<import-steps>
+ <import-step id="plonearticle-tool" version="4.1.5"
+	      handler="Products.PloneArticle.setuphandlers.setupTool"
+              title="PloneArticleTool setup">
+    PloneArticleTool installation step.
+ </import-step>
+ <import-step id="plonearticle-modifier" version="4.1.5"
+              handler="Products.PloneArticle.setuphandlers.setupModifier"
+              title="PloneArticleTool for CMFEditions setup">
+    PloneArticle for CMFEditions installation step.
+ </import-step>
+ <import-step id="plonearticle-kupu" version="4.1.5"
+              handler="Products.PloneArticle.setuphandlers.setupKupu"
+              title="PloneArticle kupu setup">
+    <dependency step="typeinfo" />
+    PloneArticle kupu installation step.
+ </import-step>
+ <import-step id="plonearticle-fti" version="4.1.5"
+              handler="Products.PloneArticle.setuphandlers.setupFTI"
+              title="PloneArticle FTI tweaking">
+    <dependency step="typeinfo" />
+    PloneArticle FTI extra installation step.
+ </import-step>
+</import-steps>

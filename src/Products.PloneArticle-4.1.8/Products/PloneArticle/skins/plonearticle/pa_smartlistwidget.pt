@@ -1,0 +1,45 @@
+<html>  
+  <head><title></title></head>
+
+  <body>
+
+    <!-- SmartList Widget -->
+
+    <metal:define define-macro="view">
+
+      <ul tal:define="target_objects accessor;">
+        <li tal:repeat="obj target_objects">
+          <a href="#"
+             tal:attributes="href obj/absolute_url;
+                             class python:obj.portal_type.replace(' ', '_')"
+             tal:content="python:obj.Title() or obj.absolute_url(relative=1)">
+            Target Title
+          </a>
+        </li>
+      </ul>
+
+    </metal:define>
+
+    <metal:edit define-macro="edit">
+      <metal:use use-macro="field_macro | here/widgets/field/macros/edit">
+
+        <tal:body metal:fill-slot="widget_body">
+          
+          <input type="button" class="thickbox" tabindex=""
+                 value="Smart references edit..."
+                 tal:attributes="tabindex tabindex/next;
+                                 src string:${here_url}/smartListForm?fieldName=${fieldName};" />
+
+          <div id="" class="hiddenStructure" tal:attributes="id string:${fieldName}-values">
+          </div>
+
+        </tal:body>
+      </metal:use>
+    </metal:edit>
+
+    <metal:define define-macro="search">
+    </metal:define>
+
+  </body>
+
+</html>

@@ -1,0 +1,523 @@
+/* 
+** <dtml-with base_properties>
+** <dtml-call "REQUEST.set('portal_url', portal_url())">
+*/
+
+.popup {
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  padding:0 !important;
+  z-index: 1000;
+}
+
+.popup .overlay {
+  background-color: #AAA;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  -khtml-opacity: 0.5;  
+}
+
+.popup .window {
+  position: absolute;
+}
+
+
+
+#plone-browser .window {
+  left: 100px; top: 100px;
+  width: 450px;
+}
+
+#plone-browser-tab {
+  position:absolute;
+  left: 31px;
+  top: -22px;
+  height: 25px;
+  padding: 5px 44px 0 0px;
+  cursor: move;
+  background: transparent url(&dtml-portal_url;/window_tab_bg.png) top right no-repeat;
+}
+
+#plone-browser-border-top {
+  position:absolute;
+  left: 0;
+  width: 100%;
+  top: 5px;
+  height: 22px;
+  background: transparent url(&dtml-portal_url;/window_border_top.png) top left repeat-x;
+}
+
+
+#plone-browser-corner-left {
+  position:absolute;
+  left:0;
+  height:22px;
+  width:31px;
+  background: transparent url(&dtml-portal_url;/window_corner_left.png) top left no-repeat;
+}
+
+
+#plone-browser-corner-resize {
+  position:absolute;
+  top: 100%;
+  left: 100%;
+  margin-top: -15px;
+  margin-left: -15px;
+  width: 15px;
+  height: 15px;
+  cursor: se-resize;
+  background: transparent url(&dtml-portal_url;/window_resize.png) bottom right no-repeat;
+}
+
+
+#plone-browser-border-top,
+#plone-browser-corner-left {
+ top: -22px;
+}
+
+
+#plone-browser div.browserRelativize {
+  position:relative;
+  width: 100%;
+  top:0;
+  left:0;
+  margin:0;
+  padding:0;
+  background: white ;
+}
+
+#plone-browser-menu {
+  background-color: #F0EEEE;
+  padding: 2px 12px 5px 12px;
+  height: 1%;
+  margin:0;
+  margin-bottom: 2px;
+  overflow-x: hidden;  
+  overflow-y: hidden;
+}
+
+#browser-crumbs {
+  margin: 0 1em 2px 1em;
+  height: 2em;
+  padding: 2px;
+  line-height: 2em;
+}
+
+#plone-browser-body {
+  background-color: #F1F1E3;
+  margin: 0 12px;
+  padding:5px;
+  overflow:auto;
+  border: 1px solid #000000;
+}
+
+#box-edit-browser-menu {
+  background: transparent url(&dtml-portal_url;/menu_browser.png) center left no-repeat;
+  padding: 2px 0 2px 19px;
+}
+
+#plone-browser-tab-menu {
+  white-space: nowrap;
+  background: transparent url(&dtml-portal_url;/menu_browser.png) center left no-repeat;
+  padding: 2px 0 3px 19px;
+  margin-top: -2px;
+  color:&dtml-fontColor;;
+  font-size: &dtml-fontSmallSize;;
+  font-weight: bold;
+}
+
+#plone-browser-body .floatContainer {
+  border: none;
+  margin: 0;
+  padding:0;
+  float: left;
+  width: 120px;
+  height: 145px;
+  font-size: 11px;
+  background:none;
+  background-color:transparent;
+}
+
+
+
+.floatContainer a {
+  display: block;
+  border: 1px solid #F1F1E3;
+  margin: 2px 2px 0 0;
+  padding:2px;
+  text-align: center;
+  text-decoration: none;
+  width:110px;
+  height:130px;
+  overflow: hidden;
+}
+
+.floatContainer .fileContainer img,
+.floatContainer .linkContainer img {
+  margin-top:30px;
+  margin-bottom:20px;
+}
+
+.floatContainer a:hover .title{
+  text-decoration: underline;
+}
+
+.floatContainer a:hover{
+  border: 1px solid #000000;
+  background-color: #FFFFFF;
+}
+
+.floatContainer.portrait img {
+  padding:0;
+  margin:0;
+  border:none;
+}
+
+.floatContainer.landscape img {
+  padding:0;
+  margin-top:15px;
+  margin-bottom:15px;
+  border:none;
+}
+
+.floatContainer .title {
+  width:100%;
+  padding-top:5px;
+  text-align:center;
+  cursor: pointer !important;
+}
+
+.floatContainer .folder_icon_gif {
+  display:none;
+}
+
+.relContainer {
+  clear:both;
+  margin-top: -138px;
+  margin-left: 50px;
+  border: 1px solid #AAAAAA;
+  background: #FFFFFF url(&dtml-portal_url;/loupe.png) top left no-repeat;
+  opacity: 0.8;
+  -moz-opacity: 0.8;
+  -khtml-opacity: 0.8;
+  filter:alpha(opacity=80);
+  height: 17px;
+  width: 16px;
+  overflow:hidden;
+  z-index:1500;
+}
+
+.landscape .relContainer{
+  margin-top: -125px;
+  margin-left: 50px;
+}
+
+.folder .relContainer {
+  background: transparent url(&dtml-portal_url;/link_folder.png) top left no-repeat;
+  margin-top : -55px;
+}
+
+a.loupe,
+a.loupe:hover,
+a.folderSelect,
+a.folderSelect:hover {
+  background-color:transparent !important;
+  border:none !important;
+  display:block;
+  padding-left: 15px;
+  line-height: 17px;
+  height:auto;
+  text-decoration: none;
+  z-index:1500;
+}
+
+/*IE fixes for loupe div */
+
+*+html, *html .loupe,
+*+html, *html .folderSelect {
+  height: 17px;
+}
+
+*+html, *html .portrait .relContainer{
+  margin-left: 0px;
+}
+
+.floatContainer .linkFolder,
+.floatContainer .fileFolder,
+.floatContainer .imageFolder {
+  width: 110px;
+  height: 100px;
+  cursor: pointer;
+  background: transparent url(&dtml-portal_url;/folder_image.png) center no-repeat;
+  overflow: hidden;
+}
+
+.floatContainer .linkFolder img,
+.floatContainer .fileFolder img,
+.floatContainer .imageFolder img {
+  padding-top: 40px;
+  padding-left: 30px;
+  width: 16px;
+  height: 16px;
+}
+
+.floatContainer a.imageContainer{
+  display: block;
+  border: 1px solid #F1F1E3;
+  margin: 2px 2px 0 0;
+  padding:2px;
+  text-align: center;
+  text-decoration: none;
+  width:110px;
+  height:130px;
+  overflow: hidden;
+}
+
+.floatContainer a.imageContainer:hover .title{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.floatContainer a.imageContainer:hover{
+  border: 1px solid #000000;
+  background-color: #FFFFFF;
+}
+
+.floatContainer div.portrait img {
+  padding:0;
+  margin:0;
+  border:none;
+}
+
+.floatContainer div.landscape img {
+  padding:0;
+  margin-top:15px;
+  margin-bottom:15px;
+  border:none;
+}
+
+
+.listContainer {
+  background-color: transparent !important;
+}
+
+/* IE6 fix */
+*html .listContainer {
+  height:1% !important;
+}
+
+/* IE7 fix */
+*+html .listContainer {
+  min-height:1% ;
+}
+
+.listContainer .linkFolder,
+.listContainer .fileFolder,
+.listContainer .imageFolder {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background: url(&dtml-portal_url;/folder_explore.png) 5px 5px no-repeat;
+  padding-left: 18px;
+}
+
+.listContainer .fileContainer,
+.listContainer .imageContainer {
+  padding-left: 18px;
+}
+
+.listContainer img {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.listContainer .title {
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.listContainer * {
+  float: left;
+}
+
+.listContainer .legend {
+  float: right;
+  line-height: 20px;
+  padding-left: 20px;
+}
+
+.listContainer a:hover {
+  background-color: #FFFFFF;
+}
+
+.listContainer .relContainer {
+  display: block;
+  clear:both !important;
+  border: none !important;
+  background-color: transparent !important;
+  z-index:20;
+  margin-top: -18px !important;
+  margin-left: 14px !important;
+  opacity: 1;
+  -moz-opacity: 1;
+  -khtml-opacity: 1;
+  filter:alpha(opacity=100);  
+  background: transparent !important;
+  width: 22px;
+}
+
+*html .listContainer .relContainer {
+  margin-left: 0 !important; 
+  padding-left: 14px !important;
+}
+
+.listContainer .relContainer a { 
+  background: transparent url(&dtml-portal_url;/link_folder_out.png) top left no-repeat !important;
+  width: 22px;
+}
+
+.listContainer .relContainer a:hover { 
+  background-image: url(&dtml-portal_url;/link_folder_hover.png) !important;
+  margin-top:1px;
+}
+
+.portrait_icon .relContainer,
+.landscape_icon .relContainer,
+.portrait_icon .relContainer a,
+.landscape_icon .relContainer a {
+  display: none !important;
+}
+
+a.fileView {
+  background: transparent url(&dtml-portal_url;/browser_pres_files.png) top left no-repeat;
+
+}
+
+a.imageView {
+  background: transparent url(&dtml-portal_url;/browser_pres_images.png) top left no-repeat;
+}
+
+#plone-browser input {
+  height: 13px;
+  line-height: 11px;
+  border-color: #BABABA;
+  font-size: 10px;
+}
+
+#plone-browser input.searchBrowserButton {
+  background: transparent url(&dtml-portal_url;/search_icon.gif) 2px 1px no-repeat;
+  cursor: pointer;
+  height: 17px;
+  padding: 1px 2px 1px 15px;
+}
+
+#plone-browser select {
+  min-height: 15px;
+  border-color: #BABABA;
+  line-height: 11px;
+  font-size: 10px;
+}
+
+*html #plone-browser select {
+  height: 15px;
+}
+
+
+a.folderUp {
+  line-height: 18px;
+  font-size:13px;
+  padding-left: 8px;
+  background: transparent url(&dtml-portal_url;/folder_up.png) top left no-repeat;
+  text-decoration: none;
+}
+
+
+#plone-browser-body .floatContainer {
+  border: none;
+  margin: 0;
+  padding:0;
+  float: left;
+  width: 120px;
+  height: 145px;
+  font-size: 11px;
+  background:none;
+  background-color:transparent;
+}
+
+
+
+#plone-browser-menu .closeWindow, 
+#plone-browser-menu .maximize {
+  float: right;
+  display:block;
+  width:  18px;
+  height: 18px;
+}
+#plone-browser-menu .closeWindow {
+  background: transparent url(&dtml-portal_url;/close_icon.gif) 50% 50% no-repeat;
+}
+#plone-browser-menu .maximize {
+  background: transparent url(&dtml-portal_url;/maximize.gif) 50% 50% no-repeat;
+}
+
+#menuViews a {
+  border: 1px solid #FFFFFF;
+  text-decoration:none;
+  display: block;
+  float:  left;
+  height: 18px;
+  width:  18px;
+  margin: 0 2px;
+}
+
+#menuViews a.selected {
+  border: 1px solid black;
+}
+#menuViews a:hover {
+  border: 1px solid &dtml-globalBorderColor;;
+}
+
+#plone-browser-menu,
+#browser-crumbs,
+#plone-browser-body {
+  clear: both;
+}
+
+#searchBrowserBox {
+  float: left;
+  padding-right: 15px;
+  padding-top: 2px;
+}
+
+.statusBar {
+  padding: 7px 12px;
+  height: 30px;
+  line-height: 20px;
+}
+
+
+#msg-loading {
+  padding-left: 22px;
+  font-weight:bold;
+  background: transparent url(&dtml-portal_url;/small_loading.gif) top left no-repeat;
+}
+
+#msg-loading,
+#msg-done {
+  height:18px;
+  display: none;
+}
+
+#start-refresh {
+  display:none;
+}
+
+
+
+
+/*
+** </dtml-with>
+*/

@@ -1,0 +1,40 @@
+Nom : Add a new field
+
+Abstract: the Plone Article user creates a new product based on Plone Article,
+  and adds to it a new field containing a simple value.
+
+Preconditions:
+ - the user has write access to the Zope instance Product directory
+ - the user knows the Python programming language
+ - the user knows the internals of Zope and Plone
+
+Trigger: the Plone Article User wants to add a new simple field.
+
+Main course:
+ 1. the user creates a new product skeleton (__init__.py, etc) in the Zope
+    Product directory
+ 2. the user creates a Python module
+ 3. the user creates a schema inherited from PloneArticlee in this module,
+    adding, his/her own field
+ 4. the user copies the PloneArticle's actions
+ 5. the user creates a class inherited from PloneArticle
+ 6. the user adds some attributes that are differents from PloneArticle
+ 7. the user registers his/her content type against Artchetypes (or LinguaPlone
+    if any)
+ 8. the user restarts Zope
+ 9. the user set up his/her new content type in the ZMI, in the archetype_tool
+
+Alternate courses:
+Set-up via the Quick-Installer:
+ 8. the user set-up his/her new content-type with thr archetype_tool in the
+    Quick Installer setup script
+ 9. the user restarts Zope
+10. the user set up  his/her product via the Quick Installer
+
+Comments:
+  One should notice that unless otherwise notified, when the user do an action,
+  this one shall be done programmatically, inside a python script written on the
+  disk, and not in the ZMI.
+
+Metadata:
+$Id$

@@ -1,0 +1,9 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <!-- $Id: events.zcml 6586 2007-11-12 17:34:33Z glenfant $ -->
+  
+  <subscriber for=".interfaces.IBaseInnerContentProxy
+                   zope.app.container.interfaces.IObjectAddedEvent"
+              handler=".proxy.baseinnercontent.innerContentAdded" />
+
+</configure>

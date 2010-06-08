@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<object name="portal_css" meta_type="Stylesheets Registry">
+ <stylesheet title="PloneArticle thickBox css" cacheable="True"
+    compression="safe" cookable="True" enabled="on"
+    expression="python:portal.plonearticle_tool.isArticle(object)"
+    id="pa_thickbox.css" media="" rel="stylesheet" rendering="import"/>
+ <stylesheet title="PloneArticle models css" cacheable="True"
+    compression="safe" cookable="True" enabled="on"
+    expression="python:portal.plonearticle_tool.isArticle(object)"
+    id="pa_model.css" media="" rel="stylesheet" rendering="import"/>
+ <stylesheet title="PloneArticle browser css" cacheable="True"
+    compression="safe" cookable="True" enabled="on"
+    expression="python:portal.plonearticle_tool.isEditableArticle(object)"
+    id="pa_browser.css" media="" rel="stylesheet" rendering="import"/>
+ <stylesheet title="PloneArticle edit widgets css" cacheable="True"
+    compression="safe" cookable="True" enabled="on"
+    expression="python:portal.plonearticle_tool.isEditableArticle(object)"
+    id="pa_edit.css" media="" rel="stylesheet" rendering="import"/>
+ <stylesheet title="PloneArticle smarlist widgets css" cacheable="True"
+    compression="safe" cookable="True" enabled="on"
+    expression="python:portal.plonearticle_tool.isEditableArticle(object)"
+    id="pa_smartlist.css" media="" rel="stylesheet" rendering="import"/>
+</object>

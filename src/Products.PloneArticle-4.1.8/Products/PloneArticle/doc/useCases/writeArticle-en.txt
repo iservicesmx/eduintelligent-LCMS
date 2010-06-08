@@ -1,0 +1,48 @@
+Name: Write an illustrated article
+
+Abstract: The user create an article on the website. This use case describe all
+the mandatory steps to write an article, from creation to publishing, with an
+image, in an CMS like Plone
+
+Preconditions:
+  - the user has the right to create an article
+  - the user has a content to publish
+  - the user has some images for his/her article
+
+Trigger: The user wants to write a new article.
+
+Main course:
+ 1. in a Plone directory, the user choose "article" in the "add item" menu
+ 2. the system shows a list of article models, with a default model and an
+    option to skip this step
+ 3. the user choose one of the models, and clicks* on the "next" button
+ 4. the system shows an edition form of an article, with the fields of this
+    article with their default values, and some tabs for the allowed addable
+    content types
+ 5. the user fills the Title and Description field as needed
+ 6. the user wites his/her article with the help of an high level embeded editor
+ 7. the user clicks* on a content type tab to add an image
+ 8. the system displays to the user a content selection interface and a submit
+    button
+ 9. the user make his/her choice and validate the interface
+10. the system shows to the user the edit form of the article in the same state
+    that at the end of the step 6
+11. steps 6 and 7 through 10 can eventually been repeated
+12. the user submit the form by clicking* on the "save" form button
+13. the system presents to the user the page in its final version with a banner
+    indicating that the user should evolve the workflow
+14. the user eventually do all the actions in order to publich the article
+
+* or any other appropriate method to generate this action.
+
+Alternatives courses:
+When the user makes an error:
+13. the system shows the edit page, lighting the fields that are erroneous
+14. go o the step 11 of the main course
+
+Comments:
+ 1. steps 6 though 10 are optionnal
+ 2. the image selection course is detailed in another use case
+
+Metadata:
+$Id$

@@ -1,0 +1,35 @@
+Nom : Éditer un article
+
+Motivation : Un article n'est pas forcément toujours correctement écrit, et il
+  est parfois nécessaire de revenir à son édition pour y corriger des possibles
+  erreurs.
+
+Résumé : L'utilisateur édite un article sur le site.
+
+Préconditions :
+  - l'utilisateur a le droit d'éditer un article ;
+
+Déclencheur : L'utilisateur souhaite éditer un article.
+
+Procédure nominale :
+ 1. dans un répertoire Plone, l'utilisateur choisit l'article à modifier pour
+ 	l'afficher ;
+ 2. le système affiche cet article en ajoutant l'interface d'administration de
+ 	contenu ;
+ 3. l'utilisateur clique* sur l'onglet "modifier" de cette interface ;
+ 4. le système présente l'interface d'édition de l'article ;
+ 5. l'utilisateur modifie l'article à l'aide de l'éditeur ;
+ 6. l'utilisateur valide le formulaire d'édition en cliquant sur "enregistrer" ;
+ 7. le système présente à l'utilisateur l'article modifié, ainsi qu'un bandeau
+    indiquant que les modifications effectuées ont été enregistrées.
+
+* ou toute autre méthode appropriée pour générer une action
+
+Procédures alternatives :
+  Aucune
+
+Commentaires :
+  Aucun
+
+Méta-données :
+$Id$

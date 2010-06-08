@@ -1,0 +1,269 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PloneArticle v4\n"
+"POT-Creation-Date: 2006-08-25 13:49+0000\n"
+"PO-Revision-Date: 2006-08-25 15:51+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: latin1 utf-8\n"
+"Domain: plonearticle\n"
+
+msgid "label_manage_files"
+msgstr ""
+
+msgid "label_manage_images"
+msgstr ""
+
+msgid "label_manage_links"
+msgstr ""
+
+msgid "label_upload_files"
+msgstr ""
+
+msgid "label_browse_server_files"
+msgstr ""
+
+msgid "label_upload_images"
+msgstr ""
+
+msgid "label_browse_server_images"
+msgstr ""
+
+msgid "label_upload_links"
+msgstr ""
+
+msgid "label_browse_server_links"
+msgstr ""
+
+msgid "label_album_view"
+msgstr ""
+
+msgid "label_file_listing_view"
+msgstr ""
+
+msgid "label_this_folder"
+msgstr ""
+
+msgid "label_all_site"
+msgstr ""
+
+msgid "label_element_upload_success"
+msgstr ""
+
+msgid "label_no_files_inside"
+msgstr ""
+
+msgid "label_no_images_inside"
+msgstr ""
+
+msgid "label_no_links_inside"
+msgstr ""
+
+msgid "description_select_default_view"
+msgstr ""
+
+msgid "max_file_size_exceeded_error"
+msgstr ""
+
+msgid "image_dimension_identification_error"
+msgstr ""
+
+msgid "label_images_referenceable"
+msgstr ""
+
+msgid "help_images_referenceable"
+msgstr ""
+
+msgid "label_images_maxSize"
+msgstr ""
+
+msgid "help_images_maxSize"
+msgstr ""
+
+msgid "label_attachments_referenceable"
+msgstr ""
+
+msgid "help_attachments_referenceable"
+msgstr ""
+
+msgid "label_attachment_maxSize"
+msgstr ""
+
+msgid "help_attachment_maxSize"
+msgstr ""
+
+msgid "label_attachment_allowPreview"
+msgstr ""
+
+msgid "help_attachment_allowPreview"
+msgstr ""
+
+msgid "label_link_referenceable"
+msgstr ""
+
+msgid "help_link_referenceable"
+msgstr ""
+
+msgid "label_article_preferences"
+msgstr ""
+
+msgid "label_models"
+msgstr ""
+
+msgid "label_model_default_view"
+msgstr ""
+
+msgid "label_model_enabled_view"
+msgstr ""
+
+#: skins/plonearticle/pa_baseinnercontentwidget.pt
+#. <input i18n:attributes="value label_add;" tal:attributes="onclick string:javascript:baseinnercontent_widget.addNewInnerContentWidget('${here_url}', '${fieldName}', '${widget_container_id}', '${widget_index_id}');" type="button" value="Add"/>
+# Original: "Add"
+msgid "label_add"
+msgstr ""
+
+#: skins/pa_models/pa_model_macros.pt
+#. <legend i18n:translate="legend_files">
+#.  Files
+#. </legend>
+# Original: "Files"
+msgid "legend_files"
+msgstr ""
+
+
+#: skins/pa_models/pa_model_macros.pt
+#. <legend i18n:translate="legend_images">
+#.  Images
+#. </legend>
+# Original: "Images"
+msgid "legend_images"
+msgstr ""
+
+
+#: skins/pa_models/pa_model_macros.pt
+#. <legend i18n:translate="legend_links">
+#.  Links
+#. </legend>
+# Original: "Links"
+msgid "legend_links"
+msgstr ""
+
+msgid "label_view_toc_first"
+msgstr ""
+
+msgid "label_display_toc_dropdown"
+msgstr ""
+
+msgid "description_display_toc_dropdown"
+msgstr ""
+
+#. Add a new link in your article,<br /> title and description are optional.
+msgid "label_upload_link_legend"
+msgstr ""
+
+#. Please enter a valid url.
+msgid "label_enter_valid_url"
+msgstr ""
+
+#. Upload in progress, please wait...
+msgid "label_upload_in_progress"
+msgstr ""
+
+#. Close
+# Close button of a browser window
+msgid "Close"
+msgstr ""
+
+#. close
+msgid "close"
+msgstr ""
+
+
+#. Please select a file from your computer.
+msgid "label_select_file_from_localfs"
+msgstr ""
+
+#. Add a new image in your article,<br /> title and description are optional.
+msgid "label_upload_image_legend"
+msgstr ""
+
+#. Add a new file in your article,<br /> title and description are optional.
+msgid "label_upload_file_legend"
+msgstr ""
+
+#. Size
+# Size of files, images...
+msgid "label_size"
+msgstr ""
+
+#. kB
+# kilo-bytes
+msgid "kB"
+msgstr ""
+
+#. Referenceable attachments
+msgid "label_attachment_referenceable"
+msgstr ""
+
+#. Select here the content types of content that you allow to be linked in a ${content_type}.
+msgid "help_attachment_referenceable"
+msgstr ""
+
+msgid "error_default_model_invalid"
+msgstr ""
+
+msgid "message_attachment_field_installation"
+msgstr ""
+
+#. Models management
+msgid "dt_models_management"
+msgstr ""
+
+#. You can define here the models that can be selected by your users. You can also select the default model.
+msgid "dd_models_management"
+msgstr ""
+
+#. Images management
+msgid "dt_images_management"
+msgstr ""
+
+#. This panel let you define which content types your users can pick when they wants to reference an image already uploaded on the site. You also can choose the maximum size the uploaded images.
+msgid "dd_images_management"
+msgstr ""
+
+#. Attachments management
+msgid "dt_attachments_management"
+msgstr ""
+
+#. Like the previous panel, you can choose here the content types of the attachments that will be linked by an article. You can choose the maximum size of the uploaded file. You can also activate the preview mode of attachmentField (if it is present).
+msgid "dd_attachments_management"
+msgstr ""
+
+#. Links management
+msgid "dt_links_management"
+msgstr ""
+
+#. This panel let you define what content types your users can pick when they want to reference a content already created on the site.
+msgid "dd_links_management"
+msgstr ""
+
+#. You can set these options for each content types that are based on PloneArticle.
+msgid "help_multi_implementers"
+msgstr ""
+
+#. Theses panels will help you to set up Plone Article to fit your needs.
+msgid "help_plonearticle_conf"
+msgstr ""
+
+#. Table of contents
+msgid "label_table_of_contents"
+msgstr ""

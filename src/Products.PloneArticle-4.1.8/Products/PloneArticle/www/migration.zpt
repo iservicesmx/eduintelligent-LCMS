@@ -1,0 +1,105 @@
+<h1 tal:replace="structure here/manage_page_header|nothing">Header</h1>
+
+<h2 tal:define="manage_tabs_message options/manage_tabs_message | nothing"
+    tal:replace="structure here/manage_tabs">
+  Tabs
+</h2>
+
+<tal:comment replace="nothing">
+  ************************
+  This is the migration system for Plone Article V4
+  ************************
+  $Id: migration.zpt 6651 2007-11-26 16:01:14Z glenfant $
+</tal:comment>
+
+<tal:body tal:define="submitted request/submitted | nothing;
+                      dry_run request/dry_run|nothing;
+                      force_instance_version request/force_instance_version|nothing">
+
+<h2>PloneArticle migration</h2>
+
+<tal:form tal:condition="not: submitted">
+
+<h3 tal:content="python:'Instance version: ' + here.getVersion()[1]" >Instance version</h3>
+<h3 tal:content="python:'Filesystem version: ' + here.getVersionFromFS()[1]">Filesystem version</h3>
+
+<p>
+  <em>Note:</em>
+  <span style="background-color:red; color: white; font-weight: bold">
+    Please ensure you have a backup of your Plone site before performing
+    migration.
+  </span>
+</p>
+
+
+<div tal:condition="here/needsVersionMigration">
+  Your Plone instance is out of date. Click "upgrade" to bring this Plone Zope
+  version up to date with your file system.
+
+  <form action="" tal:attributes="action template/getId">
+    <input type="hidden" name="submitted" value="1" />
+
+    <p>
+      <input name="dry_run" type="checkbox" value="1:int" />
+      Dry run - print the result of the migration without actually writing
+      anything to the database.
+    </p>
+
+    <input type="submit" value="Upgrade"/>
+
+  </form>
+
+</div>
+<div tal:condition="not: here/needsVersionMigration">
+  Your Plone instance is up to date.
+</div>
+<hr />
+
+<form action="" tal:attributes="action template/getId">
+  <input type="hidden" name="submitted" value="1" />
+  <p>
+    If you're <em>absolutely</em> sure your PloneArticle instance is not <span tal:replace="python:here.getVersion()[1]"/>, choose the version you think it is below and click "force migrate". This will force the migration procedure from that version. <em>You should not normally need to do this.</em>
+  </p>
+
+  <select name="force_instance_version">
+    <option tal:repeat="version here/knownVersions"
+            tal:content="version">version</option>
+  </select>
+  <br />
+
+  <p>
+    <input name="dry_run" type="checkbox" value="1:int" />Dry run - print the result of the migration without actually writing anything to the database.
+  </p>
+
+  <input type="submit" value="ForceUpgrade"/>
+</form>
+<hr />
+</tal:form>
+
+<tal:upgrade tal:condition="submitted">
+
+  <style type="text/css">
+    li.type_100 {
+    color: red;
+    }
+    li.type_100:before {
+    content: "Problem: ";
+    }
+    li.type_200 {
+    color: red;
+    font-weight: bold;
+    }
+    li.type_200:before {
+    content: "Error: ";
+    }
+  </style>
+
+  <p>Result of the attempt...</p>
+  <ul>
+    <li tal:define="result python:here.upgrade(request, dry_run, force_instance_version=force_instance_version)"
+        tal:repeat="step result"><pre tal:content="python: step[0]">Step</pre></li>
+  </ul>
+</tal:upgrade>
+
+</tal:body>
+<tal:footer tal:replace="structure here/manage_page_footer|nothing">footer</tal:footer>

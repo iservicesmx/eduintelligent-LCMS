@@ -1,0 +1,48 @@
+Name: Add a display model
+
+Abstract: How to Provide more display models for article and derived content
+  types
+
+Preconditions:
+ - the user has write access to the Zope instance Product directory
+ - the user knows the Python programming language
+ - the user knows the internals of Zope and Plone
+
+Trigger: the user is a developper that wants to add a new model.
+
+Main course:
+ 1. Create an interface for this new view (i.e, "IExampleModel")
+ 2. Create a class that inherits from 
+    PloneArticle.browser.article.PloneArticleModelView and implements the 
+    interface previously created (Zope 3/Five "implements").
+    This class must the following attributes:
+     - template_id: the template name (i.e. example_model_view)
+     - title: unicode english title
+     - title_msgid: for translation
+     - class documentation is used for description. Fill it! (ascii/english)
+     - description_msgid: for translating the description
+     - icon: the name of the image to use in the "display" tab for this template
+ 3. Register this class with PloneArticle.model.registerArticleModel
+ 4. Declare the view with ZCML (adapt it):
+    <browser:page
+      for=".interface.IPloneArticle"
+      name="example__model_view"
+      class=".example.module.ExampleModel"
+      permission="zope.Public"
+      allowed_interface=".browser.interface.IPloneArticleModelView
+                         .interface.IExampleModel"
+      />
+ 5. Provide the template and icon in your skins directory
+ 6. Translations of title and description are searched in the domain
+    "plonearticle-model", so you need an po file in this domain with entries for
+    title_msgid and description_msgid
+ 7. Restart Zope
+ 8. In a plone instance, go to Site setup -> PloneArticle setup. In "models 
+    management" tab, add the model to the list of selected models.
+ 9. The model is available in the "display" action and in the form of the 
+    "display tab"
+
+Comments:
+  PloneArticles models are all defined in PloneArticle/browser,
+  PloneArticle/browser.zcml; their templates and icons reside in
+  PloneArticle/skins/pa_models

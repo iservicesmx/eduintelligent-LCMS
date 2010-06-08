@@ -1,0 +1,15 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <!-- this utility is here to avoid having "PloneArticle" listed
+       twice in quickinstaller. -->
+  <utility factory=".setuphandlers.HiddenProductsNProfiles"
+           name="Products.PloneArticle" />
+
+  <include file="profiles.zcml"/>
+  <include file="implements.zcml"/>
+  <include file="adapters.zcml"/>
+  <include file="browser.zcml"/>
+  <include file="deprecated.zcml"/>
+  <include file="events.zcml"/>
+
+</configure>

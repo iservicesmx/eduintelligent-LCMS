@@ -1,0 +1,159 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:five="http://namespaces.zope.org/five"
+           xmlns:browser="http://namespaces.zope.org/browser">
+  
+  <five:traversable class="Products.PloneArticle.content.PloneArticle" />    
+  <five:traversable class="Products.PloneArticle.content.PloneArticleMultiPage" />    
+
+  <!-- MultiPage views -->
+  <!-- browser:page
+      for=".interfaces.IPloneArticleMultiPage"
+      name="default_page"
+      class=".browser.multipage.MultiPageDefaultPage"
+      permission="zope.Public"
+      allowed_interface=".browser.interface.IDefaultPage"
+      / -->
+
+  <browser:page
+      for="*"
+      name="multipage_view"
+      class=".browser.multipage.NonMultipageContext"
+      permission="zope.Public"
+      allowed_interface=".browser.interface.IPloneArticleMultipageView"
+      />
+
+  <browser:page
+      for=".interfaces.IPloneArticleMultiPage"
+      name="multipage_view"
+      class=".browser.multipage.PloneArticleMultipageView"
+      permission="zope.Public"
+      allowed_interface=".browser.interface.IPloneArticleMultipageView"
+      />
+
+  <!-- Browser for inner content -->
+  <browser:page
+      for="*"
+      name="pa_explorer_view"
+      class=".browser.explorer.ExplorerView"
+      permission="zope.Public"
+      allowed_interface=".browser.interface.IExplorerView"
+      />
+
+  <!-- model selection view -->
+  <browser:page
+      for=".interfaces.IPloneArticle"
+      name="select_model_view"
+      class=".browser.model.SelectModelView"
+      permission="zope.Public"
+      allowed_interface=".browser.interface.IPloneArticleSelectModelView"
+      />
+  
+  <!-- models -->
+  <browser:page
+      for=".interfaces.IPloneArticle"
+      name="pa_model_view"
+      class=".browser.article.PloneArticleModelView"
+      permission="zope.Public"
+      allowed_interface=".browser.interface.IPloneArticleModelView"
+      />
+      
+  <browser:page
+      for=".interfaces.IPloneArticle"
+      name="pa_model1_view"
+      class=".browser.article.PloneArticleModel1View"
+      permission="zope.Public"
+      allowed_interface=".browser.interface.IPloneArticleModelView
+                         .browser.interface.IPloneArticleModel1View"
+      />
+      
+  <browser:page
+      for=".interfaces.IPloneArticle"
+      name="pa_model2_view"
+      class=".browser.article.PloneArticleModel2View"
+      permission="zope.Public"
+      allowed_interface=".browser.interface.IPloneArticleModelView
+                         .browser.interface.IPloneArticleModel2View"
+      />
+
+  <browser:page
+      for=".interfaces.IPloneArticle"
+      name="pa_model3_view"
+      class=".browser.article.PloneArticleModel3View"
+      permission="zope.Public"
+      allowed_interface=".browser.interface.IPloneArticleModelView
+                         .browser.interface.IPloneArticleModel3View"
+      />
+
+  <browser:page
+      for=".interfaces.IPloneArticle"
+      name="pa_model4_view"
+      class=".browser.article.PloneArticleModel4View"
+      permission="zope.Public"
+      allowed_interface=".browser.interface.IPloneArticleModelView
+                         .browser.interface.IPloneArticleModel4View"
+      />
+
+  <browser:page
+      for=".interfaces.IPloneArticle"
+      name="pa_model5_view"
+      class=".browser.article.PloneArticleModel5View"
+      permission="zope.Public"
+      allowed_interface=".browser.interface.IPloneArticleModelView
+                         .browser.interface.IPloneArticleModel5View"
+      />
+
+  <browser:page
+      for=".interfaces.IPloneArticle"
+      name="pa_model6_view"
+      class=".browser.article.PloneArticleModel6View"
+      permission="zope.Public"
+      allowed_interface=".browser.interface.IPloneArticleModelView
+                         .browser.interface.IPloneArticleModel6View"
+      />
+
+  <browser:page
+      for=".interfaces.IPloneArticle"
+      name="pa_model7_view"
+      class=".browser.article.PloneArticleModel7View"
+      permission="zope.Public"
+      allowed_interface=".browser.interface.IPloneArticleModelView
+                         .browser.interface.IPloneArticleModel7View"
+      />
+
+  <browser:page
+      for=".interfaces.IPloneArticle"
+      name="pa_model8_view"
+      class=".browser.article.PloneArticleModel8View"
+      permission="zope.Public"
+      allowed_interface=".browser.interface.IPloneArticleModelView
+                         .browser.interface.IPloneArticleModel8View"
+      />
+
+  <browser:page
+      for=".interfaces.IPloneArticle"
+      name="pa_model9_view"
+      class=".browser.article.PloneArticleModel9View"
+      permission="zope.Public"
+      allowed_interface=".browser.interface.IPloneArticleModelView
+                         .browser.interface.IPloneArticleModel9View"
+      />      
+
+  <browser:page
+      for=".interfaces.IPloneArticle"
+      name="pa_model10_view"
+      class=".browser.article.PloneArticleModel10View"
+      permission="zope.Public"
+      allowed_interface=".browser.interface.IPloneArticleModelView
+                         .browser.interface.IPloneArticleModel10View"
+      />    
+      
+  <browser:page
+      for=".interfaces.IPloneArticle"
+      name="pa_model11_view"
+      class=".browser.article.PloneArticleModel11View"
+      permission="zope.Public"
+      allowed_interface=".browser.interface.IPloneArticleModelView
+                         .browser.interface.IPloneArticleModel11View"
+      />          
+
+</configure>

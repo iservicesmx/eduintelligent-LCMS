@@ -1,0 +1,85 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/pa_management_form/macros/master"
+      i18n:domain="plonearticle">
+
+  <tal:comment replace="nothing">
+    #################################
+    PloneArticle models configuration
+    #################################
+    $Id: pa_manage_models_form.cpt 6192 2007-07-24 17:08:40Z glenfant $
+  </tal:comment>
+
+  <metal:configlet-body fill-slot="pa_configlet_body">
+    <div class="documentContent"
+         tal:define="models here/listModels;
+                     article_types here/listArticleImplementers">
+
+      <form method="post"
+            name="manageTopicIndex"
+            tal:define="errors options/state/getErrors;"
+            tal:attributes="action python:here.absolute_url()+'/'+template.id;">
+
+        <input type="hidden" name="form.submitted" value="1" />
+
+        <fieldset tal:repeat="ptype article_types">
+          <tal:def define="ptype_models_info python: here.getEnabledModelsForType(ptype);
+                           ptype_id ptype/id;
+                           enabled_models python: ptype_models_info[0];
+                           default_view python: ptype_models_info[1];">
+            <legend tal:content="string:${ptype/title} (${ptype_id})">Type (portal_type)</legend>
+
+            <div class="field"
+                 tal:define="id string:default_views.${ptype_id}:record;
+                             error python: errors.get(ptype_id, None);"
+                 tal:attributes="class python: test(error, 'field error', 'field');">
+
+              <div tal:condition="error" tal:content="error">Validation error output</div>
+              
+              <label for="" tal:attributes="for id;" i18n:translate="label_model_default_view">Default model</label>
+
+              <select name="default_views.portal_type:record"
+                      tal:attributes="id id;
+                                      name id;">
+                <tal:loop repeat="m models">
+                  <option tal:define="tid m/id;"
+                          tal:attributes="value tid;
+                                          selected python:tid == default_view;"
+                          tal:content="m/Title" />
+                </tal:loop>
+              </select>
+            </div>
+
+            <div class="field"
+                 tal:define="id string:models.${ptype/id}:record:list;">
+
+              <label for="" tal:attributes="for id;" i18n:translate="label_model_enabled_view">Activated models</label>
+
+              <select name="models.portal_type:record:list" multiple="1"
+                      tal:attributes="id id;
+                                      name id;">
+                <tal:loop repeat="m models">
+                  <option tal:define="tid m/id;"
+                          tal:attributes="value tid;
+                                          selected python:tid in enabled_models;"
+                          tal:content="m/Title" />
+                </tal:loop>
+              </select>
+            </div>
+          </tal:def>
+        </fieldset>
+
+        <input class="context"
+               tabindex=""
+               type="submit"
+               name="form.button.index_save"
+               value="Save"
+               i18n:domain="plone"
+               i18n:attributes="value label_save;"
+               tal:attributes="tabindex tabindex/next;"
+               />
+
+      </form>
+    </div>
+  </metal:configlet-body>
+</html>

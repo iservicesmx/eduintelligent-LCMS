@@ -1,0 +1,258 @@
+########################
+PloneArticle todos stack
+########################
+
+Bugs
+####
+
+* When removing a file/image/link raises an error, that error is not
+  indicated in the UI and the file/image/link remains in place.
+
+* Add a file (or image) which filename includes a space, remove this
+  file (or image) -> changing the workflow state of the article has no
+  effect. See the transcript in event.log (seems that the catalog is
+  not in synch with article subcontents). Note there's now a
+  workaround that escapes spaces from the filename.
+
+* Files/images/links browser: The "home" link goes to the Plone root
+  when it should go to the content root which TAL expr. is:
+  string:${global_views/navigationRootUrl}
+
+* Ajax bugs under Plone 3.1
+
+Bugs elsewhere raising isssues in PloneArticle
+##############################################
+
+
+* Fixes have been done overrinding buggy Archetypes stuffs. Those
+  fixes should be backported to AT and removed from PloneArticle:
+
+  - field.innercontentcontainer.InnerContentContainer.getCMFObjectsSubsetIds
+    is an overload of a buggy method in Archetypes (Thanks Encolpe for
+    the fix).
+
+* Monitor Archetypes bugs that break 2 test cases:
+  https://dev.plone.org/archetypes/ticket/738  : standard Plone schematas not translated.
+  https://dev.plone.org/archetypes/ticket/733 : raise an indexing issue in PA.
+
+* In some situations (cannot make a scenario to reproduce this
+  systematically), CMFEditions tries to check out
+  innercontentcontainer objects using "invokeFactory". This does not
+  work inside PloneArticle. Is it a CMFEditions issue or a
+  PloneArticle issue? In other words, are we supposed to override
+  "invokeFactory" in PloneArticle to allow creating
+  innercontentcontainers?
+  https://dev.plone.org/plone/ticket/7863
+
+
+Roadmap for future releases
+###########################
+
+
+Step 1: Stable for Plone 3
+==========================
+
+
+Summary
++++++++
+
+This first step aims to obtain a PA that behaves in Plone 3 exactly as
+PA 4.0.x for Plone 2.5. In addition, PA will benefit of the new Plone
+3 services as for instance the ATDocument.
+
+Note that we don't need all this to make the first releases for Plone
+3, as most essential features are still there.
+
+
+What's already done
++++++++++++++++++++
+
+* Installed the GenericSetup way
+
+* Works with AttachmentField or ARFilePreview or none of both
+
+* Config panel template cleanup
+
+* Pages batching in attachments/images/links explorer
+
+* One shot edition with new style schematas
+
+* KSS style edition
+
+* Table of contents "portlet"
+
+* Hide from navigation
+
+* Slideshow view
+
+* Versioning aware (done but needs more testing due to CMFEditions
+  recent bugfixes).
+
+* Wicked (done but doesn't work today due to Wicked issue. Wicked
+  doesn't work with ATDocuments too)
+
+* New model (Ajax slideshow)
+
+* Migration step from PA 4.0.x/Plone 2.x
+
+Note that due to heavy framework changes, the PA version coming out of
+this step will require Plone 3.x and won't work with Plone 2.5.x or
+older.
+
+
+Keep consistency with ATCT
+++++++++++++++++++++++++++
+
+Use ATCT config file settings to limit the size of files and images
+for global site consistency instead of config panel. Remove related
+attributes from PA tool.
+
+Uninstall
++++++++++
+
+Re-configure programmatically kupu at uninstall. Cleanup uninstall too
+(there are useless stuffs here).
+
+
+Code cleanup
+++++++++++++
+
+This is not essential but "small is beautiful" and there are maybe
+some Plone 2.1/2.5 stuffs we don't need anymore.
+
+* Lots of content types attributes (for AT/CMF factory) are useless since we use
+  GenericSetup (code cleanup)
+
+* Remove last manage_add/remove (...) deprecated methods and use Zope
+  3 event machinery.
+
+* Remove Zope 2 style interfaces that are supposed useless from Plone 3
+  http://www.nabble.com/-Product-Developers--Status-of-Zope-2-style-interfaces-tf4961320s20094.html
+
+* Use getUtility(IPloneArticleTool) in place of getToolByName(self,
+  'plonearticle_tool') where possible.
+
+
+Migration
++++++++++
+
+Yup, the migration step is in the code (changing some meta types) but
+has been poorly tested till now. We need to re-enable the migration
+test case before releasing.
+
+
+Fixing last bugs
+++++++++++++++++
+
+Of course, see Bugs_ above
+
+
+Misc issues
++++++++++++
+
+There are scripts and resources for functional tests using Maik's
+funittests. These tests won't work on actual version since the UI has
+somehow changed (Plone 3 way, KSS, ...). If there's no volunteer to
+maintain functional tests, we'd better remove these tests.
+
+We need to know the position of the Plone core team about the jQuery
+integration in the KSS framework (read jQuery in Plone, batteries
+included). Actually PA and other products are shipped with
+jQuery. This opens potential conflicts and bloats the javascript
+download built by the javascript registry.
+
+
+Framework bugs raising issues in PA
++++++++++++++++++++++++++++++++++++
+
+See `Bugs elsewhere raising isssues in PloneArticle`_ above. In
+particular, some classes in PA overload base classs elsewhere to work
+around bugs. These bugs are recorded in relevant trackers but nothing
+happens. Some help from Encolpe would be helpful in that field.
+
+A couple of unit tests fail but (run them) those can be considered as
+warnings.
+
+
+Step 2 : Toward Plone 4
+=======================
+
+Summary
++++++++
+
+While adding new features listed below, the PA code will be
+"componentized" (eggs, buildout awareness) and somehow refactored such
+the effort to have a Plone 4 ready PA will be minimized.
+
+Note that the future features listed below are still "being
+discussed", thus not firmly planned.
+
+
+PA code splitting
++++++++++++++++++
+
+Products.PloneArticle code and resources will be splitted into 2
+components:
+
+* iw.plonearticlecore: most of the code of PA, plus 3 or 4 models
+* iw.plonearticlemodels: additional sexy models.
+
+These components will be eggified and supported by respective buildout
+recipes.
+
+
+Full Plone 3 framework
+++++++++++++++++++++++
+
+* Remove progressively /skins/... and move those resources to new
+  dedicated services (<browser/resourceDirectory ... />, ...)
+
+
+Configlet
++++++++++
+
+Using zope3 "formlib", since CMF skins is open to disappear in Plone
+4.
+
+
+Media v/s images
+++++++++++++++++
+
+The "images" will disappear in favour of a "media" management
+feature. "media" object may be images as usual, or:
+
+* Movie files (quicktime, ...)
+* Flash files
+* DailyMotion and YouTube HTML sniplets
+
+Using the Viewlets/ViewletsManager approach
++++++++++++++++++++++++++++++++++++++++++++
+
+The CMF skins model will be deprecated in Plone 4.
+
+The PA various layouts are actually published using a mix of Zope 3
+and Zope 2 approaches. When the models are published as Zope 3 pages
+or views, the various widgets (text, image blocks, ...) are defined in
+traditional ZPT macros.
+
+This new approach will use the Viewlets/ViewletsManager technology.
+
+Forseen benefits:
+
+* Some speed improvement but not easy to say how much right now
+
+* Ability for a power user to create a new model built above a
+  viewlet managers (ZMI ou PMI)
+
+* The various available viewlets (images, attachments, text, ...) may
+  be disposed by that power user in its personal model. in the same
+  way as in http://_your_plone_/@@manage_viewlets.
+
+Migration utility
++++++++++++++++++
+
+Switch from Plone 2 style migration framework to GS style migration
+steps. We should not have to add a - potentially empty - migration
+step when no migration is required.
+
+.. $Id: TODO 8010 2008-04-14 10:20:04Z glenfant $

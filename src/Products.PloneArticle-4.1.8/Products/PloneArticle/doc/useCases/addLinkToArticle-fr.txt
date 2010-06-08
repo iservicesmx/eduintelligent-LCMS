@@ -1,0 +1,49 @@
+Nom : Ajouter un lien à un article
+
+Résumé : L'utilisateur de PA a créé un article sans lien et cherche maintenant
+à en rajouter un. Ce cas d'utilisation décrit toutes les étapes necessaires à
+l'ajout et la publication d'un lien au sein d'un article pré-existant.
+
+Préconditions :
+ - l'utilisateur a le droit d'éditer un article ;
+ - un article existe deja sur le site ;
+
+Déclencheur : L'utilisateur souhaite ajouter un lien à un article.
+
+Procédure nominale :
+ 1. dans un répertoire Plone, l'utilisateur choisit l'article à modifier pour
+ 	l'afficher ;
+ 2. le système affiche cet article en ajoutant l'interface d'administration de
+ 	contenu ;
+ 3. l'utilisateur clique* sur l'onglet "modifier" de cette interface ;
+ 4. le système présente l'interface d'édition de l'article ;
+ 5. l'utilisateur clique sur l'onglet de type de contenu "Liens" pour ajouter
+    un lien ;
+ 6. le système présente à l'utilisateur l'interface de gestion des liens ;
+ 7. l'utilisateur clique* sur le bouton "Ajouter" ;
+ 8. le système présente à l'utilisateur une interface d'ajout et d'édition de
+    liens ;
+ 9. l'utilisateur clique* sur le bouton "Parcourir" du champs
+    "Lien référencé" ;
+10. le système lui présente une interface de navigation interne au site ;
+11. l'utilisateur parcours le site et sélectionne le lien ;
+12. l'utilisateur valide sa selection en cliquant* sur le bouton "ok" ;
+13. le système présente l'interface d'édition de lien présentée en 8 ;
+14. les étapes 7 à 13 peuvent éventuellement être répétées ;
+15. l'utilisateur valide le formulaire
+16. le système présente l'article
+
+
+* ou toute autre méthode appropriée pour générer une action
+
+Procédures alternatives :
+Lorsque l'utilisateur souhaite intégrer un nouveau lien :
+ 9. l'utilisateur rentre le lien dans la ligne prévue
+10. Aller à l'étape 14 de la procédure nominale
+
+Commentaires :
+
+ Aucun.
+
+Méta-données :
+$Id$

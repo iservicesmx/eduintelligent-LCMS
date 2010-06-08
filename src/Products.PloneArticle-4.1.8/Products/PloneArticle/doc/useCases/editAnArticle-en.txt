@@ -1,0 +1,30 @@
+Name: Edit an article
+
+Abstract: The user edit an article on the website.
+
+Preconditions:
+  - the user has the right to edit an article
+
+Trigger: The user wants to edit an article
+
+Main course:
+ 1. in a Plone directory, the user choose the article he wants to edit, in
+    order to display it
+ 2. the system displays this article
+ 3. the user clicks* on the "modify" tab of this interface
+ 4. the system shows the article edit interface
+ 5. the user modifies the article with the editor
+ 6. the user save the edit form by submiting the form
+ 7. the system displays to the user the modified article, with a banner showing
+    that modifications are saved.
+
+* or any other appropriate method to generate this action.
+
+Alternatives courses:
+  None
+
+Comments :
+  None
+
+Metadata :
+$Id$

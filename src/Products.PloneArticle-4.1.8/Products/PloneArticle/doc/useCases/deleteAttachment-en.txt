@@ -1,0 +1,32 @@
+Name: Delete an attachment
+
+Abstract: The PA user deletes an attachment that was previoulsy added.
+
+Preconditions:
+ - the user has the right to modify an article
+ - the user is currently editing an article
+ - the article contains one or more attachement(s) to delete
+
+Trigger: the user wants to delete an attachment
+
+Main course:
+ 1. while editing an article, the user clicks* on the content type "Files"
+ 2. the system diplays the content management interface
+ 3. the user select the "delete attachment" icon of the attachment to delete
+ 4. the system deletes the management interface for theses attachments
+ 5. the system displays a banner indicating that the form have to be submitted
+    in order for it to save theses modifications
+ 6. the user submit the form by clicking* on "Send"
+ 7. the system presents to the user a view of this article and a banner
+    indicating that the modifications were saved.
+
+Alternatives courses:
+  None
+
+* or any other appropriate method to generate this action.
+
+Comments:
+ None
+
+Metadata:
+$Id$

@@ -1,0 +1,60 @@
+Nom : Insérer une image dans un article avec Kupu
+
+Motivation : Les modèles de document que Plone Article pourrait proposer ne sont
+  pas forcément adaptés à toutes les situations. Il se peut que dans un cas
+  précis, les modèles de documents soient trop rigides et ne permettent pas
+  de placer une image là ou le désire l'utilisateur. Plone Article, au travers
+  de l'éditeur Kupu, permet de placer des images intégrées au texte.
+
+Résumé : L'utilisateur édite un article sur le site et y rajoute une image déjà
+  présente sur le serveur.
+
+Préconditions :
+  - l'utilisateur a le droit d'éditer un article ;
+  - l'utilisateur dispose d'images déjà présentes sur le serveur.
+
+Déclencheur : L'utilisateur souhaite insérer une image dans le texte d'un
+  article.
+
+Procédure nominale :
+ 1. dans un répertoire Plone, l'utilisateur choisit l'article à modifier pour
+ 	l'afficher ;
+ 2. le système affiche cet article en ajoutant l'interface d'administration de
+ 	contenu ;
+ 3. l'utilisateur clique* sur l'onglet "modifier" de cette interface ;
+ 4. le système présente l'interface d'édition de l'article ;
+ 5. l'utilisateur se place à l'endroit, dans l'interface d'édition, où il
+    souhaite placer son image ;
+ 6. l'utilisateur clique* sur l'icône d'insertion d'image ;
+ 7. le système lui présente une interface de navigation interne au site ;
+ 8. l'utilisateur selectionne son article ;
+ 9. l'utilisateur selectionne "images" ;
+10. l'utilisateur une des images de l'article ;
+11. l'utilisateur valide sa selection en cliquant* sur le bouton "ok" ;
+12. le système présente l'image incluse au sein du texte dans le cadre
+    d'édition ;
+13. l'utilisateur valide le formulaire d'édition en cliquant sur "enregistrer" ;
+14. le système présente à l'utilisateur l'article modifié, ainsi qu'un bandeau
+    indiquant que les modifications effectuées ont été enregistrées.
+
+* ou toute autre méthode appropriée pour générer une action
+
+Procédures alternatives :
+Pour ajouter une image qui ne se trouve pas dans l'article :
+ 8. l'utilisateur selectionne une image du site ;
+ 9. passer à l'étape 11 de la procédure nominale.
+
+Pour ajouter une image qui se trouve dans un endroit inconnu du site :
+ 8. l'utilisateur entre le nom de l'image à chercher dans la boite de
+    recherche ;
+ 9. le système affiche la liste des résultats de la recherche dans le panneau
+    de navigation ;
+10. l'utilisateur selectionne l'un des résultats de la recherche ;
+11. passer à l'étape 11 de la procédure nominale.
+
+Commentaires :
+
+  Aucun.
+
+Méta-données :
+$Id$

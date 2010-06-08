@@ -1,0 +1,64 @@
+Nom : Écrire un article illustré
+
+Motivation : Lors de l'utilisation d'un système de contenu, l'utilisateur
+  cherche à exprimer une idée ou un concept. Le message qu'il délivre doit être
+  simple à écrire et suffisament structuré pour que le message soit
+  compréhensible pour les autres. Dans le cas de messages complexes,
+  l'utilisation d'illustrations permet d'ajouter une vue nouvelle sur le contenu
+  du message, et donc d'en faciliter la compréhension.
+
+Résumé : L'utilisateur créé un article sur le site. Ce cas d'utilisation décrit
+  toutes les étapes necessaires à l'écriture, de la création à la publication
+  d'un article comprenant une image à l'aide d'un gestionnaire de contenu tel
+  que Plone.
+
+Préconditions :
+  - l'utilisateur a le droit de créer un article ;
+  - l'utilisateur dispose d'un message à communiquer ;
+  - l'utilisateur dispose d'images pour illustrer son message.
+
+Déclencheur : L'utilisateur souhaite écrire un nouvel article.
+
+Procédure nominale :
+ 1. dans un répertoire Plone, l'utilisateur choisit "article" dans le menu des
+    élements à ajouter ;
+ 2. le système présente une liste de modèles d'article, avec un modèle par
+    défaut ainsi qu'une option pour passer rapidement cette étape ;
+ 3. l'utilisateur choisit l'un des modèles et clique* sur le bouton "Valider" ;
+ 4. le système présente un formulaire d'édition d'un article avec les champs
+    dudit article à leurs valeurs par défaut ainsi que des onglets pour les
+    différents types de contenus ajoutables ;
+ 5. l'utilisateur rempli les champs Titre et Description selon ses besoins ;
+ 6. l'utilisateur rédige son article à l'aide de l'éditeur haut niveau
+    approprié ;
+ 7. l'utilisateur clique sur un onglet de type de contenu pour ajouter une
+    image ;
+ 8. le système présente à l'utilisateur une interface de selection de contenu
+    ainsi qu'un bouton de validation ;
+ 9. l'utilisateur fait son choix et valide l'interface ;
+10. le système présente à l'utilisateur le formulaire d'édition de l'article
+	dans le même état qu'à la fin de l'étape 6 ;
+11. les étapes 6 et 7 à 10 peuvent éventuellement être répétées ;
+12. l'utilisateur valide la page en cliquant* sur le bouton de formulaire
+    "Enregistrer" ;
+13. le système présente à l'utilisateur la page dans sa version finale ainsi
+	qu'un bandeau incitant l'utilisateur à changer l'état du workflow ;
+14. l'utilisateur prend éventuellement toutes les mesures necéssaires pour que
+    la page soit publiée.
+
+* ou toute autre méthode appropriée pour générer une action
+
+Procédures alternatives :
+En cas d'erreur de l'utilisateur :
+13. le système présente la page d'édition en indiquant les champs provoquant
+	l'erreur ;
+14. Aller à l'étape 11 de la procédure nominale.
+
+Commentaires :
+
+ 1. Les étapes 6 à 10 peuvent être considérés comme optionnels.
+ 2. La procédure de selection d'une image est détaillée dans un cas
+    d'utilisation séparé.
+
+Méta-données :
+$Id$

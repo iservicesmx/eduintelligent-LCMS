@@ -1,0 +1,42 @@
+Nom : Ajouter un nouveau champs
+
+Résumé : l'utilisateur de Plone Article développe un nouveau produit se basant
+  sur Plone Article et lui rajoute un nouveau champ contenant une valeur unique.
+
+Préconditions :
+ - l'utilisateur a accès en écriture au répertoire Products de l'instance Zope ;
+ - l'utilisateur connait le langage de programmation Python ;
+ - l'utilisateur connait le fonctionnement interne de Zope et de Plone.
+
+Déclencheur : l'utilisateur de Plone Article souhaite lui rajouter un champ
+  simple.
+
+Procédure nominale :
+ 1. l'utilisateur crée un nouveau squelette de produit (fichiers __init__.py,
+    etc.) dans le répertoire Products de Zope ;
+ 2. l'utilisateur crée un module python ;
+ 3. l'utilisateur crée un schema derrivant de PloneArticle dans ce module, en y
+    rajoutant son champ ;
+ 4. l'utilisateur copie les actions de PloneArticle ;
+ 5. l'utilisateur crée une classe héritant de PloneArticle ;
+ 6. l'utilisateur précise les attributs de classe différent de PA ;
+ 7. l'utilisateur enregistre son type de contenu auprès d'Archetypes (ou de
+    LinguaPlone le cas échéant) ;
+ 8. l'utilisateur redémarre Zope ;
+ 9. l'utilisateur installe son nouveau type de contenu dans la ZMI, auprès de
+    l'archetype_tool
+
+Procédures alternatives :
+Installation via le Quick Installer :
+ 8. l'utilisateur installe son nouveau type de contenu grace à l'archetype_tool
+    dans le script d'installation du Quick Installer
+ 9. l'utilisateur redémarre Zope ;
+10. l'utilisateur installe son produit à l'aide du Quick Installer
+
+Commentaires :
+  Il est a noter que sauf contre indication, lorsque l'utilisateur effectue une
+  action, celle-ci doit être effectuée de façon programmatique, au sein d'un
+  script écrit en python sur le disque dur, et non directement dans la ZMI.
+
+Méta-données :
+$Id$

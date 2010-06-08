@@ -1,0 +1,259 @@
+# translation of plonearticle-sl.po to slovenščina
+# Matjaž Jeran (matematik) <matjaz.jeran@amis.net>, 2007.
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+msgid ""
+msgstr ""
+"Project-Id-Version: plonearticle-sl\n"
+"POT-Creation-Date: 2006-08-25 13:49+0000\n"
+"PO-Revision-Date: 2007-02-20 21:32+0100\n"
+"Last-Translator: Matjaž Jeran (matematik) <matjaz.jeran@amis.net>\n"
+"Language-Team: slovenščina <sl@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: sl\n"
+"Language-Name: Slovenian\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: plonearticle\n"
+"X-Generator: KBabel 1.11.4\n"
+
+# Close button of a browser window
+#. Close
+msgid "Close"
+msgstr "Zapri"
+
+#. close
+msgid "close"
+msgstr "zapri"
+
+#. Like the previous panel, you can choose here the content types of the attachments that will be linked by an article. You can choose the maximum size of the uploaded file. You can also activate the preview mode of attachmentField (if it is present).
+msgid "dd_attachments_management"
+msgstr "Kot v prejšnjem oknu lahko izbirate zvrsti vsebin, ki se lahko sklicujejo na članek. Lahko izberete največjo velikost priložene datoteke. Lahko aktivate tudi predogled (če imate nameščen modul AttachmentField)."
+
+#. This panel let you define which content types your users can pick when they wants to reference an image already uploaded on the site. You also can choose the maximum size the uploaded images.
+msgid "dd_images_management"
+msgstr "To okno omogoča določanje zvrsti vsebin, ki se lahko sklicujejo na slike na spletišču. Obenem lahko določite največjo velikost prenesenih slik."
+
+#. This panel let you define what content types your users can pick when they want to reference a content already created on the site.
+msgid "dd_links_management"
+msgstr "To okono omogoča določanje katere zvrsti vsebin se lahko sklicujejo na vsebino tega spletišča."
+
+#. You can define here the models that can be selected by your users. You can also select the default model.
+msgid "dd_models_management"
+msgstr "Tu lahko določite modele, ki jih lahko izbirajo vaši uporabniki. Lahko izberete tudi impliciten model."
+
+msgid "description_display_toc_dropdown"
+msgstr "Če ste izbrali \"Dodaj kazalo vsebine na prvo stran\" ta nastavitev nima pomena."
+
+msgid "description_select_default_view"
+msgstr "Izberite model, ki bo privzeta oblika za spletišče."
+
+#. Attachments management
+msgid "dt_attachments_management"
+msgstr "Upravljanje s povezavami"
+
+#. Images management
+msgid "dt_images_management"
+msgstr "Upravljanje s slikami"
+
+#. Links management
+msgid "dt_links_management"
+msgstr "Upravljanje s povezavami"
+
+#. Models management
+msgid "dt_models_management"
+msgstr "Upravljanje z modeli"
+
+msgid "error_default_model_invalid"
+msgstr "Privzeti model mora biti en od modelov, ki ga lahko izberemo."
+
+msgid "help_attachment_allowPreview"
+msgstr "Če izberete ta način dela, boste uporabljali program za predogled izdelka AttachmentField."
+
+msgid "help_attachment_maxSize"
+msgstr "Največja velikost (v bytih) priložene datoteke, ki jo še lahko obdelamo."
+
+#. Select here the content types of content that you allow to be linked in a ${content_type}.
+msgid "help_attachment_referenceable"
+msgstr "Izberite vrste datotek prilog na katere se lahko sklicujejo vsebine zvrsti ${content_type}."
+
+msgid "help_attachments_referenceable"
+msgstr "Izberite vrste priloženih datotek na katere se lahko sklicujejo zvrsti ${content_type}."
+
+msgid "help_images_maxSize"
+msgstr "Največja dimenzija slike (v bytih), ki jo še lahko obdelamo."
+
+msgid "help_images_referenceable"
+msgstr "Izberite zvrsti slik na katere se lahko sklicuje vsebina zvrsti ${content_type}."
+
+msgid "help_link_referenceable"
+msgstr "Izberite tipe povezav na katere se lahko sklicujejo vsebine zvrsti ${content_type}."
+
+#. You can set these options for each content types that are based on PloneArticle.
+msgid "help_multi_implementers"
+msgstr "Te nastavitve lahko določite za vsako zvrst vsebine, ki ga določa PloneArticle."
+
+#. Theses panels will help you to set up Plone Article to fit your needs.
+msgid "help_plonearticle_conf"
+msgstr "Ta okna omogočajo nastavitve PloneArticla za vse vaše potrebe."
+
+msgid "image_dimension_identification_error"
+msgstr "Slika neznane velikosti"
+
+# kilo-bytes
+#. kB
+msgid "kB"
+msgstr "kB"
+
+#. <input i18n:attributes="value label_add;" tal:attributes="onclick string:javascript:baseinnercontent_widget.addNewInnerContentWidget('${here_url}', '${fieldName}', '${widget_container_id}', '${widget_index_id}');" type="button" value="Add"/>
+#. Default: "Add"
+#: skins/plonearticle/pa_baseinnercontentwidget.pt
+msgid "label_add"
+msgstr "Dodaj"
+
+msgid "label_album_view"
+msgstr "Poglej vse slike v albumu"
+
+msgid "label_all_site"
+msgstr "Celo spletišča"
+
+msgid "label_article_preferences"
+msgstr "Nastavitve PloneArticle"
+
+msgid "label_attachment_allowPreview"
+msgstr "Aktiviranje predogleda?"
+
+msgid "label_attachment_maxSize"
+msgstr "Največja možna velikost priloženih datotek."
+
+#. Referenceable attachments
+msgid "label_attachment_referenceable"
+msgstr "Priloge na katere se lahko sklicujete"
+
+msgid "label_attachments_referenceable"
+msgstr "Priložene datoteke na katere se lahko sklicujemo"
+
+msgid "label_browse_server_files"
+msgstr "Obhodi vse datoteke spletišča"
+
+msgid "label_browse_server_images"
+msgstr "Obhodi vse slike spletišča"
+
+msgid "label_browse_server_links"
+msgstr "Obhodi vse povezave spletišča"
+
+msgid "label_display_toc_dropdown"
+msgstr "Dodaj kazalo vsebine v roletni menu"
+
+msgid "label_element_upload_success"
+msgstr "Prispevek uspešno prenesen na spletišče."
+
+#. Please enter a valid url.
+msgid "label_enter_valid_url"
+msgstr "Vnesite veljaven URL naslov."
+
+msgid "label_file_listing_view"
+msgstr "Poglej seznam"
+
+msgid "label_images_maxSize"
+msgstr "Največja dimenzija slik"
+
+msgid "label_images_referenceable"
+msgstr "Slike na katere se lahko sklicujemo"
+
+msgid "label_link_referenceable"
+msgstr "Povezave na katere se lahko sklicujemo."
+
+msgid "label_model_default_view"
+msgstr "Privzeti model"
+
+msgid "label_model_enabled_view"
+msgstr "Modeli na voljo"
+
+msgid "label_models"
+msgstr "Modeli"
+
+msgid "label_no_files_inside"
+msgstr "V članku še ni nobene datoteke."
+
+msgid "label_no_images_inside"
+msgstr "V članku še ni nobene slike."
+
+msgid "label_no_links_inside"
+msgstr "V tem članku še ni nobene povezave."
+
+#. Please select a file from your computer.
+msgid "label_select_file_from_localfs"
+msgstr "Izberite datoteko na vašem računalniku."
+
+# Size of files, images...
+#. Size
+msgid "label_size"
+msgstr "Velikost"
+
+#. Table of contents
+msgid "label_table_of_contents"
+msgstr ""
+
+msgid "label_this_folder"
+msgstr "Ta mapa"
+
+#. Add a new file in your article,<br /> title and description are optional.
+msgid "label_upload_file_legend"
+msgstr "Dodajte novo datoteko - prilogo v članek. Naslov in opis sta neobvezna."
+
+msgid "label_upload_files"
+msgstr "Vstavi datoteke"
+
+#. Add a new image in your article,<br /> title and description are optional.
+msgid "label_upload_image_legend"
+msgstr "Dodajte novo sliko v članek. Naslov in opis sta neobvezna."
+
+msgid "label_upload_images"
+msgstr "Vstavi slike"
+
+#. Upload in progress, please wait...
+msgid "label_upload_in_progress"
+msgstr "Prenašam podatke, prosim malo potrpljenja..."
+
+#. Add a new link in your article,<br /> title and description are optional.
+msgid "label_upload_link_legend"
+msgstr "Dodajte novo povezavo v vaš članek.</br>Naslov in opis sta neobvezna."
+
+msgid "label_upload_links"
+msgstr "Vstavi povezave"
+
+msgid "label_view_toc_first"
+msgstr "Dodaj kazalo vsebine na prvo stran"
+
+#. <legend i18n:translate="legend_files">
+#. Files
+#. </legend>
+#. Default: "Files"
+#: skins/pa_models/pa_model_macros.pt
+msgid "legend_files"
+msgstr "Datoteke"
+
+#. <legend i18n:translate="legend_images">
+#. Images
+#. </legend>
+#. Default: "Images"
+#: skins/pa_models/pa_model_macros.pt
+msgid "legend_images"
+msgstr "Slike"
+
+#. <legend i18n:translate="legend_links">
+#. Links
+#. </legend>
+#. Default: "Links"
+#: skins/pa_models/pa_model_macros.pt
+msgid "legend_links"
+msgstr "Povezave"
+
+msgid "max_file_size_exceeded_error"
+msgstr "Želeli ste prenesti preveliko datoteko. Največja dovoljena velikost je ${max_size} bytov."
+
+msgid "message_attachment_field_installation"
+msgstr "Namestite AttachmentField da bi aktivirali možnost indeksiranja in predogleda."
+

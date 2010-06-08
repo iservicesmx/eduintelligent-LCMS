@@ -1,0 +1,43 @@
+Name: Add an image to an article
+
+Abstract: The user of PA has written an article without images and wants now add
+one. This use case describe all the steps to add and publish an image inside
+an already existing article.
+
+Preconditions:
+ - the user own the right to edit an article;
+ - an article is already existing on the site;
+ - the user has an image to add.
+
+Triggers:
+ - the user wants to add an image.
+
+Main course:
+ 1. in a plone directory, the user choose the article he wants to modify to
+    display it;
+ 2. the system displays this article and adds the content administration frame;
+ 3. the user clicks* on the "Modify" tab of this frame;
+ 4. the system shows to the user the editing interface for this article;
+ 5. the user clicks* on the "Images" content type tab, to add an image;
+ 6. the system shows to the user the Image management inerface;
+ 7. the user clicks* on the "Browse" button of the quick image upload field;
+ 8. the browser let the user choose a file;
+ 9. the system shows the user that the file is being transfered;
+10. the system shows the new image next to the others images, and displays back
+    the quick updload field;
+11. step 7 through 10 can eventually be ran again.
+
+* or any other appropriate method to generate this action.
+
+Alternative course:
+When the user sends a file that is not an image:
+10 the system notify the user that the file is not in a format recognise by the
+   system;
+11. Go to the step 11 of the main course.
+
+Notes :
+
+ None.
+
+Metadata :
+$Id$

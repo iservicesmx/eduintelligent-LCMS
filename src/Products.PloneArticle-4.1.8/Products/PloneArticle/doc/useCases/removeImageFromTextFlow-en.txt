@@ -1,0 +1,35 @@
+Name: Delete an image inside an article with Kupu
+
+Abstract: The user edits an article on the website and deletes an image already
+  in the text flow of the article
+
+Preconditions:
+  - the user has the right to edit an article
+  - the article contains at least one image in the text flow
+
+Trigger: The user wants delete an image in the text flow of an article
+
+Main course:
+ 1. in a Plone directory, the user chooses the article he wants to modify so as
+    to display it
+ 2. the system shows this article with the content management interface
+ 3. the user clicks* on the "modify" tab of this interface
+ 4. the system displays the article edition interface
+ 5. the user browse for the image to be removed in the edit interface, and
+    selects it
+ 6. the user clicks* the "delete image" icon
+ 7. the system presents the article without the image (in the edit form)
+ 8. the user submit the form by clicking* on "save"
+ 9. the system displays the modified article with a banner showing that
+    modifications have been saved
+
+* or any other appropriate method to generate this action.
+
+Alternatives courses:
+  None
+
+Comments :
+  None
+
+Metadata :
+$Id$

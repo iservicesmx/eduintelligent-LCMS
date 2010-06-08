@@ -1,0 +1,174 @@
+function smartlist_search(url, obj_path, fieldName, realFieldName) {
+    var params = 'fieldName=' + fieldName + '&';
+    var search_form = document.getElementById(fieldName + '-search-form');
+    var input_elts = search_form.getElementsByTagName('INPUT');
+
+    for(var i=0; i < input_elts.length; i++) {
+        var input = input_elts[i];
+        if (input.type == 'checkbox') {
+            params += input.name + '=' + (input.checked ? input.value : '') + '&';
+        }
+        else {
+            params += input.name + '=' + input.value + '&';
+        };
+    };
+
+    var option_elts = search_form.getElementsByTagName('OPTION');
+    for(var i=0; i < option_elts.length; i++) {
+        var option = option_elts[i];
+        if (option.selected) {
+            params += option.parentNode.name + '=' + option.value + '&';
+        };
+    };
+
+    smartList.searchContents(url, params, fieldName);
+};
+
+function smartlist_addCriteria(option, url, fieldName) {
+    var criteria = option.value;
+    smartList.addCriteria(url, fieldName, criteria);
+    option.disabled = true;
+    option.parentNode.selectedIndex = 0;
+}
+
+var smartList = {}
+
+smartList.searchContents = function(url, params, fieldName) {
+    var req = new XMLHttpRequest();
+
+    function update_search_results() {
+        if (req.readyState == 4) {
+            var searchResults = document.getElementById(fieldName + '-search-results-list');
+            searchResults.innerHTML = req.responseText;        
+        };
+    };
+
+    req.onreadystatechange = update_search_results;
+    req.open("POST", url + "/smartListSearch", true);
+    req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    req.send(params);
+
+}
+
+smartList.addCriteria = function(url, fieldName, criteria) {
+    var req = new XMLHttpRequest();
+
+    function update_search_form() {
+        if (req.readyState == 4) {
+            var search_form = document.getElementById(fieldName + '-search-form');
+            jQuery(search_form).append(req.responseText);
+        };
+    };
+
+    req.onreadystatechange = update_search_form
+    req.open("POST", url + "/smartListAddCriteria", true);
+    req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    req.send("fieldName=" + fieldName + "&criteria=" + criteria);
+}
+
+smartList.deleteCriteria = function(fieldName, criteria) {
+    var field_node = document.getElementById(fieldName + '-' + criteria);
+    var parent_node = field_node.parentNode;
+    parent_node.removeChild(field_node);
+
+    var select_box = document.getElementById(fieldName + '-add-criterias');
+    var options = select_box.getElementsByTagName('OPTION');
+    for(var i=0; i < options.length; i++) {
+        var option = options[i];
+        if (option.value == criteria) {
+            option.disabled = false;
+            break;
+        };
+    };
+}
+
+smartList.popupSetFormValues = function(form, fieldName) {
+
+    //replace existing hidden form controls in edit_form by new values
+    var targetContainer = document.getElementById(fieldName + '-values');
+    var searchInputs = jQuery("input", form);
+    var searchSelects = jQuery("select", form);
+
+    targetContainer = jQuery(targetContainer);
+    targetContainer.html("");
+    searchInputs.each(function(i) {
+        if (this.type == "button") {return;}
+
+        if (this.type == "checkbox") {
+            if (! this.checked)
+                return;
+        }
+
+        this.type = "hidden";
+        targetContainer.append(this);
+    });
+
+    searchSelects.each(function(i) {
+        if (this.id == fieldName + "-add-criterias") {return;}
+        if (this.name == "") {return;}
+
+        var input_list = "";
+        for (var i=0; i < this.options.length; i++) {
+            var option = this.options[i];
+            if (option.selected) {
+                input_list += '<input type="hidden" name="' + this.name + '" value="' + option.value + '" />\n';
+            }
+        }
+        targetContainer.append(input_list);
+    });
+
+    //close popup
+    TB_remove();
+}
+
+smartList.initWidget = function() {
+    jQuery("input.thickbox").click(function(){
+        var t = this.title || this.innerHTML || this.src;
+        smartList.show(t,this.src);
+        this.blur();
+        return false;
+    });
+}
+
+smartList.show = function(caption, url) {
+	try {
+        // addon MSIE JMG
+        hideSelectBoxes();
+		jQuery("body")
+		.append("<div id='TB_overlay'></div><div id='TB_window'></div>");
+		jQuery("#TB_overlay").css("opacity","0.6");
+		jQuery("#TB_overlay").css("filter","alpha(opacity=60)");
+		jQuery("#TB_overlay").css("-moz-opacity","0.6");
+		jQuery("#TB_overlay").click(TB_remove);
+		jQuery(window).resize(TB_position);
+		jQuery("body").append("<div id='TB_load'><div id='TB_loadContent'><img src='circle_animation.gif' /></div></div>");
+		jQuery("#TB_overlay").show();
+	
+		var urlString = /.jpg|.jpeg|.png|.gif|.html|.htm/g;
+		var urlType = url.match(urlString);
+        var queryString = url.replace(/^[^\?]+\??/,'');
+        var params = parseQuery( queryString );
+			
+        var regionContent = document.getElementById('region-content');
+        //TB_WIDTH = (params['width']*1) + 30;
+        TB_WIDTH = regionContent.clientWidth;
+        //TB_HEIGHT = (params['height']*1) + 40;
+        TB_HEIGHT = getPageSize()[3] - 40;
+
+        ajaxContentW = TB_WIDTH - 30;
+        ajaxContentH = TB_HEIGHT - 45;
+        jQuery("#TB_window").append("<div id='TB_closeAjaxWindow'><a href='#' id='TB_closeWindowButton'>close</a></div><div id='TB_ajaxContent' style='width:"+ajaxContentW+"px;height:"+ajaxContentH+"px;'></div>");
+        jQuery("#TB_closeWindowButton").click(TB_remove);
+        jQuery("#TB_ajaxContent").load(url, function(){
+			TB_position();
+			jQuery("#TB_load").remove();
+			jQuery("#TB_window").slideDown("normal");
+            // addon Ingeniweb we can add close buttons everywhere in ajax content
+			jQuery("a.TB_closeWindowButton").click(TB_remove);
+        });
+    } catch(e) {
+        alert( e );
+    }
+}
+
+jQuery(document).ready(smartList.initWidget);

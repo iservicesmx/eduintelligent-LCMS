@@ -1,0 +1,11 @@
+[default]
+title = Allowed Models edit script
+
+[security]
+View=0:Manager
+
+[validators]
+
+[actions]
+action.success = redirect_to:string:pa_management_form
+action.failure = redirect_to:string:pa_manage_links_form

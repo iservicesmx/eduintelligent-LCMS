@@ -1,0 +1,33 @@
+Nom : Supprimer un lien
+
+Résumé : L'utilisateur de PA supprime un lien précédemment ajouté.
+
+Préconditions :
+ - l'utilisateur a le droit de modifier un article ;
+ - l'utilisateur est en train d'éditer un article ;
+ - l'article contient un ou des liens(s) à supprimer.
+
+Déclencheur : L'utilisateur souhaite supprimer un lien.
+
+Procédure nominale :
+ 1. lors de l'édition d'un article, l'utilisateur clique* sur le type de contenu
+ 	"Links" ;
+ 2. le système affiche l'interface de gestion des liens ;
+ 3. l'utilisateur selectionne l'icône de supression des liens à supprimer ;
+ 4. le système supprime l'interface de gestion de ce lien à l'écran ;
+ 5. le système affiche un bandeau indiquant qu'il faut soumettre ce formulaire
+    pour prise en compte par le serveur ;
+ 6. l'utilisateur valide le formulaire en cliquant sur "Envoyer" ;
+ 7. le système présente à l'utilisateur la vue de l'article ainsi qu'un bandeau
+ 	précisant que les modifications ont été enregistrées.
+
+Procédures alternatives :
+  Aucune
+
+* ou toute autre méthode appropriée pour générer une action
+
+Commentaires :
+ Aucun
+
+Méta-données :
+$Id$

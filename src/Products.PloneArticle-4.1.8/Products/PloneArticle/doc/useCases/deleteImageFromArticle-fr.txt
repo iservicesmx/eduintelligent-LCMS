@@ -1,0 +1,33 @@
+Nom : Supprimer une image
+
+Résumé : L'utilisateur de PA supprime une image précédemment ajoutée.
+
+Préconditions :
+ - l'utilisateur a le droit de modifier un article ;
+ - l'utilisateur est en train d'éditer un article ;
+ - l'article contient une ou des image(s) à supprimer.
+
+Déclencheur : L'utilisateur souhaite supprimer une image.
+
+Procédure nominale :
+ 1. lors de l'édition d'un article, l'utilisateur clique* sur le type de contenu
+ 	"Images" ;
+ 2. le système affiche l'interface de gestion des images ;
+ 3. l'utilisateur selectionne l'icône de supression des images à supprimer ;
+ 4. le système supprime l'interface de gestion de cette image à l'écran ;
+ 5. le système affiche un bandeau indiquant qu'il faut soumettre ce formulaire
+    pour prise en compte par le serveur ;
+ 6. l'utilisateur valide le formulaire en cliquant sur "Envoyer" ;
+ 7. le système présente à l'utilisateur la vue de l'article ainsi qu'un bandeau
+ 	précisant que les modifications ont été enregistrées.
+
+Procédures alternatives :
+  Aucune
+
+* ou toute autre méthode appropriée pour générer une action
+
+Commentaires :
+ Aucun
+
+Méta-données :
+$Id$

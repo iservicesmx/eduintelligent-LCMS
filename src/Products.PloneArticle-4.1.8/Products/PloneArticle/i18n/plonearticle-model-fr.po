@@ -1,0 +1,115 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PloneArticle v4\n"
+"POT-Creation-Date: 2006-08-25 13:49+0000\n"
+"PO-Revision-Date: 2006-09-20 16:27+0200\n"
+"Last-Translator: Ingeniweb <support@ingeniweb.com>\n"
+"Language-Team: Ingeniweb <support@ingeniweb.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language-Code: fr\n"
+"Language-Name: Français\n"
+"Preferred-Encodings: latin1 utf-8\n"
+"Domain: plonearticle-model\n"
+"X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
+
+msgid "untitled_model"
+msgstr "Non nommé"
+
+msgid "no_description_available"
+msgstr "Aucune description disponible"
+
+msgid "model1_title"
+msgstr "Modèle simple"
+
+msgid "model1_description"
+msgstr ""
+"Les images sont disposées à droite et les pièces jointes au bas du "
+"document.\n"
+"C'est une disposition de base qui peut être utilisée pour de la documentation."
+
+msgid "model2_title"
+msgstr "Modèle d'article de journal"
+
+msgid "model2_description"
+msgstr ""
+"La première image est disposée dans l'entête du texte.\n"
+"Les autres images sont placées à droite et les pièces jointes au bas du "
+"document.\n"
+"C'est un modèle qui peut être utilisé pour les articles à destination des "
+"lecteurs."
+
+msgid "model3_title"
+msgstr "Petites images"
+
+msgid "model3_description"
+msgstr ""
+"Les images sont de petite taille, par ligne de 2 et placées après le texte."
+
+msgid "model4_title"
+msgstr "Grandes images"
+
+msgid "model4_description"
+msgstr ""
+"La description et le texte sont affichés en premier.\n"
+"Les images sont affichées en grande taille après le texte."
+
+msgid "model5_title"
+msgstr "Petites images séparées"
+
+msgid "model5_description"
+msgstr ""
+"Les deux premières images sont affichées en ligne et petite taille.\n"
+"Vient ensuite le texte de l'article ainsi que tout le reste des images par "
+"ligne de 2 et en petite taille."
+
+msgid "model6_title"
+msgstr "Grandes images séparées"
+
+msgid "model6_description"
+msgstr ""
+"La première image est grande et affichée en premier.\n"
+"Les autres images sont grandes et affichées après le texte de l'article."
+
+msgid "model7_title"
+msgstr "Une grande image et des petites"
+
+msgid "model7_description"
+msgstr ""
+"Ce modèle vous propose d'afficher la première image en grande taille, puis "
+"le reste des images en petite taille et par ligne de 2, après le texte."
+
+msgid "model8_title"
+msgstr "Une grande image, des petites et les pièces-jointes sur le côté"
+
+msgid "model8_description"
+msgstr ""
+"Une image suivi de petites et des pièces jointes visibles sur le côté.\n"
+"Ce modèle affiche une image à sa taille normale suivi du texte de l'article. Les autres images sont en petite taille et par ligne de 2.\n"
+
+msgid "model9_title"
+msgstr "images, fichiers et liens en bas de page"
+
+msgid "model9_description"
+msgstr ""
+"Ce modèle transforme les images en icônes.\n"
+"icônes, fichiers et liens sont placés en bas de page."
+
+msgid "model10_title"
+msgstr "Images rognées en carrés"
+
+msgid "model10_description"
+msgstr ""
+"4 premières images rognées dans des carrés de 50px.\n"
+"Zoom sur première image (carré de 250 px).\n"
+"Autres images, fichiers et liens en bas de page."
+
+msgid "model11_title"
+msgstr "Visionneuse d'images en Ajax"
+
+msgid "model11_description"
+msgstr ""
+"Les images sont affichées dans un player ajax.\n"
+"Les fichiers et liens en bas de page.\n"

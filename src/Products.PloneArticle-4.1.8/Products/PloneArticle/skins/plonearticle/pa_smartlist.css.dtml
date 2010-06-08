@@ -1,0 +1,18 @@
+.smartlistContainer tr {
+  vertical-align: top;
+}
+
+.smartlistSearchPanel select {
+  width: 20em;
+}
+
+.smartlistSearchResults {
+  border: solid 1px;
+  padding: 0.5em;
+}
+
+.smartlistSearchResults ul {
+  padding: 0em;
+  margin: 0.5em 0em;
+  list-style: none;
+}

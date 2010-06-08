@@ -1,0 +1,98 @@
+###
+FAQ
+###
+
+
+How can I make my attachments indexed and previewable by my website?
+####################################################################
+
+Install and test suitable versions of AttachmentField and
+PloneExFile...
+
+However Plone 3 provides File indexation.
+
+Why does the wysiwyg editor not appear?
+#######################################
+
+This is not a PloneArticle issue. Please check in your personal
+preferences about content editor settings.
+
+Why after a copy paste from a Microsoft Word file, is the rendering of my article unordered ?
+#############################################################################################
+
+MS Word writes nasty HTML with specific tags and namespaces. Please
+consider using a suitable version of `FCKeditor
+<http://plone.org/products/fckeditor>`_ in place of Kupu. FCKeditor
+has a nice "paste from word" feature that cleans up the HTML for you.
+
+How can i add a new display Model?
+##################################
+
+See doc/useCases/addDisplayModel-en.txt
+
+
+How to get the FileSystemStorage working for PloneArticle inners?
+#################################################################
+
+You just need to get and install and configure `iw.fss` (formerly
+known as FileSystemStorage) and add this bunch of ZCML anywhere where
+ZCML is processed (i.e. in any `configure.zcml` file)::
+
+  <configure
+    ...
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:fss="http://namespaces.ingeniweb.com/filesystemstorage"
+    ...
+    />
+    ...
+    <fss:typeWithFSS
+       zcml:condition="installed iw.fss"
+       class="Products.PloneArticle.proxy.FileInnerContentProxy"
+       fields="attachedFile" />
+    <fss:typeWithFSS
+       zcml:condition="installed iw.fss"
+       class="Products.PloneArticle.proxy.ImageInnerContentProxy"
+       fields="attachedImage" />
+    ...
+  </configure>
+
+See `FileSystemStorage <http://plone.org/products/filesystemstorage>`_
+
+
+The migration fails
+###################
+
+From Plone 2.5.x / PloneArticle 4.0.x
+=====================================
+
+KeyError: 'containsanchors'
+---------------------------
+
+You ran Plone migrations, then reinstalled PloneArticle with the quick
+installer, that raises this error.
+
+The traceback looks like::
+
+  Traceback (innermost last):
+    ..
+    Module Products.CMFQuickInstallerTool.QuickInstallerTool, line 405, in installProduct
+    - __traceback_info__: ('PloneArticle',)
+     Module Products.GenericSetup.tool, line 322, in runAllImportStepsFromProfile
+    - __traceback_info__: profile-Products.PloneArticle:default
+    Module Products.GenericSetup.tool, line 1028, in _runImportStepsFromContext
+    Module Products.GenericSetup.tool, line 987, in _doRunImportStep
+    - __traceback_info__: plonearticle-kupu
+    Module Products.PloneArticle.setuphandlers, line 88, in setupKupu
+    Module Products.kupu.plone.librarytool, line 194, in getPortalTypesForResourceType
+    Module UserDict, line 17, in __getitem__
+    KeyError: 'containsanchors' 
+
+Plone 3 kupu comes with a new resource type name 'containsanchor' that
+does not seem to be created by the Plone 3 migrator.
+
+Create an empty Plone 3 in your instance, and use the ZMI to replace
+the "kupu_library_tool" of your migrated site by the one from your
+newly created site.
+
+Then re-run the PloneArticle re-install through the quick
+installer. You may now run the PloneArticle migration tool.

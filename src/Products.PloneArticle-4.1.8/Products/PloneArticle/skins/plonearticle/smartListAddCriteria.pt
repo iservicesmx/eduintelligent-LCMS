@@ -1,0 +1,23 @@
+<tal:ajax_encoding define="dummy python:request.RESPONSE.setHeader('Content-Type', 'text/plain;; charset=%s' % here.plone_utils.getSiteEncoding());">
+<div metal:define-macro="widget"
+     class="field"
+     tal:define="portal_url portal_url|here/portal_url;
+                 fieldName fieldName|request/fieldName|string:;
+                 criteria criteria|request/criteria|string:;
+                 div_id string:${fieldName}-${criteria};
+                 selected_values selected_values|python:();"
+     tal:condition="python: fieldName and criteria"
+     tal:attributes="id div_id;">
+
+  <select id="" name="" multiple="1" size="5"
+          tal:define="vocab python:here.portal_catalog.uniqueValuesFor(criteria)"
+          tal:attributes="name string:${fieldName}_search_criterias.${criteria}:record:list;
+                          id string:${fieldName}_search_criterias.${criteria}:record:list;">
+    <tal:loop repeat="item vocab"><option value="" tal:attributes="value item; selected python:item in selected_values;" tal:content="item">Vocab item</option></tal:loop>
+  </select>
+
+  <img alt="Delete criteria"
+       tal:attributes="src string:${portal_url}/delete_icon.gif;
+                       onclick string:javascript:smartList.deleteCriteria('${fieldName}', '${criteria}');" />
+</div>
+</tal:ajax_encoding>

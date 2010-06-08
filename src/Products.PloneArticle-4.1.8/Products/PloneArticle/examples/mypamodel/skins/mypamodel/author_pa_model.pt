@@ -1,0 +1,82 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plonearticle">
+  <head>
+
+    <tal:comment replace="nothing">
+      This is the copy of the first PloneArticle model. That's why it
+      looks like there's nothing special here ;) Anyway, I added some
+      comments here to make this template easier to understand.
+      Please see the other PloneArticle models in the
+      "plonearticle_models" layer for further hints.
+    </tal:comment>    
+   
+  </head>
+  <body>
+
+    <tal:comment replace="nothing">
+      The template data provider is our view class from our
+      browser/article.py.  In our example, we shall use the standard
+      macros, but you can make your own ones if you want to customize
+      deeper.
+      Have a look at the "pa_model_macros.pt" in the
+      "plonearticle_models" layer for available macros.
+    </tal:comment>
+
+    <div metal:fill-slot="main"
+         tal:define="view context/@@my_pa_model_view;
+                     base_macros nocall:here/pa_model_macros/macros">
+      <metal:block use-macro="base_macros/header" />
+      <metal:block use-macro="base_macros/description" />
+
+      <div class="photosContainer rightBlock"
+                tal:define="proxies here/getImages"
+                tal:condition="proxies">
+        <tal:block tal:repeat="proxy proxies">          
+          <metal:macro use-macro="here/pa_model_macros/macros/image" />
+        </tal:block>
+      </div>
+
+      <tal:comment replace="nothing">
+        We insert our author information here.
+      </tal:comment>
+
+      <div class="photosContainer leftBlock"
+           tal:define="author_info view/authorInfo">
+        <a href="#"
+           tal:attributes="href author_info/url">
+          <img src="#" tal:replace="structure author_info/portrait" />
+        </a>
+        <div class="documentByLine">
+          <span tal:omit-tag=""
+                i18n:domain="plone"
+                i18n:translate="label_by_author">
+            by
+            <a href="#"
+               tal:attributes="href author_info/url"
+               tal:content="author_info/fullname"
+               i18n:name="author">
+              Bob Dobalina
+            </a>
+            &mdash;
+          </span>
+        </div>
+
+      </div>
+
+      <metal:block use-macro="base_macros/body" />
+
+      <div class="visualClear" />
+
+      <metal:block use-macro="base_macros/files" />
+      <metal:block use-macro="base_macros/links" />
+      <metal:block use-macro="base_macros/footer" />
+
+    </div>
+  </body>
+</html>

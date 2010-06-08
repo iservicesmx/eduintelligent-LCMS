@@ -1,0 +1,44 @@
+Nom : Add a link to an article
+
+Abstract: The Plone Article user has created an article without link and wants
+  now add one. This use case describes all the steps mandotory to add and
+  publish a link within an already existing article.
+
+Preconditions:
+ - the user has the right to edit an article
+ - an article already exist on the site
+
+Trigger: The user wants to add a link in an article.
+
+
+Main Course:
+ 1. in a Plone directory, the user choose the article he wants to modify so as
+    to display it
+ 2. the system displays this article and adds the content management interface
+ 3. the user clicks* on the "modify" tab of this interface
+ 4. the system displays the article edit interface
+ 5. the user clicks* on the "link" content type tab, to add a link
+ 6. the system displays to the user the link management interface
+ 7. the user click* on the "add" button
+ 8. the system presents to the user an add and edit link interface
+ 9. the user clicks* on the "browse" button of the "referenced link" field
+10. the system displays an internal browsing interface
+11. the user browses the site and select the link
+12. the user validate his/her selection by clicking* on "ok"
+13. the system presents the link edit interface introduced in 8
+14. step 7 to 13 can eventually be repeated
+15. the user validate the form
+16. the system shows the article
+
+ * or any other appropriate method to generate this action.
+
+Alternate courses:
+When the user wants to add a new link:
+ 9. the user enters his/her link in the edit line
+10. go to step 14 of the main course
+
+Comments:
+  None
+
+Metadata:
+$Id$

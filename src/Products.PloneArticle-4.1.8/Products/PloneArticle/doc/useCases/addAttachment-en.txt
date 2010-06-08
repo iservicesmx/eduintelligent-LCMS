@@ -1,0 +1,48 @@
+Name: Add an attachment
+
+Abstract: The PA's user is editing an article and he adds one or more
+  attachments to this article.
+
+Preconditions:
+ - the user is editing an article;
+ - the user has some attachments to add.
+
+Trigger:
+ - the user activate the add attachement interface
+
+Main course:
+ 1. while editing an article, the user clicks* on the content type that he wants
+    to add;
+ 2. the system displays the attachement management interface;
+ 3. the user chooses "Send Attachments";
+ 4. the system presents to the user an interface whith some file upload lines;
+ 5. the user select the "Browse" button of the browser on each line to select
+    the file on his computer he wants to send;
+ 6. the user's browser let the user chooses the file for each "Browse" triggered
+    actions;
+ 7. the user validate the form by clicking* on "Submit";
+ 8. the system presents to the user a feedback interface showing him the
+    file transfert progression;
+ 9. the system shows the user the same attachment management interface, with
+    the new files and a banner diaplying the correctness of the transfert.
+
+Alternative course:
+  When the file is already present on the server
+ 3. the user clicks* the button "Browse the File on the Server"
+ 4. the system presents the user an selection interface containing the
+ files that can be joined to this article which are already on the server, whith
+ a simple navigation system
+ 5. the user select a file;
+ 6. the system displays the file in the list of attached files;
+ 7. run again step 5 through 6 as necessary;
+ 8. the user closes the last interface
+ 9. the system shows the user that his modifications have been saved.
+
+* or any other appropriate method generating this action
+
+Notes :
+
+ None.
+
+Metadata :
+$Id$

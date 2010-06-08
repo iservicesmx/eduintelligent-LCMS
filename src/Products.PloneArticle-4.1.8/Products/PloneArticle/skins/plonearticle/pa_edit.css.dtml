@@ -1,0 +1,775 @@
+/* PA Proxies editor CSS */
+
+
+/* 
+** <dtml-with base_properties>
+** <dtml-call "REQUEST.set('portal_url', portal_url())">
+
+*/
+
+/* global styles */
+
+.greyTitle {
+	border:none;
+	color:#8F8F8F;
+}
+
+
+#mainRelativize {
+	position: relative;
+	top:0;
+	left:0;
+}
+
+.closeWindow {
+	display:block;
+	width:  18px;
+	height: 18px;
+	background: transparent url(&dtml-portal_url;/close_icon.gif) 50% 50% no-repeat;
+	text-decoration:none;
+	border:none;
+}
+
+
+/* articleActions css */
+
+#articleActions {
+	width: 100%;
+	overflow:visible;
+}
+
+/* save button visible only whith inline edit forms */
+
+#saveKss {
+	float: right;
+	display: none;
+	cursor:pointer;
+}
+
+
+#plone-article-menu {
+	white-space: nowrap;
+	color:&dtml-fontColor;;
+	font-weight: bold;
+	font-size: &dtml-fontSmallSize;;
+	margin-top:10px;
+	margin-left:0;
+	list-style: none;
+	list-style-image: none;
+	padding-left: 0;
+	/* fix edit proxies form minimal width to prevent ugly wrapping 
+	   on small screens */
+	width:600px;
+}
+
+#plone-article-menu li {
+	display: inline;
+	padding: 2px 100px 2px 19px;
+}
+
+#plone-article-menu li a,
+#plone-article-menu li a {
+	text-decoration: underline;
+	border-bottom: none;
+}
+
+#plone-article-upload-menu {
+	background: transparent url(&dtml-portal_url;/menu_upload.png) center left no-repeat;
+}
+
+#plone-article-browser-menu {
+	background: transparent url(&dtml-portal_url;/menu_browser.png) center left no-repeat;
+}
+
+.innerContentWidgetContainer {
+	margin: 1.5em;
+	border: 1px solid #808080;
+	position: relative;
+}
+
+*+html .innerContentWidgetContainer {
+  overflow: hidden;
+}
+
+.proxy {
+	padding: 2px;
+	height: 100px;
+	overflow: visible;
+}
+
+.innerContentWidgetContainer .shadow {
+	padding: 2px;
+	height: 96px;
+	border: 1px dashed &dtml-backgroundColor;;
+	position: absolute;
+	width: 100%;
+}
+
+.innerContentWidget.dragging .proxy,
+.innerContentWidget.dragging proxy:hover,
+.innerContentWidget.dragging proxy.sfhover {
+	border: 1px inset &dtml-notifyBackgroundColor;;
+	background: #FFEFEB;
+}
+
+.innerContentWidget.dragging .odd,
+.innerContentWidget.dragging .even {
+  background-color:transparent !important;
+}
+
+.fileIconsContainer {
+  clear:right;
+	float:right;
+	margin-right: 33px;
+	margin-top:5px;
+	overflow: hidden;
+	height: auto;
+}
+
+/*IE fix */
+* html .fileIconsContainer {
+	margin-right: 16px;
+}
+
+.fileIconsContainer a {
+	display: block;
+	width: 20px;
+	height: 15px !important;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	border: none;
+}
+
+
+.innerContentWidget .file_handle,
+.innerContentWidget .file_delete {
+	display: block;
+	width: 25px;
+	height: 25px !important;
+	background-position: 0 50%;
+	background-repeat: no-repeat;
+	border: none;
+}
+.innerContentWidget .file_handle,
+.innerContentWidget .file_delete {
+	height: 16px !important;
+	background-position: 50% 50%;
+} 
+.innerContentWidget .file_handle {
+	cursor: move;
+	float: right;
+	height: 18px;
+	width: 40px;
+  background-image: url(&dtml-portal_url;/handle.horizontal.png);
+}
+
+/*IE fix */
+* html .fileIconsContainer a {
+	height: 1%;
+}
+
+*+html .innerContentWidget {
+  height: 1%;
+  overflow: visible
+}
+
+.innerContentWidget a.file_delete{
+	background-image: url(&dtml-portal_url;/file_delete.png);
+	float: right;
+	height: 18px;	
+}
+
+.innerContentWidget a.file_delete:hover{
+	background-image: url(&dtml-portal_url;/file_delete_18.png);
+}
+
+.fileIconsContainer a.file_upload{
+	background-image: url(&dtml-portal_url;/file_upload.png);
+}
+
+.fileIconsContainer a.file_upload:hover{
+	background-image: url(&dtml-portal_url;/file_upload_18.png);
+}
+
+.fileIconsContainer a.file_browse{
+	background-image: url(&dtml-portal_url;/file_browse.png);
+}
+
+.fileIconsContainer a.file_browse:hover{
+	background-image: url(&dtml-portal_url;/file_browse_18.png);
+}
+
+.fileIconsContainer a.file_move_top{
+	background-image: url(&dtml-portal_url;/file_move_top.png);
+}
+
+.fileIconsContainer a.file_move_top:hover{
+	background-image: url(&dtml-portal_url;/file_move_top_18.png);
+}
+
+.fileIconsContainer a.file_move_up{
+	background-image: url(&dtml-portal_url;/file_move_up.png);
+}
+
+.fileIconsContainer a.file_move_up:hover {
+	background-image: url(&dtml-portal_url;/file_move_up_18.png);
+}
+
+.fileIconsContainer a.file_move_down{
+	background-image: url(&dtml-portal_url;/file_move_down.png);
+}
+
+.fileIconsContainer a.file_move_down:hover {
+	background-image: url(&dtml-portal_url;/file_move_down_18.png);
+}
+
+.fileIconsContainer a.file_move_bottom{
+	background-image: url(&dtml-portal_url;/file_move_bottom.png);
+}
+
+.fileIconsContainer a.file_move_bottom:hover {
+	background-image: url(&dtml-portal_url;/file_move_bottom_18.png);
+}
+
+.linkPreviewContainer,
+.filePreviewContainer,
+.imagePreviewContainer {
+	float: left;
+	height: 96px;
+	width: 96px;
+	overflow: hidden;
+	padding-left:5px;
+}
+
+.linkPreviewContainer a,
+.filePreviewContainer a {
+	display: block;
+	border:none !important;
+	text-align: center;
+	background:none !important;
+}
+
+.imagePreviewContainer a {
+	display: block;
+	border:none !important;
+	text-align: center;
+	background:none !important;
+	width:96px;
+	height:100px;
+	overflow:hidden;
+	padding-top:5px
+}
+
+.linkPreviewContainer,
+.filePreviewContainer {
+	font-size: &dtml-fontSmallSize;;
+}
+
+
+.listContainer {
+	display: block;
+}
+.listContainer div {
+  display: inline;
+}
+
+.listContainer a {
+	text-decoration: none;
+	display: block;
+	clear: both;
+}
+
+.listContainer .imageContainer {
+	width: auto !important;
+	height: auto !important;
+}
+
+.listContainer a:hover {
+  background: white;
+}
+
+.fileInfosContainer {
+	font-size: &dtml-fontSmallSize;;
+	float:left;
+	padding:0;
+	padding-top:5px;
+}
+
+
+.fileInfosContainer label,
+.fileInfosContainer input.pField {
+	display: block;
+	float: left;
+}
+
+.fileInfosContainer label {
+padding-right: 5px;
+}
+
+.fileInfosContainer .selectionInfo {
+	color: #FF0000;
+	border: none;
+}
+
+.fileInfosContainer .descriptionInfo textarea {
+	font-family: Verdana, Arial, Helvetica;
+	font-size: 10px;
+	font-weight: bold;
+	color: #777777;
+	height:40px;
+	border: 1px solid #AAAAAA;
+}
+
+.titleInfo {
+	margin-top: 0;
+	line-height: 130%;
+	text-align:justify;
+}
+
+.descriptionInfo {
+	font-weight: bold;
+	line-height: 130%;
+	clear: both;
+}
+
+/*upload box classes */
+
+#uploadResult,
+#uploadContent
+{
+	text-align: center;
+	color: #8BACBB;
+}
+#uploadResult
+{
+	margin-top:20px;
+}
+#uploadResult a
+{
+	color: black;
+	text-decoration: none;
+}
+
+#new_file_noinput,
+#new_file_waitingMessage {
+	text-align: center;
+	display: none;
+}
+#new_file_waitingMessage img {
+	width: 40px;
+	height: 40px;
+}
+
+#new_file_uploadResult {
+	text-align: center;
+}
+
+
+
+
+/*other box classes */
+.boxLegend
+{
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.boxQuestion
+{
+	text-align: center;
+	margin-bottom: 30px;
+	font-weight: bold;
+}
+
+#boxButtons
+{
+	padding-top: 15px;
+	text-align: center;
+}
+
+.innerContentWidget * {
+	line-height: 1.5em;
+}
+
+.innerContentWidgetContainer input {
+	margin: 0;
+	padding: 0;
+}
+
+/* closed inner content widgets */
+
+.closedContent {
+  overflow: hidden;
+}
+
+.closedContent .proxy {
+  padding: 0;
+  margin: 0;
+  height: 1.5em;
+}
+
+.toggleFullDisplay {
+	display: block;
+	width: 9px; height: 9px;
+	margin: 3px;
+	float: left;
+	background: url(&dtml-portal_url;/arrowDown.gif) top left no-repeat;
+}
+.closedContent .toggleFullDisplay {
+	background-image: url(&dtml-portal_url;/arrowRight.gif);
+}
+
+.closedContent .fileIconsContainer,
+.closedContent .imagePreviewContainer,
+.closedContent .descriptionInfo {
+	display: none;
+}
+
+/*
+.closedContent .filePreviewContainer,
+.closedContent .filePreviewContainer img {
+	width: 16px;
+	height: 16px;
+}
+*/
+
+.closedContent .proxy {
+	background: transparent;
+	border-top: none !important;	
+}
+
+
+.proxy {
+	padding: 5px 0 5px 0;
+}
+
+.closedContent .fileInfosContainer {
+	margin: 0;	
+	padding-top:0;
+}
+
+.closedContent .titleInfo {
+	float: left;
+}
+
+.closedContent .rightInfo {
+	float: right;
+}
+
+
+
+*html .closedContent .rightInfo {
+height: 0.1%
+}
+
+*+html .closedContent .rightInfo {
+height: 0.1%
+}
+
+.closedContent .pField {
+	width: auto;
+	border: none;
+	background: none;
+	clear: none;
+}
+
+
+.fileInfosContainer {
+	width: 350px;
+}
+.closedContent .fileInfosContainer {
+	width: 450px;
+}
+
+.fileInfosContainer img {
+	float: left;
+	width: 16px;
+	height: 16px;
+}
+
+.fileInfosContainer label {
+	width: 80px;
+	float: left;
+}
+
+
+.fileInfosContainer .titleInfo  label {
+	margin-left: 10px;
+}
+
+* html .proxy_image .titleInfo  label {
+	margin-left: 5px;
+}
+
+* html .closedContent .titleInfo  span {
+	padding-left: 5px;
+}
+
+.fileInfosContainer .rightInfo,
+.fileInfosContainer .descriptionInfo {
+	margin-left: 26px;
+}
+
+.proxy_image .fileInfosContainer .rightInfo,
+.proxy_image .fileInfosContainer .descriptionInfo,
+.closedContent .fileInfosContainer .rightInfo label {
+	margin-left: 10px;
+}
+
+.closedContent .fileInfosContainer label {
+	width: auto;
+}
+
+.closedContent{
+padding-top:3px;
+padding-bottom:3px;
+}
+
+.closedContent .proxy_image .fileInfosContainer .rightInfo,
+.closedContent .proxy_image .fileInfosContainer .descriptionInfo,
+.closedContent .proxy_image .fileInfosContainer .titleInfo label {
+	margin: 0;
+}
+
+.fileInfosContainer .titleInfo {
+	width: 350px;
+	clear: both;
+}
+
+.fileInfosContainer .titleInfo,
+.fileInfosContainer .rightInfo {
+	clear: both;
+	overflow: hidden;
+	white-space: nowrap;	
+}
+
+.fileInfosContainer .rightInfo {
+	width:320px;	
+}
+
+* html .rightInfo span {
+	/* for MSIE grrrr */
+  white-space:normal;
+  height: 1%;
+}
+
+
+.closedContent .fileInfosContainer .titleInfo {
+	width: 50%;
+}
+
+.closedContent .fileInfosContainer .rightInfo {
+	width: 40%;
+}
+
+.fileInfosContainer .pField {
+	float: left;
+	width: 230px;
+}
+
+.fileInfosContainer .readonly {
+	border:none;
+	background: transparent none;
+}
+
+.proxy_image .fileInfosContainer .pField {
+	width: 250px;
+}
+
+
+
+
+* html .fileInfosContainer input.pField {
+	height: 1em;
+	line-height: 1em;
+}
+
+.closedContent .fileInfosContainer input.pField {
+	display: none;
+}
+
+
+.closedContent label{
+display:none;
+}
+
+.closedContent .titleInfo {
+font-weight:bold;
+}
+
+.titleInfo img {
+display:block;
+}
+
+.proxy_image .titleInfo img {
+display:none;
+}
+
+.closedContent .titleInfo img {
+display:inline !important;
+padding-right:5px !important;
+}
+
+.closedContent .titleInfo,
+.closedContent .rightInfo{
+height:18px;
+text-align: left;
+overflow: hidden !important;
+white-space:nowrap;
+clear: none;
+}
+
+
+.closedContent .titleInfo span,
+.closedContent .rightInfo span{
+white-space:normal;
+}
+
+/* light grey is better than even color for images bgcolor */
+.even {
+background-color:#EFEFEF;
+}
+
+
+
+/* fix IE float bugs on MSWORD plonearticle previews */
+
+#preview-container {
+background-color: white;
+background-image: none;
+height:auto;
+}
+
+#preview-container p,
+#preview-container h1,
+#preview-container ul,
+#preview-container li {
+position:static;
+height:auto;
+}
+
+
+/* Upload Window style */
+
+#TB_window.proxyAction {
+	border:none !important;
+	padding:0 !important;
+}
+
+.proxyAction #TB_closeAjaxWindow{
+	display:none !important;
+}
+
+.proxyAction #TB_ajaxContent {
+	padding-top:50px !important; 
+}
+
+#proxy-action-border-top {
+	position:absolute;
+	left: 0;
+	width: 100%;
+	top: -22px;
+	height: 22px;
+	background: transparent url(&dtml-portal_url;/window_border_top.png) top left repeat-x;
+	margin:0;
+}
+
+* html #proxy-action-border-top {
+/* because thickbox + MSIE = higway to poub'hell 
+  this doesn't works  :  width:100%; */
+width: 430px; 
+}
+
+#proxy-action-corner-left {
+	position:absolute;
+	left:0;
+	top: -22px;
+	height:22px;
+	width:31px;
+	background: transparent url(&dtml-portal_url;/window_corner_left.png) top left no-repeat;
+}
+
+#proxy-action-menu {
+  clear:both;
+	position:absolute;
+	top:0;
+	left:0;	
+	/* this doesn't work FIX ME thickbox grrrmmbleu 
+  width:100%; */
+  width:406px;
+  background-color: #F0EEEE;
+	padding: 2px 12px 5px 12px;
+  height: 18px;
+  margin:0;
+}
+
+#proxy-action-menu .closeWindow {
+	float: right;
+	display:block;
+	width:  18px;
+	height: 18px;
+	background: transparent url(&dtml-portal_url;/close_icon.gif) 50% 50% no-repeat;
+}
+
+#proxy-action-tab {
+	position:absolute;
+	left: 31px;
+	top: -22px;
+	height: 25px;
+	padding: 5px 44px 0 0px;
+	cursor: move;
+	background: transparent url(&dtml-portal_url;/window_tab_bg.png) top right no-repeat;
+}
+
+#proxy-action-tab-menu {
+	white-space: nowrap;
+	background: transparent url(&dtml-portal_url;/file_upload_18.png) center left no-repeat;
+	padding: 2px 0 3px 19px;
+	margin-top: -2px;
+	color:&dtml-fontColor;;
+	font-size: &dtml-fontSmallSize;;
+	font-weight: bold;
+}
+
+
+#kss-menu {
+  /*border:1px dotted #A9BFCC;*/
+  clear:both;
+  list-style-image:none;
+  list-style-position:outside;
+  list-style-type:none;
+  margin:2em 0 2em 1em;
+  padding:0.7em;
+}
+
+#kss-menu li {
+	background: transparent url(&dtml-portal_url;/menu_upload.png) center left no-repeat;
+  display: inline;
+	padding: 5px 30px 5px 19px;
+}
+
+#kss-menu li .kss-menu-text {
+	border-bottom: 1px solid &dtml-globalFontColor;;
+  color:#436976;
+  font-size:85%;
+  font-weight:bold;
+  white-space:nowrap;
+  text-decoration: none;
+}
+
+
+.jqInlineEditable:hover {
+  cursor: pointer !important;
+}
+
+
+/* fix kss spinner position under IE6 */
+
+*html #kss-spinner {
+  position: absolute;
+}
+
+
+/*
+** </dtml-with>
+*/

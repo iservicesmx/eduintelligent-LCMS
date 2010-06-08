@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plonearticle">
+
+  <body>
+    <div metal:fill-slot="main" id="pacontent">
+       <div metal:define-macro="main" id="pamaincontent"
+            tal:define="view context/@@pa_model2_view;
+                        base_macros nocall:here/pa_model_macros/macros;">
+
+          <!-- used for kss do not remove -->
+          <input type="hidden" id="model-id" value="pa_model2" />
+
+
+          <metal:block use-macro="base_macros/header" />
+          
+          <div class="leftBlock singleImage"
+              tal:define="proxy view/getFirstImage;"
+              tal:condition="python: proxy">
+            <metal:block use-macro="base_macros/image" />
+          </div>
+          
+          <div class="imagesContainer rightBlock"
+                      tal:define="proxies view/getOtherImages"
+                      tal:condition="proxies">
+            <tal:block tal:repeat="proxy proxies">
+              <metal:macro use-macro="base_macros/image" />
+            </tal:block>
+          </div>
+
+          <metal:block use-macro="base_macros/description" />
+
+          <metal:block use-macro="base_macros/body" />
+
+          <div class="visualClear"><!--  --></div>
+
+          <metal:block use-macro="base_macros/files" />
+          <metal:block use-macro="base_macros/links" />
+          <metal:block use-macro="base_macros/footer" />
+        </div>
+    </div>
+  </body>
+</html>

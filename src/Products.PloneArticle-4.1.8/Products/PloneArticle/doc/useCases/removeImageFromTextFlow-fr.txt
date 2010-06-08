@@ -1,0 +1,37 @@
+Nom : Supprimer une image dans un article avec Kupu
+
+Résumé : L'utilisateur édite un article sur le site et y supprime une image
+  déjà présente au sein de l'article.
+
+Préconditions :
+  - l'utilisateur a le droit d'éditer un article ;
+  - l'article contient au moins une image en son sein.
+
+Déclencheur : L'utilisateur souhaite supprimer une image dans le texte d'un
+  article.
+
+Procédure nominale :
+ 1. dans un répertoire Plone, l'utilisateur choisit l'article à modifier pour
+ 	l'afficher ;
+ 2. le système affiche cet article en ajoutant l'interface d'administration de
+ 	contenu ;
+ 3. l'utilisateur clique* sur l'onglet "modifier" de cette interface ;
+ 4. le système présente l'interface d'édition de l'article ;
+ 5. l'utilisateur cherche l'image, dans l'interface d'édition, qu'il
+    souhaite supprimer, et la selectionne ;
+ 6. l'utilisateur clique* sur l'icône de suppression d'image ;
+ 7. le système présente l'article sans l'image ;
+ 8. l'utilisateur valide le formulaire d'édition en cliquant sur "enregistrer" ;
+ 9. le système présente à l'utilisateur l'article modifié, ainsi qu'un bandeau
+    indiquant que les modifications effectuées ont été enregistrées.
+
+* ou toute autre méthode appropriée pour générer une action
+
+Procédures alternatives :
+  Aucune
+
+Commentaires :
+  Aucun
+
+Méta-données :
+$Id$

@@ -1,0 +1,47 @@
+<metal:block use-macro="here/pa_ajax_headers/macros/headers" />
+<tal:block i18n:domain="plonearticle">
+  <tal:widget define="skip_widget options/skip_widget | nothing"
+              condition="not: skip_widget">
+    <div class="innerContentWidget"
+         tal:define="fieldName options/field_name;
+                     field nocall:options/field;
+                     widget nocall:options/widget;
+                     widget_index options/widget_index;
+                     widget_id python: widget.makeWidgetId(fieldName, widget_index);
+                     default_macro nocall:here/pa_baseinnercontentwidget/macros;
+                     widget_macro python:path('here/%s/macros|nothing' % widget.macro) or default_macro;
+                     proxy nocall:options/inner_content;
+                     errors python:{};"
+         tal:attributes="id widget_id;">
+      <metal:block metal:use-macro="widget_macro/inner_content" />
+      <input type="hidden"
+             tal:attributes="name string:${fieldName}_innercontent_position:list;
+                             value python:'%06d' % widget_index" />
+    </div>
+  </tal:widget>
+
+  <tal:from_upload define="from_upload options/from_upload | python:False;"
+                   condition="from_upload">
+    <div id="upload-status"
+         tal:define="fail_reason options/fail_reason | nothing;">
+      <span id="upload-status-success"
+            tal:condition="not: fail_reason"
+            i18n:translate="label_element_upload_success">
+        Element uploaded with success.
+      </span>
+      <span id="upload-status-error"
+            tal:condition="fail_reason"
+            tal:content="fail_reason">
+        Upload error message
+      </span>
+    </div>
+
+    <div id="upload-informations">
+    </div>
+
+    <script type="text/javascript">
+      //top.baseinnercontent_widget.upload_new_file_completed();.
+      parent.Proxy.uploadCompleted();
+    </script>
+  </tal:from_upload>
+</tal:block>

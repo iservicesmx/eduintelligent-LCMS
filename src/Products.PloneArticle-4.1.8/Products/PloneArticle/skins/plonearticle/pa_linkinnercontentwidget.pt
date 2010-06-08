@@ -1,0 +1,201 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="plonearticle">
+
+  <head><title></title></head>
+
+  <body>
+
+    <!-- LinkInnerContent Widget -->
+
+    <metal:define define-macro="view">
+      <metal:use use-macro="here/pa_baseinnercontentwidget/macros/view" />
+    </metal:define>
+
+    <metal:define define-macro="edit">
+        <tal:defs define="type string:link;
+                          typeView type;
+                          fieldset fieldset | string:links;
+                          inner_content_macros here/pa_linkinnercontentwidget/macros;">
+          <metal:use use-macro="here/pa_baseinnercontentwidget/macros/edit" />
+        </tal:defs>
+    </metal:define>
+
+    <metal:define define-macro="search">
+      <metal:use use-macro="here/pa_baseinnercontentwidget/macros/search" />
+    </metal:define>
+
+    <metal:inner_content define-macro="inner_content">
+
+      <tal:proxy define="file_id proxy/getId;
+                         title proxy/Title;
+                         remote_url proxy/getRemoteUrl;
+                         referenced proxy/getReferencedContent;
+                         attached_link proxy/getAttachedLink;
+                         description proxy/Description;
+                         file_path proxy/getPhysicalPath;
+                         file_path python:'/'.join(file_path);
+                         url proxy/absolute_url;
+                         type string:link;
+                         typeView string:link;
+                         isTemporary proxy/isTemporary | python: 0;">
+        
+        <div class="proxy" tal:attributes="class string:proxy proxy_${type};">
+        
+          <tal:comment replace="nothing">
+            Those following text inputs must be hidden. 
+            I have no idea why but input type=hidden can't be copied when they
+            are copied from an IFRAME.            
+          </tal:comment>
+          <div class="hiddenFields" style="display: none">
+            <input type="text"
+                   tal:define="id python:widget.makeInnerContentWidgetId(fieldName, widget_index, 'id');"
+                   tal:attributes="id id; name id; value file_id" />
+  
+            <input type="text"
+                   tal:define="id python:widget.makeInnerContentWidgetId(fieldName, widget_index, 'isTemporary:int');"
+                   tal:attributes="id id; name id;
+                                   value python:test(isTemporary, 1, 0);"/>
+            <tal:isTemporary tal:condition="isTemporary">
+              <input type="text" value="31446abd4e545f"
+                     tal:define="id python:widget.makeInnerContentWidgetId(fieldName, widget_index, 'referencedContent');
+                                 tempUID proxy/tempUID | nothing;"
+                     tal:condition="tempUID"
+                     tal:attributes="id id; name id;
+                                     value tempUID;" />
+            </tal:isTemporary>
+          </div>        
+        
+          <a  href="javascript:void(0);" class="toggleFullDisplay"
+              tal:attributes="onclick string:Proxy.toggleFullDisplay('${widget_id}');; return false;;;"></a>
+          <a class="file_delete" href="javascript:void(0);"
+             tal:attributes="onClick string:javascript:Proxy.removeRemove('${widget_id}');; return false;;;"></a>
+          <div class="file_handle"></div>
+
+          <div class="fileInfosContainer"
+               tal:attributes="id file_id">
+
+
+
+            <div class="titleInfo">
+              <img alt="no image loaded"
+                   tal:attributes="alt proxy/Description;
+                                   src string:${portal_url}/${proxy/getLinkIcon}" />
+              <label>
+                <span i18n:translate="label_title" i18n:domain="plone">Title</span>:
+              </label>              
+              <input id="" name="" type="text" class="pField" value=""
+                     tal:define="id python:widget.makeInnerContentWidgetId(fieldName, widget_index, 'title');"
+                     tal:attributes="id id; name id; value title;" />
+            </div>
+
+            <div class="rightInfo">
+              <label>
+                <span>URL</span>:
+              </label>
+              <input id="" name="" type="text" class="pField" value=""
+                     tal:define="id python:widget.makeInnerContentWidgetId(fieldName, widget_index, 'attachedLink');"
+                     tal:condition="python: not referenced"
+                     tal:attributes="id id; name id; value attached_link;" />
+                     
+              <input id="" name="" type="text" class="pField readonly" value=""
+                     tal:condition="python: referenced"
+                     readonly="true"
+                     disable="true"
+                     tal:attributes="value remote_url;" />                     
+
+              <div class="selectionInfo">
+                <!-- input name="paths:list" type="checkbox" class="noborder" id="cb_000xxxx" value="000xxxx"
+                       tal:attributes="id string:cb_${file_id};
+                                       value file_path" / -->
+              </div>
+            </div>            
+
+            <div class="descriptionInfo">
+              <label>
+                <span i18n:translate="label_description" i18n:domain="plone">Description</span>:
+              </label>
+              <textarea class="pField" id="Description_000xxxx" name="Description_000xxxx"
+                        tal:define="id python:widget.makeInnerContentWidgetId(fieldName, widget_index, 'description');"
+                        tal:attributes="id id; name id;"
+                        tal:content="description">Proxy Description</textarea>
+            </div>
+          </div>
+
+          <div class="fileIconsContainer">
+            <a class="file_move_top" href="javascript: moveTop()"
+               tal:attributes="onClick string:javascript:Proxy.moveToTop('${widget_id}');; return false;;;"></a>
+            <a class="file_move_up" href="javascript: moveUp()"
+               tal:attributes="onClick string:javascript:Proxy.move('${widget_id}', -1);; return false;;;"></a>
+            <a class="file_move_down" href="javascript: moveDown()"
+               tal:attributes="onClick string:Proxy.move('${widget_id}', 1);; return false;;;"></a>
+            <a class="file_move_bottom" href="javascript: moveBottom()"
+               tal:attributes="onClick string:Proxy.moveToBottom('${widget_id}');; return false;;;"></a>
+          </div>          
+        </div>
+      </tal:proxy>
+    </metal:inner_content>
+
+    <metal:new_inner_content define-macro="new_inner_content">
+      <div class="boxLegend"
+           i18n:translate="label_upload_link_legend">
+        Add a new link in your article,<br />
+        title and description are optional.
+      </div>
+    <iframe id="frmUploadWorker" name="frmUploadWorker" src="" scrolling="no" frameborder="no"
+            style="width:0; height:0; border:none; background:none"> </iframe>
+
+    <form id="frmUpload" action="" target="frmUploadWorker"
+         onsubmit="return Proxy.sendForm();"
+         method="post" enctype="multipart/form-data"
+         tal:attributes="action string:${here_url}/pa_innerlink_upload;">
+
+      <input type="hidden" id="field_name" name="field_name" value="fieldName" tal:attributes="value fieldName;" />
+
+      <div class="titleInfo">
+        <span i18n:translate="label_title" i18n:domain="plone">Title</span>:<br />
+        <input id="new_title" value=""
+               name="new_title" type="text" />
+      </div>
+
+      <div class="descriptionInfo">
+        <span i18n:translate="label_description" i18n:domain="plone">Description</span>:<br />
+        <textarea id="new_description" name="new_description"></textarea><br />
+      </div>
+
+      <div class="titleInfo" style="margin-top:20px">
+        URL:<br />
+        <input id="new_url" name="new_url" type="text" value="http://" /><br/><br/>
+      </div>
+
+      <p align="right">
+        <input type="submit" id="new_file_btn_ok" name="new_file_btn_ok" class="context"
+               value="OK"
+               i18n:attributes="value" />
+        <input type="button" id="btnCancel" name="btnCancel" class="context"
+               value="Close" onclick="TB_remove();"
+               i18n:attributes="value" />
+      </p>
+
+
+      <div
+        id="new_file_noinput"
+        i18n:translate="label_enter_valid_url"
+      >
+        Please enter a valid url.
+      </div>
+      <div id="new_file_waitingMessage">
+        <img src="loading.gif" />
+        <div i18n:translate="label_upload_in_progress">Upload in progress, please wait...</div>
+      </div>
+      <div id="new_file_uploadResult"></div>
+      <div id="new_file_uploadContent"></div>
+
+    </form>
+    </metal:new_inner_content>
+
+  </body>
+
+</html>

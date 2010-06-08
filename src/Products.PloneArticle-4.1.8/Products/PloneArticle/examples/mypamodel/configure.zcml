@@ -1,0 +1,10 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <!--
+       This is the minimal zcml, but you can add your own
+       configuration setup here too
+    -->
+
+  <include file="browser/browser.zcml"/>
+
+</configure>

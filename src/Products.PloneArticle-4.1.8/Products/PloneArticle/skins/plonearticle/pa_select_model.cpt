@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+  <body>
+
+    <div metal:fill-slot="main">
+
+      <h1 i18n:translate="heading_select_default_view">Select default view</h1>
+
+      <div class="documentDescription" i18n:translate="description_select_default_view" i18n:domain="plonearticle">
+        Please select which template should be used as the default view.
+      </div>
+
+
+      <form name="default_view_form"
+            action="."
+            method="post"
+            tal:attributes="action string:${here_url}/${template_id}"
+            tal:define="view here/@@select_model_view;
+                        models view/getSelectableModels;">
+
+        <input type="hidden" name="form.submitted" value="1"/>
+        
+        <div tal:define="selectedLayout here/getLayout">
+          <tal:item repeat="model models">
+            <tal:vars define="value model/id;
+                              display model/title">
+              <div>
+                <input type="radio" class="noborder" name="templateId" value=""
+                       tal:attributes="value value;
+                                       id value;
+                                       checked python:value==selectedLayout"/>
+                <label for=""
+                       tal:content="display"
+                       tal:attributes="for value">
+                  Model title
+                </label>
+              </div>
+              <p>
+                <img tal:attributes="src string:${portal_url}/${model/icon}" />
+                <span tal:content="model/description">Model description</span>
+              </p>
+            </tal:vars>
+          </tal:item>
+        </div>
+
+        <div class="formControls">
+          <input class="context"
+                 tabindex=""
+                 type="submit"
+                 name="form.button.Save"
+                 value="Save"
+                 i18n:attributes="value label_save;"
+                 tal:attributes="tabindex tabindex/next;"
+                 />
+          <input class="standalone"
+                 tabindex=""
+                 type="submit"
+                 name="form.button.Cancel"
+                 value="Cancel"
+                 i18n:attributes="value label_cancel;"
+                 tal:attributes="tabindex tabindex/next;"
+                 />
+        </div>
+
+      </form>
+
+    </div>
+
+  </body>
+</html>

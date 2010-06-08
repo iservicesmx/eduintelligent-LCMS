@@ -1,0 +1,60 @@
+<configure 
+   xmlns="http://namespaces.zope.org/five"
+   xmlns:wicked="http://namespaces.openplans.org/wicked">
+  
+
+  <implements
+      class=".content.mixin.ArticleMixin"
+      interface=".interfaces.INonStructuralFolder"
+      />
+
+  <implements
+      class=".content.article.PloneArticle"
+      interface=".interfaces.IPloneArticle
+      .interfaces.INonStructuralFolder
+      Products.GenericSetup.interfaces.IDAVAware"
+      />
+
+  <implements
+      class=".content.multipage.PloneArticleMultiPage"
+      interface=".interfaces.IPloneArticleMultiPage"
+      />
+      
+  <implements
+      class=".field.innercontentcontainer.InnerContentContainer"
+      interface=".interfaces.IInnerContentContainer
+		 Products.Archetypes.interfaces.IOrderedContainer"
+      />
+  
+  <implements
+      class=".proxy.baseinnercontent.BaseInnerContentProxy"
+      interface=".interfaces.IBaseInnerContent"
+      />
+
+  <implements
+      class=".proxy.imageinnercontent.ImageInnerContentProxy"
+      interface="Products.ATContentTypes.interface.IImageContent"
+      />
+
+  <implements
+      class=".proxy.fileinnercontent.FileInnerContentProxy"
+      interface="Products.ATContentTypes.interface.IFileContent"
+      />
+
+  <implements
+      class=".proxy.linkinnercontent.LinkInnerContentProxy"
+      interface="Products.ATContentTypes.interface.IATLink"
+      />
+
+  <implements
+     class=".tool.PloneArticleTool"
+     interface="Products.CMFPlone.interfaces.IHideFromBreadcrumbs"
+     />
+
+  <wicked:atschema-fields-implement 
+     atclass=".content.article.PloneArticle"
+     fields="text"
+     implements="wicked.at.interfaces.IAmATWickedField"
+     />
+
+</configure>

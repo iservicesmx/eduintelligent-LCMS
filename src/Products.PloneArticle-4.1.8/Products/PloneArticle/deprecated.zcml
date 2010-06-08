@@ -1,0 +1,15 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:five="http://namespaces.zope.org/five">
+
+  <!-- $Id: deprecated.zcml 6586 2007-11-12 17:34:33Z glenfant $ -->
+
+  <!--
+       We can't use the new events schemes since manage_afterAdd
+       is inherited from Archetypes.BaseFolder.BaseFolderMixin
+    -->
+
+  <five:deprecatedManageAddDelete
+     class=".field.InnerContentContainer " />
+
+</configure>

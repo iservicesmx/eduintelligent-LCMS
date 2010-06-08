@@ -1,0 +1,47 @@
+Nom : Ajouter une image à un article
+
+Résumé : L'utilisateur de PA a créé un article sans image et cherche maintenant
+à en rajouter une. Ce cas d'utilisation décrit toutes les étapes necessaires à
+l'ajout et la publication d'une image au sein d'un article pré-existant.
+
+Préconditions :
+ - l'utilisateur a le droit d'éditer un article ;
+ - un article existe deja sur le site ;
+ - l'utilisateur a à sa disposition une image à ajouter.
+
+
+Déclencheur : L'utilisateur souhaite ajouter une image à un article.
+
+Procédure nominale :
+ 1. dans un répertoire Plone, l'utilisateur choisit l'article à modifier pour
+ 	l'afficher ;
+ 2. le système affiche cet article en ajoutant l'interface d'administration de
+ 	contenu ;
+ 3. l'utilisateur clique* sur l'onglet "modifier" de cette interface ;
+ 4. le système présente l'interface d'édition de l'article ;
+ 5. l'utilisateur clique sur l'onglet de type de contenu "Images" pour ajouter
+    une image ;
+ 6. le système présente à l'utilisateur l'interface de gestion des images ;
+ 7. l'utilisateur clique* sur le bouton "Parcourir" du champs d'envoi d'image
+    rapide ;
+ 8. le navigateur laisse choisir un fichier à l'utilisateur ;
+ 9. le système indique à l'utilisateur que le fichier est en train d'être
+    envoyé ;
+10. le système présente la nouvelle image au sein des autres images, et
+    réaffiche le champs d'envoi rapide d'image ;
+11. les étapes 7 à 10 peuvent éventuellement être répétées ;
+
+* ou toute autre méthode appropriée pour générer une action
+
+Procédures alternatives :
+Lorsque l'utilisateur a envoyé un fichier qui n'est pas une image :
+10. le système notifie à l'utilisateur que le fichier n'est pas dans un format
+    reconnu par le système ;
+11. Aller à l'étape 11 de la procédure nominale
+
+Commentaires :
+
+ Aucun.
+
+Méta-données :
+$Id$

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<object name="LinkInnerContentProxy"
+   meta_type="Factory-based Type Information"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title">Link Content Inner Proxy</property>
+ <property
+    name="description">Proxy implementing IATLink. It means this proxy has a remoteUrl method.
+      remoteUrl returns attached link by default if existing otherwise returns
+      the referenced content.</property>
+ <property name="content_icon">document_icon.gif</property>
+ <property name="content_meta_type">LinkInnerContentProxy</property>
+ <property name="product">PloneArticle</property>
+ <property name="factory">addLinkInnerContentProxy</property>
+ <property name="immediate_view">base_edit</property>
+ <property name="global_allow">False</property>
+ <property name="filter_content_types">False</property>
+ <property name="allowed_content_types"/>
+ <property name="allow_discussion">False</property>
+ <alias from="(Default)" to="base_view"/>
+ <alias from="edit" to="base_edit"/>
+ <alias from="index.html" to="(Default)"/>
+ <alias from="properties" to="base_metadata"/>
+ <alias from="view" to="(Default)"/>
+ <action title="View" action_id="view" category="object" condition_expr=""
+    url_expr="string:${object_url}/view" visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="Edit" action_id="edit" category="object"
+    condition_expr="not:object/@@plone_lock_info/is_locked_for_current_user"
+    url_expr="string:${object_url}/edit" visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+ <action title="References" action_id="references" category="object"
+    condition_expr="object/archetype_tool/has_graphviz"
+    url_expr="string:${object_url}/reference_graph" visible="True">
+  <permission value="Modify portal content"/>
+  <permission value="Review portal content"/>
+ </action>
+</object>

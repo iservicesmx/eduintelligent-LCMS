@@ -1,0 +1,49 @@
+Nom : Ajouter une piece jointe
+
+Résumé : L'utilisateur de PA est en train d'éditer un article et il ajoute une
+ou plusieurs pièces jointes à cet article.
+
+Préconditions :
+ - l'utilisateur est en train d'éditer un article ;
+ - l'utilisateur dispose de pièces jointes à ajouter.
+
+Déclencheur : L'utilisateur souhaite ajouter une pièce jointe.
+
+Procédure nominale :
+ 1. lors de l'édition d'un article, l'utilisateur clique* sur le type de contenu
+ 	"Files" ;
+ 2. le système affiche l'interface de gestion de pièces jointes ;
+ 3. l'utilisateur choisit le bouton "Add" ;
+ 4. le système à l'interface une boite d'ajout de pièce jointe ;
+ 5. l'utilisateur utilise le bouton "parcourir" du navigateur pour préciser le
+    fichier sur sa machine à envoyer ;
+ 6. le navigateur de l'utilisateur laisse choisir un fichier à l'utilisateur
+    pour chaque action "Parcourir" déclenchée par ce dernier 	;
+ 7. l'utilisateur valide le formulaire en cliquant sur "Enregistrer" ;
+ 8. le système présente à l'utilisateur une interface de retour utilisateur
+    lui indiquant l'état du transfert des fichiers ;
+ 9. le système présente à l'utilisateur la même interface de gestion de pièce
+    jointe, en y affichant les nouveaux fichiers ainsi qu'un bandeau lui
+    indiquant la validité du transfert.
+
+Procédures alternatives :
+  Lorsque le fichier est déjà présent sur le serveur
+ 3. l'utilisateur clique* sur le bouton "Parcourir les fichiers sur le serveur" ;
+ 4. le système présente à l'utilisateur une interface de sélection contennant
+    les pièces attachables présentes sur le serveur ainsi qu'un système de
+    navigation sommaire ;
+ 5. l'utilisateur selectionne une pièce ;
+ 6. le système affiche la pièce dans la liste des pièces ajoutées ;
+ 7. recommencer les étapes 5 à 6 autant que nécessaire ;
+ 8. l'utilisateur ferme le cadre ;
+ 9. le système informe l'utilisateur que ses modifications ont été prises en
+    compte.
+
+* ou toute autre méthode appropriée pour générer une action
+
+Commentaires :
+
+ Aucun.
+
+Méta-données :
+$Id$

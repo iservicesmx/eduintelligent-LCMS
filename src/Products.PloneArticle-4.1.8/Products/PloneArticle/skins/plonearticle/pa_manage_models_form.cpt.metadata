@@ -1,0 +1,13 @@
+[default]
+title = Models management
+
+[security]
+View=0:Manager
+
+[validators]
+validators = pa_validate_manage_models
+
+[actions]
+action.success = traverse_to:string:pa_manageModels
+action.success..index_save = traverse_to:string:pa_manageModels
+action.failure = traverse_to:string:pa_manage_models_form
