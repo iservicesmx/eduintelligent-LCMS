@@ -1,0 +1,141 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="context/@@standard_macros/page"
+      i18n:domain="eduintelligent.edutrainingcenter">
+<head>
+</head>
+
+<body>
+<div metal:fill-slot="body">
+
+<h1 class="documentFirstHeading"
+        i18n:translate="heading_subgrouping_users">
+        Subgroups for
+        "<span tal:content="context/Title" tal:omit-tag="" i18n:name="folder">title</span>"
+</h1>
+    
+    <a class="link-parent"
+       tal:attributes="href context/absolute_url"
+       i18n:translate="link_up_to_tc">
+       Up to Training Center
+    </a>
+    
+    <br />
+<tal:block define="subgroups view/getSubgroups">    
+    
+    <div id="inlineAddGroupForm">
+        <form method="post" tal:attributes="action request/ACTUAL_URL">
+            
+            <div class="field">
+                
+                <label i18n:translate="label_add_subgroup">Add Subgroup</label>
+                <div class="formHelp" i18n:translate="help_add_subgroup">
+                    Fill in fields below and click <strong>Add</strong> to add a new
+                    subgroup to this training center.
+                </div>
+                
+                <div class="inlineAddFields">
+            
+                    <noscript i18n:translate="label_group_title">
+                        Title:
+                    </noscript>
+                    <input
+                        type="text"
+                        id="addGroupTitle"
+                        name="title"
+                        size="15"
+                        value=""
+                        title="Title"
+                        class="inputLabel"
+                        i18n:attributes="title"
+                        tal:attributes="value request/form/title | nothing"
+                        />
+                
+                    <noscript i18n:translate="label_group_description">
+                        Description:
+                    </noscript>
+                    <input
+                        type="text"
+                        id="addTaskDescription"
+                        name="description"
+                        size="30"
+                        value=""
+                        title="Subgroup description"
+                        class="inputLabel"
+                        i18n:attributes="title"
+                        tal:attributes="value request/form/description | nothing"
+                        />
+                        
+                    
+                    <select size="1"
+                        tal:attributes="name string:prefix">
+                        <option
+                            value=""
+                            i18n:translate="select_group_label">
+                            Select a group
+                        </option>
+                       <option tal:repeat="sg subgroups"
+                           tal:content="sg/title"
+                           tal:attributes="value sg/id;"
+                           />
+                    </select>                        
+                        
+                    <input
+                        id="addGroupButton"
+                        name="form.button.AddGroup"
+                        type="submit"
+                        class="context allowMultiSubmit"
+                        value="Add"
+                        i18n:attributes="value add"
+                        />
+                        
+                </div>
+            
+            </div>
+            
+        </form>
+        
+    </div>
+    
+
+    <tal:block repeat="groups subgroups">
+            <table id="groupsTable"
+                    tal:attributes="class string:listing nosort"
+                    metal:define-macro="groups-table">
+                <thead>
+                    <tr>
+                        <th colspan="3" tal:content="groups/title">Subgroup</th>
+                    </tr>
+                    <tr>
+                        <th i18n:translate="heading_subgroup_name">Name</th>
+                        <th i18n:translate="heading_subgroup_description">Description</th>
+                        <th i18n:translate="heading_subgroup_actions">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tal:block repeat="group groups/content">
+                        <tr metal:define-macro="group-row"
+                            tal:define="oddrow repeat/group/odd;"
+                            tal:attributes="class python:oddrow and 'odd' or 'even'">
+                            <td class="titleColumn">
+                                <img src="tc-groups.png" alt="" />
+                                <a tal:define="group_url string:@@usergroup?groupname=${group/id}"
+                                   tal:attributes="href group_url"
+                                   tal:content="group/title"
+                                   />
+                            </td>
+                            <td class="descriptionColumn" tal:content="group/description" />
+                            <td class="actionColumn">
+                                <img src="tc-edit.png" alt="" />&nbsp;&nbsp;<img src="tc-delete.png" alt="" />
+                            </td>
+                        </tr>
+                    </tal:block>
+                </tbody>
+            </table>  
+    </tal:block>
+    
+</tal:block>    
+  
+</div>
+</body>
+</html>

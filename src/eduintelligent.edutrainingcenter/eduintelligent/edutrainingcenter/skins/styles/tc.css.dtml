@@ -1,0 +1,31 @@
+/*
+** TrainingCenter style sheet for CSS2-capable browsers.
+**
+** Copyright Erik Rivera Morales - erik@iservices.com.mx
+**
+** Feel free to use whole or parts of this for your own designs, but give credit
+** where credit is due.
+**
+*/
+
+/* <dtml-with base_properties> */
+
+.Abcedef {
+    list-style: none;
+    margin: 0;
+    margin-bottom: 1em;
+}
+
+.Abcedef li {
+    display: inline;
+    margin: 0;
+    margin-right: 0.5em;
+}
+
+.Abcedef .selected {
+    font-weight: bold;
+    font-size: 150%;
+    text-decoration: none;
+}
+
+/* </dtml-with> */

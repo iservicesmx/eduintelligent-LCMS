@@ -1,0 +1,17 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+<!-- Override dashboard creation for new users -->
+   <adapter factory=".dashboard.newdashboard.DefaultDashboard" />
+
+    <browser:page
+	for="Products.CMFCore.interfaces.ISiteRoot"
+	name="dashboard"
+	permission="plone.app.portlets.ManageOwnPortlets"
+	class=".dashboard.dashboard.DashboardView"
+	template="dashboard/dashboard.pt"
+    />  
+
+
+</configure>

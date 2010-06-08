@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<rolemap>
+  <roles>
+    <role name="Administrator" />
+    <role name="Instructor" />
+    <role name="Student" />
+  </roles>
+  <permissions>
+    
+    <!-- This disables the dashboard for regular members -->
+    <permission name="eduTrainingCenter: Modify data member" acquire="False">
+        <role name="Manager" />
+    </permission>
+    
+  </permissions>
+</rolemap>

@@ -1,0 +1,40 @@
+8
+
+dir
+49407
+https://svn.plone.org/svn/collective/borg/trunk/profiles/default/workflows/borg_employee_workflow
+https://svn.plone.org/svn/collective
+
+
+
+2007-09-16T23:58:39.952690Z
+49356
+optilude
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+db7f04ef-aaf3-0310-a811-c281ed44c4ad
+
+definition.xml
+file
+
+
+
+
+2007-09-17T17:55:23.000000Z
+9865f662139ca42755462cc9bb0b7555
+2007-09-16T23:58:39.952690Z
+49356
+optilude
+

@@ -1,0 +1,6 @@
+<object name="portal_factory" meta_type="Plone Factory Tool">
+ <factorytypes>
+  <type portal_type="TrainingCenter"/>
+  <type portal_type="eduMember"/>
+ </factorytypes>
+</object>

@@ -1,0 +1,53 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="eduinteliigent.edutrainingcenter">
+    
+   <include package=".browser" />   
+    <i18n:registerTranslations directory="locales" />
+    
+   <genericsetup:registerProfile
+         name="default"
+         title="eduintelligent.edutrainingcenter"
+         directory="profiles/default"
+         description="Extension profile for eduintelligent.edutrainingcenter functionality."
+         provides="Products.GenericSetup.interfaces.EXTENSION"
+         />
+
+    <!-- Events in eduMember-->
+    <subscriber
+        for=".interfaces.IEduMember
+            Products.Archetypes.interfaces.IObjectEditedEvent"
+        handler=".events.verifyGroups"
+    />
+
+    <subscriber
+        for=".interfaces.IEduMember
+            Products.Archetypes.interfaces.IObjectInitializedEvent"
+        handler=".events.verifyGroups"
+    />
+    
+    <subscriber
+        for=".interfaces.ITrainingCenter
+            Products.Archetypes.interfaces.IObjectInitializedEvent"
+        handler=".events.definePermissions"
+    />
+    
+    <!-- <subscriber
+        for=".interfaces.ITrainingCenter
+            Products.Archetypes.interfaces.IObjectEditedEvent"
+        handler=".events.definePermissions"
+    /> -->
+
+    <subscriber
+        for=".interfaces.IEduMember
+            Products.Archetypes.interfaces.IObjectInitializedEvent"
+        handler=".dashboard.newdashboard.new_user"
+    />
+
+    <!-- We also need support for SQLAlchemy database connections -->
+    <include package="collective.lead" />
+    
+</configure>

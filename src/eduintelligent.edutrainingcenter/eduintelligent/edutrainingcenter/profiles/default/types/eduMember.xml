@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<object name="eduMember"
+        meta_type="Factory-based Type Information with dynamic views"
+        xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        i18n:domain="edutrainingcenter">
+ <property name="title" i18n:translate="">Member</property>
+ <property name="description" i18n:translate="">A Member of Training Center</property>
+ <property name="content_icon">user.gif</property>
+ <property name="content_meta_type">eduMember</property>
+ <property name="product">eduTrainingCenter</property>
+ <property name="factory">addeduMember</property>
+ <property name="immediate_view">base_edit</property>
+ <property name="default_view">eduuser_view</property>
+ <property name="global_allow">False</property>
+ <property name="filter_content_types">False</property>
+ <property name="allowed_content_types"/>
+ <property name="allow_discussion">False</property>
+ <alias from="(Default)" to="(dynamic view)"/>
+ <alias from="edit" to="atct_edit"/>
+ <alias from="view" to="(selected layout)"/>
+ <action title="View" action_id="view" category="object" condition_expr=""
+    url_expr="string:${object_url}/" visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="Edit" action_id="edit" category="object" condition_expr=""
+    url_expr="string:${object_url}/edit" visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+ <action title="Kardex" action_id="kardex" category="object" condition_expr=""
+    url_expr="string:${object_url}/kardex_view" visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+ 
+ <action title="References" action_id="references" category="object"
+    condition_expr="object/archetype_tool/has_graphviz"
+    url_expr="string:${object_url}/reference_graph" visible="True">
+  <permission value="Modify portal content"/>
+  <permission value="Review portal content"/>
+ </action>
+</object>

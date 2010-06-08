@@ -1,0 +1,2 @@
+The setupPlugins import step will be run if this file is present in
+the profile.

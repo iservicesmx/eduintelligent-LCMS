@@ -1,0 +1,260 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2010-01-04 03:26+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone\n"
+
+#: ./content/edumember.py:32
+#: ./content/member_schema.py:135
+msgid ""
+msgstr ""
+
+#: ./content/edumember.py:263
+msgid "Activity"
+msgstr ""
+
+#: ./content/trainingcenter.py:66
+msgid "Administrators"
+msgstr ""
+
+#: ./content/member_schema.py:187
+msgid "Age"
+msgstr ""
+
+#: ./content/member_schema.py:177
+msgid "Birth Date"
+msgstr ""
+
+#: ./content/member_schema.py:50
+msgid "Choose your country"
+msgstr ""
+
+#: ./content/member_schema.py:134
+msgid "Company"
+msgstr ""
+
+#: ./content/member_schema.py:109
+msgid "Company Division to which the employee belongs to"
+msgstr ""
+
+#: ./content/member_schema.py:57
+msgid "Contact Phone number"
+msgstr ""
+
+#: ./content/member_schema.py:49
+msgid "Country"
+msgstr ""
+
+#: ./content/member_schema.py:147
+msgid "Country State where you work or live"
+msgstr ""
+
+#: ./content/member_schema.py:257
+msgid "Course"
+msgstr ""
+
+#: ./content/member_schema.py:260
+msgid "Date"
+msgstr ""
+
+#: ./content/member_schema.py:227
+msgid "Describe the last degree, diploma or trainning you took."
+msgstr ""
+
+#: ./content/member_schema.py:108
+msgid "Division"
+msgstr ""
+
+#: ./content/member_schema.py:69
+msgid "Employee Number"
+msgstr ""
+
+#: ./content/member_schema.py:70
+msgid "Employee's ID"
+msgstr ""
+
+#: ./content/member_schema.py:116
+msgid "Employee's Start date"
+msgstr ""
+
+#: ./content/member_schema.py:85
+msgid "Employee's designated work area"
+msgstr ""
+
+#: ./content/member_schema.py:97
+msgid "Employee's position on this company"
+msgstr ""
+
+#: ./content/member_schema.py:258
+msgid "Evaluation"
+msgstr ""
+
+#: ./content/edumember.py:262
+msgid "Exam"
+msgstr ""
+
+#: ./content/member_schema.py:262
+msgid "Extra"
+msgstr ""
+
+#: ./content/edumember.py:55
+msgid "Full name"
+msgstr ""
+
+#: ./content/member_schema.py:219
+msgid "Gender"
+msgstr ""
+
+#: ./dashboard/dashboard.pt:65
+msgid "Gu&iacute;a CECADE"
+msgstr ""
+
+#: ./content/member_schema.py:204
+msgid "Home Address (optional)"
+msgstr ""
+
+#: ./dashboard/dashboard.pt:78
+msgid "Info"
+msgstr ""
+
+#: ./content/trainingcenter.py:69
+msgid "Instructors"
+msgstr ""
+
+#: ./content/edumember.py:40
+msgid "Last Name"
+msgstr ""
+
+#: ./content/member_schema.py:226
+msgid "Last School Degree"
+msgstr ""
+
+#: ./content/member_schema.py:244
+msgid "Main Group"
+msgstr ""
+
+#: ./content/edumember.py:31
+msgid "Name"
+msgstr ""
+
+#: ./content/member_schema.py:263
+msgid "Note"
+msgstr ""
+
+#: ./content/member_schema.py:175
+msgid "Personal"
+msgstr ""
+
+#: ./content/member_schema.py:212
+msgid "Personal or Home phone number (Optional)"
+msgstr ""
+
+#: ./content/member_schema.py:211
+msgid "Personal phone number"
+msgstr ""
+
+#: ./content/member_schema.py:56
+msgid "Phone"
+msgstr ""
+
+#: ./content/member_schema.py:156
+msgid "Plaza"
+msgstr ""
+
+#: ./content/member_schema.py:96
+msgid "Position"
+msgstr ""
+
+#: ./content/member_schema.py:166
+msgid "Region"
+msgstr ""
+
+#: ./content/member_schema.py:203
+msgid "Residence Address"
+msgstr ""
+
+#: ./content/trainingcenter.py:46
+msgid "Roles"
+msgstr ""
+
+#: ./content/trainingcenter.py:47
+msgid "Roles that members of this group should receive."
+msgstr ""
+
+#: ./content/edumember.py:264
+msgid "SCORM"
+msgstr ""
+
+#: ./content/member_schema.py:195
+msgid "Schooling"
+msgstr ""
+
+#: ./content/member_schema.py:261
+msgid "Score"
+msgstr ""
+
+#: ./content/member_schema.py:127
+msgid "Seniority"
+msgstr ""
+
+#: ./content/member_schema.py:146
+msgid "State"
+msgstr ""
+
+#: ./content/member_schema.py:128
+msgid "The employee's seniority"
+msgstr ""
+
+#: ./content/member_schema.py:117
+msgid "The employee's starting date on this company"
+msgstr ""
+
+#: ./content/member_schema.py:64
+msgid "Trabajo"
+msgstr ""
+
+#: ./content/member_schema.py:259
+msgid "Type"
+msgstr ""
+
+#: ./content/member_schema.py:143
+msgid "Ubicacion"
+msgstr ""
+
+#: ./content/member_schema.py:84
+msgid "Work Area"
+msgstr ""
+
+#. Default: "${user_name}'s dashboard"
+#: ./dashboard/dashboard.pt:73
+msgid "heading_dashboard"
+msgstr ""
+
+#. Default: "Your dashboard is currently empty. Click the <em>edit</em> tab to assign some personal portlets."
+#: ./dashboard/dashboard.pt:79
+msgid "info_empty_dashboard"
+msgstr ""
+
+#. Default: "Edit"
+#: ./dashboard/dashboard.pt:42
+msgid "label_edit"
+msgstr ""
+
+#. Default: "Dashboard"
+#: ./dashboard/dashboard.pt:37
+msgid "label_view"
+msgstr ""
+

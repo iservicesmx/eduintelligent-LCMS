@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="edumember_workflow"
+             title="eduMember workflow"
+             state_variable="review_state"
+             initial_state="active">
+             
+ <permission>Access contents information</permission>
+ <permission>View</permission>
+ <permission>Modify portal content</permission>
+ <permission>Set own password</permission>
+ 
+ <state state_id="active" title="Active">
+  <exit-transition transition_id="deactivate"/>
+  <permission-map name="Access contents information" acquired="True">
+    <permission-role>Owner</permission-role>
+    <permission-role>Administrator</permission-role>
+    <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="True">
+    <permission-role>Owner</permission-role>
+    <permission-role>Administrator</permission-role>
+    <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+    <permission-role>Owner</permission-role>
+    <permission-role>Administrator</permission-role>
+    <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Set own password" acquired="False">
+   <permission-role>Owner</permission-role>
+   <permission-role>Administrator</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
+ </state>
+ 
+ <state state_id="inactive" title="Inactive">
+  <exit-transition transition_id="activate"/>
+  <permission-map name="Access contents information" acquired="True">
+    <permission-role>Owner</permission-role>
+    <permission-role>Administrator</permission-role>    
+    <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="True">
+    <permission-role>Owner</permission-role>
+    <permission-role>Administrator</permission-role>    
+    <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+    <permission-role>Owner</permission-role>
+    <permission-role>Administrator</permission-role>
+    <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Set own password" acquired="False">      
+  </permission-map>
+ </state>
+
+ <transition transition_id="deactivate"
+             title="De-activate"
+             new_state="inactive" trigger="USER"
+             before_script=""
+             after_script="">
+  <action url="" category="workflow">De-activate</action>
+  <guard>
+   <guard-permission>Manage users</guard-permission>
+  </guard>
+ </transition>
+ 
+ <transition transition_id="activate"
+             title="Activate"
+             new_state="active" trigger="USER"
+             before_script=""
+             after_script="">
+  <action url="" category="workflow">Activate</action>
+  <guard>
+   <guard-permission>Manage users</guard-permission>
+  </guard>
+ </transition>
+ 
+ <worklist worklist_id="reviewer_queue" title="">
+  <description>Reviewer tasks</description>
+  <action url="%(portal_url)s/search?review_state=pending"
+          category="global">Pending (%(count)d)</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+  <match name="review_state" values="pending"/>
+ </worklist>
+ 
+ <variable variable_id="action" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>The last transition</description>
+  <default>
+   <expression>transition/getId|nothing</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ 
+ <variable variable_id="actor" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>The ID of the user who performed the last transition</description>
+  <default>
+   <expression>user/getId</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ 
+ <variable variable_id="comments" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>Comments about the last transition</description>
+  <default>
+   <expression>python:state_change.kwargs.get('comment', '')</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ 
+ <variable variable_id="review_history" for_catalog="False"
+           for_status="False" update_always="False">
+  <description>Provides access to workflow history</description>
+  <default>
+   <expression>state_change/getHistory</expression>
+  </default>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </variable>
+ 
+ <variable variable_id="time" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>Time of the last transition</description>
+  <default>
+   <expression>state_change/getDateTime</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ 
+</dc-workflow>

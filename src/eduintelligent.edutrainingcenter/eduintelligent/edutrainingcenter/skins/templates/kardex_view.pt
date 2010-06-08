@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="eduintelligent.edutrainingcenter">
+
+  <head><title></title></head>
+<body>  
+  <div metal:fill-slot="main">
+      <h1 tal:content="here/title_or_id" class="documentFirstHeading"> Title or id </h1>
+      
+      <style>
+      .dgw-hidden-column {display: none;}
+      </style>
+
+      <span metal:use-macro="python:context.widget('kardex', mode='view')" />
+      
+  </div>
+
+</body>
+</html>  

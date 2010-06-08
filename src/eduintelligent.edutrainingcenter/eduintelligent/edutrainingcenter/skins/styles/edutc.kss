@@ -1,0 +1,37 @@
+/* <dtml-call expr="RESPONSE.setHeader('pragma','no-cache')"> */
+
+/*
+    The above trick to let this file not be cached does not work, unless this file is renamed to have
+    a kss.dtml extension.
+*/
+
+/* General stylesheet for Plone AJAX */
+
+/*  Selector for the sharing page in plone.app.workflow.
+    the search_term parameters, puts the needed info into the request
+ */ 
+    
+#search-save-button:click {
+  evt-click-preventdefault: true;
+  action-server: updateSearchInfo;
+  updateSearchInfo-kssSubmitForm: currentForm();
+}   
+    
+#user-search-text:keydown {
+    evt-keydown-preventdefault: true;
+    evt-keydown-keycodes: 13;
+    action-client: log;
+}
+
+#user-search-text:keypress {
+    evt-keypress-preventdefault: true;
+    evt-keypress-keycodes: 13;
+    action-client: log;
+}
+
+#user-search-text:keyup {
+  evt-keyup-preventdefault: true;
+  evt-keyup-keycodes: 13;
+  action-server: updateSearchInfo;
+  updateSearchInfo-kssSubmitForm: currentForm();
+}

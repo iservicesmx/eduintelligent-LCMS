@@ -1,0 +1,41 @@
+- Reportes
+    [ ] Por Curso
+        - Categoría
+        - Nombre
+        - Instructor
+        - Inscritos
+            [ ] Usuarios
+                - userid
+                - username
+    [ ] Por SCO
+        - Curso
+        - Organization 
+        - Name SCO, 
+        - Status
+            # failed, # passed, #completed, # not attemped,
+            [ ] Usuarios
+                - userid
+                - username
+                - status
+                - score
+                - time
+    
+    [ ] Por Exámen
+        - Curso
+        - Start Date
+        - End Date
+        - # Participantes
+            Porcentaje: 80%
+            Usuarios: 244
+        - Promedio
+        [ ] Estadísticas
+            - Preguntas Correctas, Incorrectas
+        [ ] Usuarios
+            - userid
+            - username
+            - start
+            - end
+            - total
+            - result
+            
+            

@@ -1,0 +1,65 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+    <browser:page
+        name="users"
+        for="..interfaces.ITrainingCenter"
+        class=".users.UsersView"
+        permission="cmf.ModifyPortalContent"
+    />
+
+    <browser:page
+        for="..interfaces.ITrainingCenter"
+        class=".users.KSSSearchView"
+        name="updateSearchInfo"
+        attribute="updateSearchInfo"
+        permission="cmf.ModifyPortalContent"
+    />
+  
+    <browser:page
+        name="groups"
+        for="..interfaces.ITrainingCenter"
+        class=".groups.GroupsView"
+        permission="cmf.ModifyPortalContent"
+    />
+
+    <browser:page
+        name="subgroups"
+        for="..interfaces.ITrainingCenter"
+        class=".subgroups.SubgroupsView"
+        permission="cmf.ModifyPortalContent"
+    />
+
+    <browser:page
+        name="usergroup"
+        for="..interfaces.ITrainingCenter"
+        class=".usergroup.UserGroupView"
+        permission="cmf.ModifyPortalContent"
+    />
+
+    <browser:page
+        for="..interfaces.ITrainingCenter"
+        name="courses-info"
+        class=".reports.CourseInfo"
+        template="templates/courses-info.pt"
+        permission="cmf.ModifyPortalContent"
+        />
+
+    <browser:page
+        for="..interfaces.ITrainingCenter"
+        name="exams-info"
+        class=".reports.CourseInfo"
+        template="templates/exams-info.pt"
+        permission="cmf.ModifyPortalContent"
+        />
+        
+    <!-- <browser:page
+        for="..interfaces.ITrainingCenter"
+        name="scos-info"
+        class=".reports.SCOInfo"
+        template="templates/scos-info.pt"
+        permission="cmf.ModifyPortalContent"
+        /> -->
+
+</configure>
