@@ -1,0 +1,57 @@
+# Gettext Message File for ArchFaq.
+msgid ""
+msgstr ""
+"Project-Id-Version: Faq 1.0\n"
+"POT-Creation-Date: 2003-05-06 09:05+0100\n"
+"PO-Revision-Date: 2009-02-20 10:59+0100\n"
+"Last-Translator: Ralph Jacobs <ralph@fourdigits.nl>\n"
+"Language-Team: EDF\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-code: nl\n"
+"Language-name: Dutch\n"
+"Preferred-encodings: latin1 utf-8\n"
+"Domain: faq\n"
+"X-Is-Fallback-For: nl-nl nl-aw nl-be nl-an\n"
+
+
+msgid "label_question"
+msgstr "Vraag (beknopt)"
+
+msgid "desc_question"
+msgstr "De beknopte versie van de vraag."
+
+msgid "label_detailed_question"
+msgstr "Vraag (gedetaileerd)"
+
+msgid "desc_detailed_question"
+msgstr "De gedetaileerde versie van de vraag."
+
+msgid "label_answer"
+msgstr "Antwoord"
+
+msgid "desc_answer"
+msgstr "Het antwoord op de vraag."
+
+msgid "label_folder"
+msgstr "Omschrijving"
+
+msgid "desc_folder"
+msgstr "De FAQ (Veel gestelde vragen) omschijving."
+
+msgid "showhide_answer"
+msgstr "Toon of verberg het antwoord"
+
+msgid "new"
+msgstr "Nieuw"
+
+msgid "Delay"
+msgstr "Markering"
+
+msgid "desc_delay"
+msgstr "Het aantal dagen dat de vraag gemarkeerd wordt als nieuw."
+
+msgid "toggle_all"
+msgstr "Toon/Verberg alles"

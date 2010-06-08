@@ -1,0 +1,22 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           xmlns:five="http://namespaces.zope.org/five">
+
+    <browser:page
+        for="*"
+        name="userandgroupselect_view"
+        class=".browser.UserAndGroupSelectView"
+        permission="zope.Public"
+        allowed_interface=".interfaces.IUserAndGroupSelectView"
+    />
+
+    <browser:page
+        for="*"
+        name="userandgroupselectpopup_view"
+        class=".browser.UserAndGroupSelectPopupView"
+        permission="zope.Public"
+        allowed_interface=".interfaces.IUserAndGroupSelectPopupView"
+    />
+
+</configure>
+ 

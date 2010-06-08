@@ -1,0 +1,57 @@
+# Gettext Message File for ArchFaq.
+msgid ""
+msgstr ""
+"Project-Id-Version: Faq 1.0\n"
+"POT-Creation-Date: 2003-05-06 09:05+0100\n"
+"PO-Revision-Date: 2007-11-15 11:14+0100\n"
+"Last-Translator: Jean-Charles Rogez <jean-charles.rogez@edf.fr>\n"
+"Language-Team: EDF\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-code: fr\n"
+"Language-name: French\n"
+"Preferred-encodings: latin1 utf-8\n"
+"Domain: faq\n"
+"X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr"
+
+
+msgid "label_question"
+msgstr "Question"
+
+msgid "desc_question"
+msgstr "L'intitulé court de la question."
+
+msgid "label_detailed_question"
+msgstr "Question détaillée"
+
+msgid "desc_detailed_question"
+msgstr "L'intitulé complet de la question."
+
+msgid "label_answer"
+msgstr "Réponse"
+
+msgid "desc_answer"
+msgstr "La réponse à la question."
+
+msgid "label_folder"
+msgstr "Description"
+
+msgid "desc_folder"
+msgstr "La description de la FAQ."
+
+msgid "showhide_answer"
+msgstr "Montre ou Cacher la réponse"
+
+msgid "new"
+msgstr "Nouveau"
+
+msgid "label_delay"
+msgstr "Délais"
+
+msgid "desc_delay"
+msgstr "Le nombre de jours pendant lesquels les questions sont considérées comme nouvelles."
+
+msgid "toggle_all"
+msgstr "Afficher/Cacher tout"

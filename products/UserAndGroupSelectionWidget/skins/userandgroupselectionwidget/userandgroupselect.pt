@@ -1,0 +1,115 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="userandgroupselectionwidget">
+   <head><title></title></head>
+   <body>
+     <metal:view_macro define-macro="view" 
+                       tal:define="view context/@@userandgroupselect_view;
+                                   value accessor;
+                                   multiVal field/multiValued;">
+
+       <tal:single tal:condition="not:multiVal">
+         <div tal:content="python: view.getUserOrGroupTitle(value)">
+           UserOrGroupTitle
+         </div>
+       </tal:single>
+
+       <tal:multival tal:condition="multiVal">
+           <tal:users tal:repeat="userid value">  
+             <div tal:content="python: view.getUserOrGroupTitle(userid)">
+               UserOrGroupTitle
+             </div>
+           </tal:users> 
+       </tal:multival>
+
+     </metal:view_macro>
+
+     <metal:edit_macro define-macro="edit"
+                       tal:define="view context/@@userandgroupselect_view">
+       <metal:use use-macro="field_macro | here/widgets/field/macros/edit">
+
+          <div metal:fill-slot="widget_body"
+               tal:define="multiVal python:test(field.multiValued, 1, 0); 
+                           field_required field/required;
+                           fieldId fieldId | fieldName;
+                           size widget/size | nothing;
+                           groupId python: widget.getGroupId(context);">
+
+            <input type="hidden" value=""
+                   tal:define="field_required field_required | nothing"
+                   tal:condition="python:not field_required and multiVal"
+                   tal:attributes="name string:$fieldName:default:list"
+                   />
+
+            <tal:single condition="not: multiVal">
+               <input tal:condition="value"
+                      size="30"
+                      type="text"
+                      value=""
+                      tal:attributes="value python: view.getUserOrGroupTitle(value);
+                                      id string:${fieldId}_label"
+                      readonly="readonly"
+                      />
+               <input tal:condition="not: value"
+                      size="30"
+                      type="text"
+                      value=""
+                      tal:attributes="id string:${fieldId}_label"
+                      readonly="readonly"
+                      />
+               <input type="hidden"
+                      value=""
+                      name=""
+                      tal:attributes="name fieldName;
+                                      value value;
+                                      id fieldId"/>
+            </tal:single>
+
+            <tal:multi tal:condition="multiVal">
+
+               <select multiple="multiple"
+                       tal:attributes="name string:${fieldName}:list;
+                                       id string:$fieldId;
+                                       size size | python: 8;
+                                       tabindex tabindex/next;">
+
+                <tal:repeat repeat="guid value">
+                  <tal:notnone tal:condition="python: guid">
+                  <option tal:attributes="value guid" selected="selected"
+                          tal:content="python: view.getUserOrGroupTitle(guid)">
+                  </option>
+                  </tal:notnone>
+                </tal:repeat>
+
+               </select>
+            </tal:multi>
+
+            <div>
+              <input type="button"
+                   class="searchButton"
+                   value="Browse..."
+                   onClick=""
+                   i18n:attributes="value"
+                   tal:define="groupId groupId | string:'';
+                               enableSearch enableSearch | python:1"
+                   tal:attributes="onClick string:javascript:userandgroupselect_openBrowser('${here_url}', '${fieldId}', '${groupId}')"
+                   />
+              <input type="button"
+                   class="destructive"
+                   value="Remove selected users"
+                   onClick=""
+                   i18n:attributes="value"
+                   tal:attributes="onClick string:javascript:userandgroupselect_removeEntry('${fieldId}', ${multiVal});
+                                   value python:multiVal and 'Remove selected users' or 'Remove user'"
+                   />
+            </div>
+
+          </div> 
+
+       </metal:use>
+     </metal:edit_macro>
+
+   </body>
+</html>

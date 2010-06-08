@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/collective/!svn/ver/85290/Faq/trunk
+END
+FaqEntry.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/collective/!svn/ver/85290/Faq/trunk/FaqEntry.py
+END
+LICENSE.GPL
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/collective/!svn/ver/53881/Faq/trunk/LICENSE.GPL
+END
+version.txt
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/collective/!svn/ver/84697/Faq/trunk/version.txt
+END
+configure.zcml
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/collective/!svn/ver/53881/Faq/trunk/configure.zcml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/collective/!svn/ver/53881/Faq/trunk/__init__.py
+END
+FaqFolder.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/collective/!svn/ver/84697/Faq/trunk/FaqFolder.py
+END
+interfaces.py
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/collective/!svn/ver/53881/Faq/trunk/interfaces.py
+END
+README.txt
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/collective/!svn/ver/53881/Faq/trunk/README.txt
+END
+config.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/collective/!svn/ver/53881/Faq/trunk/config.py
+END
+refresh.txt
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/collective/!svn/ver/53881/Faq/trunk/refresh.txt
+END

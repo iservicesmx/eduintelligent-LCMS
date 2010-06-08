@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="faq">
+ 
+<metal:javascriptslot fill-slot="javascript_head_slot">
+<script type="text/javascript" language="JavaScript">
+
+  displayAll = 0;
+  items = 0;
+
+  function toggle(id) {
+    el = document.getElementById("faq_" + id);
+    icon = document.getElementById("icon_" + id);
+    if (el) {
+       if (el.style.display == "block"){
+        el.style.display = "none";
+        icon.src = "treeCollapsed.gif";
+       } else {
+        el.style.display = "block";
+        icon.src = "treeExpanded.gif";
+       }
+    }
+  }
+
+  function toggle_all(items) {
+    for(var i = 1; i <= items; i++) {
+      el = document.getElementById("faq_" + i);
+      icon = document.getElementById("icon_" + i);
+      if (el) {
+         if (displayAll) {
+            el.style.display = "none";
+            icon.src = "treeCollapsed.gif";
+         } else {
+            el.style.display = "block";
+            icon.src = "treeExpanded.gif";
+         }
+      }
+    }
+    displayAll = (displayAll ? 0 : 1);
+  }
+
+  function overLinkStyle(link_id) {
+    document.getElementById(link_id).style.cursor = 'pointer';
+  }
+
+  function outLinkStyle(link_id) {
+    document.getElementById(link_id).style.cursor = 'default';
+  }
+</script>
+</metal:javascriptslot>
+
+<metal:cssslot fill-slot="css_slot">
+<style type="text/css">
+.faq_question {
+        margin-left: 1em;
+}
+
+.faq_answer {
+        margin: 1em;
+        padding: 0.5em;
+    border: thin dotted;
+    background-color: #EFF7FF;
+    display: none;
+}
+</style>
+</metal:cssslot>
+
+<body>
+   <metal:main fill-slot="main">
+     <tal:main-macro metal:define-macro="main"
+             tal:define="kssClassesView context/@@kss_field_decorator_view;
+                         getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;">
+
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+        <h1 metal:use-macro="here/kss_generic_macros/macros/generic_title_view">
+            Title or id
+        </h1>
+        <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+        <p metal:use-macro="here/kss_generic_macros/macros/generic_description_view">
+            Description
+        </p>
+
+        <div tal:replace="structure provider:plone.abovecontentbody" />
+
+     <tal:faq define="global items python:0">
+     <button class="context" i18n:translate="toggle_all" onclick="toggle_all(items)">Show/Hide all</button>
+     <dl>
+         <tal:entries repeat="entry python:[brain.getObject() for brain in here.getFolderContents(contentFilter={'portal_type' :['FaqEntry']})]">
+            <tal:block define="DateTime python:modules['DateTime'].DateTime;datenow python: DateTime(); global items python:items + 1">
+            <dt tal:define="md python:DateTime(entry.ModificationDate());
+                                 delay here/delay">
+          <img i18n:attributes="title showhide_answer;alt showhide_answer" title="Show or Hide answer"
+               tal:attributes="id string:icon_${items};
+                               onclick string:javascript:toggle('${items}');
+                       src string:${portal_url}/treeCollapsed.gif;
+                       onmouseover string:javascript:overLinkStyle('icon_${items}');
+                       onmouseout string:javascript:outLinkStyle('icon_${items}')" />
+            <tal:block condition="python: (md + delay).toZone('GMT+2').greaterThan(datenow)">
+            <img i18n:attributes="alt new; title new" alt="New" src="" tal:attributes="src string:$portal_url/new.gif"/>
+            </tal:block>
+          <a href="#" tal:content="entry/Title" tal:attributes="href string:javascript:toggle('${items}');">Title</a>
+        </dt>
+        <dd class="faq_question" tal:content="entry/Description">Question</dd>
+        <dd class="faq_answer" tal:attributes="id string:faq_${items}" tal:content="structure entry/getAnswer">Answer</dd>
+          </tal:block>
+          </tal:entries>
+         </dl>
+
+         <div tal:repeat="folder python:[brain.getObject() for brain in here.getFolderContents(contentFilter={'portal_type' :['FaqFolder']})]">
+            <h2><a href="" tal:content="folder/Title"
+                       tal:attributes="href string:${folder/absolute_url}">Folder title</a></h2>
+
+     <dl tal:define="subentries python:[brain.getObject() for brain in folder.getFolderContents(contentFilter={'portal_type' :['FaqEntry']})]" tal:condition="subentries">
+         <tal:entries repeat="subentry subentries">
+         <tal:block define="DateTime python:modules['DateTime'].DateTime;datenow python: DateTime(); global items python:items + 1">
+                 <dt tal:define="md python:DateTime(subentry.ModificationDate());
+                                 delay here/delay">
+          <img i18n:attributes="title" title="Show-Hide answer"
+               tal:attributes="id string:icon_${items};
+                               onclick string:javascript:toggle('${items}');
+                       src string:${portal_url}/treeCollapsed.gif;
+                       onmouseover string:javascript:overLinkStyle('icon_${items}');
+                       onmouseout string:javascript:outLinkStyle('icon_${items}')" />
+            <tal:block condition="python: (md + delay).toZone('GMT+2').greaterThan(datenow)">
+            <img alt="Icone new" src="" tal:attributes="src string:$portal_url/new.gif"/>
+            </tal:block>
+          <a href="#" tal:content="subentry/Title" tal:attributes="href string:javascript:toggle('${items}');">Title</a>
+        </dt>
+        <dd class="faq_question" tal:content="subentry/Description">Question</dd>
+        <dd class="faq_answer" tal:attributes="id string:faq_${items}" tal:content="structure subentry/getAnswer">Answer</dd>
+          </tal:block>
+          </tal:entries>
+     </dl>
+     </div>
+    <script type="text/javascript" tal:content="string:items=${items};"></script>
+    </tal:faq>
+        <div tal:replace="structure provider:plone.belowcontentbody" />
+    </tal:main-macro>
+   </metal:main>
+</html>

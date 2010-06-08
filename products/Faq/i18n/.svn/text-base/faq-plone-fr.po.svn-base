@@ -1,0 +1,32 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Faq 1.0\n"
+"POT-Creation-Date: 2003-05-06 09:05+0100\n"
+"PO-Revision-Date: 2007-11-15 10:57+0100\n"
+"Last-Translator: Jean-Charles Rogez <jean-charles.rogez@edf.fr>\n"
+"Language-Team: EDF\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-code: fr\n"
+"Language-name: French\n"
+"Preferred-encodings: latin1 utf-8\n"
+"Domain: plone\n"
+"X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr"
+
+
+msgid "label_type_faq"
+msgstr "FAQ"
+
+msgid "desc_type_faq"
+msgstr "Une Foire Aux Questions."
+
+msgid "label_type_faqentry"
+msgstr "Question"
+
+msgid "desc_type_faqentry"
+msgstr "Une question avec sa réponse."
+
+
+

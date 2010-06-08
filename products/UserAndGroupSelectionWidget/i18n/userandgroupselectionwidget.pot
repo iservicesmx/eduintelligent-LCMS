@@ -1,0 +1,70 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2007-05-16 15:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: userandgroupselectionwidget\n"
+
+#. Default: "Browse..."
+#: ../skins/userandgroupselectionwidget/userandgroupselect.pt
+msgid "Browse..."
+msgstr ""
+
+msgid "Remove selected users"
+msgstr ""
+
+msgid "Remove user"
+msgstr ""
+
+#. Default: "Search"
+#: ../skins/userandgroupselectionwidget/userandgroupselect_popup.pt
+msgid "Search"
+msgstr ""
+
+#. Default: "add selected users"
+#: ../skins/userandgroupselectionwidget/userandgroupselect_popup.pt
+msgid "add selected users"
+msgstr ""
+
+#. Default: "close window"
+#: ../skins/userandgroupselectionwidget/userandgroupselect_popup.pt
+msgid "close window"
+msgstr ""
+
+#. Default: "Search"
+#: ../skins/userandgroupselectionwidget/userandgroupselect_popup.pt
+msgid "label_search"
+msgstr ""
+
+#. Default: "Name"
+#: ../skins/userandgroupselectionwidget/userandgroupselect_popup.pt
+msgid "listingheader_name"
+msgstr ""
+
+#. Default: "Groups:"
+#: ../skins/userandgroupselectionwidget/userandgroupselect_popup.pt
+msgid "text_existing_groups"
+msgstr ""
+
+#. Default: "Search Member:"
+#: ../skins/userandgroupselectionwidget/userandgroupselect_popup.pt
+msgid "text_member_search"
+msgstr ""
+
+#. Default: "Search Site"
+#: ../skins/userandgroupselectionwidget/userandgroupselect_popup.pt
+msgid "title_search_site"
+msgstr ""
+

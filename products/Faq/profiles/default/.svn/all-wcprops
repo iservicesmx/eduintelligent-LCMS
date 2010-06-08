@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/collective/!svn/ver/81432/Faq/trunk/profiles/default
+END
+metadata.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/collective/!svn/ver/81432/Faq/trunk/profiles/default/metadata.xml
+END
+types.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/collective/!svn/ver/53881/Faq/trunk/profiles/default/types.xml
+END
+factorytool.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/collective/!svn/ver/53881/Faq/trunk/profiles/default/factorytool.xml
+END
+skins.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/collective/!svn/ver/53881/Faq/trunk/profiles/default/skins.xml
+END

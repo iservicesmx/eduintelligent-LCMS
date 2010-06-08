@@ -1,0 +1,223 @@
+<metal:block use-macro="here/global_defines/macros/defines" />
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      lang="en"
+      i18n:domain="userandgroupselectionwidget"
+      tal:define="view context/@@userandgroupselectpopup_view;
+                  dummy view/initialize;
+                  multiVal view/multiValued;
+                  fieldId request/fieldId;
+                  groupId request/selectgroup | python: '';">
+
+  <head>
+
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"
+             tal:define="charset site_properties/default_charset|string:utf-8"
+             tal:attributes="content string:text/html;;charset=${charset}" />
+             
+    <tal:styles define="view context/@@plone|nothing"
+                replace="structure provider:plone.resourceregistries.styles" />
+
+    <script language="javascript" tal:content="structure string:
+        function addSelectedUsers(e) {
+            if (e){
+                window.opener.userandgroupselect_setEntry(e.id, e.value, '${fieldId}', $multiVal);
+            } else {
+                checkboxes = document.getElementsByName('uids');
+                var j = 0;
+                for (var i = 0; i &lt; checkboxes.length; i++) {
+                    var e = checkboxes[i];
+                    if (e.checked == true){
+                        j ++;
+                        window.opener.userandgroupselect_setEntry(e.id, e.value, '${fieldId}', $multiVal);
+                    }
+                }
+            }
+            if ($multiVal == 0) {
+                window.close();
+            }
+        }
+
+        function addSelectedGroups() {
+            var selection = document.getElementById('userandgroupselect-group-filter');
+            if ($multiVal) {
+                var id = '';
+                var value = '';
+                var options = selection.options;
+                for (var i = 0; i &lt; options.length; i++) {
+                    if (options[i].selected == true) {
+                        id = options[i].value;
+                        value = options[i].text;
+                        window.opener.userandgroupselect_setEntry(id, value, '${fieldId}', $multiVal);
+                    }
+                }
+            } else {
+                var id = selection.options[selection.selectedIndex].value;
+                var value = selection.options[selection.selectedIndex].text;
+                window.opener.userandgroupselect_setEntry(id, value, '${fieldId}', $multiVal);
+            }
+            
+            if ($multiVal == 0) {
+                window.close();
+            }
+        }
+
+         ">
+    </script>
+
+</head>
+
+<body id="userandgroupselect-popup-body">
+
+<div class="documentContent"
+     id="userandgroupselect-popup">
+
+    <form action="#" 
+          tal:attributes="action string:${view/getObjectUrl}" 
+          method="post"
+          style="white-space:nowrap">
+
+        <div>
+          <strong><span i18n:translate="text_member_search">Search Member:</span></strong><br />
+
+          <input id="search-box"
+                 tabindex=""
+                 name="searchabletext"
+                 type="text"
+                 size="15"
+                 value=""
+                 title="Search Site"
+                 accesskey="4"
+                 onfocus="clearField(this);"
+                 onBlur="setDefaultField(this)"
+                 i18n:attributes="title title_search_site;"
+                 tal:attributes="style python:test(request.get('searchabletext'), 'background-image: none !important', nothing);
+                                 tabindex tabindex/next" />
+        
+          <input class="searchButton" 
+                 type="submit"
+                 tabindex=""
+                 value="Search"
+                 tal:attributes="tabindex tabindex/next"
+                 i18n:attributes="value label_search;"/>   
+
+        </div>
+
+        <div>
+          <strong><span i18n:translate="text_existing_groups">Groups:</span></strong><br />
+
+          <select name="selectgroup" size="5" id="userandgroupselect-group-filter" multiple="multiple"
+                  tal:condition="python: view.multiValued()">
+            <tal:item repeat="group python: view.getGroupsForPulldown()">
+                <tal:option define="selected python: view.isSelected('selectgroup', group[0])">
+                    <option tal:condition="python: not selected"
+                            tal:content="python: group[1]"
+                            tal:attributes="value python: group[0]">Group</option>
+                    <option tal:condition="selected"
+                            tal:attributes="value python: group[0];
+                                            selected string:selected"
+                            tal:content="python: group[1]">group</option>
+                </tal:option>
+            </tal:item>
+          </select>
+
+          <select name="selectgroup" size="1" id="userandgroupselect-group-filter"
+                  tal:condition="python: not view.multiValued()">
+            <tal:item repeat="group python: view.getGroupsForPulldown()">
+                <tal:option define="selected python: view.isSelected('selectgroup', group[0])">
+                    <option tal:condition="python: not selected"
+                            tal:content="python: group[1]"
+                            tal:attributes="value python: group[0]">Group</option>
+                    <option tal:condition="selected"
+                            tal:attributes="value python: group[0];
+                                            selected string:selected"
+                            tal:content="python: group[1]">group</option>
+                </tal:option>
+            </tal:item>
+          </select>
+
+          <input type="submit" value="Search" class="searchButton" 
+                 i18n:attributes="value label_search" />
+
+          <br />
+
+          <input type="button" name="addGroupButton"
+                 id="#" value="add selected group(s)"
+                 tal:condition="python: not view.usersOnly()"
+                 tal:attributes="onclick string:javascript:addSelectedGroups();" />
+
+        </div>
+
+        <input type="hidden" name="groupId" tal:attributes="value groupId"/>
+        <input type="hidden" name="fieldId" tal:attributes="value fieldId"/>
+    </form>
+
+
+    <div tal:define="resultBatch view/getBatch">
+        <div id="personal-addressbook-alphabatch" tal:condition="resultBatch/showBatch">
+            <span tal:repeat="page resultBatch/getPages">
+                <a href="#"
+                   tal:condition="python: page['visible'] and not page['current']"
+                   tal:attributes="href python: view.getQueryUrl(currentPage=page['value'])"
+                   tal:content="page/value">X</a>
+                <span tal:condition="python: not page['visible']"
+                      tal:content="page/value">X</span>
+                <strong tal:condition="python: page['current']"
+                   tal:content="page/value"
+                   class="current">X</strong>
+            </span>
+        </div>
+    
+        <table tal:define="entries resultBatch/getResults" cellpadding="0" cellspacing="0">
+            <thead>
+                <th>
+                  <input class="noborder"
+                         type="checkbox"
+                         src="select_all_icon.gif"
+                         name="selectButton"
+                         title="Select all items"
+                         checked="checked"
+                         onClick="toggleSelect(this, 'uids', true);"
+                         tal:condition="multiVal"
+                         tal:attributes="src string:$portal_url/select_all_icon.gif"/>
+                </th>
+                <th i18n:translate="listingheader_name">Name</th>
+            </thead>
+            <tbody>
+                <tr tal:repeat="entry entries">
+                    <td>
+                        <input type="radio" name="uids" id="#"
+                               tal:condition="python: not multiVal and not view.groupsOnly()"
+                               tal:attributes="id entry/id;
+                                               value entry/fullname;
+                                               onclick string:javascript:addSelectedUsers(this);" />
+                        <input type="checkbox" name="uids" id="#" class="noborder"
+                               tal:condition="python: multiVal and not view.groupsOnly()"
+                               tal:attributes="id entry/id;
+                                               value entry/fullname;" />
+                    </td>
+                    <td tal:content="entry/fullname">fullname</td>
+                 </tr>
+            </tbody>
+          </table>
+    </div>
+
+    <div tal:condition="multiVal">
+      <input type="button" 
+             i18n:attributes="value add_selected_users" 
+             value="add selected users"
+             onclick="javascript:addSelectedUsers(0)" />
+
+      <br />
+
+      <input type="button"
+             i18n:attributes="value userandgroupselect_close"
+             value="close window"
+             onclick="javascript:window.close()" />
+    </div>
+
+</div>
+
+</body>
+</html>
