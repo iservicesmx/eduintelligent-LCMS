@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<object name="SCO"
+   meta_type="Factory-based Type Information with dynamic views"
+   i18n:domain="eduintelligent.sco" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title" i18n:translate="">SCO</property>
+ <property name="description" i18n:translate="">A description of a sco</property>
+ <property name="content_icon">++resource++sco.gif</property>
+ <property name="content_meta_type">SCO</property>
+ <property name="product"></property>
+ <property name="factory">eduintelligent.sco.SCO</property>
+ <property name="immediate_view">@@edit</property>
+ <property name="global_allow">False</property>
+ <property name="filter_content_types">False</property>
+ <property name="allowed_content_types" />
+ <property name="allow_discussion">False</property>
+ <alias from="(Default)" to="@@view"/>
+ <alias from="edit" to="@@edit"/>
+ <alias from="view" to="@@view"/>
+ <action title="View" action_id="view" category="object" condition_expr=""
+    url_expr="string:${object_url}" visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="Edit" action_id="edit" category="object" condition_expr=""
+    url_expr="string:${object_url}/edit" visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+</object>

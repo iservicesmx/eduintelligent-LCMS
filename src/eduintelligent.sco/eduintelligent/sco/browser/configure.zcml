@@ -1,0 +1,80 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="eduintelligent.sco">
+
+    <include package="plone.app.contentmenu" />
+      
+    <!-- configure your views here -->
+    <browser:page
+        for="..interfaces.ISCO"
+        name="view"
+        template="templates/sco.pt"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="zope.app.container.interfaces.IAdding"
+        name="eduintelligent.sco.SCO"
+        class=".sco.SCOAddForm"
+        permission="eduintelligent.sco.AddSCO"
+        />
+        
+    <browser:page
+        for="..interfaces.ISCO"
+        name="edit"
+        class=".sco.SCOEditForm"
+        permission="cmf.ModifyPortalContent"
+        />
+        
+    <browser:addMenuItem
+        title="SCO"
+        factory="eduintelligent.sco.SCO"
+        view="eduintelligent.sco.SCO"
+        permission="eduintelligent.sco.AddSCO"
+        />
+
+
+    <browser:page
+        name="scorm_io"
+        for="..interfaces.ISCO"
+        class=".scorm.ScormIO"
+        permission="zope2.View"
+    />
+
+    <!-- <browser:page
+        name="scorm_api"
+        for="..interfaces.ISCO"
+        class=".scorm.ScormView"
+        permission="zope2.View"
+        template="templates/scorm_api.pt"
+    /> -->
+                
+    <browser:pages for="..interfaces.ISCO"
+           class=".scorm.ScormView"
+           permission="zope2.View">
+
+      <browser:page name="scorm_api"
+            template="templates/scorm_api.pt" />
+
+      <browser:page name="sco_report"
+            template="templates/sco_report.pt" />
+
+      <browser:page name="sco_users"
+            template="templates/sco_users.pt" />            
+            
+      <browser:page name="sco_user"
+            template="templates/sco_user.pt" />            
+
+    </browser:pages>
+
+    <browser:resource
+        name="sco.gif"
+        image="sco.gif"
+        />
+    <browser:resource
+        name="bar_score.gif"
+        image="bar_score.gif"
+        />
+
+</configure>

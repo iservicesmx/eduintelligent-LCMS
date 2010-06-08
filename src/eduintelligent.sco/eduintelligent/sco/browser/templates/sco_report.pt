@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="eduintelligent.sco">
+<head>
+</head>
+
+<body>
+<div metal:fill-slot="main">
+    
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading" tal:content="context/title" />
+
+    <div class="documentDescription" tal:content="context/description" />
+
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+
+    <table class="listing" tal:define="listing context/getReportData">
+    <tr>
+      <th i18n:translate="header_sco_title">Titulo</th>
+      <th i18n:translate="header_item_status_overview">Enlace</th>
+    </tr>
+    
+      <tr tal:repeat="sco listing">
+          <td tal:content="sco/itemTitle">
+            itemId
+          </td>
+          <td>
+            <a href="#"
+                tal:attributes="href string:${context/absolute_url}/sco_users?item=${sco/itemId}; ">
+                Ver
+            </a>
+          </td>
+      </tr>  
+    </table>    
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+     
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="eduintelligent.sco">
+<head>
+</head>
+
+<body>
+<div metal:fill-slot="main"
+    tal:define="item request/item | nothing;
+                listing python:view.getModuleReport(item);">
+    
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading" tal:content="context/title" />
+
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+
+    <table class="listing">
+    <tr>
+      <th i18n:translate="header_sco_title">ID Usuario</th>
+      <th i18n:translate="header_sco_name">Nombre</th>
+      <th i18n:translate="header_sco_status">Estado</th>
+      <th i18n:translate="header_sco_score">Tiempo</th>
+      <th i18n:translate="header_sco_score">Avance %</th>
+      <th i18n:translate="header_sco_score">Ultima</th>
+    </tr>
+    <tal:block tal:repeat="user listing">
+      <tr>
+          <td tal:content="user/id">
+              cbvcvb
+          </td >
+          <td tal:content="user/name">
+              sadsad
+          </td> 
+          <td tal:content="user/lesson_status">
+              qwwert
+          </td> 
+          <td tal:content="user/total_time">
+              zxcxzc
+          </td>
+          <td tal:content="user/score_raw">
+              poipop
+          </td>
+          <td tal:content="user/session_time">
+              tutyu
+          </td>          
+      </tr>
+    </tal:block>
+    </table>    
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+     
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!-- $Id: scorm_io.pt 455 2005-07-04 10:34:05Z helmutm $ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US">
+<metal:cacheheaders define-macro="cacheheaders">
+    <metal:block tal:define="dummy python:request.RESPONSE.setHeader('Expires', 'Sat, 1 Jan 2000 00:00:00 GMT')" />
+    <metal:block tal:define="dummy python:request.RESPONSE.setHeader('Pragma', 'no-cache')" />
+</metal:cacheheaders>
+<head>
+  <title>SCORM IO Frame</title>
+  
+  <script type="text/javascript">
+  </script>
+     
+</head>
+<body>
+      <form name="cmiForm" method="POST" action="scorm_io"
+                tal:attributes="action string:${context/absolute_url}/${view/__name__}"> 
+          <input type="hidden" name="item" tal:attributes="value request/item"/>
+          <input type="hidden" name="cmi_lesson_status" />
+          <input type="hidden" name="cmi_lesson_location" />
+          <input type="hidden" name="cmi_credit" />
+          <input type="hidden" name="cmi_entry" />
+          <input type="hidden" name="cmi_raw" />
+          <input type="hidden" name="cmi_total_time" />
+          <input type="hidden" name="cmi_session_time" />
+          <input type="hidden" name="cmi_suspend_data" />
+          <input type="hidden" name="cmi_scoreMin" />
+          <input type="hidden" name="cmi_scoreMax" />
+      </form>
+</body>
+</html>

@@ -1,0 +1,9 @@
+Changelog for eduintelligent.sco
+
+    (name of developer listed in brackets)
+
+eduintelligent.sco - 1.1 Unreleased
+
+    - Initial package structure.
+      [zopeskel]
+

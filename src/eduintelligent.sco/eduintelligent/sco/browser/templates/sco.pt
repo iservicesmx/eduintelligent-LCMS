@@ -1,0 +1,67 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="eduintelligent.sco">
+<head>
+</head>
+
+<body>
+<div metal:fill-slot="main">
+    
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading" tal:content="context/title" />
+
+    <div class="documentDescription" tal:content="context/description" />
+
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+
+    <table class="listing" tal:define="listing context/getReportData">
+    <tr>
+      <th i18n:translate="header_sco_title">Titulo</th>
+      <th i18n:translate="header_sco_score">Avance</th>
+      <th i18n:translate="header_sco_status">Estado</th>
+      <th i18n:translate="header_item_status_overview">Enlace</th>
+      <th tal:condition="is_editable" i18n:translate="header_item_report">Reportes</th>
+    </tr>
+    
+      <tr tal:repeat="sco listing">
+          <td tal:content="sco/itemTitle">
+            itemId
+          </td>
+          <tal:block tal:define="track python: context.getScormData(item=sco['itemId']);">
+          <td tal:define="raw track/cmi.core.score.raw;">
+              <img height="10" 
+                    tal:attributes="width string:${raw}; src string:${portal_url}/++resource++bar_score.gif; alt string:${raw}%" />
+                    <span tal:content="structure string:${raw}%">14%</span>
+              
+          </td> 
+          <td tal:content="track/cmi.core.lesson_status">
+              nada
+          </td> 
+          </tal:block>
+          <td>
+            <a href="#" target="_blank"
+                tal:condition="sco/isStartable"
+                tal:attributes="href string:${context/absolute_url}/scorm_api?item=${sco/itemId}; ">
+                Ver
+            </a>
+          </td>
+          
+          <td tal:condition="is_editable">
+            <a href="#"
+                tal:attributes="href string:${context/absolute_url}/sco_users?item=${sco/itemId}; ">
+                Ver
+            </a>
+          </td>
+          
+      </tr>  
+    </table>    
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+     
+</div>
+</body>
+</html>

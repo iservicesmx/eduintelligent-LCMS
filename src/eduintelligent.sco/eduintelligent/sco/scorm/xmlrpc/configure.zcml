@@ -1,0 +1,139 @@
+<!-- $Id: configure.zcml 2164 2007-11-10 13:24:28Z helmutm $ -->
+
+<configure
+   xmlns:zope="http://namespaces.zope.org/zope"
+   xmlns="http://namespaces.zope.org/xmlrpc"
+   i18n_domain="zope">
+
+  <!-- users and groups -->
+
+  <view
+      name="xrf"
+      for="yeepa.interfaces.IUserSource"
+      class="yeepa.xmlrpc.user.UserSourceMethods"
+      methods="authenticate isNickNameAvailable createUser removeUser
+               getUser getUserByNickName getUsers"
+      permission="zope.View"
+      />
+
+  <view
+      name="xrf"
+      for="yeepa.interfaces.IUser"
+      class="yeepa.xmlrpc.user.UserMethods"
+      methods="getData edit getGroups"
+      permission="zope.View"
+      />
+
+  <view
+      name="xrf"
+      for="yeepa.interfaces.IGroupSource"
+      class="yeepa.xmlrpc.group.GroupSourceMethods"
+      methods="createGroup removeGroup getGroup getGroups"
+      permission="zope.View"
+      />
+
+  <view
+      name="xrf"
+      for="yeepa.interfaces.IGroup"
+      class="yeepa.xmlrpc.group.GroupMethods"
+      methods="setTitle getTitle getMembers addMember removeMember"
+      permission="zope.View"
+      />
+
+  <!-- tournaments and assessments -->
+
+  <view
+      name="xrf"
+      for="yeepa.interfaces.ISessionStorage"
+      class=".session.SessionStorageMethods"
+      methods="createAssessment removeItems getItems getAvailableAssessments"
+      permission="zope.View"
+      />
+
+  <view
+      name="xrf"
+      for="yeepa.interfaces.IAssessment"
+      class=".session.AssessmentMethods"
+      methods="getTitle setTitle getTopics setTopics getTopicsWithText
+               setState getState setSessionFormat getSessionFormat
+               setStartTime getStartTime
+               setDuration getDuration setComment getComment
+               setInvitationMessage getInvitationMessage
+               addParticipation setParticipation getParticipation getParticipations
+               clear cloneAssessment inviteParticipants"
+      permission="zope.View"
+      />
+
+  <!-- tracking -->
+
+  <view
+      name="xrf"
+      for="yeepa.interfaces.ITrackingStorage"
+      class=".track.TrackingStorageMethods"
+      methods="startRun stopRun
+               scormSetValue scormSetValues scormGetValue
+               getTaskIds getUserNames
+               recordTrack listTracks query
+               getLastUserTrack getRanking getTotals getUserTotal
+               getQuestionTotals getTopicTotals"
+      permission="zope.View"
+      />
+
+  <!-- content -->
+
+  <view
+      name="xrf"
+      for="yeepa.interfaces.IContentPool"
+      class=".content.ContentPoolMethods"
+      methods="addTopic setTopic removeTopic getTopics
+               createItem createReference removeItems getItems getReferences"
+      permission="zope.View"
+      />
+
+  <view
+      name="xrf"
+      for="yeepa.interfaces.IContent"
+      class=".content.ContentMethods"
+      methods="setTitle getTitle getExplanation setExplanation setBody getBody
+               setTopics getTopics getReferences setReferences edit"
+      permission="zope.View"
+      />
+
+  <view
+      name="xrf"
+      for="yeepa.interfaces.IReference"
+      class=".content.ReferenceMethods"
+      methods="setTitle getTitle getExplanation setExplanation setBody getBody
+               setPages getPages setUrl getUrl setTopics getTopics edit"
+      permission="zope.View"
+      />
+
+  <!-- media assets -->
+
+  <view
+      name="xrf"
+      for="yeepa.interfaces.IAssetManager"
+      class=".media.AssetManagerMethods"
+      methods="createItem removeItems getItems"
+      permission="zope.View"
+      />
+
+  <view
+      name="xrf"
+      for="zope.app.file.interfaces.IFile"
+      class=".media.AssetMethods"
+      methods="setTitle getTitle getSize getDimensions"
+      permission="zope.View"
+      />
+
+  <!-- Python scripts -->
+
+  <view
+      name="xrf"
+      for="cybertools.pyscript.interfaces.IScriptContainer"
+      class=".pyscript.PyScriptMethods"
+      methods="call callScript getScripts"
+      permission="zope.View"
+      />
+
+</configure>

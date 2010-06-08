@@ -1,0 +1,59 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="eduintelligent.sco">
+
+    <five:registerPackage package="." initialize=".initialize" />
+    
+    <!-- We need annotation support for the TrakingStorage to work -->
+    <include package="zope.annotation" />
+    
+    <permission
+      id="eduintelligent.sco.AddSCO"
+      title="ediIntelligent: Add SCO"
+      />
+
+    <!-- Include the sub-packages that use their own configure.zcml files. -->
+    <include package=".browser" />    
+
+    <!-- Register the installation GenericSetup extension profile -->
+    <genericsetup:registerProfile
+      name="default"
+      title="eduIntelligent SCO"
+      directory="profiles/default"
+      description="eduIntelligent Sharable Content Object"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+
+    <adapter factory=".scorm.scormapi.ScormAPI" />
+
+    <five:registerClass
+        class=".content.SCO"
+        meta_type="SCO"
+        permission="eduintelligent.sco.AddSCO"
+        addview="eduintelligent.sco.SCO"
+        icon="sco.gif"
+        />
+    
+    <utility
+        component=".content.scoFactory"
+        name="eduintelligent.sco.SCO"
+        />
+    
+    <!-- Event handlers -->
+    
+    <subscriber
+        for=".interfaces.ISCO
+             zope.app.container.interfaces.IObjectAddedEvent"
+        handler=".events.uploadContentPackage"
+        />
+        
+    <subscriber
+        for=".interfaces.ISCO
+             zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+        handler=".events.uploadContentPackage"
+        />
+    
+</configure>

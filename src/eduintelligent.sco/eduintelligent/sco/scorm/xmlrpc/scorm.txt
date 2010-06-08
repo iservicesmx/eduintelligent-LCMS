@@ -1,0 +1,120 @@
+====================================================
+User Tracking using the SCORM-conformant XML-RPC API
+====================================================
+
+  ($Id: scorm.txt 2229 2007-12-10 11:30:12Z helmutm $)
+
+  >>> from zope import component
+  >>> from zope.publisher.browser import TestRequest
+
+  >>> from yeepa.standard.scorm import ScormAPI
+  >>> component.provideAdapter(ScormAPI)
+
+We get the yeepa object from the global site object (set up already
+in tests.py) and fetch the tracking storage from it.
+
+  >>> yeepa = site['yeepa']
+  >>> tracks = yeepa['tracks']
+  >>> content = yeepa['content']
+
+  >>> from yeepa.xmlrpc.track import TrackingStorageMethods
+  >>> xrf = TrackingStorageMethods(tracks, TestRequest())
+
+Then we can set some values.
+
+  >>> rc = xrf.scormSetValue('a001', 0, 'u2', 'cmi.interactions.0.id', 'q007')
+  >>> rc = xrf.scormSetValue('a001', 0, 'u2', 'cmi.interactions.0.result', 'correct')
+  >>> rc = xrf.scormSetValue('a001', 0, 'u2',
+  ...                        'cmi.comments_from_learner.comment', 'Hello SCORM')
+  >>> rc = xrf.scormSetValue('a001', 0, 'u2', 'cmi.interactions.1.id', 'q009')
+  >>> rc = xrf.scormSetValue('a001', 0, 'u2', 'cmi.interactions.1.result', 'incorrect')
+
+Depending on the data elements the values entered are kept together in
+one track or stored in separate track objects. So there is a separate
+track for each interaction and one additional track for all the other elements.
+
+  >>> for t in sorted(tracks.values(), key=lambda x: x.data['recnum']):
+  ...     print t.data
+  {'recnum': -1, 'cmi.comments_from_learner.comment': 'Hello SCORM'}
+  {'cmi.interactions.0.id': 'q007', 'cmi.interactions.0.result': 'correct', 'recnum': 0}
+  {'cmi.interactions.1.result': 'incorrect', 'cmi.interactions.1.id': 'q009', 'recnum': 1}
+
+Using the getValue() method we can retrieve certain values without having
+to care about the storage in different track objects.
+
+  >>> xrf.scormGetValue('a001', 0, 'u2', 'cmi.comments_from_learner.comment')
+  ('Hello SCORM', '0')
+  >>> xrf.scormGetValue('a001', 0, 'u2', 'cmi.interactions.0.id')
+  ('q007', '0')
+  >>> xrf.scormGetValue('a001', 0, 'u2', 'cmi.interactions.1.result')
+  ('incorrect', '0')
+
+We can also query special elements like _count and _children.
+
+  >>> xrf.scormGetValue('a001', 0, 'u2', 'cmi.objectives._count')
+  (0, '0')
+  >>> xrf.scormGetValue('a001', 0, 'u2', 'cmi.interactions._count')
+  (2, '0')
+
+  >>> xrf.scormGetValue('a001', 0, 'u2', 'cmi.interactions._children')
+  (('id', 'type', 'objectives', 'timestamp', 'correct_responses',
+    'weighting', 'learner_response', 'result', 'latency', 'description'), '0')
+  >>> xrf.scormGetValue('a001', 0, 'u2', 'cmi.objectives.5.score._children')
+  (('scaled', 'raw', 'min', 'max'), '0')
+
+
+yeepa Extensions
+================
+
+  >>> rc = xrf.scormSetValue('a001', 0, 'u2', 'yep.interactions.0.score', 75)
+  >>> xrf.scormGetValue('a001', 0, 'u2', 'yep.interactions.0.score')
+  (75, '0')
+
+  >>> xrf.scormGetValue('a001', 0, 'u2', 'yep.interactions._children')
+  (('topic_id', 'question_id', 'score', 'max_duration', 'winner_duration',
+    'learner_duration', 'last_question', 'diced_number',
+    'next_dice_duration'), '0')
+
+
+Tracking Statistics
+===================
+
+  >>> rc = xrf.scormSetValue('a001', 0, 'u2', 'cmi.learner_id', 'user2')
+  >>> rc = xrf.scormSetValue('a001', 0, 'u1', 'cmi.learner_id', 'user1')
+  >>> rc = xrf.scormSetValue('a001', 0, 'u1', 'yep.interactions.0.score', 90)
+  >>> rc = xrf.scormSetValue('a001', 0, 'u1', 'cmi.interactions.0.id', 'q007')
+  >>> rc = xrf.scormSetValue('a001', 0, 'u1', 'cmi.interactions.0.result', 'incorrect')
+  >>> rc = xrf.scormSetValue('a001', 0, 'u2', 'yep.interactions.1.score', 80)
+
+  >>> xrf.getRanking('a001')
+  [{'userName': 'u2', 'runId': 1, 'scoreSum': 155},
+   {'userName': 'u1', 'runId': 1, 'scoreSum': 90}]
+
+  >>> xrf.getTotals()
+  {'u1': {'questionCountCorrect': 0, 'questionFractionCorrect': 0,
+          'questionCount': 1, 'scoreSum': 90},
+   'u2': {'questionCountCorrect': 1, 'questionFractionCorrect': 50,
+          'questionCount': 2, 'scoreSum': 155}}
+
+  >>> xrf.getUserTotal('u2')
+  {'questionCountCorrect': 1, 'questionFractionCorrect': 50,
+   'questionCount': 2, 'scoreSum': 155}
+
+Statistics referencing content objects
+--------------------------------------
+
+  >>> from yeepa.standard.content import Content
+  >>> q007 = content['q007'] = Content('What is Zope?')
+  >>> q007.topics = ['1']
+  >>> q009 = content['q009'] = Content('What is Python?')
+  >>> q009.topics = ['1']
+
+  >>> xrf.getQuestionTotals()
+  {'q007': {'count': 2, 'topics': ['1'], 'title': 'What is Zope?',
+            'countCorrect': 1, 'fractionCorrect': 50},
+   'q009': {'count': 1, 'topics': ['1'], 'title': 'What is Python?',
+            'countCorrect': 0, 'fractionCorrect': 0}}
+
+  >>> xrf.getTopicTotals()
+  {'1': {'count': 3, 'fractionCorrect': 33, 'countCorrect': 1,
+         'title': u'unknown'}}
