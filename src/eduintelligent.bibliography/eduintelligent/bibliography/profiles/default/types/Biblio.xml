@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<object name="Biblio"
+        meta_type="Factory-based Type Information with dynamic views"
+        xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+   
+ <property name="title">Biblio</property>
+ <property name="description">Bibliography entry</property>
+ <property name="content_icon">book1_icon.gif</property>
+ <property name="content_meta_type">Biblio</property>
+ <property name="product">eduBiblio</property>
+ <property name="factory">addBiblio</property>
+ <property name="immediate_view">base_view</property>
+ <property name="global_allow">False</property>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types">
+   <element value="Book"/>
+ </property>
+ <property name="allow_discussion">False</property>
+ <property name="default_view">biblio_view</property>
+ <property name="view_methods">
+  <element value="biblio_view"/>
+ </property>
+ <property name="default_view_fallback">False</property>
+ <alias from="(Default)" to="(dynamic view)"/>
+ <alias from="view" to="(selected layout)"/>
+ <alias from="edit" to="base_edit"/>
+ <action title="View" action_id="view"
+         category="object" condition_expr=""
+         url_expr="string:${object_url}/view" visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="Edit" action_id="edit"
+         category="object" condition_expr="not:object/@@plone_lock_info/is_locked_for_current_user"
+         url_expr="string:${object_url}/edit" visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+</object>
+ 

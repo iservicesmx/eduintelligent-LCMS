@@ -1,0 +1,95 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="eduintelligent.bibliography">
+<head>
+</head>
+
+<body>
+<div metal:fill-slot="main">
+    <h1 tal:content="here/title_or_id" class="documentFirstHeading">
+                Title or id
+            </h1>
+  <div tal:replace="structure provider:plone.abovecontenttitle" />
+   <div class="documentDescription" tal:content="structure context/description" />
+   <div tal:replace="structure provider:plone.abovecontentbody" />
+   
+     <table class="vertical listing"
+         tal:define="books context/objectValues"
+         tal:condition="books"
+         tal:repeat="book books">
+           <tr>
+             <th i18n:translate="label_title_book">Titulo</th>
+                 <td tal:content="book/title">
+                    Title
+                 </td>
+                 <td rowspan="9"  tal:condition="book/getPreview"> 
+                 <img  tal:replace="structure python:book.getPreview().tag(height=170, width=130)"/> 
+                 </td>
+           </tr>
+
+           <tr>
+               <th i18n:translate="label_description">Description</th>
+               <td width="200"
+                 tal:content="book/Description">
+                 Description
+               </td>
+           </tr>
+           <tr>
+             <th i18n:translate="label_type">Type</th>
+             <td tal:content="book/getTypebooksName">
+                   Type
+             </td>
+           </tr>
+           <tr>
+               <th i18n:translate="label_author">Author</th>
+                <td>
+                   <tal:algo tal:repeat="autor book/getAuthor">
+                   <span tal:content="autor">Authores</span>
+                   </tal:algo>               
+               </td>
+           </tr>
+           <tr>
+             <th i18n:translate="label_datepub">Year Publish</th>
+             <td tal:content="book/getDatepub">
+                 Year Publish
+             </td>
+           </tr>
+           <tr>
+             <th i18n:translate="label_editorial">Editorial</th>
+             <td tal:content="book/getEditorial">
+                 Editorial
+             </td>
+           </tr>
+           <tr>
+               <th i18n:translate="label_link">Link</th>
+               <td>  
+                    <a class="link-book" 
+                       tal:attributes="name book/getLink;
+                                    href string:${book/getLink};"
+                        tal:content="book/getLink">
+                        Link
+                    </a>    
+                    <!-- href string:${here/absolute_url}#${book/getLink};" -->
+                    
+                </td>
+           </tr>
+           <tr>
+             <th i18n:translate="label_isbn">ISBN</th>
+             <td tal:content="book/getIsbn">
+                 ISBN
+             </td>
+           </tr>
+           <tr>
+               <th i18n:translate="label_category">Category</th>             
+               <td>
+                 <tal:algo tal:repeat="catego book/getCategory">
+                 <span tal:content="catego">eetdrdrt</span>
+                 </tal:algo>
+                </td>
+           </tr>
+     </table>   
+</div>
+</body>
+</html>

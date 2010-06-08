@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<import-steps>
+
+<import-step 
+    id="eduBiblio-GS-dependencies" 
+    handler="Products.eduBiblio.setuphandlers.installGSDependencies"
+    title="Dependend GS profiles for eduBiblio"
+    version="2007-10-16T14:00:22.971934">
+   <dependency step="plone-final"/>
+   Install Generic Setup profile dependencies for eduBiblio
+ </import-step>
+
+ <import-step 
+    id="eduBiblio-QI-dependencies" 
+    handler="Products.eduBiblio.setuphandlers.installQIDependencies"
+    title="Dependend QI installables for eduBiblio"
+    version="2007-10-16T14:00:22.971934">
+   <dependency step="2007-10-16T14:00:22.971934-GS-dependencies"/>
+   Install quickinstaller dependencies for eduBiblio
+ </import-step>
+ 
+     
+<!-- ##code-section ADDITIONALSTEPS -->
+<!-- ##/code-section ADDITIONALSTEPS --> 
+
+</import-steps>
+ 
