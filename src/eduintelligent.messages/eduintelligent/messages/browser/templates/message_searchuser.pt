@@ -1,0 +1,227 @@
+<metal:block use-macro="here/global_defines/macros/defines" />
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      lang="en"
+      i18n:domain="eduintelligent.messages">
+
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"
+             tal:define="charset site_properties/default_charset|string:utf-8"
+             tal:attributes="content string:text/html;;charset=${charset}" />
+             
+    <tal:styles define="view context/@@plone|nothing"
+                replace="structure provider:plone.resourceregistries.styles" />
+                
+    <tal:scripts define="view context/@@plone|nothing"
+                replace="structure provider:plone.resourceregistries.scripts" />            
+
+    <script language="javascript" tal:content="structure string:
+        function addSelectedUsers(e) {
+            if (e){
+                window.opener.searchuser_setEntry(e.id, e.value, 'user_list', 1);
+            } else {
+                checkboxes = document.getElementsByName('uids');
+                var j = 0;
+                for (var i = 0; i &lt; checkboxes.length; i++) {
+                    var e = checkboxes[i];
+                    if (e.checked == true){
+                        j ++;
+                        window.opener.searchuser_setEntry(e.id, e.value, 'user_list', 1);
+                    }
+                }
+            }
+            if (1 == 0) {
+                window.close();
+            }
+        }
+
+        function addSelectedGroups() {
+            var selection = document.getElementById('userandgroupselect-group-filter');
+            if (1) {
+                var id = '';
+                var value = '';
+                var options = selection.options;
+                for (var i = 0; i &lt; options.length; i++) {
+                    if (options[i].selected == true) {
+                        id = options[i].value;
+                        value = options[i].text;
+                        window.opener.searchuser_setEntry('g:'+id, value, 'user_list', 1);
+                    }
+                }
+            } else {
+                var id = selection.options[selection.selectedIndex].value;
+                var value = selection.options[selection.selectedIndex].text;
+                window.opener.searchuser_setEntry(id, value, 'user_list', 1);
+            }
+            
+            if (1 == 0) {
+                window.close();
+            }
+        }
+
+         ">
+    </script>
+<style>
+
+#userandgroupselect-popup {
+    margin: 1em 0 0 1em;
+}
+
+table.listing,input.searchButton  {
+    background-color:white;
+}
+
+.destructive {
+    margin-top: 8px;
+}
+</style>
+</head>
+
+<body id="userandgroupselect-popup-body"
+        tal:define="cecap python:request.get('cecap',None);
+                    Batch python:modules['Products.CMFPlone'].Batch;
+                    b_size python:15;
+                    b_start python:0;
+                    b_start request/b_start | b_start;
+                    batch_base_url string:${context/absolute_url}/@@message_searchuser;
+                    entries view/getUsersSerached;
+                    batch python:Batch(entries, b_size, int(b_start), orphan=1);
+                    ">
+
+<div class="documentContent"
+     id="userandgroupselect-popup">
+
+    <form action="#" 
+          tal:attributes="action string:${context/absolute_url}/${view/__name__}" 
+          method="post"
+          style="white-space:nowrap">
+
+        <div>
+        <tal:block tal:define="manage python:checkPermission('Manage portal', here)">
+        <select id="cecap" name="cecap" onchange="this.form.submit()" tal:condition="view/isManager">
+                <option i18n:translate="select_tc"  value="">-- Select Training Center --</option>
+                <option tal:repeat="reg view/getPrincipalGroups"
+                                    tal:content="structure reg/title"
+                                    tal:attributes="value reg/id; 
+                                                    selected python:reg['id'] == cecap"> Region </option>
+        </select>
+        
+        <input type="hidden" name="cecap" tal:attributes="value view/getUserMainGroup" tal:condition="not: view/isManager"/> 
+        
+        </tal:block>
+        <br />    
+          <strong><span i18n:translate="text_member_search" style="color:white">Search User:</span></strong><br />
+
+          <input id="search-box"
+                 tabindex=""
+                 name="searchabletext"
+                 type="text"
+                 size="30"
+                 value=""
+                 title="Search Site"
+                 accesskey="4"
+                 onfocus="clearField(this);"
+                 onBlur="setDefaultField(this)"
+                 i18n:attributes="title title_search_site;"
+                 tal:attributes="tabindex tabindex/next" />
+        
+          <input class="searchButton" 
+                 id="SearchUser"
+                 name="form.button.SearchUser"
+                 type="submit"
+                 tabindex=""
+                 value="Search"
+                 tal:attributes="tabindex tabindex/next"
+                 i18n:attributes="value label_search;"/>   
+
+        </div>
+
+        <div>
+          <strong><span i18n:translate="text_existing_groups" style="color:white">Groups:</span></strong><br />
+
+          <select name="selectgroup:list" size="8" id="userandgroupselect-group-filter" multiple="multiple">
+              <tal:item repeat="group python: view.getGroups()">
+                  <tal:option define="selected python: view.isSelected('selectgroup', group[0])">
+                      <option tal:condition="python: not selected"
+                              tal:content="python: group[1]"
+                              tal:attributes="value python: group[0]">Group</option>
+                      <option tal:condition="selected"
+                              tal:attributes="value python: group[0];
+                                              selected string:selected"
+                              tal:content="python: group[1]">group</option>
+                  </tal:option>
+              </tal:item>
+          </select>
+
+          <input 
+              type="submit" 
+              value="Search" 
+              class="searchButton"
+              id="SearchGroup"
+              name="form.button.SearchGroup"
+              i18n:attributes="value label_search" />
+
+              <br />
+          <input type="button" name="addGroupButton"
+                 id="#" value="Add Group"
+                 
+                 tal:attributes="onclick string:javascript:addSelectedGroups();" />
+
+        </div>
+
+    </form>
+
+        <table id="sortable" class="listing" cellpadding="0" cellspacing="0">
+            <thead>
+                <th class="nosort">
+                  <input class="noborder"
+                         type="checkbox"                         
+                         src="select_all_icon.gif"
+                         name="selectButton"
+                         title="Select all items"
+                         onClick="toggleSelect(this, 'uids', true);"
+                         tal:attributes="src string:$portal_url/select_all_icon.gif"/>
+                </th>
+                <th i18n:translate="listingheader_id">ID</th>
+                <th i18n:translate="listingheader_name">Name</th>
+                <th i18n:translate="listingheader_tc">Region</th>
+                
+            </thead>
+            <tbody>
+                <metal:block tal:repeat="entry batch">
+                <tr tal:define="oddrow repeat/entry/odd"  
+                    tal:attributes="class python:oddrow and 'odd' or 'even'">
+                    <td>
+                        <input type="checkbox" name="uids" id="#" class="noborder"
+                               tal:attributes="id entry/id;
+                                               value entry/fullname;" />
+                    </td>
+                    <td tal:content="entry/id">ID</td>
+                    <td tal:content="entry/fullname">fullname</td>
+                    <td tal:content="entry/main_group">group</td>
+                 </tr>
+             </metal:block>                 
+            </tbody>
+          </table>
+          <div metal:use-macro="here/batch_macros/macros/navigation" />
+          
+    <div>
+        <input type="button" 
+            i18n:attributes="value add_selected_users" 
+            value="Add User"
+            onclick="javascript:addSelectedUsers(0)" />
+
+        <br />
+
+      <input type="button"
+             class="destructive"
+             i18n:attributes="value userandgroupselect_close"
+             value="Close"
+             onclick="javascript:window.close()" />
+    </div>
+
+</div>
+
+</body>
+</html>

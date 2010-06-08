@@ -1,0 +1,141 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="eduintelligent.messages">
+
+      <head>
+          <metal:block fill-slot="top_slot"
+                       tal:define="dummy python:request.set('disable_border',1)" />
+                       
+       <metal:css fill-slot="css_slot">
+           <style type="text/css" media="all"
+                   tal:content="string: @import url(${context/++resource++messages.css});"></style>
+       </metal:css>
+
+       <metal:js fill-slot="javascript_head_slot">
+          <script type="text/javascript"
+          tal:attributes="src context/++resource++messages.js"></script>
+       </metal:js>
+                       
+      </head>
+
+
+<body>
+
+<metal:main fill-slot="content">
+    <tal:main-macro metal:define-macro="main"
+                tal:define="msg_id python:request.get('id', None);
+                            message python:msg_id and view.reply_fill() or None">
+    
+    <h1 i18n:translate="head_messages" >New Message</h1>
+    
+    <div metal:use-macro="here/global_statusmessage/macros/portal_message">
+            Portal status message
+    </div>
+    
+    <form tal:attributes="action string:${context/absolute_url}/${view/__name__}"
+          name="messageNew"
+          id="messageNew"
+          method="post">
+    
+    <table cellpadding="5px" style="width:100%;">
+        <tr>
+            <td width="10%">
+                <label i18n:translate="messages_to" for="to">To:</label>
+                                 <select multiple="multiple"
+                                        tal:attributes="name string:user_list:list;
+                                                        id string:user_list;
+                                                        size python: 5;">
+
+                                                <tal:notnone tal:condition="msg_id">
+                                                    <option tal:attributes="value message/sender;
+                                                                            selected string:selected" 
+                                                            tal:content="python:view.getFullname(message.sender)">
+                                                    </option>
+                                                </tal:notnone>
+
+                                    </select>
+                </td>
+                <td>
+
+                                   <input type="button"
+                                        class="searchButton"
+                                        value="Search"
+                                        onClick=""
+                                        i18n:attributes="value"
+                                        tal:define="groupId groupId | string:'';
+                                                    enableSearch enableSearch | python:1"
+                                        tal:attributes="onClick string:javascript:searchuser_openBrowser('${here_url}', 'user_list', 'groupId')"
+                                        />
+                                        <br />
+                                    <input type="button"
+                                                      class="destructive"
+                                                      value="Remove"
+                                                      onClick=""
+                                                      i18n:attributes="value"
+                                                      tal:attributes="onClick string:javascript:searchuser_removeEntry('user_list');"
+                                                      />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label i18n:translate="messages_subject" for="subject">Subject:</label>
+                <!-- <div class="formHelp" id="description_help">A short description of message</div> -->
+                <input type="text" name="subject"
+                                 class="blurrable firstToFocus" id="subject"
+                                 size="100" maxlength="255" 
+                                 tal:attributes="value message/subject | nothing" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label i18n:translate="messages_body" for="body">Message:</label>
+                <!-- <div class="formHelp" id="description_help">The message body</div> -->
+                <div class="field" >
+                        <div tal:define="inputname  string:body;
+                                        formname   string:edit_form;
+                                        inputvalue message/body | nothing;
+                                        width python:80;
+                                        height python:20;">
+                          <div metal:use-macro="here/wysiwyg_support/macros/wysiwygEditorBox">
+                        The WYSIWYG code
+                          </div>
+                        </div>
+                      </div>
+                
+            </td>
+        </tr>
+        
+    </table>
+    
+    <div class="inlineAddFields">
+        <input
+            id="sendMessage"
+            name="form.button.Send"
+            type="submit"
+            class="context allowMultiSubmit"
+            value="Send"
+            i18n:attributes="value"
+            />
+        <input
+            id="cancelMessage"
+            name="form.button.Cancel"
+            type="submit"
+            class="context allowMultiSubmit"
+            value="Cancel"
+            i18n:attributes="value"
+            />
+            
+    </div>
+    
+    </form>
+    
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>
+    

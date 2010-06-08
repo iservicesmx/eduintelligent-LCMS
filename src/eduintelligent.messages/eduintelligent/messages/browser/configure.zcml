@@ -1,0 +1,50 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="eduintelligent.messages">
+
+    <include package="plone.app.contentmenu" />
+      
+    <!-- configure your views here -->  
+    <browser:page
+            for="Products.CMFCore.interfaces.ISiteRoot"
+            name="messages"
+            permission="plone.app.portlets.ManageOwnPortlets"
+            class=".messages.MessagesView"
+            />        
+    <browser:page
+            for="Products.CMFCore.interfaces.ISiteRoot"
+            name="message_view"
+            permission="plone.app.portlets.ManageOwnPortlets"
+            class=".messages.MessageView"
+            />
+    <browser:page
+            for="Products.CMFCore.interfaces.ISiteRoot"
+            name="message_new"
+            permission="plone.app.portlets.ManageOwnPortlets"
+            class=".messages.MessageNew"
+            />        
+    <browser:page
+            for="Products.CMFCore.interfaces.ISiteRoot"
+            name="message_searchuser"
+            permission="plone.app.portlets.ManageOwnPortlets"
+            class=".messages.MessageSearchUser"
+            />        
+
+    <!-- Resource directory for images -->
+    <browser:resourceDirectory
+        name="messages.images"
+        directory="images"
+        />
+
+    <browser:resource
+        name="messages.css"
+        file="resources/messages.css"
+        />
+             
+    <browser:resource
+        name="messages.js"
+        file="resources/messages.js"
+        />
+
+</configure>

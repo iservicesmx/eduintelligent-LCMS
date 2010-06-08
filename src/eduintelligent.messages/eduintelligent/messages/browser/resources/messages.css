@@ -1,0 +1,16 @@
+.unread {
+    font-weight: bold;
+    text-decoration: none;
+    background: url('++resource++messages.images/mail-unread.gif') 0px 50% no-repeat;
+    padding-left: 20px;
+    height: 18px;
+    border: none;
+}
+
+.read {
+    text-decoration: none;
+    background: url('++resource++messages.images/mail-read.gif') 0px 50% no-repeat;
+    padding-left: 20px;
+    height: 18px;
+    border: none;
+}

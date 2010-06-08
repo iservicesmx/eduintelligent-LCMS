@@ -1,0 +1,97 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="eduintelligent.messages">
+
+<head>
+    <metal:block fill-slot="top_slot"
+                 tal:define="dummy python:request.set('disable_border',1)" />
+</head>
+
+<body>
+
+
+<metal:main fill-slot="content">
+    <tal:main-macro metal:define-macro="main"
+            tal:define="category_id python:request.get('category_id', 1);
+                        msg_id python:request.get('id', None);
+                        user_id python:request.get('user_id', member.getId());
+                        message view/message">
+    
+    <h1 i18n:translate="head_messages" >Messages</h1>
+    
+    
+    <div metal:use-macro="here/global_statusmessage/macros/portal_message">
+            Portal status message
+    </div>
+
+
+    <form tal:attributes="action string:${context/absolute_url}/${view/__name__}"
+          name="messageviewForm"
+          id="messageviewForm"
+          method="post" >
+        <input type="hidden" name="category_id" value="" tal:attributes="value category_id" />
+        <input type="hidden" name="user_id" value="" tal:attributes="value user_id" />
+        <input type="hidden" name="id" value="" tal:attributes="value msg_id" />
+
+      <div class="inlineAddFields">
+          <input
+              id="newMessage"
+              name="form.button.New"
+              type="submit"
+              class="context allowMultiSubmit"
+              value="New"
+              i18n:attributes="value"
+              />
+          <input
+              id="replyMessage"
+              name="form.button.Reply"
+              type="submit"
+              class="context allowMultiSubmit"
+              value="Reply"
+              i18n:attributes="value"
+              />
+          <input
+              id="deleteMessage"
+              name="form.button.Delete"
+              type="submit"
+              class="context allowMultiSubmit"
+              value="Delete"
+              i18n:attributes="value"
+              tal:attributes="onclick python:'return confirm(\'Eliminar Mensaje?\');;'"
+              />
+              
+      </div>
+    </form>
+        
+    <table class="vertical listing" style="width:80%;">
+          <tr>
+            <th style="width:10%;" i18n:translate="label_from">From: </th>
+            <td tal:content="python: category_id == 3 and view.getFullname(message.receiver) or view.getFullname(message.sender)">
+                
+            </td>
+          </tr>
+          <tr>
+            <th i18n:translate="label_senddate">Date:</th>
+            <td tal:content="python: message.senddate.strftime('%d/%m/%Y - %H:%M')">01/01/2009</td>
+          </tr>
+          <tr>
+            <th i18n:translate="label_subject">Subject:</th>
+            <td tal:content="structure message/subject">bla, bla, bla</td>
+          </tr>              
+          <tr>
+            <td colspan="2" tal:content="structure message/body">
+                
+            </td>
+          </tr>
+    </table>
+    
+    
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>

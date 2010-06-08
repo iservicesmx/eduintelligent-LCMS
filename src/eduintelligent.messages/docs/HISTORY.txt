@@ -1,0 +1,9 @@
+Changelog for eduintelligent.messages
+
+    (name of developer listed in brackets)
+
+eduintelligent.messages - 1.1 Unreleased
+
+    - Initial package structure.
+      [zopeskel]
+

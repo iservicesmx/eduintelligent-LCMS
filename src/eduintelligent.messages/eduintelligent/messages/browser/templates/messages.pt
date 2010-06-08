@@ -1,0 +1,152 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="eduintelligent.messages">
+
+      <head>
+          <metal:block fill-slot="top_slot"
+                       tal:define="dummy python:request.set('disable_border',1)" />
+                       
+        <metal:css fill-slot="css_slot">
+           <style type="text/css" media="all"
+                   tal:content="string: @import url(${context/++resource++messages.css});"></style>
+        </metal:css>
+               
+      </head>
+
+<body>
+
+<tal:comment replace="nothing">
+    Please note that this template fills the "content" slot instead of the
+    "main" slot, this is done so we can provide stuff like the content
+    tabs. This also means that we have to supply things that are normally
+    present from main_template.
+</tal:comment>
+<metal:left fill-slot="column_one_slot" />
+<metal:main fill-slot="content">
+    <tal:main-macro metal:define-macro="main" 
+                    tal:define="category_id python:request.get('category_id', 1);
+                                user_id python:request.get('user_id', member.getId());
+                                messages view/messages_content;
+                                Batch python:modules['Products.CMFPlone'].Batch;
+                                b_size python:15;
+                                b_start python:0;
+                                b_start request/b_start | b_start;
+                                batch_base_url string:${context/absolute_url}/@@messages;
+                                batch python:Batch(messages, b_size, int(b_start), orphan=1);">
+
+    <h1 i18n:translate="head_messages" >Messages</h1>
+
+    <div metal:use-macro="here/global_statusmessage/macros/portal_message">
+            Portal status message
+    </div>
+
+
+
+
+    <form tal:attributes="action string:${context/absolute_url}/${view/__name__}"
+          name="messagesForm"
+          id="messagesForm"
+          method="post" >
+        <input type="hidden" name="category_id" value="" tal:attributes="value category_id" />
+        <input type="hidden" name="user_id" value="" tal:attributes="value user_id" />
+
+      <div class="inlineAddFields">
+          <input
+              id="newMessage"
+              name="form.button.New"
+              type="submit"
+              class="context allowMultiSubmit"
+              value="New"
+              i18n:attributes="value"
+              />
+          <input
+              id="replyMessage"
+              name="form.button.Reply"
+              type="submit"
+              class="context allowMultiSubmit"
+              value="Reply"
+              i18n:attributes="value"
+              />
+          <input
+              id="deleteMessage"
+              name="form.button.Delete"
+              type="submit"
+              class="context allowMultiSubmit"
+              value="Delete"
+              i18n:attributes="value"
+              tal:attributes="onclick python:'return confirm(\'Eliminar Mensaje(s)?\');;'"
+              />
+              
+      </div>
+
+      <table id="sortable" class="listing" style="width:98%;">
+        <thead> 
+        <tr>     
+        <th style="width:3%;" class="nosort">
+                    <input class="noborder"
+                           type="checkbox"
+                           checked="checked"
+                           src="select_all_icon.gif"
+                           name="selectButton"
+                           title="Select all items"
+                           onClick="toggleSelect(this, 'entries:list', true);"
+                           tal:attributes="src string:$portal_url/select_all_icon.gif"/>        
+        </th>
+        <th>Subject</th>
+        <!-- <th tal:content="python: category_id == 3 and 'Para' or 'De'"> -->
+        <th>
+            <tal:block tal:condition="python:not category_id == 3">
+              <span i18n:translate="msg_from">From</span>
+            </tal:block>              
+            <tal:block tal:condition="python:category_id == 3">
+              <span i18n:translate="msg_to">To</span>
+            </tal:block>  
+        </th>
+        <th style="width:18%;" class="nosort"
+            i18n:translate="msg_date">Date</th>
+      </tr>
+      </thead>
+      <tbody>
+         <tal:block repeat="message batch">          
+         <tr tal:define="oddrow repeat/message/odd"
+                tal:attributes="class python:oddrow and 'odd' or 'even'">
+          <td style="text-align:center;">
+            <input type="checkbox" class="noborder"
+                   name="entries:list"
+                   tal:attributes="id string:id_${message/id};
+                                   value message/id" />
+          </td>
+          <td tal:define="readed message/read_flag">
+              <a href='#' tal:content="structure message/subject" 
+                 tal:attributes="href python:readed and '@@message_view?id='+str(message.id) or '@@message_view?id='+str(message.id)+'&read_flag=1';
+                                 class python:readed and 'read' or 'unread' ">
+              </a>
+          </td>
+          <td tal:content="python: category_id == 3 and view.getFullname(message.receiver) or view.getFullname(message.sender)" />
+          <td tal:content="python: message.senddate.strftime('%d/%m/%Y - %H:%M')">
+           </td>
+
+        </tr>
+        </tal:block>
+        </tbody>
+
+      </table>
+      
+       <div metal:use-macro="here/batch_macros/macros/navigation" />
+      
+      <div tal:condition="not:messages" tal:omit-tag="">
+        <span i18n:translate="msg_no_messages">There isn't message</span>
+      </div>    
+        
+    </form>
+
+    </tal:main-macro>
+
+</metal:main>
+
+</body>
+</html>

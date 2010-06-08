@@ -1,0 +1,197 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: eduintelligent.messages\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Erik Rivera Morales <erik.river@gmail.com>\n"
+"Language-Team: Intelligent Services\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: browser/messages.py:63
+msgid "%s Message(s) delete"
+msgstr "%s Message(s) delete"
+
+#. Default: "Cancel"
+#: browser/templates/message_new.pt:123
+msgid "Cancel"
+msgstr "Cancel"
+
+#: browser/messages.py:50
+msgid "Choose one message"
+msgstr "Choose one message"
+
+#: browser/messages.py:52
+msgid "Choose only one message"
+msgstr "Choose only one message"
+
+#. Default: "Delete"
+#: browser/templates/message_view.pt:57
+msgid "Delete"
+msgstr "Delete"
+
+#: browser/messages.py:207
+msgid "Message has been canceled"
+msgstr "Message has been canceled"
+
+#: browser/messages.py:201
+msgid "Message has been sent"
+msgstr "Message has been sent"
+
+#: browser/messages.py:144
+msgid "Message(s) delete"
+msgstr "Message(s) delete"
+
+#. Default: "New"
+#: browser/templates/message_view.pt:41
+msgid "New"
+msgstr "New"
+
+#: browser/messages.py:295
+msgid "New message in %s"
+msgstr "New message in %s"
+
+#. Default: "Remove"
+#: browser/templates/message_new.pt:74
+msgid "Remove"
+msgstr "Remove"
+
+#. Default: "Reply"
+#: browser/templates/message_view.pt:49
+msgid "Reply"
+msgstr "Reply"
+
+#. Default: "Search"
+#: browser/templates/message_new.pt:64
+msgid "Search"
+msgstr "Search"
+
+#. Default: "Send"
+#: browser/templates/message_new.pt:115
+msgid "Send"
+msgstr "Send"
+
+#: browser/messages.py:236
+msgid "The message has not subject"
+msgstr "The message has not subject"
+
+#: browser/messages.py:134
+msgid "There isn't message"
+msgstr "There isn't message"
+
+#: browser/messages.py:73
+msgid "You must select at least one message"
+msgstr "You must select at least one message"
+
+#: browser/messages.py:232
+msgid "You must select at least one recipient"
+msgstr "You must select at least one recipient"
+
+#. Default: "Add User"
+#: browser/templates/message_searchuser.pt:197
+msgid "add_selected_users"
+msgstr "Add User"
+
+#. Default: "New Message"
+#: browser/templates/message_new.pt:33
+msgid "head_messages"
+msgstr "Messages"
+
+#. Default: "From:"
+#: browser/templates/message_view.pt:72
+msgid "label_from"
+msgstr "From:"
+
+#. Default: "Search"
+#: browser/templates/message_searchuser.pt:116
+msgid "label_search"
+msgstr "Search"
+
+#. Default: "Date:"
+#: browser/templates/message_view.pt:78
+msgid "label_senddate"
+msgstr "Date"
+
+#. Default: "Subject:"
+#: browser/templates/message_view.pt:82
+msgid "label_subject"
+msgstr "Subject:"
+
+#. Default: "ID"
+#: browser/templates/message_searchuser.pt:173
+msgid "listingheader_id"
+msgstr "ID"
+
+#. Default: "Name"
+#: browser/templates/message_searchuser.pt:174
+msgid "listingheader_name"
+msgstr "Name"
+
+#. Default: "Region"
+#: browser/templates/message_searchuser.pt:175
+msgid "listingheader_tc"
+msgstr "Training Center"
+
+#. Default: "Message:"
+#: browser/templates/message_new.pt:95
+msgid "messages_body"
+msgstr "Message:"
+
+#. Default: "Subject:"
+#: browser/templates/message_new.pt:85
+msgid "messages_subject"
+msgstr "Subject:"
+
+#. Default: "To:"
+#: browser/templates/message_new.pt:47
+msgid "messages_to"
+msgstr "To:"
+
+#. Default: "Date"
+#: browser/templates/messages.pt:109
+msgid "msg_date"
+msgstr "Date"
+
+#. Default: "From"
+#: browser/templates/messages.pt:103
+msgid "msg_from"
+msgstr "From"
+
+#. Default: "There isn't message"
+#: browser/templates/messages.pt:142
+msgid "msg_no_messages"
+msgstr "There isn't message"
+
+#. Default: "To"
+#: browser/templates/messages.pt:106
+msgid "msg_to"
+msgstr "To"
+
+#. Default: "-- Select Training Center --"
+#: browser/templates/message_searchuser.pt:90
+msgid "select_tc"
+msgstr "-- Select Training Center --"
+
+#. Default: "Groups:"
+#: browser/templates/message_searchuser.pt:128
+msgid "text_existing_groups"
+msgstr "Groups:"
+
+#. Default: "Search User:"
+#: browser/templates/message_searchuser.pt:101
+msgid "text_member_search"
+msgstr "Search User:"
+
+#. Default: "Search Site"
+#: browser/templates/message_searchuser.pt:103
+msgid "title_search_site"
+msgstr "Search Site"
+
+#. Default: "Close"
+#: browser/templates/message_searchuser.pt:204
+msgid "userandgroupselect_close"
+msgstr "Close"
+

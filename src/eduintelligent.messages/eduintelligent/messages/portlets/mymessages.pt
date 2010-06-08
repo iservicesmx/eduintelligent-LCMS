@@ -1,0 +1,44 @@
+<dl class="portlet portletMessages"
+    i18n:domain="eduintelligent.messages">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span i18n:translate="head_messages">Messages</span>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <!-- <tal:items tal:repeat="category view/categories"> -->
+        <dd class="portletItem even" tal:define="category python:view.categories()[0]">
+            <a href=""
+               tal:attributes="href string:@@messages?category_id=1;">
+                <span i18n:translate="">Inbox</span>
+                <tal:title content="structure string:(${category/total}/${category/unread})"></tal:title>
+            </a>
+        </dd>
+        <dd class="portletItem odd" tal:define="category python:view.categories()[1]">
+            <a href=""
+               tal:attributes="href string:@@messages?category_id=2;">
+                <span i18n:translate="">Notices</span>
+                <tal:title content="structure string:(${category/total}/${category/unread})"></tal:title>
+            </a>
+        </dd>
+        <dd class="portletItem even" tal:define="category python:view.categories()[2]">
+            <a href=""
+               tal:attributes="href string:@@messages?category_id=3;">
+                <span i18n:translate="">Sents</span>
+                <tal:title content="structure string:(${category/total}/${category/unread})"></tal:title>
+            </a>
+        </dd>
+        
+    <!-- </tal:items> -->
+
+    <dd class="portletFooter">
+        <span class="portletBottomLeft"></span>
+        <a href=""
+           tal:attributes="href string:@@message_new;
+                           title string:#;" i18n:translate="head_messages" >New Message</a>
+        
+        <span class="portletBottomRight"></span>
+    </dd>
+
+</dl>
