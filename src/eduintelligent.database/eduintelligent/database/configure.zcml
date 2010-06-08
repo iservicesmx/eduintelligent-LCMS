@@ -1,0 +1,49 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="eduintelligent.database">
+    
+    <!-- We also need support for SQLAlchemy database connections -->
+    <include package="collective.lead" />
+
+    <five:registerPackage package="." initialize=".initialize" />
+
+    <!-- Register the installation GenericSetup extension profile -->
+    <genericsetup:registerProfile
+      name="default"
+      title="EduIntelligent Database"
+      directory="profiles/default"
+      description="eduIntelligent Database Settings"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+    <!-- Register database configuration utilities -->
+    <utility
+        provides="collective.lead.interfaces.IDatabase"
+        factory=".db.EduIntelligentDatabase"
+        name="eduintelligent.db"
+        />
+        
+    <!-- Register the control panel for database settings -->
+
+    <adapter
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        provides="eduintelligent.database.interfaces.IDatabaseSettings"
+        factory=".dbsettings.eduintelligent_database_settings" 
+        />
+    
+    <browser:page
+        name="eduintelligent-database-controlpanel"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".dbsettings.EduIntelligentDatabaseControlPanel"
+        permission="cmf.ManagePortal"
+        />
+                
+    <browser:resource
+        name="db_icon.gif"
+        image="db_icon.gif"
+        />
+
+</configure>

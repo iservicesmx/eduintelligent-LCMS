@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- Register the local database settings utility. This is modified via
+     a control panel page in dbsettings.py.
+  -->
+<componentregistry>
+ <utilities>  
+  <utility
+     interface="eduintelligent.database.interfaces.IDatabaseSettings"
+     factory="eduintelligent.database.db.EduIntelligentDatabaseSettings"
+     />
+ </utilities>
+</componentregistry>
