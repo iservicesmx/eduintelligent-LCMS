@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="eduintelligent.evaluation">
+<head>
+</head>
+
+<body>
+<div metal:fill-slot="main"
+    tal:define="results context/getPendingGradeUsers;">
+    
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading" tal:content="context/title" />
+
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+    
+    <table class="listing">
+      <thead>
+      <tr>
+        <th i18n:translate="">No</th>
+        <th i18n:translate="">UserID</th>
+        <th i18n:translate="">Name</th>
+        <th i18n:translate="">Position</th>
+        <th i18n:translate="">Start</th>        
+        <th i18n:translate="">End</th>
+        <th i18n:translate="">Time</th>
+        <th i18n:translate="">Grade</th>
+      </tr>
+      </thead>
+      <tbody>
+          
+      <tal:block repeat="user results">
+       <tr tal:define="oddrow repeat/user/odd"
+           tal:attributes="class python:oddrow and 'odd' or 'even'">
+           <td tal:content="repeat/user/number"></td>
+           <td tal:content="user/userid">erik</td> 
+           <td tal:content="user/member/getFullname">Erik Rivera</td>
+           <td tal:content="user/member/getPositionName">Developer Manager</td>
+           <td tal:content="user/start"></td>
+           <td tal:content="user/end"></td>
+           <td tal:content="user/time"></td>
+           <td>
+               <a href="#" tal:attributes="href string:${context/absolute_url}/@@grade_by_user?user=${user/userid}">
+               <img src="++resource++evaluation.images/certificate.gif"/>
+               </a>
+           </td>
+           
+       </tr>
+      </tal:block>      
+
+        </tbody>
+      </table>
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+</div>
+</body>
+</html>

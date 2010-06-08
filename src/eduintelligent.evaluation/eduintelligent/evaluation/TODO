@@ -1,0 +1,60 @@
+develop:
+    "true-false": 
+            una pregunta con sólo 2 respuestas posibles 
+    "choice": 
+            Una pregunta con un número limitado de respuestas predefinidas. El 
+            alumno debe elegir una o varias respuestas. 
+    "fill-in": 
+            una pregunta con una respuesta simple de una o varias palabras. La 
+            respuesta no está predefinida, debe introducirla el estudiante. 
+    "matching": 
+            Una pregunta con 2 conjuntos de objetos para relacionar entre sí. 
+    "performance": 
+            Una pregunta  "performance" es, en algunos sentidos, similar a las 
+            preguntas con múltiples respuestas para escoger. Sin embargo, en lugar de 
+            seleccionar una respuesta escrita, el estudiante debe realizar una tarea o acción. 
+            
+    "sequencing": 
+            En una pregunta “sequencing”, el estudiante tiene que ordenar una 
+            lista de valores.  
+            
+    "likert": Una pregunta “likert” ofrece al estudiante un grupo de alternativas en una 
+            secuencia. La respuesta generalmente está basada en la opinión de los estudiante. 
+            
+    "numeric":
+            la respuesta es un número simple con o sin decimales. Debe estar 
+            comprendida en un intervalo dado para que sea correcta.  
+
+
+
+_(u'Tiempo maximo en minutos que se le permite al alumno en contestar el examen, '
+    u'si queda vacio o tiene el valor 0, el tiempo quedara indefinido, tenga en cuenta que debe ' 
+    u'dejar una tolerancia por imprevistos y recuerde que el tiempo debe ser mayor a la suma del '
+    u' tiempo de todas las preguntas')
+    
+    Maximun time in minutes that alow make the exam
+                
+_(u"Especifique la fecha y la hora en que sera publicado el examen"),
+
+You must specify the start date of exam
+
+_(u"Especifique la fecha y la hora especifica en que quiere que termine de publicarse el examen"),
+
+_(u'Numero maximo  de oportunidades que que tiene el usuario para pasar el examen, '
+    'como minimo en 1 y como maximo son 3'),
+    
+_(u'Este valor se refiere a la calificacion minima que un alumno debe sacar para aprobar el examen '
+    'revise muy bien este valor, porque un error en este puede causar danos irreparables'),
+    
+
+_(u'Tiempo maximo en segundos que se le permite al participante responder la pregunta, '
+  u'si queda vacio o vale 0, el tiempo quedara indefinido '
+  u'(Nota: Valido  solo para preguntas de examen)'),
+    ),
+
+_(u'Es el factor de multiplicacion de la pregunta'),
+
+_(u'Si habilita esta casilla las respuestas del quiz se mostraran en orden aleatorio'),
+
+
+        

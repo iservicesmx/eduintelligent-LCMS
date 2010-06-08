@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<metal:block use-macro="here/global_defines/macros/defines" />
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      i18n:domain="eduintelligent.evaluation">
+      
+<metal:cacheheaders define-macro="cacheheaders">
+  <metal:block tal:define="dummy python:request.RESPONSE.setHeader('Expires', 'Sat, 1 Jan 2000 00:00:00 GMT')" />
+  <metal:block tal:define="dummy python:request.RESPONSE.setHeader('Pragma', 'no-cache')" />
+</metal:cacheheaders>
+
+<head> 
+    <tal:styles define="view context/@@plone|nothing"
+                replace="structure provider:plone.resourceregistries.styles" />
+                
+    <tal:scripts define="view context/@@plone|nothing"
+                 replace="structure provider:plone.resourceregistries.scripts" />            
+    
+    <style type="text/css" media="all"
+           tal:content="string: @import url(${portal_url}/++resource++evaluation.css);"></style>
+    <script type="text/javascript"
+           tal:attributes="src context/++resource++evaluation.js"></script>
+   <style type="text/css">
+   body {
+           background-image:none;
+   }
+   </style>
+    
+</head>
+
+<body oncontextmenu="return false">
+
+<form tal:attributes="action string:${context/absolute_url}/${view/__name__}"
+        name="testForm"
+          id="testForm"
+          method="post">
+          <div metal:use-macro="here/global_statusmessage/macros/portal_message">
+                  Portal status message
+          </div>
+                 
+          <div tal:replace="structure provider:evaluation.questionlet" />
+
+
+</form>
+</body>
+</html>

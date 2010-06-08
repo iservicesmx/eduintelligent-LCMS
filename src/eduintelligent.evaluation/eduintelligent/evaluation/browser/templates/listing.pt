@@ -1,0 +1,78 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="eduintelligent.evaluation">
+<head>
+</head>
+
+<body>
+<div metal:fill-slot="main"
+    tal:define="results context/getPendingUsers;">
+    
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading" tal:content="context/title" />
+
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+              
+    <table class="listing">
+      <thead>
+      <tr>
+        <th i18n:translate="">No</th>
+        <th i18n:translate="">UserID</th>
+        <th i18n:translate="">Name</th>
+        <th i18n:translate="">E-mail</th>        
+        <th i18n:translate="">Position</th>
+        <th i18n:translate="">Product</th>
+        <th i18n:translate="">Division</th>        
+        <th i18n:translate="">Country</th>
+        <th i18n:translate="">Place</th>
+        <th i18n:translate="">Employee Number</th>
+      </tr>
+      </thead>
+      <tbody>
+          
+      <tal:block repeat="user results">
+       <tr tal:define="oddrow repeat/user/odd"
+           tal:attributes="class python:oddrow and 'odd' or 'even'">
+           <td tal:content="repeat/user/number"></td>
+           <td>
+               <span tal:replace="user/getId" />
+           </td> 
+           <td>
+               <span tal:replace="user/getFullname" />
+           </td>
+           <td>
+               <span tal:replace="user/getEmail" />
+           </td>           
+           <td>
+               <span tal:replace="user/getPositionName" />
+           </td>
+           <td>
+               <span tal:repeat="pro user/getProductName" tal:replace="structure string:${pro} <br/>"/>
+           </td>
+           <td>
+               <span tal:repeat="divi user/getDivisionName" tal:replace="structure string:${divi} <br/>"/>
+           </td>
+           <td>
+               <span tal:replace="user/getCountryName" />
+           </td>
+           <td>
+               <span tal:replace="user/getPlace" />
+           </td>
+           <td>
+               <span tal:replace="user/getEmployee" />
+           </td>
+       </tr>
+      </tal:block>      
+
+        </tbody>
+      </table>
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+</div>
+</body>
+</html>

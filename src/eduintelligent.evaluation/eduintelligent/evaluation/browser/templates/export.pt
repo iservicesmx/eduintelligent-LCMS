@@ -1,0 +1,108 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="eduintelligent.evaluation">
+<head>    
+</head>
+
+<body>
+<div metal:fill-slot="main">
+    
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading" tal:content="context/title" />
+
+<style>
+label:hover{
+	color: #f7921e;
+}
+
+label {
+    font-size:1.1em;
+    margin: 10px 0;
+	padding-left: 5px;	
+}
+</style>
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+    
+    <form tal:attributes="action string:${context/absolute_url}/export_data"
+          name="viewForm"
+          id="viewForm"
+          method="post" >
+
+    <table class="listing nosort">
+
+          <tr>
+            <th>
+                <input class="noborder"
+                       type="checkbox"
+                       src="select_all_icon.gif"
+                       name="selectButton"
+                       title="Select all items"
+                       onClick="toggleSelect(this, 'fields:list', false);"
+                       tal:attributes="src string:$portal_url/select_all_icon.gif"/>        
+                
+                <span i18n:translate="">Fields</span>
+            </th>
+          </tr>
+      <tr>
+        <td>              
+            
+        <input type="checkbox" id="field1" name="fields:list" value="employee"> <label for="field1" i18n:translate="">Employee Number</label><br />
+        <input type="checkbox" id="field2" name="fields:list" value="position"> <label for="field2" i18n:translate="">Position</label><br />
+        <input type="checkbox" id="field3" name="fields:list" value="product"> <label for="field3" i18n:translate="">Product</label><br />
+        <input type="checkbox" id="field4" name="fields:list" value="division"> <label for="field4" i18n:translate="">Division</label><br />
+        <input type="checkbox" id="field5" name="fields:list" value="ingress"> <label for="field5" i18n:translate="">Ingress</label><br />
+        <input type="checkbox" id="field6" name="fields:list" value="country"> <label for="field6" i18n:translate="">Country</label><br />
+        <input type="checkbox" id="field7" name="fields:list" value="state"> <label for="field7" i18n:translate="">State</label><br />
+        <input type="checkbox" id="field8" name="fields:list" value="city"> <label for="field8" i18n:translate="">City</label><br />
+        <input type="checkbox" id="field9" name="fields:list" value="place"> <label for="field9" i18n:translate="">Place</label><br />
+        <input type="checkbox" id="field10" name="fields:list" value="region"> <label for="field10" i18n:translate="">Region</label><br />
+        <input type="checkbox" id="field11" name="fields:list" value="distric"> <label for="field11" i18n:translate="">District</label><br />
+      </tr>    
+      
+      
+      <tr>
+        <th i18n:translate="">Configuration</th>
+      </tr>
+      <tr>
+          <td>
+              <input type="radio" id="field12" name="reporttype" value="all" checked > <label for="field12" i18n:translate="">All scores</label> <br />
+              <input type="radio" id="field13" name="reporttype" value="last"> <label for="field13">Last score</label><br />
+              <input type="radio" id="field14" name="reporttype" value="average"> <label for="field14">Average</label><br /><br />
+              <!-- <input type="checkbox" id="field15" name="all_usrs:bool" value="True"> <label for="field15">Todos Los usuarios inscritos en el curso</label> -->
+              <br /><br />
+          </td>            
+      </tr>
+      <tr>
+        <td>
+            <label for="format">Format</label>
+            <select id="format" name="format">
+                <option value="csv">Text separated by commas (DAT)</option>
+                <!-- <option value="xls">Excel 2003, 2004, 2007 (XLS) </option> -->
+            </select>
+        </td>
+      </tr>
+    </table>
+
+
+
+    <div class="inlineAddFields">
+      <input
+              id="btn_export"
+              name="form.button.Export"
+              type="submit"
+              class="context allowMultiSubmit"
+              value="Export"
+              i18n:attributes="value"
+              />
+      </div>
+    </form>
+
+  <div tal:replace="structure provider:plone.belowcontentbody" />
+
+</div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<metal:block use-macro="here/global_defines/macros/defines" />
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      i18n:domain="eduintelligent.evaluation">
+<head> 
+    <tal:styles define="view context/@@plone|nothing"
+                replace="structure provider:plone.resourceregistries.styles" />
+
+    <tal:scripts define="view context/@@plone|nothing"
+                 replace="structure provider:plone.resourceregistries.scripts" />            
+
+    <style type="text/css" media="all"
+           tal:content="string: @import url(${portal_url}/++resource++evaluation.css);"></style>
+    <script type="text/javascript"
+           tal:attributes="src context/++resource++evaluation.js"></script>
+</head>
+
+<body oncontextmenu="return false">
+    <div id="header">
+        <h1 i18n:translate="">Evaluations Results</h1>
+    </div>
+
+<tal:block repeat="evaluation context/getDataEvaluations">
+<table class="vertical listing"
+    tal:define="score evaluation/data/evaluation.score;
+                init evaluation/data/evaluation.start;
+                end  evaluation/data/evaluation.end;">
+    <tr>
+      <th i18n:translate="">Score</th>
+      <td tal:content="score"> 100
+      </td>
+    </tr>
+      <tr>
+        <th i18n:translate="">Start</th>
+        <td tal:content="python:context.utilConvertTime(init)">
+                dasds
+        </td>
+      </tr>
+      <tr>
+        <th i18n:translate="">End</th>
+        <td tal:content="python:context.utilConvertTime(end)">
+                caad
+        </td>
+      </tr>
+      <tr>
+        <th i18n:translate="">Time</th>
+        <td tal:content="python:context.utilCalculeTime(init, end)">
+            43
+        </td>
+      </tr>      
+</table>
+</tal:block>
+
+<form tal:attributes="action string:${context/absolute_url}/${view/__name__}"
+        name="testForm"
+          id="testForm"
+          method="post">          
+
+
+<tal:block tal:condition="python: context.portal_type=='Exam'">
+<input
+    class="submitButton"
+    tabindex=""
+    type="submit"
+    name="Init"
+    value="Start Exam" 
+    tal:condition="python:context.haveOpportunity() and not context.passEvaluation()"
+    i18n:attributes="value"/>
+</tal:block>    
+
+<tal:block tal:condition="python:context.portal_type=='Quiz'">
+<input
+    class="submitButton"
+    tabindex=""
+    type="submit"
+    name="Init"
+    value="Start Quiz" 
+    tal:condition="python:context.haveOpportunity() and not context.passEvaluation()"
+    i18n:attributes="value"/>
+</tal:block>    
+
+<input
+    class="submitButton"
+    tabindex=""
+    type="submit"
+    name="Submit"
+    value="Close"
+    onclick="javascript:window.close()" 
+    i18n:attributes="value"/>
+
+</form>
+</body>
+</html>

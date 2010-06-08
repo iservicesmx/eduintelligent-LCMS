@@ -1,0 +1,57 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="eduintelligent.evaluation">
+<head>
+</head>
+
+<body>
+<div metal:fill-slot="main"
+    tal:define="results view/contents;">
+    
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading" tal:content="context/title" />
+    <h2 i18n:translate="">Minimun score to pass the exam: 
+        <span tal:content="context/getMinScoreGrade"
+              i18n:name="minscore">85.0</span>
+    </h2>  
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+          
+    <table class="listing">
+      <thead>
+      <tr>
+        <th >No</th>
+        <th i18n:translate="">UserID</th>
+        <th i18n:translate="">Name</th>
+        <th i18n:translate="">Position</th>
+        <th i18n:translate="">Score</th>
+        <th i18n:translate="">Extra Grade</th>
+        <th i18n:translate="">Average</th>
+      </tr>
+      </thead>
+      <tbody>
+          
+      <tal:block repeat="data results">
+       <tr tal:define="oddrow repeat/data/odd"
+           tal:attributes="class python:oddrow and 'odd' or 'even'">
+           <td tal:content="repeat/data/number"></td>
+           <td tal:content="data/userid"></td>
+           <td tal:content="data/member/getFullname"></td>
+           <td tal:content="data/member/getPositionName"></td>
+           <td tal:content="data/score"></td>
+           <td tal:content="data/score_extra"></td>
+           <td tal:content="data/average"></td>
+       </tr>
+      </tal:block>      
+
+        </tbody>
+      </table>
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+</div>
+</body>
+</html>

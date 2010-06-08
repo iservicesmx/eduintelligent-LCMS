@@ -1,0 +1,106 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="eduintelligent.evaluation">
+<head>
+</head>
+
+<body>
+<div metal:fill-slot="main" tal:define="attemp      request/attemp | nothing;
+                                        questions   view/contents;
+                                        stats       context/getExamStatistics;">
+    
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading"
+        i18n:translate="heading_statstics_for">
+        Statistics for
+        "<span tal:content="context/Title" tal:omit-tag="" i18n:name="folder">title</span>"
+    </h1>
+
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+    
+    <table class="vertical listing">
+             <tr>
+               <th i18n:translate="">Total Graded</th>
+               <td tal:content="stats/N" />
+             </tr>
+             <tr>
+               <th i18n:translate="">Min.</th>
+               <td tal:content="stats/min" />
+             </tr>
+             <tr>
+               <th i18n:translate="">Max.</th>
+               <td tal:content="stats/max" />
+             </tr>
+             <tr>
+               <th i18n:translate="">Mean</th>
+               <td tal:content="stats/mean" />
+             </tr>
+             <tr>
+               <th i18n:translate="">Median</th>
+               <td tal:content="stats/median" />
+             </tr>             
+             <tr>
+               <th i18n:translate="">Mode</th>
+               <td tal:content="stats/mode" />
+             </tr>             
+             <tr>
+               <th i18n:translate="">Range</th>
+               <td tal:content="stats/range" />
+             </tr>             
+             <tr>
+               <th i18n:translate="">Variance</th>
+               <td tal:content="stats/variance" />
+             </tr>             
+             <tr>
+               <th i18n:translate="">Standard Deviation</th>
+               <td tal:content="stats/stddev" />
+             </tr>             
+             
+       </table>
+    
+              
+    <table class="listing">
+      <thead>
+      <tr>
+        <th i18n:translate="">No</th>
+        <th i18n:translate="">Question</th>
+        <th i18n:translate="">Correct</th>
+        <th i18n:translate="">Incorrect</th>
+      </tr>
+      </thead>
+      <tbody>
+          
+      <tal:block repeat="data questions">
+       <tr tal:define="oddrow repeat/data/odd"
+           tal:attributes="class python:oddrow and 'odd' or 'even'">
+           <td tal:content="repeat/data/number"></td>
+           <td tal:content="data/title"></td>
+           <td>
+                <a href="#" tal:content="python:len(data['counts'][0])"
+                    tal:attributes="href string:${context/absolute_url}/@@statistics_details?question=${data/qid}&correct=0&attemp=0">
+                    [ 10 ]
+                </a>
+           </td>
+           <td>
+                <a href="#" tal:content="python:len(data['counts'][1])"
+                    tal:attributes="href string:${context/absolute_url}/@@statistics_details?question=${data/qid}&correct=1&attemp=0">
+                    [ 3 ]
+                </a>
+           </td>
+           
+       </tr>
+      </tal:block>      
+
+        </tbody>
+      </table>
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+</div>
+</body>
+</html>
+

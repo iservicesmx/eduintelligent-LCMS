@@ -1,0 +1,692 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2010-02-11 18:37+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: eduintelligent.evaluation\n"
+
+#: ./content/questionchoice.py:31
+#: ./content/questionfillin.py:30
+msgid ""
+msgstr ""
+
+#: ./interfaces.py:12
+msgid "A HTML tag for a banner image"
+msgstr ""
+
+#: ./profiles/default/types/QuestionChoice.xml
+msgid "A question choice"
+msgstr ""
+
+#: ./profiles/default/types/QuestionFillIn.xml
+msgid "A question fill-in"
+msgstr ""
+
+#: ./interfaces.py:20
+msgid "A short summary of this folder"
+msgstr ""
+
+#: ./portlets/myexams.py:126
+msgid "Add Exam portlet"
+msgstr ""
+
+#: ./browser/templates/export.pt:72
+msgid "All scores"
+msgstr ""
+
+#: ./content/schemas.py:220
+msgid "An image for this question (The image size must not be greater than 400x400 px)"
+msgstr ""
+
+#: ./browser/templates/results_by_user.pt:55
+#: ./content/schemas.py:254
+msgid "Answers"
+msgstr ""
+
+#: ./browser/templates/grade_by_user.pt:20
+msgid "Answers open by ${username}"
+msgstr ""
+
+#: ./content/evaluation.py:183
+msgid "Approved"
+msgstr ""
+
+#: ./browser/export.py:58
+#: ./browser/templates/extra.pt:49
+#: ./browser/templates/failed.pt:34
+msgid "Average"
+msgstr ""
+
+#: ./content/schemas.py:177
+msgid "Bad score message"
+msgstr ""
+
+#: ./content/schemas.py:169
+msgid "Bad score title"
+msgstr ""
+
+#: ./content/schemas.py:24
+msgid "Check this box if you want the questions in this container to appear in a different, random order for each candidate. Otherwise the same order as in the &quot;contents&quot;-view will be used."
+msgstr ""
+
+#: ./content/schemas.py:112
+msgid "Choose an exam that allow to take this exam"
+msgstr ""
+
+#: ./browser/export.py:48
+#: ./browser/templates/export.pt:60
+msgid "City"
+msgstr ""
+
+#: ./browser/templates/resume.pt:86
+msgid "Close"
+msgstr ""
+
+#: ./browser/templates/results_by_user.pt:124
+msgid "Comments"
+msgstr ""
+
+#: ./browser/templates/grade_by_user.pt:69
+msgid "Comments:"
+msgstr ""
+
+#: ./browser/templates/export.pt:68
+msgid "Configuration"
+msgstr ""
+
+#: ./browser/templates/grade_by_user.pt:58
+#: ./browser/templates/statistics.pt:71
+msgid "Correct"
+msgstr ""
+
+#: ./browser/templates/results_by_user.pt:129
+msgid "Correct Answer"
+msgstr ""
+
+#: ./browser/export.py:44
+#: ./browser/templates/export.pt:58
+#: ./browser/templates/listing.pt:30
+msgid "Country"
+msgstr ""
+
+#: ./browser/templates/results_by_user.pt:88
+msgid "Data"
+msgstr ""
+
+#: ./browser/templates/exam.pt:115
+#: ./browser/templates/quiz.pt:37
+msgid "Date"
+msgstr ""
+
+#: ./content/schemas.py:255
+msgid "Defines how many possible answers are there for this question"
+msgstr ""
+
+#: ./browser/templates/results_by_user.pt:29
+msgid "Delete"
+msgstr ""
+
+#: ./profiles/default/types/Exam.xml
+msgid "Describe the exam"
+msgstr ""
+
+#: ./profiles/default/types/Quiz.xml
+msgid "Describe the quiz"
+msgstr ""
+
+#: ./interfaces.py:19
+msgid "Description"
+msgstr ""
+
+#: ./browser/templates/exam.pt:76
+msgid "Details"
+msgstr ""
+
+#: ./browser/export.py:54
+#: ./browser/templates/export.pt:63
+msgid "District"
+msgstr ""
+
+#: ./browser/export.py:40
+#: ./browser/templates/export.pt:56
+#: ./browser/templates/listing.pt:29
+msgid "Division"
+msgstr ""
+
+#: ./browser/templates/listing.pt:26
+msgid "E-mail"
+msgstr ""
+
+#: ./portlets/myexams.py:140
+msgid "Edit exams portlet"
+msgstr ""
+
+#: ./browser/templates/export.pt:53
+#: ./browser/templates/listing.pt:32
+msgid "Employee Number"
+msgstr ""
+
+#: ./browser/export.py:34
+msgid "Employee number"
+msgstr ""
+
+#: ./browser/export.py:60
+#: ./browser/templates/exam.pt:89
+#: ./browser/templates/grade.pt:28
+msgid "End"
+msgstr ""
+
+#: ./content/schemas.py:82
+msgid "End Date"
+msgstr ""
+
+#: ./browser/templates/exam.pt:65
+msgid "Error"
+msgstr ""
+
+#: ./browser/templates/resume.pt:24
+msgid "Evaluations Results"
+msgstr ""
+
+#: ./profiles/default/types/Exam.xml
+msgid "Exam"
+msgstr ""
+
+#: ./content/schemas.py:64
+msgid "Exam Time"
+msgstr ""
+
+#: ./content/evaluation.py:488
+msgid "Exam name: "
+msgstr ""
+
+#: ./content/schemas.py:83
+msgid "Exam's end date"
+msgstr ""
+
+#: ./content/schemas.py:74
+msgid "Exam's start date"
+msgstr ""
+
+#: ./browser/templates/extra.pt:50
+#: ./browser/templates/failed.pt:35
+#: ./browser/templates/results.pt:67
+msgid "Exams"
+msgstr ""
+
+#: ./browser/templates/export.pt:93
+#: ./browser/templates/results.pt:30
+msgid "Export"
+msgstr ""
+
+#: ./browser/templates/extra.pt:51
+#: ./browser/templates/failed.pt:36
+msgid "Extra Grade"
+msgstr ""
+
+#: ./profiles/default/types/Exam.xml
+msgid "Failed"
+msgstr ""
+
+#: ./browser/templates/export.pt:47
+msgid "Fields"
+msgstr ""
+
+#: ./browser/templates/viewchoice.pt:69
+#: ./browser/templates/viewfillin.pt:58
+msgid "Finish"
+msgstr ""
+
+#: ./content/schemas.py:161
+msgid "Good score message"
+msgstr ""
+
+#: ./content/schemas.py:153
+msgid "Good score title"
+msgstr ""
+
+#: ./browser/templates/grade.pt:30
+#: ./profiles/default/types/Exam.xml
+msgid "Grade"
+msgstr ""
+
+#: ./profiles/default/types/Exam.xml
+msgid "Grade Extra"
+msgstr ""
+
+#: ./browser/templates/results_by_user.pt:92
+msgid "Hour HH:MM:SS"
+msgstr ""
+
+#: ./portlets/myexams.py:38
+msgid "If enabled, exams to show will be picked randomly. If disabled, newer courses will be preferred."
+msgstr ""
+
+#: ./content/schemas.py:219
+msgid "Image"
+msgstr ""
+
+#: ./browser/templates/grade_by_user.pt:62
+#: ./browser/templates/statistics.pt:72
+msgid "Incorrect"
+msgstr ""
+
+#: ./browser/templates/exam.pt:31
+msgid "Info"
+msgstr ""
+
+#: ./browser/export.py:42
+#: ./browser/templates/export.pt:57
+msgid "Ingress"
+msgstr ""
+
+#: ./browser/exam.py:107
+msgid "Invalid input in one or more fields. Please correct."
+msgstr ""
+
+#: ./browser/templates/grade_by_user.pt:54
+msgid "Latency:"
+msgstr ""
+
+#: ./browser/templates/statistics.pt:35
+msgid "Max."
+msgstr ""
+
+#: ./content/schemas.py:92
+msgid "Maximum number of chances the user has in order tho pass the exam"
+msgstr ""
+
+#: ./portlets/myexams.py:33
+msgid "Maximum number of exams to be shown"
+msgstr ""
+
+#: ./content/schemas.py:230
+msgid "Maximum time, in seconds, the user has in order to answer the question"
+msgstr ""
+
+#: ./content/schemas.py:65
+msgid "Maximun time in minutes for the user to complete the exam"
+msgstr ""
+
+#: ./browser/templates/statistics.pt:39
+msgid "Mean"
+msgstr ""
+
+#: ./browser/templates/statistics.pt:43
+msgid "Median"
+msgstr ""
+
+#: ./browser/templates/exam.pt:101
+msgid "Min Score"
+msgstr ""
+
+#: ./browser/templates/statistics.pt:31
+msgid "Min."
+msgstr ""
+
+#: ./content/schemas.py:101
+msgid "Minimun score to pass the exam"
+msgstr ""
+
+#: ./browser/templates/statistics.pt:47
+msgid "Mode"
+msgstr ""
+
+#: ./portlets/myexams.pt:6
+#: ./portlets/myexams.py:55
+msgid "My Exams"
+msgstr ""
+
+#: ./browser/export.py:31
+#: ./browser/templates/extra.pt:47
+#: ./browser/templates/failed.pt:32
+msgid "Name"
+msgstr ""
+
+#: ./browser/templates/viewchoice.pt:58
+#: ./browser/templates/viewfillin.pt:48
+msgid "Next"
+msgstr ""
+
+#: ./browser/templates/extra.pt:45
+#: ./browser/templates/failed.pt:30
+#: ./browser/templates/grade.pt:23
+msgid "No"
+msgstr ""
+
+#: ./browser/templates/grade_by_user.pt:24
+msgid "Note"
+msgstr ""
+
+#: ./browser/templates/statistics_details.pt:33
+msgid "Num"
+msgstr ""
+
+#: ./content/schemas.py:35
+msgid "Number of Random Questions"
+msgstr ""
+
+#: ./portlets/myexams.py:32
+msgid "Number of exams to display"
+msgstr ""
+
+#: ./browser/export.py:58
+msgid "Opportunities"
+msgstr ""
+
+#: ./content/schemas.py:91
+msgid "Opportunities to pass"
+msgstr ""
+
+#: ./content/evaluation.py:178
+msgid "Pending"
+msgstr ""
+
+#: ./browser/templates/results.pt:47
+msgid "Pending Users"
+msgstr ""
+
+#: ./browser/templates/results_by_user.pt:91
+msgid "Period HH:MM:SS"
+msgstr ""
+
+#: ./browser/export.py:50
+#: ./browser/templates/export.pt:61
+#: ./browser/templates/listing.pt:31
+msgid "Place"
+msgstr ""
+
+#: ./browser/export.py:36
+#: ./browser/templates/export.pt:54
+#: ./browser/templates/extra.pt:48
+msgid "Position"
+msgstr ""
+
+#: ./browser/export.py:38
+#: ./browser/templates/export.pt:55
+#: ./browser/templates/listing.pt:28
+msgid "Product"
+msgstr ""
+
+#: ./browser/templates/results_by_user.pt:103
+#: ./browser/templates/statistics.pt:70
+#: ./content/questionchoice.py:30
+msgid "Question"
+msgstr ""
+
+#: ./profiles/default/types/QuestionChoice.xml
+msgid "QuestionChoice"
+msgstr ""
+
+#: ./profiles/default/types/QuestionFillIn.xml
+msgid "QuestionFillIn"
+msgstr ""
+
+#: ./browser/templates/exam.pt:79
+msgid "Questions"
+msgstr ""
+
+#: ./profiles/default/types/Quiz.xml
+msgid "Quiz"
+msgstr ""
+
+#: ./content/schemas.py:23
+msgid "Randomize Question Order"
+msgstr ""
+
+#: ./portlets/myexams.py:37
+msgid "Randomize exams"
+msgstr ""
+
+#: ./browser/templates/statistics.pt:51
+msgid "Range"
+msgstr ""
+
+#: ./content/schemas.py:111
+msgid "Referenced Evaluation"
+msgstr ""
+
+#: ./browser/export.py:52
+#: ./browser/templates/export.pt:62
+msgid "Region"
+msgstr ""
+
+#: ./browser/templates/exam.pt:112
+#: ./browser/templates/quiz.pt:34
+#: ./browser/templates/results.pt:68
+msgid "Results"
+msgstr ""
+
+#: ./browser/templates/extra.pt:32
+msgid "Save or Update"
+msgstr ""
+
+#: ./browser/export.py:60
+#: ./browser/templates/exam.pt:116
+#: ./browser/templates/quiz.pt:38
+msgid "Score"
+msgstr ""
+
+#: ./content/schemas.py:100
+msgid "Score to approve"
+msgstr ""
+
+#: ./content/schemas.py:263
+msgid "Show in random order"
+msgstr ""
+
+#: ./content/schemas.py:49
+msgid "Show incorrect answers"
+msgstr ""
+
+#: ./content/schemas.py:129
+msgid "Show messages"
+msgstr ""
+
+#: ./content/schemas.py:264
+msgid "Show the answers in random order"
+msgstr ""
+
+#: ./browser/templates/statistics.pt:59
+msgid "Standard Deviation"
+msgstr ""
+
+#: ./browser/export.py:60
+#: ./browser/templates/exam.pt:83
+#: ./browser/templates/grade.pt:27
+msgid "Start"
+msgstr ""
+
+#: ./content/schemas.py:73
+msgid "Start Date"
+msgstr ""
+
+#: ./browser/templates/exam.pt:144
+#: ./browser/templates/resume.pt:65
+msgid "Start Exam"
+msgstr ""
+
+#: ./browser/templates/quiz.pt:63
+#: ./browser/templates/resume.pt:76
+msgid "Start Quiz"
+msgstr ""
+
+#: ./browser/templates/exam.pt:155
+msgid "Start the exman just ONE click"
+msgstr ""
+
+#: ./browser/export.py:46
+#: ./browser/templates/exam.pt:118
+#: ./browser/templates/export.pt:59
+msgid "State"
+msgstr ""
+
+#: ./profiles/default/types/Exam.xml
+msgid "Statistics"
+msgstr ""
+
+#: ./browser/delete.py:25
+msgid "The data user has been deleted"
+msgstr ""
+
+#: ./browser/delete.py:30
+msgid "The evaluation user has been deleted"
+msgstr ""
+
+#: ./browser/gradeuser.py:40
+msgid "The exam has been saved for further review"
+msgstr ""
+
+#: ./content/evaluation.py:490
+msgid "The instructor has reviewed your exam and your grade was "
+msgstr ""
+
+#: ./content/schemas.py:36
+msgid "The number of questions which are randomly selected when a new quiz is generated for a student. (This only works if &quot;Randomize Question Order&quot; is checked.) A value &lt;= 0 means that all questions will be used."
+msgstr ""
+
+#: ./browser/gradeuser.py:36
+msgid "The user has been graded with "
+msgstr ""
+
+#: ./content/schemas.py:239
+msgid "The weight factor of this question"
+msgstr ""
+
+#: ./portlets/myexams.py:127
+msgid "This portlet displays my exams."
+msgstr ""
+
+#: ./browser/export.py:60
+#: ./browser/templates/exam.pt:95
+#: ./browser/templates/grade.pt:29
+msgid "Time"
+msgstr ""
+
+#: ./content/schemas.py:229
+msgid "Time of response (Seconds)"
+msgstr ""
+
+#: ./browser/templates/grade_by_user.pt:53
+msgid "Time:"
+msgstr ""
+
+#: ./interfaces.py:17
+msgid "Title"
+msgstr ""
+
+#: ./content/evaluation.py:491
+msgid "To see the details of this revision, please follow this link: "
+msgstr ""
+
+#: ./browser/templates/statistics.pt:27
+msgid "Total Graded"
+msgstr ""
+
+#: ./content/evaluation.py:181
+msgid "Unapproved"
+msgstr ""
+
+#: ./browser/export.py:31
+msgid "User ID"
+msgstr ""
+
+#: ./browser/templates/extra.pt:46
+#: ./browser/templates/failed.pt:31
+#: ./browser/templates/grade.pt:24
+msgid "UserID"
+msgstr ""
+
+#: ./browser/templates/statistics.pt:55
+msgid "Variance"
+msgstr ""
+
+#: ./content/schemas.py:193
+msgid "Very bad score message"
+msgstr ""
+
+#: ./content/schemas.py:185
+msgid "Very bad score title"
+msgstr ""
+
+#: ./content/schemas.py:145
+msgid "Very good score message"
+msgstr ""
+
+#: ./content/schemas.py:137
+msgid "Very good score title"
+msgstr ""
+
+#: ./browser/templates/results_by_user.pt:90
+#: ./content/schemas.py:238
+msgid "Weight"
+msgstr ""
+
+#: ./browser/templates/results_by_user.pt:116
+msgid "You Answer"
+msgstr ""
+
+#: ./content/evaluation.py:162
+msgid "You did not respond within the time of question"
+msgstr ""
+
+#: ./browser/evaluation.py:28
+msgid "You do not select answer"
+msgstr ""
+
+#: ./content/evaluation.py:489
+msgid "Your grade is: "
+msgstr ""
+
+#. Default: "Statistics for \"${folder}\""
+#: ./browser/templates/statistics.pt:20
+#: ./browser/templates/statistics_details.pt:23
+msgid "heading_statstics_for"
+msgstr ""
+
+#. Default: "You cannot take this exam until you take the previous one"
+#: ./browser/templates/exam.pt:35
+msgid "info_no_can_take"
+msgstr ""
+
+#. Default: "You can no longer participate in this Exam, you can only review your results"
+#: ./browser/templates/exam.pt:57
+msgid "info_no_participate"
+msgstr ""
+
+#. Default: "The Exam is not within a period force"
+#: ./browser/templates/exam.pt:47
+msgid "info_no_period"
+msgstr ""
+
+#. Default: "Is correct ?"
+#: ./skins/evaluation/answer_widget.pt:18
+msgid "label_answer_is_correct"
+msgstr ""
+
+#. Default: "Answer title"
+#: ./skins/evaluation/answer_widget.pt:17
+msgid "label_answer_title"
+msgstr ""
+
+#. Default: "You must grade all the users' answers"
+#: ./browser/templates/grade_by_user.pt:28
+msgid "must_grade_all"
+msgstr ""
+
+#: ./content/questionchoice.py:64
+msgid "you must select a least one correct answer"
+msgstr ""
+

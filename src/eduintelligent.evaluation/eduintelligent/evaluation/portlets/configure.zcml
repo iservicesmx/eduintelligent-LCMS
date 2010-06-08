@@ -1,0 +1,20 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="eduintelligent.evaluation">
+
+    <!-- Ensure Plone's portlets ZCML has already been processed; without
+         this, we may get a permission lookup error
+      -->
+    <include package="plone.app.portlets" />
+
+    <plone:portlet
+        name="exams.MyExams"
+        interface=".myexams.IExamsPortlet"
+        assignment=".myexams.Assignment"
+        renderer=".myexams.Renderer"
+        addview=".myexams.AddForm"
+        editview=".myexams.EditForm"
+        />
+        
+</configure>

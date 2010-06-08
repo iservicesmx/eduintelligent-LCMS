@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!--The version number should be an integer. This profile version has nothing at
+    all to do with the number in our version.txt or setup.py, but that is a
+    different discussion. The destination number in our last upgrade step
+    registration must match this metadata version.-->
+<metadata>
+  <version>120</version>
+</metadata>

@@ -1,0 +1,9 @@
+<object name="portal_catalog" meta_type="Plone Catalog Tool">
+    
+    <!--See http://maurits.vanrees.org/weblog/archive/2009/12/catalog for why I
+        am not including the index part and am doing it in
+        eduintelligent.evaluation.setuphandlers.add_catalog_indexes -->
+        
+    <column value="getInitDate"/>
+    <column value="getFinishDate"/>
+</object>

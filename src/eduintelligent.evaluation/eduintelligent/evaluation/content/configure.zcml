@@ -1,0 +1,63 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="eduintelligent.evaluation">	
+ 
+    <!-- configure your content components here -->
+    
+    <class class=".exam.Exam">
+        <require
+            permission="zope2.View"
+            interface="..interfaces.IEvaluation"
+            />
+        <require
+            permission="cmf.ModifyPortalContent"
+            set_schema="..interfaces.IEvaluation"
+            />
+    </class>
+    
+    <class class=".quiz.Quiz">
+        <require
+            permission="zope2.View"
+            interface="..interfaces.IEvaluation"
+            />
+        <require
+            permission="cmf.ModifyPortalContent"
+            set_schema="..interfaces.IEvaluation"
+            />
+    </class>
+    
+    
+    <class class=".questionchoice.QuestionChoice">
+        <require
+            permission="zope2.View"
+            interface="..interfaces.IQuestion"
+            />
+        <require
+            permission="cmf.ModifyPortalContent"
+            set_schema="..interfaces.IQuestion"
+            />
+        <require
+            permission="zope2.View"
+            attributes="tag"
+            />
+    </class>
+    <adapter factory=".question.BannerProvider" />
+    
+
+    <class class=".questionfillin.QuestionFillIn">
+        <require
+            permission="zope2.View"
+            interface="..interfaces.IQuestion"
+            />
+        <require
+            permission="cmf.ModifyPortalContent"
+            set_schema="..interfaces.IQuestion"
+            />
+        <require
+            permission="zope2.View"
+            attributes="tag"
+            />
+    </class>    
+    
+</configure> 

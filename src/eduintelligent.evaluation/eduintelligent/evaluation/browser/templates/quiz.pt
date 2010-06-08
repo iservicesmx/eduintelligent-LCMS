@@ -1,0 +1,80 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="eduintelligent.evaluation">
+
+<head>                     
+    <metal:css fill-slot="css_slot">
+        <style type="text/css" media="all"
+                tal:content="string: @import url(${context/++resource++evaluation.css});"></style>
+    </metal:css>
+
+    <metal:js fill-slot="javascript_head_slot">
+        <script type="text/javascript"
+        tal:attributes="src context/++resource++evaluation.js"></script>
+    </metal:js>
+</head>
+
+<body>
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main"
+                                tal:define="foo context/initTrack">
+
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+        <h1 class="documentFirstHeading" tal:content="context/title" />
+
+        <table class="vertical listing" 
+                tal:define="evaluations context/getDataEvaluations"
+                tal:condition="python:len(evaluations)">
+              <tr>
+                <th i18n:translate="" colspan="4">Results</th>
+              </tr>
+              <tr>
+                <th i18n:translate="">Date</th>
+                <th i18n:translate="">Score</th>
+                <th i18n:translate="">Time</th>
+              </tr>
+              <tal:block repeat="evaluation evaluations">
+                <tr tal:define="score evaluation/data/evaluation.score;
+                                init evaluation/data/evaluation.start;
+                                end  evaluation/data/evaluation.end;
+                                number repeat/evaluation/number;">
+                    <td> 
+                        <a href="#" tal:content="python:context.utilConvertTime(init)"
+                            tal:attributes="href string:${context/absolute_url}/@@results_by_user?user=${context/AuthenticatedMember}&numeval=${number}"
+                            tal:omit-tag="not: evaluation/data/evaluation.scored">
+                        </a>
+                    </td>
+                    <td tal:content="score"> 100 </td>
+                    <td tal:content="python:context.utilCalculeTime(init, end)"> 100 </td>
+                </tr>
+              </tal:block>              
+        </table>
+
+
+        <div class="documentDescription" tal:content="structure context/description" />        
+        
+        <div tal:replace="structure provider:plone.abovecontentbody" />
+        
+        <input  onClick=""
+                class="submitButton"
+                tabindex=""
+                type="submit"
+                name="Submit"
+                value="Start Quiz"
+                tal:attributes="tabindex tabindex/next;
+                                onClick string:javascript:evaluation_viewer('${here_url}/resolve')" 
+                i18n:attributes="value"/>
+        
+                    
+        <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>

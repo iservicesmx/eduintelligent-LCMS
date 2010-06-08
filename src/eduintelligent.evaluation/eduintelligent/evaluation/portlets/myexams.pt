@@ -1,0 +1,36 @@
+<dl class="portlet portletPromotions"
+    i18n:domain="eduintelligent.evaluation">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span i18n:translate="">My Exams</span>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <tal:items tal:repeat="exam view/exams">
+        <dd class="portletItem"
+            tal:define="oddrow repeat/exam/odd;"
+            tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
+            <a href=""
+               tal:attributes="href exam/url;
+                               title exam/title;">
+                <tal:title content="exam/title">
+                    Title
+                </tal:title>
+                <span class="portletItemDetails"
+                      tal:content="python:exam['description'][:30] + '...'"
+                      >Exam</span>
+            </a>
+        </dd>
+    </tal:items>
+
+    <dd class="portletFooter">
+        <span class="portletBottomLeft"></span>
+        <a href=""
+           tal:attributes="href string:#;
+                           title string:#;"></a>
+        
+        <span class="portletBottomRight"></span>
+    </dd>
+
+</dl>

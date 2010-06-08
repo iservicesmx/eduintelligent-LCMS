@@ -1,0 +1,103 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="eduintelligent.evaluation">
+<head>
+    <metal:css fill-slot="css_slot">
+        <style type="text/css" media="all"
+                tal:content="string: @import url(${context/++resource++extra_grade.css});"></style>
+    </metal:css>
+</head>
+
+<body>
+<div metal:fill-slot="main"
+    tal:define="results view/contents;">
+    
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading" tal:content="context/title" />
+
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+    
+    <div class="inlineAddFields">
+    
+    <form tal:attributes="action string:${context/absolute_url}/@@export"
+          name="viewForm"
+          id="viewForm"
+          method="post" >
+          <input
+              id="btn_export"
+              name="form.button.Export"
+              type="submit"
+              class="context allowMultiSubmit"
+              value="Export"
+              i18n:attributes="value"
+              />
+
+    </form>
+    
+    <form tal:attributes="action string:${context/absolute_url}/@@listing"
+          name="viewForm2"
+          id="viewForm2"
+          method="post" >
+          
+
+        <input
+            id="btn_list"
+            name="form.button.Listing"
+            type="submit"
+            class="context allowMultiSubmit"
+            value="Pending Users"
+            i18n:attributes="value"
+            />    
+
+    </form>
+    </div>
+          
+    <table class="listing">
+      <thead>
+      <tr>
+        <th i18n:translate="">No</th>
+        <th i18n:translate="">UserID</th>
+        <th i18n:translate="">Name</th>
+        <th i18n:translate="">Position</th>
+        <th i18n:translate="">Score</th>
+        <th i18n:translate="">Extra Grade</th>
+        <th i18n:translate="">Average</th>
+        <th i18n:translate="">Results</th>
+      </tr>
+      </thead>
+      <tbody>
+          
+      <tal:block repeat="data results">
+       <tr tal:define="oddrow repeat/data/odd; rownumber repeat/data/number"
+           tal:attributes="class python:oddrow and 'odd' or 'even'">
+           <td tal:content="repeat/data/number"></td>
+           <td tal:content="data/userid"></td>
+           <td tal:content="data/member/getFullname"></td>
+           <td tal:content="data/member/getPositionName"></td>
+           <td tal:content="data/score"></td>
+           <td tal:content="data/score_extra"></td>
+           <td tal:content="data/average"
+               tal:attributes="class python:view.rowHighlight(rownumber)"></td>
+           <td>
+            <tal:rep repeat="op python:range(1,data['oportunities']+1)">
+                <a href="#" tal:content="string:[ ${op} ]"
+                    tal:attributes="href string:${context/absolute_url}/@@results_by_user?user=${data/userid}&numeval=${op}">
+                    [ 1 ]
+                </a>
+            </tal:rep>
+           </td>
+       </tr>
+      </tal:block>      
+
+        </tbody>
+      </table>
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+</div>
+</body>
+</html>

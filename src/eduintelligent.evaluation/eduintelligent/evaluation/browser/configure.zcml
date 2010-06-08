@@ -1,0 +1,192 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="eduintelligent.evaluation">
+
+    <include package="plone.app.contentmenu" />
+      
+    <!-- <browser:page
+        for="..interfaces.IExam"
+        name="view"
+        class=".exam.ExamView"
+        permission="zope2.View"
+        /> -->
+
+    <browser:page
+        for="..interfaces.IEvaluation"
+        name="exam_view"
+        template="templates/exam.pt"
+        permission="zope2.View"
+        allowed_interface="..interfaces.IExam"
+        />
+
+        
+    <browser:menuItem
+        for="..interfaces.IEvaluation"
+        menu="plone_displayviews"
+        title="Evaluation view"
+        action="@@view"
+        description="Default representation of a evaluation"
+        />
+
+    <browser:page
+        for="..interfaces.IEvaluation"
+        name="quiz_view"
+        template="templates/quiz.pt"
+        permission="zope2.View"
+        allowed_interface="..interfaces.IQuiz"
+        />
+    
+    <browser:page
+        for="..interfaces.IEvaluation"
+        name="resolve"
+        class=".evaluation.EvaluationView"
+        permission="zope2.View"
+        />
+
+    <browser:pages 
+           for="..interfaces.IEvaluation"
+           permission="zope2.View">
+
+      <browser:page name="results_by_user"
+            template="templates/results_by_user.pt" />
+            
+      <browser:page name="statistics_details"
+            template="templates/statistics_details.pt" />
+
+      <browser:page name="grade"
+            template="templates/grade.pt" />
+
+      <browser:page name="grade_by_user"
+            template="templates/grade_by_user.pt" />
+
+      <browser:page name="export"
+            template="templates/export.pt" />
+           
+      <browser:page name="listing"
+            template="templates/listing.pt" />
+
+    </browser:pages>
+
+    <browser:page
+        for="..interfaces.IEvaluation"
+        name="export_data"
+        class=".export.ExportExam"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="..interfaces.IEvaluation"
+        name="grade_user"
+        class=".gradeuser.GradeUser"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="..interfaces.IEvaluation"
+        name="delete"
+        class=".delete.ExamDelete"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="..interfaces.IEvaluation"
+        name="results"
+        class=".exam.ExamResults"
+        permission="zope2.View"/>
+
+    <browser:page
+        for="..interfaces.IEvaluation"
+        name="extra"
+        class=".exam.ExamUpdateExtraGrade"
+        permission="zope2.View"
+        />
+    
+    <browser:page
+        for="..interfaces.IEvaluation"
+        name="failed"
+        class=".exam.ExamFailed"
+        permission="zope2.View"
+        />
+    <browser:page
+        for="..interfaces.IEvaluation"
+        name="statistics"
+        class=".exam.ExamStatistics"
+        permission="zope2.View"
+        />
+    
+    <!-- <browser:menuItem
+        for="..interfaces.IQuiz"
+        menu="plone_displayviews"
+        title="Quiz view"
+        action="@@view"
+        description="Default representation of a quiz"
+        /> -->
+        
+    <browser:page
+        for="..interfaces.IQuestionChoice"
+        name="view"
+        class=".questions.QuestionChoiceView"
+        permission="zope2.View"
+        />
+
+    <browser:menuItem
+        for="..interfaces.IQuestionChoice"
+        menu="plone_displayviews"
+        title="Question Choice view"
+        action="@@view"
+        description="Default representation of a question choice"
+        />
+
+    <browser:page
+        for="..interfaces.IQuestionFillIn"
+        name="view"
+        class=".questions.QuestionFillInView"
+        permission="zope2.View"
+        />
+
+    <browser:menuItem
+        for="..interfaces.IQuestionFillIn"
+        menu="plone_displayviews"
+        title="Question Fill-In view"
+        action="@@view"
+        description="Default representation of a question fill-in"
+        />
+
+    <!--  Actions for real estate content. -->
+    <browser:viewletManager
+        name="evaluation.questionlet"
+        provides="eduintelligent.evaluation.interfaces.IQuestionLetManager"
+        permission="zope2.View"
+        class="plone.app.viewletmanager.manager.OrderedViewletManager"
+        />
+        
+    <browser:viewlet
+        name="evaluation.question"
+        manager="eduintelligent.evaluation.interfaces.IQuestionLetManager"
+        class=".questionlet.QuestionViewlet"
+        permission="zope2.View"
+        />
+
+    <browser:resource
+        name="evaluation.css"
+        file="resources/evaluation.css"
+        />
+
+    <browser:resource
+        name="evaluation.js"
+        file="resources/evaluation.js"
+        />
+
+    <browser:resource
+        name="extra_grade.css"
+        file="resources/extra_grade.css"
+        />
+
+    <browser:resourceDirectory
+        name="evaluation.images"
+        directory="images"
+        />
+
+
+</configure>

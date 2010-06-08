@@ -1,0 +1,102 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="eduintelligent.evaluation">
+
+  <head><title></title></head>
+
+  <body>
+
+    <!-- Answer Widget -->
+
+    <metal:define define-macro="view">
+      <table class="listing">
+        <thead>
+          <tr>
+            <th i18n:translate="label_answer_title">Answer title</th>
+            <th i18n:translate="label_answer_is_correct">Is correct ?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr tal:repeat="item python:accessor()">
+            <td tal:content="python: item[0]" />
+            <td tal:content="python: item[1]" />
+          </tr>
+        </tbody>
+      </table>
+    </metal:define>
+
+    <metal:define define-macro="edit">
+      <metal:use use-macro="field_macro | here/widgets/field/macros/edit">
+        <metal:body metal:fill-slot="widget_body">
+          <table>
+            <thead>
+              <tr>
+                <th i18n:translate="label_answer_title">Answer title</th>
+                <th i18n:translate="label_answer_is_correct">Is correct ?</th>
+              </tr>
+            </thead>
+            <tbody tal:define="records python:request.get(fieldName, None);
+                               items python:records is not None and [(x['answer'], x.get('checked', False),) for x in records] or edit_accessor();">
+              <tr tal:repeat="item items">
+                <td>
+                  <input type="text"
+                         size="60"
+                         name="myfield.answer:records"  
+                         onclick="handleKeyPress(event);"
+                         tal:attributes="name string:${fieldName}.answer:records;
+                                         value python:item[0]" />
+                </td>
+                <td>
+                  <input type="checkbox"
+                         value="True"
+                         name="myfield.checked:records"  
+                         onclick="handleKeyPress(event);"
+                         tal:attributes="name string:${fieldName}.checked:boolean:records;
+                                         checked python:test(item[1], 'checked', None);" />
+                </td>
+                <td>
+                  <img src="" 
+                       tal:attributes="src string:${portal_url}/delete_icon.gif" 
+                       alt="Delete row"  
+                       onclick="removeFieldRow(this);return false" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="text"
+                         size="60"
+                         name="myfield.answer:records"  
+                         onclick="handleKeyPress(event);"
+                         tal:attributes="name string:${fieldName}.answer:records;" />
+                </td>
+                <td>
+                  <input type="checkbox"
+                         value="True"
+                         name="myfield.checked:records"  
+                         onclick="handleKeyPress(event);"
+                         tal:attributes="name string:${fieldName}.checked:boolean:records;" />
+                </td>
+                <td>
+                  <img style="display: none" 
+                       src="" 
+                       tal:attributes="src string:${portal_url}/delete_icon.gif" 
+                       alt="Delete row"  
+                       onclick="removeFieldRow(this);return false" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </metal:body>
+      </metal:use>
+    </metal:define>
+
+    <metal:define define-macro="search">
+      <metal:use use-macro="here/plonequiz_answer_widget/macros/edit" />
+    </metal:define>
+
+  </body>
+
+</html>

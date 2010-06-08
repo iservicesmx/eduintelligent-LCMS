@@ -1,0 +1,113 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="eduintelligent.evaluation">
+<head>                   
+    <metal:css fill-slot="css_slot">
+        <style type="text/css" media="all"
+                tal:content="string: @import url(${context/++resource++extra_grade.css});"></style>
+    </metal:css>
+</head>
+
+
+<body>
+<div metal:fill-slot="main"
+    tal:define="results view/contents;">
+    
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading" tal:content="context/title" />
+
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+    <form tal:attributes="action string:${context/absolute_url}/@@extra"
+          name="viewForm"
+          id="viewForm"
+          method="post" >
+    
+        <div class="inlineAddFields">
+            <input
+                id="btn_save"
+                name="ExamUpdateExtraGrade"
+                type="submit"
+                class="context allowMultiSubmit"
+                value="Save or Update"
+                i18n:attributes="value"
+                />
+        </div>
+          
+        <table class="listing">
+          <thead>
+          <tr>
+            <th i18n:translate="">No</th>
+            <th i18n:translate="">UserID</th>
+            <th i18n:translate="">Name</th>
+            <th i18n:translate="">Position</th>
+            <th i18n:translate="">Score</th>
+            <th i18n:translate="">Average</th>
+            <th i18n:translate="">Extra Grade</th>
+          </tr>
+          </thead>
+          <tbody>
+              
+          <tal:block repeat="data results">
+           <tr tal:define="oddrow repeat/data/odd"
+               tal:attributes="class python:oddrow and 'odd' or 'even'">
+               <td tal:content="repeat/data/number"></td>
+               <td tal:content="data/userid"></td>
+               <td tal:content="data/member/getFullname"></td>
+               <td tal:content="data/member/getPositionName"></td>
+               <td tal:content="data/score"></td>
+               <td tal:content="data/average"></td>
+               <td tal:define="fieldname string:score_extra.${data/userid};
+                                errclass python: view.has_error(data['userid']);
+                                rownumber repeat/data/number"
+                    tal:attributes="class python: view.rowHighlight(rownumber)">
+                    <input
+                    size="4"
+                    id="extra_grade.userid"
+                    name="extra_grade.userid"
+                    type="text"
+                    value=""
+                    tal:attributes="name fieldname;
+                                    id fieldname;
+                                    value data/score_extra;
+                                    class errclass"
+                    tal:condition="data/scored_extra"
+                    />
+                    <input
+                    size="4"
+                    id="extra_grade.userid"
+                    name="extra_grade.userid"
+                    type="text"
+                    value=""
+                    tal:attributes="name fieldname;
+                                    id fieldname;
+                                    class errclass"
+                    tal:condition="not: data/scored_extra"
+                    />
+               </td>
+           </tr>
+          </tal:block>      
+    
+            </tbody>
+          </table>
+
+        <div class="inlineAddFields">
+                  <input
+                      id="btn_save"
+                      name="ExamUpdateExtraGrade"
+                      type="submit"
+                      class="context allowMultiSubmit"
+                      value="Save or Update"
+                      i18n:attributes="value"
+                      />
+        </div>
+    </form>
+    
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+</div>
+</body>
+</html>

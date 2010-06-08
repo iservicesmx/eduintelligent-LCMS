@@ -1,0 +1,109 @@
+div#header{
+    height:35px;
+    border-bottom:1px solid #2a8bb8;
+    background:#dcecf9;
+    padding:.5em;
+    font-size:1.2em;
+    }
+    
+div#footer{
+    height:35px;
+    width:98%;
+    border-top:1px solid #2a8bb8;
+    background:#dcecf9;
+    padding:.5em;
+    font-size:1.2em;
+    position: absolute;
+    bottom: 0;
+    }    
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.big {
+    font-size:1.6em;
+}
+
+div.clear {
+  padding:1em;
+  clear: both;
+}
+
+.submitButton {
+    border: 1px solid #000000;
+    width:auto;
+    height:30px;
+/*    float:left;*/
+/*    padding: 3px;*/
+    margin: 3px;
+    font-weight: bold;
+    font-size:1.6em;
+}
+
+.msgRed {
+    float:left;
+    font-weight: bold;
+    font-size:1em;
+    color: #f7921e;
+}
+
+
+/* Checkboxes */
+label.checkbox_checked {
+	background: #fff url('++resource++evaluation.images/tick.gif') no-repeat;	
+	display: block;
+	margin: 10px 0;
+	padding-left: 25px;
+}
+label.checkbox_unchecked  {
+	background: #fff url('++resource++evaluation.images/checkbox.gif') no-repeat;	
+	display: block;
+	margin: 10px 0;
+	padding-left: 25px;
+}
+
+/* Radio Buttons */
+label.radio_checked {
+	background: #fff url('++resource++evaluation.images/tick.gif') no-repeat;	
+	display: block;
+	margin: 10px 0;
+	padding-left: 25px;
+}
+label.radio_unchecked  {
+	background: #fff url('++resource++evaluation.images/radiobutton.gif') no-repeat;	
+	display: block;
+	margin: 10px 0;
+	padding-left: 25px;
+}
+
+
+/* Hover State */
+label:hover{
+	color: #f7921e;
+}
+
+label.highlighted {
+	border: 1px solid #333;
+}
+
+label {
+    font-size:1.1em;
+}
+
+label.QuestionTitle {
+    padding:1em;
+    font-size:1.7em;
+}
+
+/* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
+/* STOP EDITTING - DO NOT CHANGE OR REMOVE        */
+.crirHidden {
+	position: absolute;
+	left: -1000px;
+}
+/* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */

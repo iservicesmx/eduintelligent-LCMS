@@ -1,0 +1,147 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="eduintelligent.evaluation">
+<head>
+</head>
+
+<body>
+<div metal:fill-slot="main"
+    tal:define="user request/user | nothing;
+                numeval request/numeval | nothing;
+                evaluation  python:context.getEvaluationDetails(user,numeval)">
+    
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading" tal:content="context/title" />
+
+<div style="display:block; float: right;" tal:condition="is_editable" >
+    <form tal:attributes="action string:${context/absolute_url}/@@delete"
+          name="viewForm"
+          id="viewForm"
+          method="post" >
+          
+          <input type='hidden' name='userid' tal:attributes="value user" /> 
+          <input type='hidden' name='numeval' tal:attributes="value numeval" /> 
+
+          <input
+              id="btn_delete"
+              name="form.button.Delete"
+              type="submit"
+              class="context allowMultiSubmit"
+              value="Delete"
+              i18n:attributes="value"
+              />
+
+    </form>
+</div>
+
+    <table class="vertical listing"
+        tal:define="evaluated python:evaluation[0];">
+        <tr>
+          <th i18n:translate="">State</th>
+          <td >
+              <span tal:condition="python: context.portal_type == 'Exam'" tal:content="python:context.getScoreStatus(evaluated['scored'],evaluated['score'])">100</span>
+          </td>
+        </tr>                    
+        <tr>
+          <th i18n:translate="">Score</th>
+          <td tal:content="evaluated/score"> 100
+          </td>
+        </tr>
+        <tr>
+          <th i18n:translate="">Answers</th>
+          <td>
+             <span tal:replace="evaluated/correct_responses"> 9 </span> / <span tal:replace="evaluated/total_questions"> 10 </span>
+          </td>
+        </tr>
+        
+          <tr>
+            <th i18n:translate="">Start</th>
+            <td tal:content="evaluated/start">
+                    dasds
+            </td>
+          </tr>
+          <tr>
+            <th i18n:translate="">End</th>
+            <td tal:content="evaluated/end">
+                    caad
+            </td>
+          </tr>
+          <tr>
+            <th i18n:translate="">Time</th>
+            <td tal:content="evaluated/period">
+                43
+            </td>
+          </tr>      
+    </table>
+
+
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+
+    <table class="listing nosort">
+      <thead>
+      <tr>
+        <th i18n:translate="">No </th>
+        <th i18n:translate="" colspan="2" rowspan="1">Data</th>
+        <th i18n:translate="">State</th>
+        <th i18n:translate="">Weight</th>
+        <th i18n:translate="">Period HH:MM:SS</th>
+        <th i18n:translate="">Hour HH:MM:SS</th>
+      </tr>
+      </thead>
+      <tbody>
+          
+      <tal:block tal:repeat="interacrion python:evaluation[1]">
+      
+      <tal:question condition="python:interacrion['result'] or context.viewBadResults() or is_editable">
+      <tr tal:define="oddrow repeat/interacrion/odd"
+              tal:attributes="class python:oddrow and 'odd' or 'even'">
+        <td colspan="1" rowspan="3" tal:content="interacrion/index">1</td>
+        <th i18n:translate="">Question</th>
+        <td tal:content="interacrion/question">  what do you doing? </td>
+        <td colspan="1" rowspan="3">
+            <img src="++resource++evaluation.images/cross.gif" tal:condition="not: interacrion/result" />
+            <img src="++resource++evaluation.images/tick.gif" tal:condition="interacrion/result" />
+        </td>
+        <td colspan="1" rowspan="3" tal:content="interacrion/weighting">1</td>
+        <td colspan="1" rowspan="3" tal:content="interacrion/latency">12:20</td>
+        <td colspan="1" rowspan="3" tal:content="interacrion/time">----</td>
+      </tr>
+      
+      <tr tal:define="oddrow repeat/interacrion/odd"
+                tal:attributes="class python:oddrow and 'odd' or 'even'">
+        <th i18n:translate="">You Answer</th>
+        <td tal:content="interacrion/student_response" > asdsadasdasd </td>
+      </tr>
+      
+      <tr tal:define="oddrow repeat/interacrion/odd"
+                tal:attributes="class python:oddrow and 'odd' or 'even'">
+                
+        <tal:block condition="python: interacrion['type'] == 'fill-in'">
+        <th i18n:translate="">Comments</th>
+        <td tal:content="interacrion/comments" > asdsadasdasd </td>
+        </tal:block>
+        
+        <tal:block condition="python: interacrion['type'] == 'choice'">
+        <th i18n:translate="">Correct Answer</th>
+        <td tal:content="interacrion/correct_response" > asdsadasdasd </td>
+        </tal:block>
+        
+      </tr>
+      
+      </tal:question>
+      
+      </tal:block>      
+      
+    </tbody>
+  </table>
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+
+</div>
+</body>
+</html>

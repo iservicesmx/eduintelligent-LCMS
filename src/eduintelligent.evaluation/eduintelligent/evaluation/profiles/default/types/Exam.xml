@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<object name="Exam"
+   meta_type="Factory-based Type Information with dynamic views"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+   i18n:domain="eduintelligent.evaluation" >
+ <property name="title" i18n:translate="">Exam</property>
+ <property name="description"
+     i18n:translate="">Describe the exam</property>
+ <property name="content_icon">test48.gif</property>
+ <property name="content_meta_type">Exam</property>
+ <property name="product">eduintelligent.evaluation</property>
+ <property name="factory">addExam</property>
+ <property name="immediate_view">exam_view</property>
+ <property name="global_allow">False</property>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types">
+     <element value="QuestionChoice" />
+     <element value="QuestionFillIn" />
+ </property>
+ <property name="allow_discussion">False</property>
+ <property name="default_view">exam_view</property>
+ <property name="view_methods">
+  <element value="exam_view"/>
+ </property>
+ <alias from="(Default)" to="(dynamic view)"/>
+ <alias from="edit" to="atct_edit"/>
+ <alias from="view" to="exam_view"/>
+ <action title="View" action_id="view" category="object" condition_expr=""
+    url_expr="string:${folder_url}/" visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="Edit" action_id="edit" category="object" condition_expr=""
+    url_expr="string:${object_url}/edit" visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+ <action title="Results"
+         action_id="@@results"
+         category="object"
+         condition_expr=""
+         url_expr="string:${object_url}/@@results"
+         visible="True"
+         i18n:attributes="title">
+  <permission value="Modify portal content"/>
+ </action> 
+
+ <action title="Grade"
+         action_id="@@grade"
+         category="object"
+         condition_expr=""
+         url_expr="string:${object_url}/@@grade"
+         visible="True"
+         i18n:attributes="title">
+  <permission value="Modify portal content"/>
+ </action>
+ 
+  <action title="Grade Extra"
+          action_id="@@extra"
+          category="object"
+          condition_expr=""
+          url_expr="string:${object_url}/@@extra"
+          visible="True"
+          i18n:attributes="title">
+  <permission value="Modify portal content"/>
+ </action>
+  
+  <action title="Failed"
+          action_id="@@failed"
+          category="object"
+          condition_expr=""
+          url_expr="string:${object_url}/@@failed"
+          visible="True"
+          i18n:attributes="title">
+  <permission value="Modify portal content"/>
+ </action>
+  
+ <action title="Statistics"
+         action_id="@@statistics"
+         category="object"
+         condition_expr=""
+         url_expr="string:${object_url}/@@statistics"
+         visible="True"
+         i18n:attributes="title">
+  <permission value="Modify portal content"/>
+ </action>
+
+</object>

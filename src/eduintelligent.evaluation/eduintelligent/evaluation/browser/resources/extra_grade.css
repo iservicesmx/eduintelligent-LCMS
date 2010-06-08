@@ -1,0 +1,15 @@
+.errclass {
+    background: yellow;
+}
+
+.row-first {
+    background:  url('++resource++evaluation.images/certificate-gold.gif') no-repeat right center;
+}
+
+.row-second {
+    background: url('++resource++evaluation.images/certificate-silver.gif') no-repeat right center;
+}
+
+.row-third {
+    background: url('++resource++evaluation.images/certificate-bronze.gif') no-repeat right center;
+}

@@ -1,0 +1,73 @@
+<tal:block define="specs view/specs;
+                   isLast python:view.isLast(specs['interaction']);"
+                   i18n:domain="eduintelligent.evaluation">
+<div id="header">
+    <span class="left big" tal:content="context/formatTimeLeft"> 00:40:00</span>
+    <span class="right big">
+        <label tal:replace="python:specs['interaction'] + 1" /> de  <label tal:replace="context/getNumberUserQuestion" />
+    </span>
+</div>
+
+<div class="clear">
+    
+    <table width="100%">
+    <tr>
+    <td>    
+    
+    <label class="QuestionTitle" tal:content="specs/question" />
+    <br />
+    <br />
+
+        <textarea ROWS=10 name="answers" id="open-answer"></textarea>
+	
+
+      </td>
+      
+      <td tal:condition="specs/haveimage" align="right">
+      <img  tal:replace="structure specs/image"/>
+      </td>
+      </tr>
+      </table>
+      	    
+        <input type='hidden' name='interaction' value='0' tal:attributes="value specs/interaction" /> 
+        <input type='hidden' name='qid' value='0' tal:attributes="value specs/qid" /> 
+        <input type='hidden' name='type' value='0' tal:attributes="value specs/type" /> 
+        <input type='hidden' name='weighting:float' value='1' tal:attributes="value specs/weighting" />
+        <input type='hidden' name='timestamp' value='0' />
+        <input type='hidden' name='latency' value='00:00:00.00' />
+        <input type='hidden' name='timeout' value='' />
+        
+</div>
+
+<div id="footer">
+    <span class="left big">
+        <label><span tal:replace="specs/seconds" /> </label>/&nbsp;<input type="text" name="countdown" value="0" size="4"/>
+	    <script type="text/javascript" tal:content="string:q_install_countdown(${specs/seconds});startTimer();"></script>
+    </span>
+    <span class="right">
+        <input
+            onclick="javascript:computeTime();"
+            class="submitButton"
+            tabindex=""
+            type="submit"
+            name="btnSubmit"
+            value="Next" 
+            tal:condition="not: isLast" 
+            i18n:attributes="value"/>
+            
+        <input
+            onclick="javascript:finish_question();"
+            class="submitButton"
+            tabindex=""
+            type="submit"
+            name="btnSubmit"
+            value="Finish"
+            tal:condition="isLast" 
+            i18n:attributes="value"/>
+            
+        <input type='hidden' name='Next' value='1' tal:condition="not: isLast" />
+        <input type='hidden' name='Finish' value='1' tal:condition="isLast" />
+    
+    </span>    
+</div>
+</tal:block>

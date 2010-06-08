@@ -1,0 +1,100 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="eduintelligent.evaluation">
+<head>
+</head>
+
+<body>
+<div metal:fill-slot="main"
+    tal:define="user request/user | nothing;
+                evaluation  python:context.getOpenEvaluation(user);
+                newline_to_br nocall:modules/Products/PythonScripts/standard/newline_to_br;">
+    
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading" tal:content="context/title" />
+
+    <h2 i18n:translate="">Answers open by <span i18n:name="username" tal:replace="structure user"/></h2>
+    
+    <dl id="grade-note-box"
+        class="portalMessage error">
+        <dt i18n:translate="">
+            Note
+        </dt>
+        <dd>
+            <b i18n:translate="must_grade_all">You must grade all the users' answers </b>
+        </dd>
+    </dl>
+    
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+
+    
+    <form tal:attributes="action string:${context/absolute_url}/grade_user"
+          name="viewForm"
+          id="viewForm"
+          method="post" >
+    <input  type="hidden"
+            name="userid"
+            tal:attributes="value user" />
+          
+    <tal:block tal:repeat="question evaluation">
+         <fieldset>
+              <legend>
+                    <span tal:content="question/title" />
+              </legend>
+                  <br />
+                      
+                  <p tal:content="structure python:newline_to_br(question['student_response'])" />
+                  <hr />
+                  <div style="display:block; float: right;">
+                  <b i18n:translate="">Time:</b> <span tal:content="question/time" /> <br />
+                  <b i18n:translate="">Latency:</b> <span tal:content="question/latency" />
+                  </div>
+                  <input type="radio" id="result1" value="1"
+                        tal:attributes="name string:question.${question/index}.result:int"/>
+                  <label for="result1" i18n:translate="">Correct</label>
+                  &nbsp; &nbsp;
+                  <input type="radio" id="result2" value="0"
+                        tal:attributes="name string:question.${question/index}.result:int"/>
+                  <label for="result2" i18n:translate="">Incorrect</label>
+                   &nbsp; &nbsp;
+                  Puntos: <input type="text" size="3" id="weighting"
+                        tal:attributes="value question/weighting;
+                                        name string:question.${question/index}.weighting:float" />
+                  <br />
+                  <br />
+                  <label i18n:translate="">Comments:</label>
+                  <textarea rows=5 tal:attributes="name string:question.${question/index}.comments:string"></textarea>
+                  <br />
+            </fieldset>
+    </tal:block>
+
+        <div class="formControls">                    
+            <input class="context"
+                   tabindex="#"
+                   type="submit"
+                   name="grade"
+                   value="Calificar"
+                   i18n:domain="plone"
+                   tal:attributes="tabindex tabindex/next;"
+                   i18n:attributes="value"/>
+                   
+            <input class="context"
+                   tabindex="#"
+                   type="submit"
+                   name="save"
+                   value="Guardar"
+                   i18n:domain="plone"
+                   tal:attributes="tabindex tabindex/next;"
+                   i18n:attributes="value"/>
+                   
+        </div>
+
+    </form>
+
+</div>
+</body>
+</html>
