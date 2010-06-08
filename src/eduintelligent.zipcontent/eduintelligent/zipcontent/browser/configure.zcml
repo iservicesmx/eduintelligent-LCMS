@@ -1,0 +1,62 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="eduintelligent.zipcontent">
+
+    <include package="plone.app.contentmenu" />
+      
+    <!-- configure your views here -->
+    <browser:page
+        for="..interfaces.IZipContent"
+        name="view"
+        template="zipcontent.pt"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="zope.app.container.interfaces.IAdding"
+        name="eduintelligent.zipcontent.ZipContent"
+        class=".zipcontent.ZipContentAddForm"
+        permission="eduintelligent.zipcontent.AddZipContent"
+        />
+        
+    <browser:page
+        for="..interfaces.IZipContent"
+        name="edit"
+        class=".zipcontent.ZipContentEditForm"
+        permission="cmf.ModifyPortalContent"
+        />
+        
+    <browser:addMenuItem
+        title="ZipContent"
+        factory="eduintelligent.zipcontent.ZipContent"
+        view="eduintelligent.zipcontent.ZipContent"
+        permission="eduintelligent.zipcontent.AddZipContent"
+        />
+                
+    <!-- <browser:pages for="..interfaces.IZipContent"
+           class=".scorm.ScormView"
+           permission="zope2.View">
+
+      <browser:page name="scorm_api"
+            template="templates/scorm_api.pt" />
+      <browser:page name="scorm_io"
+            template="templates/scorm_io.pt" />
+      <browser:page name="scorm_loading"
+            template="templates/scorm_loading.pt" />
+      <browser:page name="scorm_process"
+            attribute="scormProcess" />        
+
+    </browser:pages> -->
+
+    <browser:resource
+        name="zipcontent.gif"
+        image="zipcontent.gif"
+        />
+    <!-- <browser:resource 
+        name="scorm_api.js" 
+        file="templates/scorm_api.js" 
+        /> -->
+
+
+</configure>
