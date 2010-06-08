@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<site>
+    <property name="title">eduIntelligent</property>
+    <property name="description">eduIntelligent Demo Site</property>
+    <property name="email_from_address"type="string">desarrollo@iservices.com.mx</property>    
+    <property name="email_from_name" type="string">eduIntelligent</property>
+    <property name="validate_email" type="boolean">False</property>
+    <property name="email_charset" type="string">utf-8</property>
+    <property name="enable_permalink" type="boolean">True</property>
+</site>

@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+
+<object name="membrane_tool" meta_type="MembraneTool">
+    <membrane-type name="Member">
+        <active-workflow-state name="public"/>
+        <active-workflow-state name="private"/>
+    </membrane-type>
+
+    <membrane-type name="eduMember">
+        <active-workflow-state name="active"/>
+        <active-workflow-state name="inactive"/>
+    </membrane-type>
+
+    <membrane-type name="TrainingCenter">
+        <active-workflow-state name="active"/>
+        <active-workflow-state name="inactive"/>
+    </membrane-type>
+</object>
