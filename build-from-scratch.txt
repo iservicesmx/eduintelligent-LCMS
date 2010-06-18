@@ -1,0 +1,250 @@
+Building eduIntelligent 3.3 from scratch
+========================================
+
+1.- Prerequisites
+-----------------
+
+1.1.- Basic development environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+C/C++ compiler and generic development tools (build-essential on debian systems)
+
+    * Python 2.4 and development libraries (python2.4-dev on debian systems).
+    * elementtree, an XML processing library.
+    * PIL (You might have to manually compile this one for python2.4).
+    
+      * PIL can also be installed as an egg using buildout. For that you might
+        need to install the Tk development libraries. There is also a PIL egg
+        that does not need the Tk devel libraries (PILwoTk).
+        
+    * PostgreSQL.
+      * postgresql server.
+      * postgresql client and development tools (libpq-dev on debian systems)
+    * git 
+    * Subversion (svn) 
+    * nCurses development libraries (libncurses5-dev on debian systems).
+      nCurses is used by supervisor.
+
+1.2.- Plone and Zope development environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+First, download install easy_install. This might become obsolete very soon. You
+might need root permissions.
+
+::
+
+    wget http://peak.telecommunity.com/dist/ez_setup.py
+    python2.4 ez_setup.py
+
+Install ZopeSkel (As root or using virtualenv)
+
+::
+
+    easy_install-2.4 ZopeSkel
+
+Install psycopg2 (As root or using virtualenv). You need the Postgresql devel
+libraries installed.
+
+::
+
+    easy_install-2.4 psycopg2
+
+You are now set and ready.
+
+
+2.- Downloading the eduIntelligent buildout
+--------------------------------------------
+
+Clone the git repository
+
+::
+
+    git clone git://github.com/iservicesmx/eduintelligent-LCMS.git
+    
+*cd* to the created directory
+
+::
+
+    cd eduintelligent-LCMS
+
+Run the *bootstrap.py* script. (This version of eduintelligent has only been
+tested with Plone 3)
+
+::
+
+    python2.4 bootstrap.py
+
+Run the generated *buildout* script.
+
+::
+
+    bn/buildout
+
+
+3.- Configure PostgreSQL databases
+-----------------------------------
+
+By now, eduIntelligent needs two postgresql databases in order to run the
+logging and messaging systems. This might change in the future as we make
+improvements to streamline the product.
+
+For now, the eggs eduintelligent.database and eduintelligent.loginhistory
+need a postgresql server.
+
+Note: You can continue to the following steps only if you have succesfully
+ran the buildout process in the previous section.
+
+
+3.1 Create the zope user
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+eduIntelligent needs a restricted zope user in order to use the databases. The
+'root' user is postgres and is like a normal account on linux systems. For
+example, in debian systems, you might need to do the following:
+
+::
+
+    sudo su postgres
+    
+    createuser --no-createdb --no-createrole --no-superuser --login --pwprompt zope
+    
+    Type the password for the new role: xxx
+    Type it again: xxxx
+
+There are some graphical tools that can be used to make this very easy. My
+recommendation for Linux desktops is pgAdmin_.
+
+.. _pgAdmin: http://www.pgadmin.org/
+
+
+
+3.2.- Create the database for logging and messages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    sudo su postgres
+    
+    createdb --encoding=UTF-8 --owner=zope eduintelligent_logs
+    
+
+3.3.- Create the database schema for logs and messages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+We need to configure two scripts inside the src/ directory so two of the eggs
+inside point to the right database.
+
+**For eduintelligent.loginhistory:**
+
+::
+
+    vim src/eduintelligent.loginhistory/eduintelligent/loginhistory/dbclasses.py
+    
+Change the following line:
+
+::
+
+    engine = create_engine('postgres://zope:XXX@localhost/eduintelligent_logs', echo=True)
+
+And finally run it:
+
+::
+
+    bin/zopepy src/eduintelligent.loginhistory/eduintelligent/loginhistory/dbclasses.py
+
+
+**For eduintelligent.messages:**
+(Nota. correr el buildout antes de hacer esto)
+vim src/eduintelligent.messages/eduintelligent/messages/dbclasses.py
+
+Change the following line:
+
+::
+
+    engine = create_engine('postgres://zope:XXX@localhost/eduintelligent_logs', echo=True)
+
+And finally run it:
+
+::
+
+    bin/zopepy src/eduintelligent.messages/eduintelligent/messages/dbclasses.py
+
+3.4.- Create some categories for messages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+I apologize but, for now, the message categories (Inbox, Sent, Notifications),
+need to be created manually.
+
+::
+
+    sudo su postgres
+    
+    psql
+    
+    COPY messagescategory (id, display_order, name) FROM stdin;
+    1       1       Inbox
+    2       2       Notifications
+    3       3       Sent
+    \.
+
+4.- Installing eduIntelligent.quickstart package
+-------------------------------------------------
+
+Follow this process:
+    * Run the *bin/buildout* script if you haven't done so.
+    * Run a plone site either in foreground or as bacckground process
+      
+      ::
+      
+        bin/instance fg
+      
+    * Create a plone instance on ZMI.
+    * Install eduIntelligent.quickstart from the Install Products configlet on
+      the plone control panel.
+    * Install membrane and remember if the quickstart package didn't manage to
+      doit. TODO: Fix this bug.
+    * Configure databases (yes, again, sorry) on plone_control_panel configlet.
+      Goto to http://yoursite:port/ploneinstance/@@eduintelligent-database-control-panel
+      
+      Put the following values:
+      
+      * Driver Name: postgres
+      * Host Name: localhost
+      * Port number: Leave it empty in order to use the default port.
+      * User Name: zope
+      * Password: password
+      * Database Name: eduintelligent_logs
+      
+      Click on "Save" Button.
+      
+    * Associate Edumember and Training Center in membrane_tool:
+    
+      * Go to the ZMI on your plone instance.
+      * Click on the membrane_tool link.
+      * A Multiple selection list will appear under the name **Membrane Types**
+      * Make sure these 3 objects are selected: Member, TrainingCenter and
+        eduMember.
+      * Click on the submit button.
+      * Confirm the operation by revisiting the membrane_tool page on the ZMI.
+        You should see the three objects selected.
+      
+      If you don't associate these objects, you might encounter with errors like:
+      'NoneType' object has no attribute 'addMember'.
+      
+      Do not continue if you haven't completed this step.
+    
+
+5.- Create a Training Center in Plone
+--------------------------------------
+
+Open your plone site, login as admin, click on the 'Add new ..' dropdown menu,
+and select 'Training Center'.
+
+
+
+    
+
+
+
+
+
