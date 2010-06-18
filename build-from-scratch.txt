@@ -84,7 +84,7 @@ Run the generated *buildout* script.
 3.- Configure PostgreSQL databases
 -----------------------------------
 
-By now, eduIntelligent needs two postgresql databases in order to run the
+By now, eduIntelligent needs a postgresql database in order to run the
 logging and messaging systems. This might change in the future as we make
 improvements to streamline the product.
 
