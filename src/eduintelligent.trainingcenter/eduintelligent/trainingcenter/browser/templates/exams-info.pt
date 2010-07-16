@@ -1,0 +1,109 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="context/@@standard_macros/page"
+      i18n:domain="eduintelligent.trainingcenter">
+<head>
+</head>
+
+<body>
+<div metal:fill-slot="body">
+
+<h1 class="documentFirstHeading"
+     tal:define="tgrupo context/Title;"
+     i18n:translate="heading_exams_summary">
+     Exams summary for
+     "<span tal:content="context/Title" tal:omit-tag="" i18n:name="folder">title</span>"
+</h1>
+    <a class="link-parent"
+       tal:attributes="href context/absolute_url"
+       i18n:translate="link_up_to_tc">
+       Up to Training Center
+    </a>
+
+    <tal:block define="courses view/getCourses;course python:request.get('courses',None);">
+
+    <form action="#" 
+          tal:attributes="action string:${context/absolute_url}/${view/__name__}" 
+          method="post">
+    
+    <select id="courses" name="courses" onchange="this.form.submit()">
+            <option i18n:translate="select_tc"  value="">-- Select Course --</option>
+            <option tal:repeat="reg courses"
+                                tal:content="structure reg/title"
+                                tal:attributes="value reg/id; 
+                                                selected python:reg['id'] == course"> Region </option>
+    </select>
+    
+    </form>
+        <p class="discreet" tal:condition="not:courses" i18n:translate="help_no_exams">
+            No exams found.
+        </p>        
+
+            <table id="groupsTable"
+                   tal:attributes="class string:listing"
+                   metal:define-macro="courses-table">
+                <thead>
+                    <tr>
+                        <th> </th>
+                        <th i18n:translate="heading_exam_name">Exam</th>
+                        <th i18n:translate="heading_exam_category">Category</th>
+                        <th i18n:translate="heading_exam_enrolled">Enrolled</th>
+                        <th i18n:translate="heading_exam_instructor">Instructor</th>
+                        <th i18n:translate="heading_exam_activedate">Active Date</th>
+                        <th i18n:translate="heading_exam_status">Status</th>
+                        <th i18n:translate="heading_min_score">Min Score</th>
+                        <th i18n:translate="heading_min_time">Min Time</th>
+                        <th i18n:translate="heading_usersdone">Users Done</th>
+                        <th i18n:translate="heading_userspending">Users Pending</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tal:block repeat="course courses">
+                        <tr tal:define="oddrow repeat/course/odd;"
+                            tal:attributes="class python:oddrow and 'odd' or 'even'">
+                            <td>
+                                <input type="radio" class="noborder"
+                                       name="exam_btn"
+                                       tal:attributes="id string:id;
+                                                       value string:id_exam" />
+
+                            </td>
+                            
+                            <td>
+                                <a tal:attributes="href course/url"
+                                    tal:content="course/title"
+                                    />
+                            </td>
+                            <td tal:content="course/category" />
+                            <td tal:content="course/enrolled" />
+                            <td>
+                                <span tal:repeat="inst course/instructor" tal:replace="structure string:${inst} <br/>"/>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tal:block>
+                </tbody>
+            </table>
+    </tal:block>
+    
+    <select id="task" name="task" onchange="this.form.submit()">
+            <option i18n:translate="select_task"  value="">-- Select Action --</option>
+            <option i18n:translate="select_task_ranking" >Ranking Questions</option>
+            <option i18n:translate="select_task_compare">Compare Pre &amp; Post</option>
+            <option i18n:translate="select_task_grade">Grade Exam</option>
+    </select>
+    
+    <input type="button" 
+           class="context"
+        i18n:attributes="value go-to-action"
+        value="Go to Action" />
+    
+</div>
+</body>
+</html>

@@ -1,0 +1,794 @@
+# Translators:
+# 2007-01-11 08:40+0100 ,Juan Ramón López Beristan <ramon@ro75.com.mx>
+msgid ""
+msgstr ""
+"Project-Id-Version: eduTrainingCenter 1.0\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"PO-Revision-Date: 2010-01-02 20:04+0000\n"
+"Last-Translator: Noe Nieto <noe@iservices.com.mx>\n"
+"Language-Team: iServices\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: es\n"
+"Language-Name: Spanish\n"
+"Preferred-Encodings: latin1 utf-8\n"
+"Domain: eduintelligent.trainingcenter\n"
+"X-Poedit-Language: Spanish\n"
+"X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
+
+#. Default: "A Member of Training Center"
+#: ./profiles/default/types/eduMember.xml
+msgid "A Member of Training Center"
+msgstr "Un miembro del Centro de Capacitación"
+
+#. Default: "A Training Center"
+#: ./profiles/default/types/TrainingCenter.xml
+msgid "A Training Center"
+msgstr "Centro de Capacitación"
+
+#: ./content/edumember.py:263
+msgid "Activity"
+msgstr "Actividad"
+
+#: ./content/trainingcenter.py:66
+msgid "Administrators"
+msgstr "Administradores"
+
+#: ./content/member_schema.py:187
+msgid "Age"
+msgstr "Edad"
+
+#: ./content/member_schema.py:177
+msgid "Birth Date"
+msgstr "Fecha de Nacimiento"
+
+#: ./content/member_schema.py:50
+msgid "Choose your country"
+msgstr "Seleccione su país de residencia"
+
+#: ./content/member_schema.py:134
+msgid "Company"
+msgstr ""
+
+#: ./content/member_schema.py:109
+msgid "Company Division to which the employee belongs to"
+msgstr "Fuerza (Puede pertenecer a varias)"
+
+#: ./content/member_schema.py:57
+msgid "Contact Phone number"
+msgstr "Teléfono principal de contacto"
+
+#. Default: "Select Country"
+#: ./content/member_schema.py:49
+msgid "Country"
+msgstr "País"
+
+#: ./content/member_schema.py:147
+msgid "Country State where you work or live"
+msgstr "Estado de la república donde trabaja o vive"
+
+#: ./content/member_schema.py:257
+msgid "Course"
+msgstr "Curso"
+
+#. Default: "Courses"
+#: ./skins/templates/edutc_view.pt:36
+msgid "Courses"
+msgstr "Cursos"
+
+#: ./content/member_schema.py:260
+msgid "Date"
+msgstr "Fecha/Hora"
+
+#: ./content/member_schema.py:227
+msgid "Describe the last degree, diploma or trainning you took."
+msgstr "Escriba su último grado de estudios, diplomado o entrenamiento."
+
+#: ./content/member_schema.py:108
+msgid "Division"
+msgstr "Fuerza"
+
+#: ./content/member_schema.py:69
+msgid "Employee Number"
+msgstr "Número/Clave de empleado"
+
+#: ./content/member_schema.py:70
+msgid "Employee's ID"
+msgstr "Su número/clave de empleado"
+
+#: ./content/member_schema.py:116
+msgid "Employee's Start date"
+msgstr "Fecha de ingreso a la compañía"
+
+#: ./content/member_schema.py:85
+msgid "Employee's designated work area"
+msgstr "Región donde labora"
+
+#: ./content/member_schema.py:97
+msgid "Employee's position on this company"
+msgstr "Puesto de trabajo"
+
+#: ./content/member_schema.py:258
+msgid "Evaluation"
+msgstr "Evaluación"
+
+#. Default: "Events"
+#: ./skins/templates/edutc_view.pt:30
+msgid "Events"
+msgstr "Eventos"
+
+#: ./content/edumember.py:262
+msgid "Exam"
+msgstr "Exámen"
+
+#: ./content/member_schema.py:262
+msgid "Extra"
+msgstr "Extra"
+
+#: ./content/edumember.py:55
+msgid "Full name"
+msgstr "Nombre Completo"
+
+#: ./content/member_schema.py:219
+msgid "Gender"
+msgstr "Sexo"
+
+#. Default: "Group description"
+#: ./browser/templates/groups.pt:99
+msgid "Group description"
+msgstr "Descripción del grupo"
+
+#. Default: "Groups"
+#: ./skins/templates/edutc_view.pt:55
+msgid "Groups"
+msgstr "Grupos"
+
+#: ./content/member_schema.py:204
+msgid "Home Address (optional)"
+msgstr "Dirección de su casa (Opcional)"
+
+#. Default: "Id"
+#: ./browser/templates/users.pt:80
+msgid "Id"
+msgstr "Id"
+
+#: ./content/trainingcenter.py:69
+msgid "Instructors"
+msgstr "Instructores"
+
+#: ./content/edumember.py:40
+msgid "Last Name"
+msgstr "Apellidos"
+
+#: ./content/member_schema.py:226
+msgid "Last School Degree"
+msgstr "Último grado de estudios"
+
+#: ./content/member_schema.py:244
+msgid "Main Group"
+msgstr "Grupo principal"
+
+#. Default: "Member"
+#: ./profiles/default/types/eduMember.xml
+msgid "Member"
+msgstr "Miembro"
+
+#: ./content/edumember.py:31
+msgid "Name"
+msgstr "Nombre"
+
+#. Default: "News"
+#: ./skins/templates/edutc_view.pt:24
+msgid "News"
+msgstr "Noticias"
+
+#: ./content/member_schema.py:263
+msgid "Note"
+msgstr "Nota"
+
+#: ./content/member_schema.py:175
+msgid "Personal"
+msgstr "Personal"
+
+#: ./content/member_schema.py:212
+msgid "Personal or Home phone number (Optional)"
+msgstr "Número telefónico personal o de casa (Opcional)"
+
+#: ./content/member_schema.py:211
+msgid "Personal phone number"
+msgstr "Número telefónico personal"
+
+#: ./content/member_schema.py:56
+msgid "Phone"
+msgstr "Número telefónico"
+
+#: ./content/member_schema.py:156
+msgid "Plaza"
+msgstr ""
+
+#. Default: "Polls"
+#: ./skins/templates/edutc_view.pt:41
+msgid "Polls"
+msgstr "Sondeos"
+
+#: ./content/member_schema.py:96
+msgid "Position"
+msgstr "Puesto"
+
+#: ./content/member_schema.py:166
+msgid "Region"
+msgstr ""
+
+#: ./content/member_schema.py:203
+msgid "Residence Address"
+msgstr "Dirección Personal"
+
+#: ./content/trainingcenter.py:46
+msgid "Roles"
+msgstr "Roles"
+
+#: ./content/trainingcenter.py:47
+msgid "Roles that members of this group should receive."
+msgstr "Roles o funciones que este grupo ejecutará"
+
+#: ./content/edumember.py:264
+msgid "SCORM"
+msgstr "SCORM"
+
+#: ./content/member_schema.py:195
+msgid "Schooling"
+msgstr "Estudios"
+
+#: ./content/member_schema.py:261
+msgid "Score"
+msgstr "Calificación"
+
+#: ./content/member_schema.py:127
+msgid "Seniority"
+msgstr "Antigüedad"
+
+#: ./content/member_schema.py:146
+msgid "State"
+msgstr "Estado"
+
+#. Default: "Subgroup description"
+#: ./browser/templates/subgroups.pt:57
+msgid "Subgroup description"
+msgstr "Descripción del grupo fijo"
+
+#. Default: "Subgroups"
+#: ./skins/templates/edutc_view.pt:60
+msgid "Subgroups"
+msgstr "Subgrupos"
+
+#: ./content/member_schema.py:128
+msgid "The employee's seniority"
+msgstr "Antigüedad del empleado en la empresa"
+
+#: ./content/member_schema.py:117
+msgid "The employee's starting date on this company"
+msgstr "¿En qué fecha ingresó a esta compañía?"
+
+#. Default: "Title"
+#: ./browser/templates/groups.pt:84
+#: ./browser/templates/subgroups.pt:42
+msgid "Title"
+msgstr "Título"
+
+#: ./content/member_schema.py:64
+msgid "Trabajo"
+msgstr ""
+
+#. Default: "Training Center"
+#: ./profiles/default/types/TrainingCenter.xml
+msgid "Training Center"
+msgstr "Centro de Capacitación"
+
+#: ./content/member_schema.py:259
+msgid "Type"
+msgstr "Tipo"
+
+#: ./content/member_schema.py:143
+msgid "Ubicacion"
+msgstr ""
+
+#. Default: "Users"
+#: ./skins/templates/edutc_view.pt:50
+msgid "Users"
+msgstr "Usuarios"
+
+#: ./content/member_schema.py:84
+msgid "Work Area"
+msgstr "Región"
+
+#. Default: "Add"
+#: ./browser/templates/groups.pt:112
+#: ./browser/templates/subgroups.pt:83
+msgid "add"
+msgstr "Agregar"
+
+#. Datos Usuarios Miembros
+#. Default: "Search"
+#: ./browser/templates/users.pt:52
+msgid "box_search"
+msgstr "Buscar"
+
+#. Default: "Download this list as a spreadsheet"
+#: ./browser/templates/usergroup.pt:37
+#: ./browser/templates/users.pt:33
+msgid "download-this-list"
+msgstr "Descargar esta lista como hoja de cálculo."
+
+#. Default: "Go to Action"
+#: ./browser/templates/exams-info.pt:102
+msgid "go-to-action"
+msgstr "Ejecutar esta acción"
+
+#. Default: "Category"
+#: ./browser/templates/courses-info.pt:69
+msgid "heading_course_category"
+msgstr "Categoría"
+
+#. Default: "Course"
+#: ./browser/templates/courses-info.pt:68
+msgid "heading_course_name"
+msgstr "Evaluación"
+
+#. Default: "Courses summary for \"${folder}\""
+#: ./browser/templates/courses-info.pt:15
+msgid "heading_courses_summary"
+msgstr "Resúmen de Cursos para: \"${folder}\""
+
+#. Default: "End"
+#: ./browser/templates/courses-info.pt:74
+msgid "heading_end"
+msgstr "Fin"
+
+#. Default: "Enrolled"
+#: ./browser/templates/courses-info.pt:71
+msgid "heading_enrolled"
+msgstr "Inscrito"
+
+#. Default: "Active Date"
+#: ./browser/templates/exams-info.pt:52
+msgid "heading_exam_activedate"
+msgstr "Fecha efectivas"
+
+#. Default: "Category"
+#: ./browser/templates/exams-info.pt:49
+#, fuzzy
+msgid "heading_exam_category"
+msgstr "Categoría"
+
+#. Default: "Enrolled"
+#: ./browser/templates/exams-info.pt:50
+msgid "heading_exam_enrolled"
+msgstr "Inscrito"
+
+#. Default: "Instructor"
+#: ./browser/templates/exams-info.pt:51
+msgid "heading_exam_instructor"
+msgstr "Instructor"
+
+#. Default: "Exam"
+#: ./browser/templates/exams-info.pt:48
+msgid "heading_exam_name"
+msgstr "Exámen"
+
+#. Default: "Status"
+#: ./browser/templates/exams-info.pt:53
+msgid "heading_exam_status"
+msgstr "Estado/Status"
+
+#. Default: "Exams summary for \"${folder}\""
+#: ./browser/templates/exams-info.pt:15
+msgid "heading_exams_summary"
+msgstr "Resúmen de examenes para: \"${folder}\""
+
+#. Default: "Actions"
+#: ./browser/templates/groups.pt:40
+msgid "heading_group_actions"
+msgstr "Acción"
+
+#. Default: "Description"
+#: ./browser/templates/groups.pt:39
+msgid "heading_group_description"
+msgstr "Descripción"
+
+#. Default: "Name"
+#: ./browser/templates/groups.pt:38
+msgid "heading_group_name"
+msgstr "Nombre del Grupo"
+
+#. Default: "Groups for \"${folder}\""
+#: ./browser/templates/groups.pt:16
+msgid "heading_grouping_users"
+msgstr "Grupos dinámicos para: ${folder}"
+
+#. Grupo/Usuarios
+#. Default: "Subscriptions for <!-- \"<span tal:content=\"grouptitle\">title</span>\" --> \"${folder}\""
+#: ./browser/templates/usergroup.pt:26
+msgid "heading_grouping_users2"
+msgstr "Usuarios para grupo: ${folder}"
+
+#. Default: "Current group members"
+#: ./browser/templates/usergroup.pt:49
+msgid "heading_groupmembers_current"
+msgstr "Los miembos actuales del grupo"
+
+#. Default: "Instructor"
+#: ./browser/templates/courses-info.pt:72
+msgid "heading_instructor"
+msgstr "Instructor"
+
+#. Default: "Min Score"
+#: ./browser/templates/exams-info.pt:54
+msgid "heading_min_score"
+msgstr "Calificación Mínima"
+
+#. Default: "Min Time"
+#: ./browser/templates/exams-info.pt:55
+msgid "heading_min_time"
+msgstr "Tiempo mínimo"
+
+#. Default: "Search for new group members"
+#: ./browser/templates/usergroup.pt:120
+msgid "heading_search_newmembers"
+msgstr "Búsqueda de nuevos miembros del grupo"
+
+#. Default: "Searching for \"${folder}\""
+#: ./browser/templates/users.pt:16
+msgid "heading_searching_users"
+msgstr "Búsqueda y Filtrado de Miembros en: ${folder}"
+
+#. Default: "Start"
+#: ./browser/templates/courses-info.pt:73
+msgid "heading_start"
+msgstr "Inicio"
+
+#. Default: "State"
+#: ./browser/templates/courses-info.pt:70
+msgid "heading_state"
+msgstr "Estatus"
+
+#. Default: "Actions"
+#: ./browser/templates/subgroups.pt:112
+msgid "heading_subgroup_actions"
+msgstr "Acciones"
+
+#. Default: "Description"
+#: ./browser/templates/subgroups.pt:111
+msgid "heading_subgroup_description"
+msgstr "Descripción"
+
+#. Default: "Name"
+#: ./browser/templates/subgroups.pt:110
+msgid "heading_subgroup_name"
+msgstr "Nombre del grupo fijo"
+
+#. SubGrupos
+#. Default: "Subgroups for \"${folder}\""
+#: ./browser/templates/subgroups.pt:14
+msgid "heading_subgrouping_users"
+msgstr "Grupos fijos para: ${folder}"
+
+#. Default: "Users Done"
+#: ./browser/templates/exams-info.pt:56
+msgid "heading_usersdone"
+msgstr "Usuarios que terminaron"
+
+#. Default: "Users Pending"
+#: ./browser/templates/exams-info.pt:57
+msgid "heading_userspending"
+msgstr "Usuarios pendientes"
+
+#. Default: "Fill in fields below and click <strong>Add</strong> to add a new group to this training center."
+#: ./browser/templates/groups.pt:74
+msgid "help_add_group"
+msgstr "Llene los campos de abajo y haga clic en el botón <strong>Agregar</strong> para añadir un nuevo grupo a este centro de capacitación."
+
+#. Default: "Fill in fields below and click <strong>Add</strong> to add a new subgroup to this training center."
+#: ./browser/templates/subgroups.pt:32
+msgid "help_add_subgroup"
+msgstr "Llene los campos de abajo y haga clic en en el botón <strong>Agregar</strong> para añadir un nuevo grupo fijo a este centro de capacitación."
+
+#. Default: "No courses found."
+#: ./browser/templates/courses-info.pt:29
+msgid "help_no_courses"
+msgstr "No hay cursos disponibles"
+
+#. Default: "No exams found."
+#: ./browser/templates/exams-info.pt:38
+msgid "help_no_exams"
+msgstr "No hay examenes disponibles"
+
+#. Default: "No groups found."
+#: ./browser/templates/groups.pt:28
+msgid "help_no_groups"
+msgstr "No hay grupos dinámicos registrados "
+
+#. Default: "No members in this group."
+#: ./browser/templates/usergroup.pt:41
+msgid "help_no_members"
+msgstr "No hay ningún miembro en este grupo"
+
+#. Default: "Add Group"
+#: ./browser/templates/groups.pt:73
+msgid "label_add_group"
+msgstr "Agregar Grupo"
+
+#. Default: "Add Subgroup"
+#: ./browser/templates/subgroups.pt:31
+msgid "label_add_subgroup"
+msgstr "Agregar grupo fijo"
+
+#. Default: "Add selected users to this group"
+#: ./browser/templates/usergroup.pt:202
+msgid "label_add_users_to_group"
+msgstr "Agregar los miembros seleccionados"
+
+#. Default: "Age"
+#: ./skins/templates/eduuser_view.pt:86
+msgid "label_age"
+msgstr "Edad"
+
+#. Default: "Birth"
+#: ./skins/templates/eduuser_view.pt:80
+msgid "label_birth"
+msgstr "Fecha Nacimiento"
+
+#. Default: "Categories"
+#: ./browser/templates/courses-info.pt:39
+msgid "label_courses_categories"
+msgstr "Categorías"
+
+#. Default: "Courses"
+#: ./browser/templates/courses-info.pt:35
+msgid "label_courses_count"
+msgstr "Cursos"
+
+#. Default: "Drafts"
+#: ./browser/templates/courses-info.pt:56
+#, fuzzy
+msgid "label_draft"
+msgstr "Borradores"
+
+#. Default: "e-mail"
+#: ./skins/templates/eduuser_view.pt:53
+msgid "label_email"
+msgstr "Correo-e"
+
+#. Default: "Firstname"
+#: ./skins/templates/eduuser_view.pt:41
+msgid "label_firstname"
+msgstr "Nombre"
+
+#. Default: "Description:"
+#: ./browser/templates/groups.pt:96
+#: ./browser/templates/subgroups.pt:54
+msgid "label_group_description"
+msgstr "Descripción:"
+
+#. Default: "Title:"
+#: ./browser/templates/groups.pt:81
+#: ./browser/templates/subgroups.pt:39
+msgid "label_group_title"
+msgstr "Título:"
+
+#. Default: "Default"
+#: ./skins/templates/eduuser_view.pt:24
+msgid "label_idgeneral"
+msgstr "Default:"
+
+#. Default: "Idname"
+#: ./skins/templates/eduuser_view.pt:34
+msgid "label_idname"
+msgstr "Id Usuario"
+
+#. Default: "Lastname"
+#: ./skins/templates/eduuser_view.pt:47
+msgid "label_lastname"
+msgstr "Apellidos"
+
+#. Default: "Pending"
+#: ./browser/templates/courses-info.pt:49
+msgid "label_pending"
+msgstr "Pendientes"
+
+#. Default: "Personal"
+#: ./skins/templates/eduuser_view.pt:71
+msgid "label_personal"
+msgstr "Personal"
+
+#. Default: "Published"
+#: ./browser/templates/courses-info.pt:43
+msgid "label_published"
+msgstr "Publicados"
+
+#. Default: "Quick search"
+#: ./browser/templates/usergroup.pt:128
+msgid "label_quick_search"
+msgstr "Búsqueda Rápida"
+
+#. Default: "Remove selected users"
+#: ./browser/templates/usergroup.pt:113
+msgid "label_remove_selected_users"
+msgstr "Eliminar los miembros seleccionados"
+
+#. Default: "Search"
+#: ./browser/templates/usergroup.pt:136
+msgid "label_search"
+msgstr "Buscar"
+
+#. Default: "Search"
+#: ./browser/templates/users.pt:43
+msgid "label_search_user"
+msgstr "Buscar miembros"
+
+#. Default: "Select all items"
+#: ./browser/templates/usergroup.pt:55
+msgid "label_select_all_items"
+msgstr "Seleccionar todos los elementos"
+
+#. Default: "Sex"
+#: ./browser/templates/users.pt:95
+#: ./skins/templates/eduuser_view.pt:93
+msgid "label_sex"
+msgstr "Sexo"
+
+#. Grupos
+#. Default: "Up to Training Center"
+#: ./browser/templates/courses-info.pt:18
+#: ./browser/templates/exams-info.pt:17
+#: ./browser/templates/groups.pt:19
+msgid "link_up_to_tc"
+msgstr "Regresar al Centro de Capacitación"
+
+#. Default: "City"
+#: ./browser/templates/usergroup.pt:71
+msgid "listingheader_city"
+msgstr "Ciudad"
+
+#. Default: "E-mail Address"
+#: ./browser/templates/usergroup.pt:69
+msgid "listingheader_email_address"
+msgstr "Correo electrónico"
+
+#. Default: "Full name"
+#: ./browser/templates/usergroup.pt:68
+msgid "listingheader_group_full_name"
+msgstr "Nombre completo del usuario"
+
+#. Default: "User name"
+#: ./browser/templates/usergroup.pt:67
+msgid "listingheader_group_user_name"
+msgstr "Nombre de Usuario"
+
+#. Default: "Place"
+#: ./browser/templates/usergroup.pt:72
+msgid "listingheader_place"
+msgstr "Localidad"
+
+#. Default: "State"
+#: ./browser/templates/usergroup.pt:70
+msgid "listingheader_state"
+msgstr "Estado"
+
+#. Default: "Add new user"
+#: ./browser/templates/users.pt:28
+msgid "new_user"
+msgstr "Añadir un usuario."
+
+# fuzzy
+#. Default: "Select a group"
+#: ./browser/templates/subgroups.pt:72
+msgid "select_group_label"
+msgstr "Seleccionar una categoría"
+
+#. Default: "-- Select Action --"
+#: ./browser/templates/exams-info.pt:96
+msgid "select_task"
+msgstr "-- Elija una acción --"
+
+#. Default: "Compare Pre & Post"
+#: ./browser/templates/exams-info.pt:98
+msgid "select_task_compare"
+msgstr "Comparar Pre y Post"
+
+#. Default: "Grade Exam"
+#: ./browser/templates/exams-info.pt:99
+msgid "select_task_grade"
+msgstr "Calificar Examen"
+
+#. Default: "Ranking Questions"
+#: ./browser/templates/exams-info.pt:97
+msgid "select_task_ranking"
+msgstr "Calificar Preguntas"
+
+#. Default: "-- Select Course --"
+#: ./browser/templates/exams-info.pt:30
+msgid "select_tc"
+msgstr "--Seleccione una Evaluación --"
+
+#. Default: "Listing users searched"
+#: ./browser/templates/users.pt:72
+msgid "summary_search_users"
+msgstr "Listado de búsqueda de usuarios"
+
+#. Default: "Exams"
+#: ./skins/templates/edutc_view.pt:94
+msgid "tc-cexams"
+msgstr "Examenes"
+
+#. Default: "Login History"
+#: ./skins/templates/edutc_view.pt:82
+msgid "tc-conectivity"
+msgstr "Historia Conectividad"
+
+#. Default: "Contents"
+#: ./skins/templates/edutc_view.pt:23
+msgid "tc-contents"
+msgstr "Contenidos"
+
+#. Default: "Courses"
+#: ./skins/templates/edutc_view.pt:39
+msgid "tc-courses"
+msgstr "Cursos"
+
+#. Default: "Courses Info"
+#: ./skins/templates/edutc_view.pt:88
+msgid "tc-courses-info"
+msgstr "Información de Cursos"
+
+#. Default: "Events"
+#: ./skins/templates/edutc_view.pt:33
+msgid "tc-events"
+msgstr "Eventos"
+
+#. Default: "Dynamic Groups"
+#: ./skins/templates/edutc_view.pt:58
+msgid "tc-groups"
+msgstr "Grupos dinámicos"
+
+#. Default: "News"
+#: ./skins/templates/edutc_view.pt:27
+msgid "tc-news"
+msgstr "Noticias"
+
+#. Default: "Polls"
+#: ./skins/templates/edutc_view.pt:44
+msgid "tc-polls"
+msgstr "Encuestas"
+
+#. Default: "Reports"
+#: ./skins/templates/edutc_view.pt:73
+msgid "tc-reports"
+msgstr "Reportes"
+
+#. Default: "Static Groups"
+#: ./skins/templates/edutc_view.pt:63
+msgid "tc-subgroups"
+msgstr "Grupos Fijos"
+
+#. Default: "Users"
+#: ./skins/templates/edutc_view.pt:49
+msgid "tc-users"
+msgstr "Usuarios"
+
+#. Default: "Enter a user name to search for."
+#: ./browser/templates/usergroup.pt:191
+msgid "text_no_searchstring_large"
+msgstr "Escriba el nombre de usuario a buscar."
+
+#. Default: "No matches"
+#: ./browser/templates/usergroup.pt:188
+msgid "text_nomatches"
+msgstr "No hay coincidencias"
+
+#. Default: "Send a mail to this user"
+#: ./browser/templates/usergroup.pt:97
+msgid "title_send_mail_to_user"
+msgstr "Enviar un correo a este usuario."
+

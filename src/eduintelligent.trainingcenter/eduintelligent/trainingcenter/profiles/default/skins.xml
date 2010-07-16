@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<object name="portal_skins"
+        meta_type="Plone Skins Tool">
+
+ <object name="edutc_images"
+         meta_type="Filesystem Directory View"
+         directory="eduintelligent.trainingcenter:skins/icons"/>
+ <object name="edutc_styles"
+         meta_type="Filesystem Directory View"
+         directory="eduintelligent.trainingcenter:skins/styles"/>
+ <object name="edutc_templates"
+         meta_type="Filesystem Directory View"
+         directory="eduintelligent.trainingcenter:skins/templates"/>
+ 
+ <skin-path name="*">
+  <layer name="edutc_images"/>
+  <layer name="edutc_styles"/>
+  <layer name="edutc_templates"/>
+ </skin-path>
+
+</object>

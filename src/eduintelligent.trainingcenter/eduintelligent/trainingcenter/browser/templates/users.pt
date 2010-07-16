@@ -1,0 +1,141 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"      
+      i18n:domain="eduintelligent.trainingcenter">
+<head>
+</head>
+<body>
+<div metal:fill-slot="content">
+
+<h1 class="documentFirstHeading"
+    i18n:translate="heading_searching_users">
+    Searching for
+    "<span tal:content="context/Title" tal:omit-tag="" i18n:name="folder">title</span>"
+</h1>
+
+<a style="float: left; display: inline;" class="link-parent"
+   tal:attributes="href context/absolute_url"
+   i18n:translate="link_up_to_tc">
+   Up to Training Center
+</a>
+
+<div style="float: right; display: inline;">
+<a  href= "#" title="Users" tal:attributes="href string:${context/absolute_url}/createObject?type_name=eduMember">
+  <img tal:replace="structure context/user.gif" />
+  <span i18n:translate="new_user">Add new user</span>
+</a>
+<br />
+<a href= "#" title="Export Users" tal:attributes="href string:${context/absolute_url}/exportUsers">
+  <img tal:replace="structure context/group.gif" />
+  <span i18n:translate="download-this-list">Download this list as a spreadsheet</span>
+</a>
+</div>
+
+<form method="post" 
+      tal:attributes="action string:${context/absolute_url}/@@users">
+      
+    <input type="hidden" name="form.submitted:boolean" value="True" />
+
+    <div class="field">
+        <input type="text" 
+               id="user-search-text"
+               size="30" 
+               name="search_term"
+               title="Search for user" 
+               class="inputLabel"
+               value="Search" 
+               i18n:attributes="value label_search_user"
+               />
+        <input type="submit"
+               id="search-save-button" 
+               name="form.button.Search"
+               value="Search"
+               class="searchButton allowMultiSubmit" 
+               i18n:attributes="value box_search"
+               />
+    </div>
+    
+<!--     <ul class="Abcedef" style="list-style: none;margin: 0;margin-bottom: 1em;" 
+                 tal:define="ascii_letters python:['a','b','c','d','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+                             letters python:['a','b','d','f','h','i','k','l','m','o','p','q','s','t']">
+               <li style="display: inline;margin: 0;margin-right: 0.5em;" tal:repeat="letter ascii_letters">
+                 <a href="#"
+                    tal:omit-tag="python:letter not in letters"
+                    tal:attributes="href string:${here_url}?search_letter=${letter};
+                                    "
+                    tal:content="python: letter.upper()" /></li>
+    </ul> -->
+
+<table metal:define-macro="user-search" id="user-search"
+       class="listing" 
+       summary="Listing users searched" 
+       tal:define="batch view/batch;"
+       i18n:attributes="summary summary_search_users;">
+
+      <thead metal:define-macro="user-searching-head" id="user-searching-head">
+          <tr>
+              <th class="nosort" i18n:translate="">
+                  Id                
+              </th>
+              <th class="nosort">
+                  Nombre      
+              </th>
+              <th class="nosort">
+                  Apellidos           
+              </th>
+              <th class="nosort">
+                  Correo                
+              </th>              
+              <th class="nosort">
+                  Estado              
+              </th>
+              <th class="nosort" i18n:translate="label_sex">
+                  Sex
+              </th>
+          </tr>
+      </thead>
+
+    <tbody metal:define-macro="user-searching-results" id="user-searching-results">
+        <tal:entries repeat="user batch">
+            <tr tal:define="oddrow repeat/user/odd;"
+                tal:attributes="class python:oddrow and 'odd' or 'even'">
+                <td tal:define="userid user/id">
+                    <a tal:attributes="href string:${context/absolute_url}/${userid}">
+                       <img tal:replace="structure context/user.gif" /> 
+                       <span tal:replace="userid" />
+                    </a>
+
+                </td>
+            
+                <td>
+                    <span tal:replace="user/FirstName" />
+                </td>
+                <td>
+                    <span tal:replace="user/LastName"/>
+                </td>
+                <td>
+                    <span tal:replace="user/email" />
+                </td>
+                <td>
+                    <span tal:replace="user/state" />
+                </td>
+
+                <td>
+                    <span tal:replace="user/personal_gender" />
+                </td>
+            </tr>
+        </tal:entries>
+    </tbody>
+    
+</table>
+
+<div tal:replace="structure view/batching"/>
+
+</form>
+
+</div>
+</body>
+</html>

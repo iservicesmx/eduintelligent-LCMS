@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<import-steps>
+
+  <import-step
+     id="edumember-useradder"
+     version="20070909-01"
+     handler="eduintelligent.trainingcenter.setuphandlers.setupNewDefaultMember"
+     title="eduIntelligent Training Center: configures remembers default_member_type">
+    Sets the default member type
+  </import-step>
+
+  <import-step 
+     id="TC-Hide-Tools-From-Navigation" 
+     handler="eduintelligent.trainingcenter.setuphandlers.setupHideToolsFromNavigation"
+     title="Hide Custom tools from Navigation for eduTrainingCenter"
+     version="2007-10-05T11:35:59.208950">
+    Hides custom tools from navigation tree for eduTrainingCenter
+  </import-step>
+<!--
+  <import-step
+     id="TC-Hide-Types-From-Navigation" 
+     handler="eduintelligent.trainingcenter.setuphandlers.setupHideTypesFromNavigation"
+     title="Hide metatypes from Navigation for eduTrainingCenter"
+     version="2007-10-05T11:35:59.208950">
+    Hides metatypes from navigation tree for eduTrainingCenter
+  </import-step>
+-->
+
+</import-steps>
