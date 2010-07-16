@@ -24,12 +24,12 @@
 # 02110-1301, USA.
 #
 
-__author__ = """Juan Ramon Lopez Beristain <ramon@ro75.com>"""
+__author__ = """iServices de Mexico <desarrollo@iservices.com.mx>"""
 __docformat__ = 'plaintext'
 
 
 import logging
-logger = logging.getLogger('eduBiblio: setuphandlers')
+logger = logging.getLogger('eduintelligent.bibliography: setuphandlers')
 from config import PROJECTNAME
 from config import DEPENDENCIES
 from Products.CMFCore.utils import getToolByName

@@ -4,8 +4,12 @@ version = '0.1'
 
 setup(name='eduintelligent.bibliography',
       version=version,
-      description="",
+      description="Bilbiography container for books, magazines and publications.",
       long_description="""\
+This is a bilbiography container. Can contain references to books, publications
+and magazines.
+
+It was an experiment.
 """,
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[

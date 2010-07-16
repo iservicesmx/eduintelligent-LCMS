@@ -24,7 +24,7 @@
 # 02110-1301, USA.
 #
 
-__author__ = """Juan Ramon Lopez Beristain <ramon@ro75.com>"""
+__author__ = """iServices de Mexico <desarrollo@iservices.com.mx>"""
 __docformat__ = 'plaintext'
 
 

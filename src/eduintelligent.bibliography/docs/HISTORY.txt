@@ -1,6 +1,8 @@
 Changelog
 =========
 
+See the README.txt file for the list of changes.
+
 0.1 - Unreleased
 ----------------
 
