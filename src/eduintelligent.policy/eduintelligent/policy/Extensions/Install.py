@@ -1,8 +1,8 @@
 import transaction
 from Products.CMFCore.utils import getToolByName
 
-PRODUCT_DEPENDENCIES = ("membrane" ,
-                        "remember" ,
+PRODUCT_DEPENDENCIES = ("Products.membrane" ,
+                        "Products.remember" ,
                         "Products.UserAndGroupSelectionWidget",
                         "Products.SimpleAttachment" ,
                         "Products.DataGridField" ,
@@ -17,7 +17,6 @@ PRODUCT_DEPENDENCIES = ("membrane" ,
                         "Products.Faq" ,
                         "eduintelligent.paeduintelligent" ,  
                         "Products.PloneSurvey" ,
-                        "eduintelligent.bibliography" ,
                         "Products.PloneArticle" ,
                         "Products.PloneHelpCenter" ,
                         "Products.PloneGlossary" ,
