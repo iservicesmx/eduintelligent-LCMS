@@ -18,16 +18,6 @@ msgstr ""
 "X-Poedit-Language: Spanish\n"
 "X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
 
-#. Default: "A Member of Training Center"
-#: ./profiles/default/types/eduMember.xml
-msgid "A Member of Training Center"
-msgstr "Un miembro del Centro de Capacitación"
-
-#. Default: "A Training Center"
-#: ./profiles/default/types/TrainingCenter.xml
-msgid "A Training Center"
-msgstr "Centro de Capacitación"
-
 #: ./content/edumember.py:263
 msgid "Activity"
 msgstr "Actividad"
@@ -166,14 +156,13 @@ msgstr "Apellidos"
 msgid "Last School Degree"
 msgstr "Último grado de estudios"
 
+#: ./content/member_schema.py:143
+msgid "Location"
+msgstr ""
+
 #: ./content/member_schema.py:244
 msgid "Main Group"
 msgstr "Grupo principal"
-
-#. Default: "Member"
-#: ./profiles/default/types/eduMember.xml
-msgid "Member"
-msgstr "Miembro"
 
 #: ./content/edumember.py:31
 msgid "Name"
@@ -277,27 +266,18 @@ msgstr "¿En qué fecha ingresó a esta compañía?"
 msgid "Title"
 msgstr "Título"
 
-#: ./content/member_schema.py:64
-msgid "Trabajo"
-msgstr ""
-
-#. Default: "Training Center"
-#: ./profiles/default/types/TrainingCenter.xml
-msgid "Training Center"
-msgstr "Centro de Capacitación"
-
 #: ./content/member_schema.py:259
 msgid "Type"
 msgstr "Tipo"
-
-#: ./content/member_schema.py:143
-msgid "Ubicacion"
-msgstr ""
 
 #. Default: "Users"
 #: ./skins/templates/edutc_view.pt:50
 msgid "Users"
 msgstr "Usuarios"
+
+#: ./content/member_schema.py:64
+msgid "Work"
+msgstr ""
 
 #: ./content/member_schema.py:84
 msgid "Work Area"
@@ -434,7 +414,7 @@ msgid "heading_min_time"
 msgstr "Tiempo mínimo"
 
 #. Default: "Search for new group members"
-#: ./browser/templates/usergroup.pt:120
+#: ./browser/templates/usergroup.pt:116
 msgid "heading_search_newmembers"
 msgstr "Búsqueda de nuevos miembros del grupo"
 
@@ -525,7 +505,7 @@ msgid "label_add_subgroup"
 msgstr "Agregar grupo fijo"
 
 #. Default: "Add selected users to this group"
-#: ./browser/templates/usergroup.pt:202
+#: ./browser/templates/usergroup.pt:198
 msgid "label_add_users_to_group"
 msgstr "Agregar los miembros seleccionados"
 
@@ -608,17 +588,17 @@ msgid "label_published"
 msgstr "Publicados"
 
 #. Default: "Quick search"
-#: ./browser/templates/usergroup.pt:128
+#: ./browser/templates/usergroup.pt:124
 msgid "label_quick_search"
 msgstr "Búsqueda Rápida"
 
 #. Default: "Remove selected users"
-#: ./browser/templates/usergroup.pt:113
+#: ./browser/templates/usergroup.pt:109
 msgid "label_remove_selected_users"
 msgstr "Eliminar los miembros seleccionados"
 
 #. Default: "Search"
-#: ./browser/templates/usergroup.pt:136
+#: ./browser/templates/usergroup.pt:132
 msgid "label_search"
 msgstr "Buscar"
 
@@ -646,11 +626,6 @@ msgstr "Sexo"
 msgid "link_up_to_tc"
 msgstr "Regresar al Centro de Capacitación"
 
-#. Default: "City"
-#: ./browser/templates/usergroup.pt:71
-msgid "listingheader_city"
-msgstr "Ciudad"
-
 #. Default: "E-mail Address"
 #: ./browser/templates/usergroup.pt:69
 msgid "listingheader_email_address"
@@ -665,11 +640,6 @@ msgstr "Nombre completo del usuario"
 #: ./browser/templates/usergroup.pt:67
 msgid "listingheader_group_user_name"
 msgstr "Nombre de Usuario"
-
-#. Default: "Place"
-#: ./browser/templates/usergroup.pt:72
-msgid "listingheader_place"
-msgstr "Localidad"
 
 #. Default: "State"
 #: ./browser/templates/usergroup.pt:70
@@ -717,10 +687,10 @@ msgstr "--Seleccione una Evaluación --"
 msgid "summary_search_users"
 msgstr "Listado de búsqueda de usuarios"
 
-#. Default: "Exams"
-#: ./skins/templates/edutc_view.pt:94
-msgid "tc-cexams"
-msgstr "Examenes"
+#. Default: "SCOs"
+#: ./skins/templates/edutc_view.pt:100
+msgid "tc-SCOs"
+msgstr ""
 
 #. Default: "Login History"
 #: ./skins/templates/edutc_view.pt:82
@@ -778,17 +748,17 @@ msgid "tc-users"
 msgstr "Usuarios"
 
 #. Default: "Enter a user name to search for."
-#: ./browser/templates/usergroup.pt:191
+#: ./browser/templates/usergroup.pt:187
 msgid "text_no_searchstring_large"
 msgstr "Escriba el nombre de usuario a buscar."
 
 #. Default: "No matches"
-#: ./browser/templates/usergroup.pt:188
+#: ./browser/templates/usergroup.pt:184
 msgid "text_nomatches"
 msgstr "No hay coincidencias"
 
 #. Default: "Send a mail to this user"
-#: ./browser/templates/usergroup.pt:97
+#: ./browser/templates/usergroup.pt:95
 msgid "title_send_mail_to_user"
 msgstr "Enviar un correo a este usuario."
 

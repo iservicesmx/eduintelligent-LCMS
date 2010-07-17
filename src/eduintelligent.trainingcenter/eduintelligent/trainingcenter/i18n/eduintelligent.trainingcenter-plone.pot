@@ -1,0 +1,63 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2010-07-17 00:26+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone\n"
+
+#: profiles/default/types/eduMember.xml
+msgid "A Member of Training Center"
+msgstr ""
+
+#: profiles/default/types/TrainingCenter.xml
+msgid "A Training Center"
+msgstr ""
+
+#: dashboard/dashboard.pt:65
+msgid "Gu&iacute;a CECADE"
+msgstr ""
+
+#: dashboard/dashboard.pt:78
+msgid "Info"
+msgstr ""
+
+#: profiles/default/types/eduMember.xml
+msgid "Member"
+msgstr ""
+
+#: profiles/default/types/TrainingCenter.xml
+msgid "Training Center"
+msgstr ""
+
+#. Default: "${user_name}'s dashboard"
+#: dashboard/dashboard.pt:73
+msgid "heading_dashboard"
+msgstr ""
+
+#. Default: "Your dashboard is currently empty. Click the <em>edit</em> tab to assign some personal portlets."
+#: dashboard/dashboard.pt:79
+msgid "info_empty_dashboard"
+msgstr ""
+
+#. Default: "Edit"
+#: dashboard/dashboard.pt:42
+msgid "label_edit"
+msgstr ""
+
+#. Default: "Dashboard"
+#: dashboard/dashboard.pt:37
+msgid "label_view"
+msgstr ""
+

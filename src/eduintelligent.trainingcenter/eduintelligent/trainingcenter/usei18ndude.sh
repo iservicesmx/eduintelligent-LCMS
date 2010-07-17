@@ -7,24 +7,32 @@ I18NDUDE=../../../../bin/i18ndude
 #   mkdir -p locales/<lang_code>/LC_MESSAGES
 #   touch locales/<lang_code>/LC_MESSAGES/$DOMAIN.po
 # and run this script
-# Example: locales/hu/LC_MESSAGES/$DOMAIN.po
+# Example:
+#          mkdir -p locales/es/LC_MESSAGES
+#          touch locales/es/LC_MESSAGES/iservces.theme.po
 
+#More examples
+# mkdir -p locales/{en,es}/LC_MESSAGES
+# touch locales/{en,es}/LC_MESSAGES/$DOMAIN.po
+
+echo "Syncing all translations for domain ${DOMAIN}."
 touch locales/$DOMAIN.pot
 $I18NDUDE rebuild-pot --pot locales/$DOMAIN.pot --create $DOMAIN ./
 $I18NDUDE rebuild-pot --pot locales/$DOMAIN-$DOMAIN_PLONE.pot --create $DOMAIN_PLONE ./
 
 # sync all locales
-find locales -depth -type d   \
-     | grep -v .svn \
-     | grep -v LC_MESSAGES \
-     | sed -e "s/locales\/\(.*\)$/\1/" \
-     | xargs -I % $I18NDUDE sync --pot locales/$DOMAIN.pot locales/%/LC_MESSAGES/$DOMAIN.po
+echo "Sync and Compile po files for domain ${DOMAIN} in locales dir"
+# Compile po files
+for lang in $(find locales -mindepth 1 -maxdepth 1 -type d); do
+    if test -d $lang/LC_MESSAGES; then
+        $I18NDUDE sync --pot locales/${DOMAIN}.pot $lang/LC_MESSAGES/${DOMAIN}.po
+        msgfmt -o $lang/LC_MESSAGES/${DOMAIN}.mo $lang/LC_MESSAGES/${DOMAIN}.po
+    fi
+done
 
-# sync all locales
-find locales -depth -type d   \
-     | grep -v .svn \
-     | grep -v LC_MESSAGES \
-     | sed -e "s/locales\/\(.*\)$/\1/" \
-     | xargs -I % $I18NDUDE sync --pot locales/$DOMAIN-$DOMAIN_PLONE.pot locales/%/LC_MESSAGES/$DOMAIN-$DOMAIN_PLONE.po
-     
-     
+echo "Syncing all translations for domain plone."
+
+touch i18n/${DOMAIN}-${DOMAIN_PLONE}.pot
+$I18NDUDE rebuild-pot --pot i18n/${DOMAIN}-${DOMAIN_PLONE}.pot --create ${DOMAIN_PLONE} profiles/ dashboard/
+#For Spanish
+$I18NDUDE sync --pot i18n/${DOMAIN}-${DOMAIN_PLONE}.pot i18n/${DOMAIN}-${DOMAIN_PLONE}-es.po

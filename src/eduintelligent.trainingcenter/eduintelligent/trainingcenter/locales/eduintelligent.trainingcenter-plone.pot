@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-02-22 06:10+0000\n"
+"POT-Creation-Date: 2010-07-17 00:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,14 @@ msgstr ""
 #: ./content/edumember.py:32
 #: ./content/member_schema.py:135
 msgid ""
+msgstr ""
+
+#: ./profiles/default/types/eduMember.xml
+msgid "A Member of Training Center"
+msgstr ""
+
+#: ./profiles/default/types/TrainingCenter.xml
+msgid "A Training Center"
 msgstr ""
 
 #: ./content/edumember.py:263
@@ -150,6 +158,10 @@ msgstr ""
 msgid "Main Group"
 msgstr ""
 
+#: ./profiles/default/types/eduMember.xml
+msgid "Member"
+msgstr ""
+
 #: ./content/edumember.py:31
 msgid "Name"
 msgstr ""
@@ -224,6 +236,10 @@ msgstr ""
 
 #: ./content/member_schema.py:117
 msgid "The employee's starting date on this company"
+msgstr ""
+
+#: ./profiles/default/types/TrainingCenter.xml
+msgid "Training Center"
 msgstr ""
 
 #: ./content/member_schema.py:259
