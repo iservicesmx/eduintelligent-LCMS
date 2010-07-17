@@ -1,9 +1,9 @@
 import transaction
 from Products.CMFCore.utils import getToolByName
 
-PRODUCT_DEPENDENCIES = ("Products.membrane" ,
-                        "Products.remember" ,
-                        "Products.UserAndGroupSelectionWidget",
+PRODUCT_DEPENDENCIES = ("membrane" ,
+                        "remember" ,
+                        "UserAndGroupSelectionWidget",
                         "Products.SimpleAttachment" ,
                         "Products.DataGridField" ,
                         "eduintelligent.trainingcenter" ,
@@ -57,6 +57,7 @@ def install(self, reinstall=False):
             #transaction.savepoint()
             pass
         elif not portal_quickinstaller.isProductInstalled(product):
+            #import pdb; pdb.set_trace()
             portal_quickinstaller.installProduct(product)
             transaction.savepoint()
 
