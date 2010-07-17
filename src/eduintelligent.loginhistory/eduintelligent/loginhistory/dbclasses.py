@@ -2,7 +2,7 @@ from sqlalchemy import *
 
 # Create connection
 #engine = create_engine('sqlite:///Users/erik/Desarrollo/cecade/var/mydb.db', echo=True)
-engine = create_engine('postgres://zope:zope@localhost/darier_logs', echo=True)
+engine = create_engine('postgres://eduintelligent:12345678@localhost/eduintelligent_logs', echo=True)
 
 # Define tebles
 metadata = MetaData()

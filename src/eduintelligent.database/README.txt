@@ -1,9 +1,7 @@
-eduintelligent.paeduintelligent Package Readme
+eduintelligent.database 
 =========================
 
 Overview
 --------
-
-
-Add custom tags to PloneArticle. Users can embbedd multimedia into PloneArticle
-very easily.
+This is a utility which serves as a database driver.
+Utillity connector to Data Base.
