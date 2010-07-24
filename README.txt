@@ -59,7 +59,7 @@ This will install zc.buildout for you.
 
 Installing dependencies for postgresql
 --------------------------------------
-  $ sudo aptiude install libpq-dev
+  $ sudo aptitude install libpq-dev
 
 
 Running buildout
