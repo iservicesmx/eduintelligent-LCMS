@@ -12,3 +12,4 @@ wingidepath.txt
 *.mo
 eggs
 respaldos/*.tar.gz
+src/Products.PloneArticle-4.1.8/
