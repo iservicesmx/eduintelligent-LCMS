@@ -30,8 +30,8 @@ Buildout still depends on the system Python and system-wide libraries/eggs. That
 why I call it pseudo-isolated environment. For a true isolated environment, you
 might take a look at VirtualEnv__, however I will not cover it on this document.
 
-__ Buildout: http://www.buildout.org/
-__ VirtualEnv: http://pypi.python.org/pypi/virtualenv
+__ Buildout__: http://www.buildout.org/
+__ VirtualEnv__: http://pypi.python.org/pypi/virtualenv
 
 We need to prepare the system so we can take advantage of Buildout's capabilities. So,
 open your terminal (Or login if you are on ubuntu Server without X) and type:
@@ -41,21 +41,25 @@ open your terminal (Or login if you are on ubuntu Server without X) and type:
     
     #Restart system if appropiate
     
-    $ sudo aptitude install build-essential git-core subversion zlib1g-dev
-    
+    $ sudo aptitude install build-essential git-core subversion zlib1g-dev libpq-dev postgresql
+
 Let's describe each package:
-    * build-essential: Meta-package which will trigger the installation of compilers,
+    *) build-essential: Meta-package which will trigger the installation of compilers,
       utilities, and development libraries. All those (such as GCC), will be used to
       compile Python 2.4, python libraries, bindings and some parts of Plone and Zope.
-    * git-core: We use git as the SCM for eduintelligent
-    * subversion: We might need to get some python code trough svn
-    * zlib1g-dev: zlib development libraries.
+    *) git-core: We use git as the SCM for eduintelligent
+    *) subversion: We might need to get some python code trough svn
+    *) zlib1g-dev: zlib development libraries.
+    *) libpq-dev: Development libraries for PostgreSQL clients. It will be used
+       by psycopg2.
+    *) postgresql: The postgresql server
+    
     
 Install Python 2.4
 ~~~~~~~~~~~~~~~~~~~~
 
 Ubuntu 10.04 Ships Python 2.6 by default. Unfortunately, eduintelligent LCMS needs
-Plone 3. As we improve the code base, wi will move to Plone 4, wich can work with
+Plone 3. As we improve the code base, we will move to Plone 4, wich can work with
 more recent versions of Python like 2.6.
 
 Installing Python 2.4 is a very straightforward process. First, we need to download
@@ -94,7 +98,7 @@ Python eggs, uncompress them in a temporal folder, build them and install them o
 specific location. Also takes care of dependencies. PIP is commanded by Buildout,
 sou you will rarely use it directly.
 
-__ PIP: http://pip.openplans.org/
+__ PIP__: http://pip.openplans.org/
 
 So, don't close that terminal window/session, and type:
 
@@ -116,8 +120,8 @@ understand how everything is laid out.
 
     Note: The Django__ admin app, borrows some concepts from Paster.
 
-__ZopeSkel: http://plone.org/products/zopeskel
-Django__: http://djangoproject.com
+__ ZopeSkel__: http://plone.org/products/zopeskel
+__ Django__: http://djangoproject.com
 
 So, as I was saying, we need to install ZopeSkel:
 
@@ -133,7 +137,7 @@ Download a copy of eduIntelligent-LCMS
 The github repo for eduIntellignet-LCMS is here__. So, in any directory you want
 (You no longer need root permissions for these), type this command:
 
-__here : http://github.com/iservicesmx/eduintelligent-LCMS 
+__ here__ : http://github.com/iservicesmx/eduintelligent-LCMS 
 
 
     $ git clone git://github.com/iservicesmx/eduintelligent-LCMS.git
@@ -143,15 +147,35 @@ the directory and run the bootstrap.py script:
     
     $ /opt/Python2.4/bin/python2.4 bootstrap.py
     
-This command will create some directories, for example: bin/. The contents of the bin/
-directory contains these scripts:
+This command will create some directories, namely: bin/, parts/, eggs/ and
+develop-eggs/. Right now, the contents of the bin/ directory are:
 
     *) bin/buildout This script will download all the needed dependencies and store them on
        the eggs/ directory. It will compile some packages if they need it. It will finally
        create the bin/instance script. Take a look at this script, see how buildout manipulares
        the python path. That's how Buildout does it's magic.
        
+
+Run the bin/buildout script.
     
+    $ bin/buildout
+    
+Sit back, relax, go for a cofee. It dependes on your bandwidth and your CPU power,
+but this process takes some time.
 
+Once this process has finished, buildout wil have created more scripts inside the
+bin/ directory:
 
+    *) bin/i18ndude This is a tool for managing translations. It can extract messages,
+       merge them into on or more .po files and compile them.
+    
+    *) bin/instance This is, perhaps, the more interesting script. It controls
+       the Plone instance. It has several options and switches, but by now we will only
+       use it to start Plone in foreground mode.
+    
+    *) bin/zopepy This is a handy python interpreter that has the same list of python
+       eggs that the bin/instance. This is useful for testing and debugging.
+       
+We have our development environment set-up and Plone is ready to run. Let's move
+on to configure all the needed parts for eduIntelligent.
 
