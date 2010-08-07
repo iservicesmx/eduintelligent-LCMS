@@ -11,5 +11,11 @@
  <factorytypes>
      <type portal_type="Course Folder"/>
      <type portal_type="Course"/>
+     <type portal_type="Lessons"/>
+     <type portal_type="CourseContent"/>
+     <type portal_type="Resources"/>
+     <type portal_type="ExamContent"/>
+     <type portal_type="QuizContent"/>
+     <type portal_type="PollContent"/>
  </factorytypes>
 </object>

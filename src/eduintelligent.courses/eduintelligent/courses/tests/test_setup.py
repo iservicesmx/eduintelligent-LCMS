@@ -12,7 +12,6 @@ class TestProductInstall(CoursesTestCase):
     
     def testPortalFactoryEnabled(self):
         for t in self.types:
-            import pdb; pdb.set_trace()
             self.failUnless(t in self.portal.portal_factory.getFactoryTypes().keys(),
                             '%s content type not installed' % t)
         
