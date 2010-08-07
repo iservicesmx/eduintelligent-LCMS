@@ -16,22 +16,22 @@ same.
 
 Development environment
 ------------------------
-Buildout__ is a very powerfull system to manage software configuration. Plone is
+Buildout_ is a very powerfull system to manage software configuration. Plone is
 made by dozens of different software components/libraries (eggs) and Buildout can take care
 of almost every detail of all of them, including versions, dependencies and, of
 course, installation.
 
-Buildout can install Plone in an **pseudo-isolated** environment. That is, it will
+Buildout can install Plone in an *pseudo-isolated* environment. That is, it will
 install, uninstall and manage all the eggs that Plone needs without needing
 Administrator privileges and without the risk of breaking or cause configuration
 conflicts between version packages.
 
 Buildout still depends on the system Python and system-wide libraries/eggs. That's
-why I call it **pseudo-isolated** environment. For a true isolated environment, you
-might take a look at VirtualEnv__, however I will not cover it on this document.
+why I call it *pseudo-isolated* environment. For a true isolated environment, you
+might take a look at VirtualEnv_, however I will not cover it on this document.
 
-__ Buildout__: http://www.buildout.org/
-__ VirtualEnv__: http://pypi.python.org/pypi/virtualenv
+.. _Buildout: http://www.buildout.org/
+.. _VirtualEnv: http://pypi.python.org/pypi/virtualenv
 
 We need to prepare the system so we can take advantage of Buildout's capabilities. So,
 open your terminal (Or login if you are on ubuntu Server without X) and type:
@@ -44,21 +44,20 @@ open your terminal (Or login if you are on ubuntu Server without X) and type:
     $ sudo aptitude install build-essential git-core subversion zlib1g-dev libpq-dev postgresql
 
 Let's describe each package:
-    (o) *build-essential*: Meta-package which will trigger the installation of compilers,
+    * **build-essential**: Meta-package which will trigger the installation of compilers,
       utilities, and development libraries. All those (such as GCC), will be used to
       compile Python 2.4, python libraries, bindings and some parts of Plone and Zope.
-    (o) *git-core*: We use git as the SCM for eduintelligent
-    (o) *subversion*: We might need to get some python code trough svn
-    (o) *zlib1g-dev*: zlib development libraries.
-    (o) *libpq-dev*: Development libraries for PostgreSQL clients. It will be used
-       by psycopg2.
-    (o) *postgresql*: The postgresql server
+    * **git-core**: We use git as the SCM for eduintelligent
+    * **subversion**: We might need to get some python code trough svn
+    * **zlib1g-dev**: zlib development libraries.
+    * **libpq-dev**: Development libraries for PostgreSQL clients. It will be used by psycopg2.
+    * **postgresql**: The postgresql server
     
     
 Install Python 2.4
 ~~~~~~~~~~~~~~~~~~~~
 
-Ubuntu 10.04 Ships Python 2.6 by default. Unfortunately, eduintelligent LCMS needs
+Ubuntu 10.04 Ships Python 2.6 by default. Unfortunately, eduintelligent-LCMS needs
 Plone 3. As we improve the code base, we will move to Plone 4, wich can work with
 more recent versions of Python like 2.6.
 
@@ -83,23 +82,23 @@ with Python 2.4 instead of 2.6. This can break some system utilities and program
 specially on Ubuntu Desktop.
 
 There are some easy fixes for that:
-    (o) Re-link ``/usr/bin/python`` to ``/usr/bin/python2.6``
-    (o) Delete ``/usr/local/bin/python`` (which takes precedence over ``/usr/bin/python``)
-    (o) Install it, as above, in a different path. (You will need to provide the
-        full path whenever you want to call python2.4). You might also want to add
-        the new python path to ``$PATH`` environment variable. Or you can also install it
-        in your home folder. 
+    * Re-link ``/usr/bin/python`` to ``/usr/bin/python2.6``
+    * Delete ``/usr/local/bin/python`` (which takes precedence over ``/usr/bin/python``)
+    * Install it, as above, in a different path. (You will need to provide the
+      full path whenever you want to call python2.4). You might also want to add
+      the new python path to ``$PATH`` environment variable. Or you can also install it
+      in your home folder. 
        
 Let's continue. We have already installed python2.4 somewhere, and we know that
 typing ``/opt/python2.4/bin/python2.4`` on the comandline will bring out the
 python2.4 prompt.
 
-Next step is to install PIP__. PIP takes care of downloading the right versions of
+Next step is to install PIP_. PIP takes care of downloading the right versions of
 Python eggs, uncompress them in a temporal folder, build them and install them on a
 specific location. Also takes care of dependencies. PIP is commanded by Buildout,
 sou you will rarely use it directly.
 
-__ PIP__: http://pip.openplans.org/
+.. _PIP: http://pip.openplans.org/
 
 So, please, do not close that terminal window/session yet and type:
 
@@ -110,7 +109,7 @@ So, please, do not close that terminal window/session yet and type:
     $ sudo /opt/Python2.4/bin/easy_install pip
     
     
-We will also need to install ZopeSkel__. ZopeSkel is collection of Skeletons for
+We will also need to install ZopeSkel_. ZopeSkel is collection of Skeletons for
 quickstarting Zope and Plone projects. It uses the templating engine of the Paste
 project, which is a python development framework for web applications. It does a
 lot of things and has very useful tools, but our focus now is to prepare our
@@ -119,10 +118,12 @@ just software dependencies for our goals, and PIP will take care od them for us.
 So please, dear reader, just go on with this tutorial, sooner or later you will
 understand how everything is laid out.
 
-    Interesting Note: The Django__ admin app, borrows some concepts from Paster.
+:Interesting Note:
+    The Django_ admin app, borrows some concepts from Paster.
 
-__ ZopeSkel__: http://plone.org/products/zopeskel
-__ Django__: http://djangoproject.com
+.. _ZopeSkel: http://plone.org/products/zopeskel
+.. _Django: http://djangoproject.com
+
 
 So, as I was saying, we need to install ZopeSkel:
 
@@ -135,11 +136,10 @@ is already set. Now we'll move along with the next section.
 Download a copy of eduIntelligent-LCMS
 ---------------------------------------
 
-The github repo for eduIntellignet-LCMS is here__. So, in any directory you want
+The github repo for eduIntellignet-LCMS is here_. So, in any directory you want
 (You no longer need root permissions for these), type this command:
 
-__ here__ : http://github.com/iservicesmx/eduintelligent-LCMS 
-
+.. _here: http://github.com/iservicesmx/eduintelligent-LCMS 
 
     $ git clone git://github.com/iservicesmx/eduintelligent-LCMS.git
     
@@ -151,11 +151,10 @@ the directory and run the bootstrap.py script:
 This command will create some directories, namely: ``bin/``, ``parts/``, ``eggs/`` and
 ``develop-eggs/``. Right now, the only file inside ``bin/`` is:
 
-    (o) ``bin/buildout`` This script will download all the needed dependencies and store them on
-       the ``eggs/`` directory. It will compile some packages if they need it. It will finally
-       create the ``bin/instance`` script. Take a look at this script, see how buildout manipulares
-       the python path. That's how Buildout does it's magic.
-       
+    * ``bin/buildout`` This script will download all the needed dependencies and store them on
+      the ``eggs/`` directory. It will compile some packages if they need it. It will finally
+      create the ``bin/instance`` script. Take a look at this script, see how buildout manipulares
+      the python path. That's how Buildout does it's magic.
 
 Run the ``bin/buildout`` script.
     
@@ -167,15 +166,15 @@ but this process takes some time.
 Once this process has finished, buildout wil have created more scripts inside
 the ``bin/`` directory:
 
-    (o) ``bin/i18ndude`` This is a tool for managing translations. It can extract messages,
-       merge them into on or more ``.po`` files and compile them.
+    * ``bin/i18ndude`` This is a tool for managing translations. It can extract messages,
+      merge them into on or more ``.po`` files and compile them.
     
-    (o) ``bin/instance`` This is, perhaps, the more interesting script. It controls
-       the Plone instance. It has several options and switches, but by now we will only
-       use it to start Plone in foreground mode.
+    * ``bin/instance`` This is, perhaps, the more interesting script. It controls
+      the Plone instance. It has several options and switches, but by now we will only
+      use it to start Plone in foreground mode.
     
-    (o) ``bin/zopepy`` This is a handy python interpreter that has the same list of python
-       eggs that the ``bin/instance``. This is useful for testing and debugging.
+    * ``bin/zopepy`` This is a handy python interpreter that has the same list of python
+      eggs that the ``bin/instance``. This is useful for testing and debugging.
        
 We have our development environment set-up and Plone is ready to run. Let's move
 on to configure all the needed parts for eduintelligent-LCMS.
@@ -233,8 +232,8 @@ Go back to the eduintelligent-LCMS directory. Before you run the ``create_schema
 script, edit the following files and configure the user and password for the
 eduintelligent role (Yes, the password you supplied in the section above.):
     
-    (o) ``src/eduintelligent.loginhistory/eduintelligent/loginhistory/dbclasses.py``
-    (o) ``src/eduintelligent.loginhistory/eduintelligent/loginhistory/dbclasses.py``
+    * ``src/eduintelligent.loginhistory/eduintelligent/loginhistory/dbclasses.py``
+    * ``src/eduintelligent.loginhistory/eduintelligent/loginhistory/dbclasses.py``
     
 Finally run the script:
 
@@ -264,11 +263,7 @@ multiple selection menu. Select ``TrainingCenter`` and ``eduMember``. Click on
 
 TODO LIST
 -----------
-    (o) Configure PloneArticle
-    (o) Configure eduIntelligent Database in the plone control panel.
-    (o) Lot's of details I'm probably missing.
-    
-
-
-
-
+    * Configure PloneArticle
+    * Configure eduIntelligent Database in the plone control panel.
+    * Lot's of details I'm probably missing.
+  
