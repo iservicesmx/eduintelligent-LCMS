@@ -4,8 +4,9 @@ version = '1.0'
 
 setup(name='eduintelligent.courses',
       version=version,
-      description="Course Contents",
+      description="Course container for eduIntelligent",
       long_description="""\
+eduintelligent.courses provide containers for online courses.
 """,
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[

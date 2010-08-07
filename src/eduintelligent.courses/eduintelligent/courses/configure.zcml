@@ -17,9 +17,9 @@
     <!-- Register the installation GenericSetup extension profile -->
     <genericsetup:registerProfile
       name="default"
-      title="EduIntelligent Courses"
+      title="eduIntelligent Courses"
       directory="profiles/default"
-      description="Course Contents"
+      description="Course Containers with special user roles"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 

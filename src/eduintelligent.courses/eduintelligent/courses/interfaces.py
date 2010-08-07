@@ -19,7 +19,7 @@ class ICourseFolder(Interface):
                                   description=_(u"A short summary of this folder"))
                                   
     categories = schema.List(title=_(u"Categories"),
-                     description=_(u"The categories to clasify a course"),
+                     description=_(u"Classify this Course using the listed categories"),
                      required=True)
 
     
@@ -90,10 +90,13 @@ class IPageRole(Interface):
     by the sharing page.
 
     Utility names should correspond to the role name.
+    
+    Es la interface para asignar los roles al curso. Los permisos son de
+    estudiante e instructor.
     """
 
     title = schema.TextLine(title=u"A friendly name for the role")
 
-    required_permission = schema.TextLine(title=u"Permission required to manag this local role",
+    required_permission = schema.TextLine(title=u"Permission required to manage this local role",
                                           required=False)
 
