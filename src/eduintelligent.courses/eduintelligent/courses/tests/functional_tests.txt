@@ -1,0 +1,48 @@
+============
+Introduction
+============
+
+This is the test file from iservices.rssdocument.
+
+
+Preeliminary setup
+-------------------
+
+Being a doctest, we can tell a story here. 
+
+First, we must perform some setup. We use the testbrowser that is shipped
+with Five, as this provides proper Zope 2 integration. Most of the 
+documentation, though, is in the underlying zope.testbrower package.
+
+    >>> from Products.Five.testbrowser import Browser
+    >>> browser = Browser()
+    >>> portal_url = self.portal.absolute_url()
+
+The following is useful when writing and debugging testbrowser tests. It lets
+us see all error messages in the error_log.
+
+    >>> self.portal.error_log._ignored_exceptions = ()
+
+With that in place, we can go to the portal front page and log in. We will
+do this using the default user from PloneTestCase:
+
+    >>> from Products.PloneTestCase.setup import portal_owner, default_password
+
+    >>> browser.open(portal_url+'/login_form')
+
+    >>> browser.getControl(name='__ac_name').value = portal_owner
+    >>> browser.getControl(name='__ac_password').value = default_password
+    
+    >>> import pdb; pdb.set_trace()
+    
+    >>> browser.getControl(name='submit').click()
+
+Here, we set the value of the fields on the login form and then simulate a
+submit click.
+
+Go back to the front page:
+
+    >>> browser.open(portal_url)
+    >>> browser.url == portal_url
+    True
+
