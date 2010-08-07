@@ -217,10 +217,19 @@ You should see the psql cmdline prompt. If you get a authentication error instea
 please review the configuration again and make sure you have restarted the
 postgresql server.
 
-Create the schemas
--------------------
+Create the database and schemas
+--------------------------------
 
-Go back to the eduintelligent-LCMS directory. Before you run the create_schemas.sh
+Create the database ``eduintelligent_logs``. This database will be used by
+``eduintelligent.loginhistory``, ``eduintelligent.database`` and
+``eduintelligent.messages``:
+
+    $ #Login as postgresql user if needed
+    $ sudo su postgresql
+    
+    $ createdb --encoding=UTF-8 --owner=eduintelligent -U eduintelligent - W eduintelligent_logs
+
+Go back to the eduintelligent-LCMS directory. Before you run the ``create_schemas.sh``
 script, edit the following files and configure the user and password for the
 eduintelligent role (Yes, the password you supplied in the section above.):
     
@@ -245,6 +254,20 @@ password is in the ``buildout.cfg`` file).
 Create a Plone site and then install ``eduintelligent.policy`` product. It will
 install all the dependencies.
 
+Configure membrane
+-------------------
+We need to associate the eduMember content-type with TrainingCenter content-tye.
+Open your browser and point it to
+``http://localhost:8080/YourPloneSite/membrane_tool/manage_main``. There's a
+multiple selection menu. Select ``TrainingCenter`` and ``eduMember``. Click on
+``Sumbit``.
+
+TODO LIST
+-----------
+    (o) Configure PloneArticle
+    (o) Configure eduIntelligent Database in the plone control panel.
+    (o) Lot's of details I'm probably missing.
+    
 
 
 
