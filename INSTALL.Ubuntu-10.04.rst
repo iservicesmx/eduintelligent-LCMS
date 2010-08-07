@@ -21,13 +21,13 @@ made by dozens of different software components/libraries (eggs) and Buildout ca
 of almost every detail of all of them, including versions, dependencies and, of
 course, installation.
 
-Buildout can install Plone in an pseudo-isolated environment. That is, it will
+Buildout can install Plone in an **pseudo-isolated** environment. That is, it will
 install, uninstall and manage all the eggs that Plone needs without needing
 Administrator privileges and without the risk of breaking or cause configuration
 conflicts between version packages.
 
 Buildout still depends on the system Python and system-wide libraries/eggs. That's
-why I call it pseudo-isolated environment. For a true isolated environment, you
+why I call it **pseudo-isolated** environment. For a true isolated environment, you
 might take a look at VirtualEnv__, however I will not cover it on this document.
 
 __ Buildout__: http://www.buildout.org/
@@ -44,15 +44,15 @@ open your terminal (Or login if you are on ubuntu Server without X) and type:
     $ sudo aptitude install build-essential git-core subversion zlib1g-dev libpq-dev postgresql
 
 Let's describe each package:
-    *) build-essential: Meta-package which will trigger the installation of compilers,
+    (o) *build-essential*: Meta-package which will trigger the installation of compilers,
       utilities, and development libraries. All those (such as GCC), will be used to
       compile Python 2.4, python libraries, bindings and some parts of Plone and Zope.
-    *) git-core: We use git as the SCM for eduintelligent
-    *) subversion: We might need to get some python code trough svn
-    *) zlib1g-dev: zlib development libraries.
-    *) libpq-dev: Development libraries for PostgreSQL clients. It will be used
+    (o) *git-core*: We use git as the SCM for eduintelligent
+    (o) *subversion*: We might need to get some python code trough svn
+    (o) *zlib1g-dev*: zlib development libraries.
+    (o) *libpq-dev*: Development libraries for PostgreSQL clients. It will be used
        by psycopg2.
-    *) postgresql: The postgresql server
+    (o) *postgresql*: The postgresql server
     
     
 Install Python 2.4
@@ -76,22 +76,23 @@ Then build & install it:
     $ sudo mkdir -p /opt/Python2.4
     $ ./configure --prefix=/opt/python2.4 && make && sudo make install
     
-Installing Python2.4 in /usr/local or /usr will create conflicts when you (or any
+Installing Python2.4 in ``/usr/local`` or ``/usr`` will create conflicts when you (or any
 other program) that invokes python on the console without specifying the full path.
-Also python scripts that use the hashbang #!/usr/bin/env python will be executed
+Also python scripts that use the hashbang ``#!/usr/bin/env python`` will be executed
 with Python 2.4 instead of 2.6. This can break some system utilities and programs,
 specially on Ubuntu Desktop.
 
 There are some easy fixes for that:
-    *) Re-link /usr/bin/python to /usr/bin/python2.6
-    *) Delete /usr/local/bin/python (which takes precedence over /usr/bin/python)
-    *) Install it, as above, in a different path. (You will need to provide the
-       full path whenever you want to call python2.4). You might also want to add
-       the new python path to $PATH environment variable. Or you can also install it
-       in your home folder. 
+    (o) Re-link ``/usr/bin/python`` to ``/usr/bin/python2.6``
+    (o) Delete ``/usr/local/bin/python`` (which takes precedence over ``/usr/bin/python``)
+    (o) Install it, as above, in a different path. (You will need to provide the
+        full path whenever you want to call python2.4). You might also want to add
+        the new python path to ``$PATH`` environment variable. Or you can also install it
+        in your home folder. 
        
 Let's continue. We have already installed python2.4 somewhere, and we know that
-typing /opt/python2.4/bin/python2.4 will bring out the python2.4 prompt.
+typing ``/opt/python2.4/bin/python2.4`` on the comandline will bring out the
+python2.4 prompt.
 
 Next step is to install PIP__. PIP takes care of downloading the right versions of
 Python eggs, uncompress them in a temporal folder, build them and install them on a
@@ -100,7 +101,7 @@ sou you will rarely use it directly.
 
 __ PIP__: http://pip.openplans.org/
 
-So, don't close that terminal window/session, and type:
+So, please, do not close that terminal window/session yet and type:
 
     $ wget http://peak.telecommunity.com/dist/ez_setup.py
     
@@ -113,12 +114,12 @@ We will also need to install ZopeSkel__. ZopeSkel is collection of Skeletons for
 quickstarting Zope and Plone projects. It uses the templating engine of the Paste
 project, which is a python development framework for web applications. It does a
 lot of things and has very useful tools, but our focus now is to prepare our
-development environment for eduIntelligent LCMS and ZopeSkel and Paster are now
+development environment for eduIntelligent-LCMS and ZopeSkel and Paster are now
 just software dependencies for our goals, and PIP will take care od them for us.
 So please, dear reader, just go on with this tutorial, sooner or later you will
 understand how everything is laid out.
 
-    Note: The Django__ admin app, borrows some concepts from Paster.
+    Interesting Note: The Django__ admin app, borrows some concepts from Paster.
 
 __ ZopeSkel__: http://plone.org/products/zopeskel
 __ Django__: http://djangoproject.com
@@ -147,35 +148,39 @@ the directory and run the bootstrap.py script:
     
     $ /opt/Python2.4/bin/python2.4 bootstrap.py
     
-This command will create some directories, namely: bin/, parts/, eggs/ and
-develop-eggs/. Right now, the contents of the bin/ directory are:
+This command will create some directories, namely: ``bin/``, ``parts/``, ``eggs/`` and
+``develop-eggs/``. Right now, the only file inside ``bin/`` is:
 
-    *) bin/buildout This script will download all the needed dependencies and store them on
-       the eggs/ directory. It will compile some packages if they need it. It will finally
-       create the bin/instance script. Take a look at this script, see how buildout manipulares
+    (o) ``bin/buildout`` This script will download all the needed dependencies and store them on
+       the ``eggs/`` directory. It will compile some packages if they need it. It will finally
+       create the ``bin/instance`` script. Take a look at this script, see how buildout manipulares
        the python path. That's how Buildout does it's magic.
        
 
-Run the bin/buildout script.
+Run the ``bin/buildout`` script.
     
     $ bin/buildout
     
 Sit back, relax, go for a cofee. It dependes on your bandwidth and your CPU power,
 but this process takes some time.
 
-Once this process has finished, buildout wil have created more scripts inside the
-bin/ directory:
+Once this process has finished, buildout wil have created more scripts inside
+the ``bin/`` directory:
 
-    *) bin/i18ndude This is a tool for managing translations. It can extract messages,
-       merge them into on or more .po files and compile them.
+    (o) ``bin/i18ndude`` This is a tool for managing translations. It can extract messages,
+       merge them into on or more ``.po`` files and compile them.
     
-    *) bin/instance This is, perhaps, the more interesting script. It controls
+    (o) ``bin/instance`` This is, perhaps, the more interesting script. It controls
        the Plone instance. It has several options and switches, but by now we will only
        use it to start Plone in foreground mode.
     
-    *) bin/zopepy This is a handy python interpreter that has the same list of python
-       eggs that the bin/instance. This is useful for testing and debugging.
+    (o) ``bin/zopepy`` This is a handy python interpreter that has the same list of python
+       eggs that the ``bin/instance``. This is useful for testing and debugging.
        
 We have our development environment set-up and Plone is ready to run. Let's move
-on to configure all the needed parts for eduIntelligent.
+on to configure all the needed parts for eduintelligent-LCMS.
+
+Configure PostgreSQL and configure databases
+---------------------------------------------
+
 
