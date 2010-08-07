@@ -182,5 +182,70 @@ on to configure all the needed parts for eduintelligent-LCMS.
 
 Configure PostgreSQL and configure databases
 ---------------------------------------------
+First step. Create the postgreSQL role ``eduintelligent`` that will be able to login
+using password authentication and create databases, but will not be able to create
+roles and will not have superuser powers:
+
+    $ sudo su postgres
+    
+    $ createuser -ldPRS eduintelligent
+    
+You will be asked to supply a password for the new role. Next step is to enable
+password authentication for recenlty added role. We need to edit the
+file ``/etc/postgresql/8.4/main/pg_hba.conf`` (either logged in as postgres user or
+root), and comment the following line:
+
+    local   all         all                               trust
+    
+and then add the following line at the end of the file:
+
+    local   all     eduintelligent     password
+
+If you did the above logged in as the postgresql user, then exit:
+
+    $ exit
+
+Restart postgresql server
+
+    $ sudo service postgresql-8.4 restart
+    
+Try to login as the eduintelligent user:
+
+    $ psql -U eduintelligent -W postgresql
+
+You should see the psql cmdline prompt. If you get a authentication error instead,
+please review the configuration again and make sure you have restarted the
+postgresql server.
+
+Create the schemas
+-------------------
+
+Go back to the eduintelligent-LCMS directory. Before you run the create_schemas.sh
+script, edit the following files and configure the user and password for the
+eduintelligent role (Yes, the password you supplied in the section above.):
+    
+    (o) ``src/eduintelligent.loginhistory/eduintelligent/loginhistory/dbclasses.py``
+    (o) ``src/eduintelligent.loginhistory/eduintelligent/loginhistory/dbclasses.py``
+    
+Finally run the script:
+
+    $ ./create_schemas.sh
+    
+
+Install eduintelligent.policy
+------------------------------
+
+Run Plone in foreground mode:
+
+    $ bin/instance fg
+    
+Open a web browser and point it to ``http://localhost:8080/`` . Login as admin (The
+password is in the ``buildout.cfg`` file).
+
+Create a Plone site and then install ``eduintelligent.policy`` product. It will
+install all the dependencies.
+
+
+
 
 
