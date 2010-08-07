@@ -7,7 +7,7 @@
  <property name="description" i18n:translate="">A Training Center</property>
  <property name="content_icon">tc.gif</property>
  <property name="content_meta_type">TrainingCenter</property>
- <property name="product">eduTrainingCenter</property>
+ <property name="product">eduintelligent.trainingcenter</property>
  <property name="factory">addTrainingCenter</property>
  <property name="immediate_view">edutc_view</property>
  <property name="global_allow">True</property>

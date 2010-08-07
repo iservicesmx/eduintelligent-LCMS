@@ -8,8 +8,8 @@
  <permission>View</permission>
  <permission>Modify portal content</permission>
  <permission>Add portal content</permission>
- <permission>eduTrainingCenter: Change roles</permission>
- <permission>eduTrainingCenter: Add Member</permission>
+ <permission>TrainingCenter: Change roles</permission>
+ <permission>TrainingCenter: Add Member</permission>
  
  <state state_id="active" title="Active">
   <exit-transition transition_id="deactivate"/>

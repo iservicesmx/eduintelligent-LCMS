@@ -7,7 +7,7 @@
  <property name="description" i18n:translate="">A Member of Training Center</property>
  <property name="content_icon">user.gif</property>
  <property name="content_meta_type">eduMember</property>
- <property name="product">eduTrainingCenter</property>
+ <property name="product">eduintelligent.trainingcenter</property>
  <property name="factory">addeduMember</property>
  <property name="immediate_view">base_edit</property>
  <property name="default_view">eduuser_view</property>

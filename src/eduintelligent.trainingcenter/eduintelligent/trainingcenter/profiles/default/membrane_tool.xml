@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<object name="membrane_tool" meta_type="MembraneTool">
+  <membrane-type name="TrainingCenter"/>
+  <membrane-type name="eduMember"/>
+
+
+</object>

@@ -8,7 +8,7 @@
   <permissions>
     
     <!-- This disables the dashboard for regular members -->
-    <permission name="eduTrainingCenter: Modify data member" acquire="False">
+    <permission name="TrainingCenter: Modify data member" acquire="False">
         <role name="Manager" />
     </permission>
     
