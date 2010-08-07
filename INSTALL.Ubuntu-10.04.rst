@@ -151,10 +151,10 @@ the directory and run the bootstrap.py script:
 This command will create some directories, namely: ``bin/``, ``parts/``, ``eggs/`` and
 ``develop-eggs/``. Right now, the only file inside ``bin/`` is:
 
-    * ``bin/buildout`` This script will download all the needed dependencies and store them on
-      the ``eggs/`` directory. It will compile some packages if they need it. It will finally
-      create the ``bin/instance`` script. Take a look at this script, see how buildout manipulares
-      the python path. That's how Buildout does it's magic.
+  * ``bin/buildout`` This script will download all the needed dependencies and store them on
+    the ``eggs/`` directory. It will compile some packages if they need it. It will finally
+    create the ``bin/instance`` script. Take a look at this script, see how buildout manipulares
+    the python path. That's how Buildout does it's magic.
 
 Run the ``bin/buildout`` script.
     
@@ -166,15 +166,15 @@ but this process takes some time.
 Once this process has finished, buildout wil have created more scripts inside
 the ``bin/`` directory:
 
-    * ``bin/i18ndude`` This is a tool for managing translations. It can extract messages,
-      merge them into on or more ``.po`` files and compile them.
-    
-    * ``bin/instance`` This is, perhaps, the more interesting script. It controls
-      the Plone instance. It has several options and switches, but by now we will only
-      use it to start Plone in foreground mode.
-    
-    * ``bin/zopepy`` This is a handy python interpreter that has the same list of python
-      eggs that the ``bin/instance``. This is useful for testing and debugging.
+  * ``bin/i18ndude`` This is a tool for managing translations. It can extract messages,
+    merge them into on or more ``.po`` files and compile them.
+  
+  * ``bin/instance`` This is, perhaps, the more interesting script. It controls
+    the Plone instance. It has several options and switches, but by now we will only
+    use it to start Plone in foreground mode.
+  
+  * ``bin/zopepy`` This is a handy python interpreter that has the same list of python
+    eggs that the ``bin/instance``. This is useful for testing and debugging.
        
 We have our development environment set-up and Plone is ready to run. Let's move
 on to configure all the needed parts for eduintelligent-LCMS.
@@ -232,8 +232,8 @@ Go back to the eduintelligent-LCMS directory. Before you run the ``create_schema
 script, edit the following files and configure the user and password for the
 eduintelligent role (Yes, the password you supplied in the section above.):
     
-    * ``src/eduintelligent.loginhistory/eduintelligent/loginhistory/dbclasses.py``
-    * ``src/eduintelligent.loginhistory/eduintelligent/loginhistory/dbclasses.py``
+  * ``src/eduintelligent.loginhistory/eduintelligent/loginhistory/dbclasses.py``
+  * ``src/eduintelligent.loginhistory/eduintelligent/loginhistory/dbclasses.py``
     
 Finally run the script:
 
@@ -263,7 +263,7 @@ multiple selection menu. Select ``TrainingCenter`` and ``eduMember``. Click on
 
 TODO LIST
 -----------
-    * Configure PloneArticle
-    * Configure eduIntelligent Database in the plone control panel.
-    * Lot's of details I'm probably missing.
+  * Configure PloneArticle
+  * Configure eduIntelligent Database in the plone control panel.
+  * Lot's of details I'm probably missing.
   
