@@ -3,20 +3,20 @@
 <object name="portal_skins"
         meta_type="Plone Skins Tool">
 
- <object name="edutc_images"
+ <object name="icons"
          meta_type="Filesystem Directory View"
          directory="eduintelligent.trainingcenter:skins/icons"/>
- <object name="edutc_styles"
+ <object name="styles"
          meta_type="Filesystem Directory View"
          directory="eduintelligent.trainingcenter:skins/styles"/>
- <object name="edutc_templates"
+ <object name="templates"
          meta_type="Filesystem Directory View"
          directory="eduintelligent.trainingcenter:skins/templates"/>
  
  <skin-path name="*">
-  <layer name="edutc_images"/>
-  <layer name="edutc_styles"/>
-  <layer name="edutc_templates"/>
+  <layer name="icons"/>
+  <layer name="styles"/>
+  <layer name="templates"/>
  </skin-path>
 
 </object>

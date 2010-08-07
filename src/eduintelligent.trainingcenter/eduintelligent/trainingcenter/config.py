@@ -5,7 +5,7 @@ from Products.Archetypes.public import DisplayList
 import Globals
 
 PATH_IMPORT = os.path.join(Globals.INSTANCE_HOME, 'import')
-PROJECTNAME	= "eduinteliigent.trainingcenter"
+PROJECTNAME	= "eduintelligent.trainingcenter"
 DEFAULT_MEMBER_TYPE = 'eduMember'
 
 SKINS_DIR	= "skins"

@@ -22,7 +22,7 @@ def setup_product():
     ztc.installPackage('eduintelligent.trainingcenter')
     
 setup_product()
-ptc.setupPloneSite(products=('eduintelligent.trainingcenter', ))
+ptc.setupPloneSite(products=('eduintelligent.trainingcenter',))
 
 class TrainingCenterTestCase(ptc.PloneTestCase):
     """We use this base class for all the tests in this package. If necessary,
