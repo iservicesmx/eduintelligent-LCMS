@@ -6,6 +6,8 @@ from Products.Five import fiveconfigure
 
 from Testing import ZopeTestCase as ztc
 
+ztc.installProduct('membrane')
+
 from Products.PloneTestCase import PloneTestCase as ptc
 from Products.PloneTestCase.layer import onsetup
 
@@ -22,7 +24,7 @@ def setup_product():
     ztc.installPackage('eduintelligent.trainingcenter')
     
 setup_product()
-ptc.setupPloneSite(products=('eduintelligent.trainingcenter',))
+ptc.setupPloneSite(products=('membrane', 'eduintelligent.trainingcenter'))
 
 class TrainingCenterTestCase(ptc.PloneTestCase):
     """We use this base class for all the tests in this package. If necessary,

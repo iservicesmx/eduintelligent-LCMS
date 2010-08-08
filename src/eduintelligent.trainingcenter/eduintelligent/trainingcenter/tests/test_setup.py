@@ -1,5 +1,9 @@
 from base import TrainingCenterTestCase
 
+from Products.membrane.interfaces import ICategoryMapper
+from Products.membrane.config import ACTIVE_STATUS_CATEGORY
+from Products.membrane.utils import generateCategorySetIdForType
+
 class TestProductInstall(TrainingCenterTestCase):
 
     def afterSetUp(self):
@@ -9,6 +13,20 @@ class TestProductInstall(TrainingCenterTestCase):
         for t in self.types:
             self.failUnless(t in self.portal.portal_types.objectIds(),
                             '%s content type not installed' % t)
+
+    def testTypesRegisteredWithMembrane(self):
+        for t in self.types:
+            self.failUnless(t in self.portal.membrane_tool.listMembraneTypes(),
+                            '%s content type not added to membrane' % t)
+        
+    def testMembraneActiveWorkflowMappingForEmployee(self):
+        states = { 'Department' : ['active',],
+                   'Employee'   : ['active',],
+                   }
+        categoryMap = ICategoryMapper(self.portal.membrane_tool)
+        for t, s in states.items():
+            categorySet = generateCategorySetIdForType(t)
+            self.assertEquals(s, categoryMap.listCategoryValues(categorySet, ACTIVE_STATUS_CATEGORY))
     
     def testPortalFactoryEnabled(self):
         for t in self.types:
