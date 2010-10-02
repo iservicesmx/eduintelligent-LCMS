@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<import-steps>
+    <import-step id="eduintelligent-various" version="20101001-01"
+              	 handler="eduintelligent.policy.setuphandlers.importVarious"
+              	 title="Additional EduIntelligent site policy setup">
+        <dependency step="rolemap" />
+        EduIntelligent site policy
+    </import-step>
+</import-steps>
+

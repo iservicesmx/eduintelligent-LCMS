@@ -11,8 +11,9 @@
   <genericsetup:registerProfile
     name="default"
     title="EduIntelligent Site Policy"
-    directory="profiles/defaul"
-    description="Turns a Plone site into eduIntelligent"
+    directory="profiles/default"
+    description="Turns a Plone site into an eduIntelligent site."
     provides="Products.GenericSetup.interfaces.EXTENSION"
     />
+
 </configure>
