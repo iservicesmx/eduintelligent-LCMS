@@ -90,10 +90,26 @@ class TestTrainingCenter(EduIntelligentPolicyTestCase):
         self.assertEquals(('training_center_workflow',), wf.getChainForPortalType('TrainingCenter'))
         self.assertEquals(('edumember_workflow',), wf.getChainForPortalType('eduMember'))
 
+class TestEvaluation(EduIntelligentPolicyTestCase):
+
+    def afterSetUp(self):
+        self.types = ('Exam', 'Quiz', 'QuestionFillIn', 'QuestionChoice')
+
+    def testTypesInstalled(self):
+        for t in self.types:
+            self.failUnless(t in self.portal.portal_types.objectIds(),
+                            '%s content type not installed' % t)
+    
+    def testPortalFactoryEnabled(self):
+        for t in self.types:
+            self.failUnless(t in self.portal.portal_factory.getFactoryTypes().keys(),
+                            '%s content type not installed' % t)
+
 def test_suite():
     suite= unittest.TestSuite()
     suite.addTest(unittest.makeSuite(TestSetup))
     suite.addTest(unittest.makeSuite(TestCourses))
     suite.addTest(unittest.makeSuite(TestTrainingCenter))
+    suite.addTest(unittest.makeSuite(TestEvaluation))
     return suite
 

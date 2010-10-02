@@ -7,6 +7,7 @@
     <!-- Include direct package dependencies -->
     <include package="eduintelligent.courses" />
     <include package="eduintelligent.trainingcenter" />
+    <include package="eduintelligent.evaluation" />
   
     <five:registerPackage package="." initialize=".initialize" />
 
