@@ -3,6 +3,10 @@ from Products.Five import fiveconfigure
 
 from Testing import ZopeTestCase as ztc
 
+# These are traditional products (in the Products namespace). They'd normally
+# be loaded automatically, but in tests we have to load them explicitly. This
+# should happen at module level to make sure they are available early enough.
+
 ztc.installProduct('membrane')
 
 from Products.PloneTestCase import PloneTestCase as ptc
@@ -24,7 +28,7 @@ def setup_eduintelligent_training():
     ztc.installPackage('eduintelligent.trainingcenter')
     
 setup_eduintelligent_training()
-ptc.setupPloneSite(products=['membrane', 'eduintelligent.trainingcenter'])
+ptc.setupPloneSite(products=['eduintelligent.trainingcenter'])
 
 class TrainingCenterTestCase(ptc.PloneTestCase):
     """We use this base class for all the tests in this package. If necessary,
