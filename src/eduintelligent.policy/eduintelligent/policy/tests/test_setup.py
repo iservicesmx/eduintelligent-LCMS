@@ -1,15 +1,13 @@
 import unittest
 
-from eduintelligent.policy.tests import EduIntelligentPolicyTestCase
+from eduintelligent.policy.tests.base import EduIntelligentPolicyTestCase
 
 class TestSetup(EduIntelligentPolicyTestCase):
     def test_portal_title(self):
-        self.assertEquals("Plone", 
-                          self.portal.getProperty('title'))
+        self.assertEquals('Plone site', self.portal.getProperty('title'))
         
     def test_portal_description(self):
-        self.assertEquals("Plone Description",
-                          self.portal.getProperty('description'))
+        self.assertEquals('', self.portal.getProperty('description'))
         
 def test_suite():
     suite= unittest.TestSuite()
