@@ -4,16 +4,18 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="eduintelligent.policy">
 
-  <five:registerPackage package="." initialize=".initialize" />
-
-  <!-- Include direct package dependencies -->
+    <!-- Include direct package dependencies -->
+    <include package="eduintelligent.courses" />
+    <include package="eduintelligent.trainingcenter" />
   
-  <genericsetup:registerProfile
-    name="default"
-    title="EduIntelligent Site Policy"
-    directory="profiles/default"
-    description="Turns a Plone site into an eduIntelligent site."
-    provides="Products.GenericSetup.interfaces.EXTENSION"
-    />
+    <five:registerPackage package="." initialize=".initialize" />
+
+    <genericsetup:registerProfile
+     name="default"
+     title="EduIntelligent Site Policy"
+     directory="profiles/default"
+     description="Turns a Plone site into an eduIntelligent site."
+     provides="Products.GenericSetup.interfaces.EXTENSION"
+     />
 
 </configure>

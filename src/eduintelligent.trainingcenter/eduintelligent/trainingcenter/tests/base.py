@@ -1,6 +1,3 @@
-"""Test setup for integration and functional tests.
-"""
-
 from Products.Five import zcml
 from Products.Five import fiveconfigure
 
@@ -12,8 +9,11 @@ from Products.PloneTestCase import PloneTestCase as ptc
 from Products.PloneTestCase.layer import onsetup
 
 @onsetup
-def setup_product():
-    """Set up the package and its dependencies.
+def setup_eduintelligent_training():
+    """Set up the additional products required for the Optilux Cinema Content.
+    
+    The @onsetup decorator causes the execution of this body to be deferred
+    until the setup of the Plone site testing layer.
     """
     
     fiveconfigure.debug_mode = True
@@ -23,8 +23,8 @@ def setup_product():
 
     ztc.installPackage('eduintelligent.trainingcenter')
     
-setup_product()
-ptc.setupPloneSite(products=('membrane', 'eduintelligent.trainingcenter'))
+setup_eduintelligent_training()
+ptc.setupPloneSite(products=['membrane', 'eduintelligent.trainingcenter'])
 
 class TrainingCenterTestCase(ptc.PloneTestCase):
     """We use this base class for all the tests in this package. If necessary,

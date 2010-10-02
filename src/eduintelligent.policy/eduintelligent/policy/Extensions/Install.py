@@ -1,18 +1,18 @@
 import transaction
 from Products.CMFCore.utils import getToolByName
 
-PRODUCT_DEPENDENCIES = (#"membrane",
-                        #"remember",
+PRODUCT_DEPENDENCIES = ('membrane',
+                        'remember',
                         #"UserAndGroupSelectionWidget",
                         #"Products.SimpleAttachment",
                         #"Products.DataGridField",
-                        #"eduintelligent.trainingcenter",
+                        'eduintelligent.trainingcenter',
                         #"eduintelligent.database",
                         #"eduintelligent.loginhistory",
                         #"eduintelligent.evaluation",
                         #"eduintelligent.zipcontent",
                         #"eduintelligent.sco",
-                        #"eduintelligent.courses",
+                        'eduintelligent.courses',
                         #"eduintelligent.messages",
                         #"Products.Faq",
                         #"eduintelligent.paeduintelligent",  
