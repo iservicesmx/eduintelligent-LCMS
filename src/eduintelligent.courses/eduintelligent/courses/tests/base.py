@@ -8,7 +8,7 @@ from Products.PloneTestCase.layer import onsetup
 
 @onsetup
 def setup_eduintelligent_courses():
-    """Set up the additional products required for the Optilux Cinema Content.
+    """Set up the additional products required for the EduIntelligent Courses.
     
     The @onsetup decorator causes the execution of this body to be deferred
     until the setup of the Plone site testing layer.
