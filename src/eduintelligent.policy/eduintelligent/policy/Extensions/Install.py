@@ -1,28 +1,28 @@
 import transaction
 from Products.CMFCore.utils import getToolByName
 
-PRODUCT_DEPENDENCIES = ("membrane" ,
-                        "remember" ,
-                        "UserAndGroupSelectionWidget",
-                        "Products.SimpleAttachment" ,
-                        "Products.DataGridField" ,
-                        "eduintelligent.trainingcenter" ,
-                        "eduintelligent.database" ,
-                        "eduintelligent.loginhistory" ,
-                        "eduintelligent.evaluation" ,
-                        "eduintelligent.zipcontent" ,
-                        "eduintelligent.sco" ,
-                        "eduintelligent.courses" ,
-                        "eduintelligent.messages" ,
-                        "Products.Faq" ,
-                        "eduintelligent.paeduintelligent" ,  
-                        "Products.PloneSurvey" ,
-                        "Products.PloneArticle" ,
-                        "Products.PloneHelpCenter" ,
-                        "Products.PloneGlossary" ,
-                        "Products.PlonePopoll" ,
-                        "Products.Ploneboard" ,
-                        "Products.MasterSelectWidget" ,
+PRODUCT_DEPENDENCIES = ('membrane',
+                        'remember',
+                        #"UserAndGroupSelectionWidget",
+                        #"Products.SimpleAttachment",
+                        #"Products.DataGridField",
+                        'eduintelligent.trainingcenter',
+                        #"eduintelligent.database",
+                        #"eduintelligent.loginhistory",
+                        'eduintelligent.evaluation',
+                        #"eduintelligent.zipcontent",
+                        #"eduintelligent.sco",
+                        'eduintelligent.courses',
+                        #"eduintelligent.messages",
+                        #"Products.Faq",
+                        #"eduintelligent.paeduintelligent",  
+                        #"Products.PloneSurvey",
+                        #"Products.PloneArticle",
+                        #"Products.PloneHelpCenter",
+                        #"Products.PloneGlossary",
+                        #"Products.PlonePopoll",
+                        #"Products.Ploneboard",
+                        #"Products.MasterSelectWidget",
                         )
 
 EXTENSION_PROFILES = ('eduintelligent.policy:default',)
@@ -47,17 +47,9 @@ def install(self, reinstall=False):
 
     for product in PRODUCT_DEPENDENCIES:
         if reinstall and portal_quickinstaller.isProductInstalled(product):
-            #From what i've seen so far, reinstalling all the dependencies 
-            #for eduintelligent is not a very good idea, since strange things
-            # happened.
-            #
-            # By now, just do nothing for reinstalling
-            #
-            #portal_quickinstaller.reinstallProducts([product])
-            #transaction.savepoint()
-            pass
+            portal_quickinstaller.reinstallProducts([product])
+            transaction.savepoint()
         elif not portal_quickinstaller.isProductInstalled(product):
-            #import pdb; pdb.set_trace()
             portal_quickinstaller.installProduct(product)
             transaction.savepoint()
 

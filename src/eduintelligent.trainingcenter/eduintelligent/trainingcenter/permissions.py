@@ -11,10 +11,10 @@ from Products.CMFCore.permissions import SetOwnPassword as SetPassword
 from Products.CMFCore.permissions import ManageUsers
 
 # Add permissions
-AddTrainingCenter = "eduTrainingCenter: Add TrainingCenter"
-AddMember = "eduTrainingCenter: Add Member"
-ChangeRoles = "eduTrainingCenter: Change roles"
-ModifyMember = "eduTrainingCenter: Modify data member"
+AddTrainingCenter = "TrainingCenter: Add TrainingCenter"
+AddMember = "TrainingCenter: Add Member"
+ChangeRoles = "TrainingCenter: Change roles"
+ModifyMember = "TrainingCenter: Modify data member"
 
 setDefaultRoles(AddTrainingCenter, ('Manager',))
 setDefaultRoles(AddMember, ('Manager',))
