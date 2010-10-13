@@ -233,36 +233,36 @@ class eduMember(Member):
 
         return str(year)+" años"
 
-    def setDynamicKardex(self, **kw):
-        entry = {
-            'course': '', 
-            'date': '', 
-            'evaluation': '', 
-            'note': '', 
-            'old': '', 
-            'score': '', 
-            'score2': '', 
-            'type': '', 
-        }
-        kardex = list(self.getKardex())
-        # print kardex
-        # print "--------------"
-        # print kw
-        entry.update(kw)
-        kardex.append(entry)
-        # print "--------------"
-        # print entry
-        # print kardex
-        self.setKardex(kardex)
-
-    def getTypeScore(self):
-        """
-        """
-        return DisplayList(
-            (("exam", _("Exam"),),
-             ("activity", _("Activity"),),
-             ("sco", _("SCORM"),),)
-        )
+    # def setDynamicKardex(self, **kw):
+    #     entry = {
+    #         'course': '', 
+    #         'date': '', 
+    #         'evaluation': '', 
+    #         'note': '', 
+    #         'old': '', 
+    #         'score': '', 
+    #         'score2': '', 
+    #         'type': '', 
+    #     }
+    #     kardex = list(self.getKardex())
+    #     # print kardex
+    #     # print "--------------"
+    #     # print kw
+    #     entry.update(kw)
+    #     kardex.append(entry)
+    #     # print "--------------"
+    #     # print entry
+    #     # print kardex
+    #     self.setKardex(kardex)
+    # 
+    # def getTypeScore(self):
+    #     """
+    #     """
+    #     return DisplayList(
+    #         (("exam", _("Exam"),),
+    #          ("activity", _("Activity"),),
+    #          ("sco", _("SCORM"),),)
+    #     )
     
 
 registerType(eduMember, PROJECTNAME)
