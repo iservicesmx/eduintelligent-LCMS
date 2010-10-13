@@ -27,6 +27,7 @@ eduintelligent.courses provide containers for online courses.
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'Products.PloneBoard'
           # -*- Extra requirements: -*-
       ],
       entry_points="""
