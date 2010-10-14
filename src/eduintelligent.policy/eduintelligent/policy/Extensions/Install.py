@@ -3,7 +3,7 @@ from Products.CMFCore.utils import getToolByName
 
 PRODUCT_DEPENDENCIES = ('membrane',
                         'remember',
-                        #"UserAndGroupSelectionWidget",
+                        'UserAndGroupSelectionWidget',
                         #"Products.SimpleAttachment",
                         'eduintelligent.trainingcenter',
                         #"eduintelligent.database",
@@ -51,7 +51,6 @@ def install(self, reinstall=False):
         elif not portal_quickinstaller.isProductInstalled(product):
             portal_quickinstaller.installProduct(product)
             transaction.savepoint()
-
     
     for extension_id in EXTENSION_PROFILES:
         portal_setup.runAllImportStepsFromProfile('profile-%s' % extension_id, purge_old=False)
