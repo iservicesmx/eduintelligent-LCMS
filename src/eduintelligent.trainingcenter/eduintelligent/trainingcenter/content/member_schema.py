@@ -3,12 +3,6 @@ from Products.Archetypes.public import *
 from eduintelligent.trainingcenter.config import *
 from eduintelligent.trainingcenter.permissions import ModifyMember
 
-# from Products.DataGridField import DataGridField, DataGridWidget
-# from Products.DataGridField.Column import Column
-# from Products.DataGridField.FixedColumn import FixedColumn
-# from Products.DataGridField.SelectColumn import SelectColumn
-# from Products.DataGridField.LinkColumn import LinkColumn
-
 from eduintelligent.trainingcenter import TCMessageFactory as _
 
 from Products.remember.permissions import VIEW_PUBLIC_PERMISSION, \
@@ -246,29 +240,5 @@ member_schema = Schema((
     ),
     user_property=True,
     ),
-    
-    ## Se elimina por falta de documentación
-    # DataGridField('kardex',
-    #         schemata = 'Kardex',
-    #         read_permission=VIEW_PUBLIC_PERMISSION,
-    #         write_permission=EDIT_ID_PERMISSION,
-    #         columns=('old', 'course', 'evaluation', 'type', 'date', 'score', 'score2', 'note'),
-    #         widget = DataGridWidget(
-    #             columns= {
-    #                 'old' : FixedColumn("Old", visible=False),
-    #                 'course' : FixedColumn(_("Course")),
-    #                 'evaluation' : LinkViewColumn(_("Evaluation")),
-    #                 'type' : SelectColumn(_("Type"), vocabulary="getTypeScore"),
-    #                 'date' : FixedColumn(_("Date")),
-    #                 'score' : FixedColumn(_("Score")),
-    #                 'score2' : Column(_("Extra")),
-    #                 'note' : Column(_("Note")),
-    #             },
-    #         ),
-    #         auto_insert = False,
-    #         allow_insert=False,
-    #         allow_delete=True,
-    #         allow_reorder=False,        
-    # ),
-   
+       
 ),)
